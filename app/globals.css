@@ -1,4 +1,42 @@
-/*@tailwind base;*/
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Medium.ttf') format('ttf');
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.login :where(.css-dev-only-do-not-override-z0trcs).ant-input{
+    background-color: transparent !important;
+    color: white !important
+}
+
+.login .ant-input-affix-wrapper >input.ant-input {
+    background-color: transparent !important;
+    color: white !important
+}
+
+.login .ant-input:placeholder-shown{
+    background-color: transparent !important;
+}
+
+.login .ant-input::placeholder{
+    color: white !important
+}
+
+.login .ant-input-affix-wrapper >input.ant-input {
+    background-color: transparent;
+}
+
+
 
