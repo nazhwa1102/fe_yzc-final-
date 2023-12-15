@@ -2,7 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Steps, message } from "antd";
-import {} from "@ant-design/icons";
+import {
+  ArrowLeftOutlined,
+} from "@ant-design/icons";
 import { useRouter } from "next/router";
 import CustomerStep1 from "#/app/components/auth/regis_customer/step1_customer";
 import CustomerStep2 from "#/app/components/auth/regis_customer/step2_customer";
@@ -42,7 +44,9 @@ function register_customer() {
             <div className="w-[710px] py-[100px]">
                 <div className="flex flex-col space-y-15 w-full">
                   <div className="mb-35 flex">
-                    <div className="mb-[50px] "></div>
+                    <div className="mb-[50px] ">
+                    <ArrowLeftOutlined className="text-white text-5xl" />
+                    </div>
                     <div className="flex justify-center w-[100%]">
                       <Logo />
                     </div>
@@ -100,6 +104,14 @@ function register_customer() {
                       )}
                     </div>
                     </div>
+                  </div>
+                  <div className="text-white text-xl">
+                    <p className="mb-2">
+                      Sudah punya akun di Youthzen Connect ?
+                      <a href="/login" className="font-bold mb-3">
+                        Masuk
+                      </a>
+                    </p>
                   </div>
                   <div>
                   </div>

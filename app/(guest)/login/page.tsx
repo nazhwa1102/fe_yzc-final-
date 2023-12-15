@@ -98,7 +98,7 @@ const LoginPage = () => {
                         rules={[
                           {
                             required: true,
-                            message: "Harap masukan email anda!",
+                            message: "Harap Masukan EmailAnda!",
                           },
                         ]}
                       >
@@ -123,7 +123,7 @@ const LoginPage = () => {
                         rules={[
                           {
                             required: true,
-                            message: "Harap masukan kata sandi anda!",
+                            message: "Harap Masukan Kata Sandi Anda!",
                           },
                         ]}
                       >
