@@ -4,8 +4,14 @@ import { Option } from "antd/es/mentions";
 import { Form, Input } from "antd/lib/index";
 import { FormInstance } from "antd";
 import FormItem from 'antd/lib/form/FormItem';
+import { RegisterPsikolog } from '#/app/types/typeRegisPsg';
 
-function PsikologStep1() {
+type Props = {
+	setData: any;
+	dataInput: RegisterPsikolog;
+	formStep1: FormInstance<any>;
+  };
+function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
   return (
     <div  className="flex flex-col space-y-15 w-full">
       <div className="grid gap-y-4 grid-cols-1">
@@ -17,7 +23,11 @@ function PsikologStep1() {
 				name="full_name"
 				rules={[{ required: true, message: 'Harap masukan nama lengkap anda!' }]}
 			>
-				<Input placeholder="Masukan nama lengkap" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl " />
+				<Input
+				onChange={(e) => {
+					setData({ ...dataInput, fullName: e.target.value });
+				  }} 
+				placeholder="Masukan nama lengkap" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl " />
 			</Form.Item>
 			</div>
 		</div>
@@ -32,6 +42,9 @@ function PsikologStep1() {
 					rules={[{ required: true, message: 'Harap masukan jenis kelamin anda!' }]}
 				>
 					<Select
+					onChange={(e) => {
+						setData({ ...dataInput, gender: e });
+					  }}
 					 placeholder="Pilih jenis kelamin" className="w-full regis">
 						<Option value="pria">Pria</Option>
 						<Option value="wanita">Wanita</Option>
@@ -49,6 +62,9 @@ function PsikologStep1() {
 					rules={[{ required: true, message: 'Harap masukan nama agama anda!' }]}
 				>
 					<Select
+					onChange={(e) => {
+						setData({ ...dataInput, Religion: e });
+					  }}
 					 placeholder="Pilih Agama" className="w-full regis">
 						<Option value="islam">Islam</Option>
 						<Option value="katolik">Katolik</Option>
@@ -70,7 +86,11 @@ function PsikologStep1() {
 					name="birth_date"
 					rules={[{ required: true, message: 'Harap masukan tanggal lahir anda!' }]}
 				>
-					<DatePicker placeholder="Pilih tanggal" className="w-full regis" />
+					<DatePicker
+					onChange={(e) => {
+						setData({ ...dataInput, birthDate: e });
+					  }} 
+					 placeholder="Pilih tanggal" className="w-full regis" />
 				</Form.Item>
 			</div>
 		</div>
@@ -83,7 +103,11 @@ function PsikologStep1() {
 				name="last_education"
 				rules={[{ required: true, message: 'Harap masukan pendidikan terakhir anda!' }]}
 			>
-				<Input placeholder="Masukan Pendidikan Terakhir" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl" />
+				<Input 
+				onChange={(e) => {
+					setData({ ...dataInput, lastEducation: e });
+				  }}
+				placeholder="Masukan Pendidikan Terakhir" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl" />
 			</Form.Item>
 			</div>
 		</div>

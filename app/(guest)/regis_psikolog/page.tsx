@@ -5,28 +5,63 @@ import { Button, Form, Input, Steps, message } from "antd";
 import {
   ArrowLeftOutlined,
 } from "@ant-design/icons";
-import { useRouter } from "next/router";
-
+import { useRouter } from "next/navigation";
 import Logo from "#/app/components/gambar/logo";
 import Regis from "#/app/components/gambar/regis";
 import PsikologStep1 from "#/app/components/auth/regis_psikolog/step1_psikolog";
 import PsikologStep2 from "#/app/components/auth/regis_psikolog/step2_psikolog";
 import PsikologStep3 from "#/app/components/auth/regis_psikolog/step3_psikolog";
+import { RegisterPsikolog } from "#/app/types/typeRegisPsg";
+import { authRepository } from "#/repository/auth";
 
 
-function register_customer() {
+function register_psikolog() {
+  const router = useRouter();
+  const [dataInput,setDataInput] = useState<RegisterPsikolog>({
+    level_user: '',
+    fullName:'',
+    gender:'',
+    Religion: '',
+    birthDate:'',
+    lastEducation:'',
+    caseHandled: '',
+    aboutMe: '',
+    legality:'',
+    photo:'',
+    email:'',
+    phone:'',
+    password:'',
+  })
+  
+const [formStep1] = Form.useForm();
+const [formStep2] = Form.useForm();
+const [formStep3] = Form.useForm();
+
   const steps = [
     {
       title: "Biodata", 
-      content: <PsikologStep1/>,
+      content: <PsikologStep1
+      setData={setDataInput}
+      dataInput={dataInput}
+        formStep1={formStep1}
+      />,
+
     },
     {
       title: "Verifikasi",
-      content: <PsikologStep2/>,
+      content: <PsikologStep2
+      setData={setDataInput}
+      dataInput={dataInput}
+      formStep2={formStep2}
+      />,
     },
     {
       title: "Akun",
-      content: <PsikologStep3/>,
+      content: <PsikologStep3
+      setData={setDataInput}
+      dataInput={dataInput}
+      formStep3={formStep3}
+      />,
     },
   ];
 
@@ -41,7 +76,32 @@ function register_customer() {
   };
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
-
+  const onFinish = async (values: any) => {
+    try {
+      const data = {
+          level_user: 'cedf2abb-bd61-4314-9075-d42f9303a88c',
+          full_name: dataInput?.fullName,
+          gender: dataInput?.gender,
+          religion: dataInput?.Religion,
+          birth_date: dataInput?.birthDate,
+          last_education: dataInput?.lastEducation,
+          case_handled: dataInput?.caseHandled,
+          about_me: dataInput?.aboutMe,
+          legality: dataInput?.legality,
+          photo: dataInput?.photo,
+          email: dataInput?.email,
+          phone_number: dataInput?.phone,
+          password: dataInput?.password,
+      };
+      console.log (data ,"ini data");
+      const register_psikolog = await authRepository.manipulateData.register2(data);
+      console.log(register_psikolog,"hasilnya ini");
+      setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
+      router.push("/home");
+    } catch(err) {
+      // message.error(err)
+    }
+  };
   return (
     <div className="w-full h-full">
       <div className="w-full h-full fixed bg-white flex justify-between">
@@ -100,9 +160,7 @@ function register_customer() {
                         <Button
                           type="primary"
                           htmlType="submit"
-                          onClick={() =>
-                            message.success("Anda Telah Berhasil Registrasi!")
-                          }
+                          onClick={onFinish}
                           className="bg-primary"
                         >
                           Daftar
@@ -137,4 +195,4 @@ function register_customer() {
   );
 }
 
-export default register_customer;
+export default register_psikolog;

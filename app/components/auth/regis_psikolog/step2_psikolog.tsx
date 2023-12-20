@@ -6,15 +6,25 @@ import { FormInstance } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
 import { UploadOutlined } from "@ant-design/icons";
+import { RegisterPsikolog } from "#/app/types/typeRegisPsg";
+import { UploadChangeParam, UploadFile } from "antd/es/upload";
+import { authRepository } from "#/repository/auth";
 
-function PsikologStep2() {
+type Props = {
+	setData: any;
+	dataInput: RegisterPsikolog;
+	formStep2: FormInstance<any>;
+  };
+
+function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
   const props = {
     name: "file",
     action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
     headers: {
-      authorization: "authorization-text",
+    authorization: "authorization-text",
     },
-    onChange(info) {
+
+    onChange(info:any) {
       if (info.file.status !== "uploading") {
         console.log(info.file, info.fileList);
       }
@@ -26,18 +36,35 @@ function PsikologStep2() {
     },
   };
 
+// const photo = async (args: UploadChangeParam<UploadFile<any>>) => {
+//   const file = args.file
+//   try{
+//     if(file.size && file.size > 2097152){
+//       message.error('ukuran file terlalu besar')
+//     }else{
+//       if(file.type === 'image/png' || file.type === 'image/jpg' || file.type === 'image/jpeg'){
+//       console.log()
+//       }
+//     }
+//   }
+// }
+
   return (
     <div className="flex flex-col space-y-15 w-full">
       <div className="grid gap-y-4 grid-cols-1"></div>
       <div className="grid gap-y-4 grid-cols-1">
         <div>
           <p className="text-teks text-2xl font-bold text-white">
-            Tentang Saya
+            Kasus yang Ditangani
           </p>
         </div>
         <div className="w-full">
-          <Form.Item>
+          <Form.Item name="case_handled">
+            
             <TextArea
+              onChange={(e) => {
+                setData({ ...dataInput, caseHandled: e });
+              }}
               rows={2}
               placeholder="Tulis Disini"
               className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
@@ -52,8 +79,11 @@ function PsikologStep2() {
           </p>
         </div>
         <div className="w-full">
-          <Form.Item>
+          <Form.Item name="about_me">
             <TextArea
+              onChange={(e) => {
+                setData({ ...dataInput, about_me: e });
+              }}
               rows={2}
               placeholder="Tulis Disini"
               className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
@@ -69,11 +99,17 @@ function PsikologStep2() {
             </p>
           </div>
           <div className="w-full">
+            <FormItem name="legality">
             <Upload {...props}>
-              <Button className="w-80" icon={<UploadOutlined />}>
+              <Button
+              onChange={(e) => {
+                setData({ ...dataInput, legality: e });
+              }}
+              className="w-80" icon={<UploadOutlined />}>
                 Klik Untuk Mengunggah
               </Button>
             </Upload>
+            </FormItem>
           </div>
         </div>
         <div className="w-1/2 grid gap-y-4 grid-cols-1">
@@ -81,11 +117,17 @@ function PsikologStep2() {
             <p className="text-teks text-2xl font-bold text-white">Foto</p>
           </div>
           <div className="w-full">
+            <FormItem name="photo">
             <Upload {...props}>
-              <Button className="w-80" icon={<UploadOutlined />}>
+              <Button 
+                onChange={(e) => {
+                  setData({ ...dataInput, photo: e });
+                }}
+                className="w-80" icon={<UploadOutlined />}>
                 Klik Untuk Mengunggah
               </Button>
             </Upload>
+            </FormItem>
           </div>
         </div>
       </div>

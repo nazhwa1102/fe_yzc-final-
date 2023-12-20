@@ -11,8 +11,15 @@ import {
     MailOutlined,
     ArrowLeftOutlined,
   } from "@ant-design/icons";
+import { RegisterPsikolog } from '#/app/types/typeRegisPsg';
 
-function PsikologStep3() {
+  type Props = {
+    setData: any;
+    dataInput: RegisterPsikolog;
+    formStep3: FormInstance<any>;
+  };
+
+function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
   return (
     <div className="w-full h-full">
           <div className="w-full h-full flex justify-center">
@@ -31,6 +38,9 @@ function PsikologStep3() {
                         ]}
                       >
                         <Input
+                          onChange={(e) => {
+                            setData({ ...dataInput, email: e });
+                          }}
                           size="large"
                           placeholder="Masukan Email"
                           className=" p-[10px] bg-white bg-opacity-20 rounded-[10px] border border-white border-opacity-30 regis text-xl text-white"
@@ -50,6 +60,9 @@ function PsikologStep3() {
                         ]}
                       >
                         <Input
+                          onChange={(e) => {
+                            setData({ ...dataInput, phone_number: e });
+                          }}
                           size="large"
                           placeholder="Masukan No Telepon"
                           className=" p-[10px] bg-white bg-opacity-20 rounded-[10px] border border-white border-opacity-30 regis text-xl text-white"
@@ -69,6 +82,9 @@ function PsikologStep3() {
                         ]}
                       >
                         <Input.Password
+                          onChange={(e) => {
+                            setData({ ...dataInput, password: e });
+                          }}
                           size="large"
                           placeholder="Masukan Kata Sandi"
                           className=" p-[10px] bg-white bg-opacity-20 rounded-[10px] border border-white border-opacity-30 login text-xl"
@@ -88,9 +104,24 @@ function PsikologStep3() {
                             required: true,
                             message: "Harap masukan kata sandi anda!",
                           },
+                          ({ getFieldValue}) => ({
+                            validator(_, value) {
+                              if (!value || getFieldValue('password')=== value) {
+                                return Promise.resolve();
+                              }
+                              return Promise.reject(
+                                new Error(
+                                  'kata sandi baru anda masukkan tidak cocok!'
+                                )
+                              );
+                            },
+                          }),
                         ]}
                       >
                         <Input.Password
+                          onChange={(e) => {
+                            setData({ ...dataInput, password: e });
+                          }}
                           size="large"
                           placeholder="Konfirmasi Kata Sandi"
                           className=" p-[10px] bg-white bg-opacity-20 rounded-[10px] border border-white border-opacity-30 login text-xl"
