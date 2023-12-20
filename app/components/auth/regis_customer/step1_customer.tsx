@@ -2,8 +2,14 @@ import { DatePicker, Select } from "antd/lib/index";
 import { Option } from "antd/es/mentions";
 import { Form, Input } from "antd/lib/index";
 import { FormInstance } from "antd";
+import { RegisterCustomer } from "#/app/types/typeRegisCstr";
 
-function CustomerStep1() {
+type Props = {
+	setData: any;
+	dataInput: RegisterCustomer;
+	formStep1: FormInstance<any>
+}
+function CustomerStep1({ setData, dataInput, formStep1}: Props) {
   return (
     <div  className="flex flex-col space-y-15 w-full">
       <div className="grid gap-y-4 grid-cols-1">
@@ -15,7 +21,7 @@ function CustomerStep1() {
 				name="full_name"
 				rules={[{ required: true, message: 'Harap masukan nama lengkap anda!' }]}
 			>
-				<Input placeholder="Masukan nama lengkap" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl" />
+				<Input placeholder="Masukan nama lengkap" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl text-white" />
 			</Form.Item>
 			</div>
 		</div>
@@ -30,7 +36,7 @@ function CustomerStep1() {
 					rules={[{ required: true, message: 'Harap masukan jenis kelamin anda!' }]}
 				>
 					<Select
-					 placeholder="Pilih jenis kelamin" className="w-full regis">
+					 placeholder="Pilih jenis kelamin" className="w-full regis text-white">
 						<Option value="pria">Pria</Option>
 						<Option value="wanita">Wanita</Option>
 					</Select>
@@ -50,7 +56,7 @@ function CustomerStep1() {
 					 placeholder="Pilih Agama" className="w-full regis">
 						<Option value="islam">Islam</Option>
 						<Option value="katolik">Katolik</Option>
-                        <Option value="prostestan">Prostestan</Option>
+                        <Option value="protestan">Prostestan</Option>
 						<Option value="budha">Budha</Option>
                         <Option value="hindu">Hindu</Option>
                         <Option value="konghucu">Konghucu</Option>
@@ -68,7 +74,7 @@ function CustomerStep1() {
 					name="birth_date"
 					rules={[{ required: true, message: 'Harap masukan tanggal lahir anda!' }]}
 				>
-					<DatePicker placeholder="Pilih tanggal" className="w-full regis" />
+					<DatePicker placeholder="Pilih tanggal" className="w-full regis text-white" />
 				</Form.Item>
 			</div>
 		</div>
@@ -81,7 +87,7 @@ function CustomerStep1() {
 				name="last_education"
 				rules={[{ required: true, message: 'Harap masukan pendidikan terakhir anda!' }]}
 			>
-				<Input placeholder="Masukan Pendidikan Terakhir" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl" />
+				<Input placeholder="Masukan Pendidikan Terakhir" className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl text-white" />
 			</Form.Item>
 			</div>
 		</div>

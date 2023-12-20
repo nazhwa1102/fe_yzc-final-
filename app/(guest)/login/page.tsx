@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Modal, Typography } from "antd";
+import { Button, Form, Input, Modal, Typography, message, theme } from "antd";
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
@@ -9,9 +9,12 @@ import {
   MailOutlined,
   ArrowLeftOutlined,
 } from "@ant-design/icons";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Logo from "#/app/components/gambar/logo";
 import Login from "#/app/components/gambar/login";
+import { authRepository } from "#/repository/auth";
+import { error } from "console";
+import { parseJwt } from "#/utils/convert";
 
 interface ErrorLogin {
   reponse: {
@@ -25,7 +28,7 @@ interface ErrorLogin {
 interface SuccesLogin {
   body: {
     data: {
-      acces_token: string;
+      access_token: string;
     };
     statusCode: number;
     message: string;
@@ -48,26 +51,24 @@ const LoginPage = () => {
     setIsModalOpen(false);
   };
 
-  // const ruoter = useRouter()
-  // const [loading,setLoading] = useState(false)
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const onFinish = async (values: any) => {
     console.log("Received values of from", values);
     try {
       const data = {
         email: values?.email,
-        passwoard: values?.password,
+        password: values?.password,
       };
 
-      // const login = await authRepository.manipulatedata.login(data)
-      // const token = (login as SuccessLogin)?.body?.data
-
-      // localStorage.setItem("acces_token", login?.body?.data?.acces_token)
-      // setLoading(false)
-      //     ruoter.push("/adm/dashboard")
-    } catch (err) {
-      // console.log(err.reponse.body?.error);
-      // message.error(err.reponse.body?.error)
+      const login = await authRepository.manipulateData.login(data);
+      console.log(login, "Hasil API Login");
+      localStorage.setItem("access_token", login?.body?.data?.access_token);
+      router.push("/home");
+    } catch (error) {
+      // message.error(error.reponse.body?.error)
+      console.log(error, "eror cuy");
     }
   };
 
@@ -160,11 +161,13 @@ const LoginPage = () => {
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    <p className="mb-2"><a href="/regis_customer" className="font-bold mb-2">
+                    <p className="mb-2">
+                      <a href="/regis_customer" className="font-bold mb-2">
                         Masuk Sebagai Customer
                       </a>
                     </p>
-                    <p className="mb-2"><a href="/regis_psikolog" className="font-bold mb-2">
+                    <p className="mb-2">
+                      <a href="/regis_psikolog" className="font-bold mb-2">
                         Masuk Sebagai Psikolog
                       </a>
                     </p>
@@ -173,6 +176,10 @@ const LoginPage = () => {
                 <div className="w-full mt-20">
                   <Form.Item>
                     <Button
+                      loading={loading}
+                      onClick={() =>
+                        message.success("Anda Telah Berhasil Login!")
+                      }
                       type="primary"
                       htmlType="submit"
                       block

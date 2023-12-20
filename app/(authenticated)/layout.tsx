@@ -1,97 +1,344 @@
 "use client";
-
-import React from 'react';
-import {HomeFilled, InfoCircleFilled, LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
-import type {MenuProps} from 'antd';
-import {Breadcrumb, Layout, Menu, theme} from 'antd';
-import {useRouter} from "next/navigation";
-
-const {Header, Content, Sider} = Layout;
-
-const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-
-const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-  (icon, index) => {
-    const key = String(index + 1);
-
-    return {
-      key: `sub${key}`,
-      icon: React.createElement(icon),
-      label: `subnav ${key}`,
-
-      children: new Array(4).fill(null).map((_, j) => {
-        const subKey = index * 4 + j + 1;
-        return {
-          key: subKey,
-          label: `option${subKey}`,
-        };
-      }),
-    };
-  },
-);
+import React, { useState } from "react";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Layout, Menu, Button, theme, Card, Col, Row } from "antd";
+import Logo from "../components/gambar/logo";
+import { Icon } from "@iconify/react";
+import { parseJwt } from "#/utils/convert";
 
 interface AuthenticatedLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({children}) => {
-  const router = useRouter();
+const { Header, Sider, Content } = Layout;
+const App: React.FC<AuthenticatedLayoutProps> = ({ children }) => {
+  const [collapsed, setCollapsed] = useState(false);
+  // const {
+  //   token: { colorBgContainer, borderRadiusLG },
+  // } = theme.useToken();
 
   const {
-    token: {colorBgContainer},
+    token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
-  const menu: MenuProps['items'] = [
-    {
-      key: `/home`,
-      icon: <HomeFilled/>,
-      label: `Home`,
-    },
-    {
-      key: `/about`,
-      icon: <InfoCircleFilled/>,
-      label: `About`,
-    }
-  ]
+  const token = localStorage.getItem("acces_token");
+  console.log(token, "yuk bisa");
+  let role: string = "kosong";
+  console.log(token, "ini tokennya");
+  if (token) {
+    role = parseJwt(token).role;
+    console.log(role, "role cocok");
+  }
 
   return (
-    <Layout>
-      <Header className="header flex">
-        <div className={"text-white"}>y</div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[]} items={items1} className={"flex-1"}/>
-      </Header>
-      <Layout>
-        <Sider width={200} style={{background: colorBgContainer}}>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{height: '100%', borderRight: 0}}
-            items={menu.concat(items2)}
-            onClick={({key}) => {
-              router.push(key);
-              // console.log(`key ${key} route not found`);
+    <Layout style={{ height: "100%" }}>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className="dashboard admin" />
+        <div className="flex justify-center w-[100%]">
+          <Logo />
+        </div>
+        <Menu
+          theme="dark"
+          mode="inline"
+          className="font-semibold"
+          defaultSelectedKeys={["1"]}
+          items={[
+            {
+              key: "1",
+              icon: <Icon icon="carbon:dashboard" />,
+              label: "Dashboard",
+            },
+            {
+              key: "2",
+              icon: <Icon icon="octicon:people-24" />,
+              label: "Seminar",
+            },
+            {
+              key: "3",
+              icon: <Icon icon="pepicons-print:people" />,
+              label: "Psikolog",
+            },
+            {
+              key: "4",
+              icon: <Icon icon="grommet-icons:article" />,
+              label: "Artikel",
+            },
+            {
+              key: "5",
+              icon: <Icon icon="fluent:chat-12-regular" />,
+              label: "Obroloan",
+            },
+            {
+              key: "6",
+              icon: <Icon icon="mdi:bell-ring-outline" />,
+              label: "Notifikasi",
+            },
+            {
+              key: "7",
+              icon: <Icon icon="material-symbols:payments-outline-sharp" />,
+              label: "Pembayaran",
+            },
+            {
+              key: "8",
+              icon: <Icon icon="bi:clock" />,
+              label: "Riwayat Transaksi",
+            },
+            {
+              key: "9",
+              icon: <Icon icon="fluent-mdl2:people-add" />,
+              label: "Pengguna",
+            },
+            {
+              key: "10",
+              icon: <Icon icon="solar:logout-broken" />,
+              label: "Logout",
+            },
+          ]}
+        />
+      </Sider>
+      <Layout style={{ height: "100%" }}>
+        <Header
+          style={{
+            padding: 0,
+            background: "#016255",
+          }}
+        >
+          <Button
+            type="text"
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              fontSize: "16px",
+              width: 64,
+              height: 64,
+              backgroundColor: "#016255",
             }}
           />
-        </Sider>
-        <Layout style={{padding: '0 24px 24px', height: 'calc(100vh - 64px)'}}>
-          <Content
-            style={{
-              padding: 24,
-              margin: '16px 0 0 0',
-              minHeight: 280,
-              background: colorBgContainer,
-            }}
-          >
-            {children}
-          </Content>
-        </Layout>
+        </Header>
+        <Content
+          style={{
+            margin: "24px 16px",
+            padding: 24,
+            height: "100%",
+            background: colorBgContainer,
+            borderRadius: borderRadiusLG,
+          }}
+        >
+          <div className="w-[943] h-11 bg-yzc rounded-[10px] items-center">
+            <p className="text-white text-base p-2 font-bold ">
+              3 Rekomendasi Psikolog Terbaik Bulan ini!
+            </p>
+          </div>
+          <br></br>
+          <div>
+            <Row gutter={16}>
+              <Col span={8}>
+                <Card
+                  className="justify-between flex items-center"
+                  style={{
+                    width: 500,
+                    height: 180,
+                  }}
+                  bordered={false}
+                >
+                  <div className="flex justify-between gap-10">
+                    <div className="flex items-center justify-start">
+                      <img
+                        src="/asset/img/ps1.png"
+                        className="w-[98px] h-[98px] flex items-center justify-center"
+                        alt="psikolog1"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold mb-5 text-xl">
+                        <div>Nazhwa Nur , M. Psi</div>
+                      </div>
+                      <div className="flex gap-2 text-lg">
+                        <Icon
+                          icon="fluent:people-team-16-filled"
+                          className="mt-1"
+                          color="#736f6f"
+                        />
+                        <p>3300 Sesi</p>
+                      </div>
+                      <div className="flex gap-2 text-lg">
+                        <Icon
+                          icon="mdi:emoticon-excited-outline"
+                          className="mt-1"
+                          color="#016255"
+                        />
+                        <p>99% Terbantu</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </Col>
+              <Col span={8}>
+                <Card
+                  className="justify-between flex items-center"
+                  style={{
+                    width: 500,
+                    height: 180,
+                  }}
+                  bordered={false}
+                >
+                  <div className="flex justify-between gap-10">
+                    <div className="flex items-center justify-start">
+                      <img
+                        src="/asset/img/ps2.png"
+                        className="w-[100px] h-[100px]"
+                        alt="psikolog2"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold mb-5 text-xl">
+                        <div>Cecilia Siregar , M. Psi</div>
+                      </div>
+                      <div className="flex gap-2 text-lg">
+                        <Icon
+                          icon="fluent:people-team-16-filled"
+                          className="mt-1"
+                          color="#736f6f"
+                        />
+                        <p>3200 Sesi</p>
+                      </div>
+                      <div className="flex gap-2 text-lg">
+                        <Icon
+                          icon="mdi:emoticon-excited-outline"
+                          className="mt-1"
+                          color="#016255"
+                        />
+                        <p>99% Terbantu</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </Col>
+              <Col span={8}>
+                <Card
+                  className="justify-between flex items-center"
+                  style={{
+                    width: 500,
+                    height: 180,
+                  }}
+                  bordered={false}
+                >
+                  <div className="flex justify-between gap-10">
+                    <div className="flex items-center justify-start">
+                      <img
+                        src="/asset/img/ps3.png"
+                        className="w-[100px] h-[100px]"
+                        alt="psikolog3"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold mb-5 text-xl">
+                        <div>Danar Kahfi , M. Psi</div>
+                      </div>
+                      <div className="flex gap-2 text-lg">
+                        <Icon
+                          icon="fluent:people-team-16-filled"
+                          className="mt-1"
+                          color="#736f6f"
+                        />
+                        <p>3100 Sesi</p>
+                      </div>
+                      <div className="flex gap-2 text-lg">
+                        <Icon
+                          icon="mdi:emoticon-excited-outline"
+                          className="mt-1"
+                          color="#016255"
+                        />
+                        <p>99% Terbantu</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </Col>
+            </Row>
+          </div>
+          <br></br>
+          <Row>
+            <Col span={12}>
+              <div className="w-3/5 h-9 bg-yzc rounded-[10px] items-center">
+                <p className="text-white text-base p-2 font-bold">Ulasan</p>
+                <br></br>
+                <Card
+                  style={{
+                    width: "100%",
+                    height: 200,
+                  }}
+                >
+                  <div className="container mx-auto px-4 py-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="bg-white rounded shadow p-4">
+                        <h2 className="text-xl font-bold mb-2">HH</h2>
+                        <p className="text-gray-700 mb-4">31 Oct 2023</p>
+                        <p className="text-gray-700">
+                          Makasii banyak mbak jadi lebih lega, lebih ngerti sama
+                          masalah yang kebawa ke masa sekarang. Bagus, murah dan
+                          membantu.
+                        </p>
+                      </div>
+                      <div className="bg-white rounded shadow p-4">
+                        <h2 className="text-xl font-bold mb-2">FN</h2>
+                        <p className="text-gray-700 mb-4">30 Oct 2023</p>
+                        <p className="text-gray-700">
+                          Cukup membantu, terima kasih sudah diarahkan. Layanan
+                          konseling profesional dengan harga terjangkau.
+                        </p>
+                      </div>
+                      <div className="bg-white rounded shadow p-4">
+                        
+                        <h2 className="text-xl font-bold mb-2">UD</h2>
+                        <p className="text-gray-700 mb-4">27 Oct 2023</p>
+                        <p className="text-gray-700">
+                          Terima kasih banyak saya jadi tersadar, Sangat
+                          membantu.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </Col>
+            <Col span={12}>
+              <div className="w-3/5 h-9 bg-yzc rounded-[10px] items-center">
+                <p className="text-white text-base p-2 font-bold">Seminar</p>
+                <br></br>
+                <Card
+                  style={{
+                    width: "100%",
+                    height: 200,
+                  }}
+                >
+                  <div className="flex items-center justify-start">
+                    <img
+                      src="/asset/img/seminar.png"
+                      className="w-[124px] h-[187px]"
+                      alt="seminar"
+                    />
+                  </div>
+                  <div className="mt-8">
+                      <h3 className="text-xl font-bold mb-2">
+                        Judul: Rilekskan pikiran dan lakukan meditasi
+                      </h3>
+                      <p className="text-gray-700 mb-4">lakukan meditasi</p>
+                      <p className="text-gray-700 mb-4">Tanggal: 22-12-23</p>
+                      <p className="text-gray-700 mb-4"> Pemateri : </p>
+                      <p className="text-gray-700 mb-4"> • Dinta Azkia, M.psi </p>
+                      <p className="text-gray-700 mb-4"> • M. Psi Putro, M. Psi  </p>
+                      <p className="text-gray-700 mb-4"> • Aisyah, M.Psi </p>
+                      <p className="text-gray-700">
+                        Menunggu konfirmasi Psikolog
+                      </p>
+                    </div>
+                </Card>
+              </div>
+            </Col>
+          </Row>
+        </Content>
       </Layout>
     </Layout>
   );
 };
-
-export default AuthenticatedLayout;
+export default App;

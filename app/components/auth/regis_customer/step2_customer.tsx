@@ -8,15 +8,22 @@ import {
   ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { FormInstance } from "antd";
+import { RegisterCustomer } from "#/app/types/typeRegisCstr";
 
-function CustomerStep2() {              
+type Props = {
+	setData: any;
+	dataInput: RegisterCustomer;
+	formStep2: FormInstance<any>
+}
+
+function CustomerStep2({ setData, dataInput, formStep2}: Props) {              
     return (
     <div className="w-full h-full">
           <div className="w-full h-full flex justify-center">
                 <div className="flex flex-col space-y-15 w-full">
                 <div className="text-white text-2xl font-bold flex justify-center mb-9">
                     </div>
-                    <p className="text-white text-2xl font-bold pb-3">Email</p>
+                    <p className="text-white text-2xl fontbold pb-3">Email</p>
                     <div className="w-full regis">
                       <Form.Item
                         name="email"
@@ -38,7 +45,7 @@ function CustomerStep2() {
                   <p className="text-white text-2xl font-bold pb-3">No Telepon</p>
                     <div className="w-full regis">
                       <Form.Item
-                        name="phone"
+                        name="phone_number"
                         rules={[
                           {
                             required: true,

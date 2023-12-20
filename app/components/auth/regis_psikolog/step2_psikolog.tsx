@@ -69,8 +69,10 @@ function PsikologStep2() {
             </p>
           </div>
           <div className="w-full">
-		  <Upload {...props}>
-              <Button className="w-80" icon={<UploadOutlined />}>Klik Untuk Mengunggah</Button>
+            <Upload {...props}>
+              <Button className="w-80" icon={<UploadOutlined />}>
+                Klik Untuk Mengunggah
+              </Button>
             </Upload>
           </div>
         </div>
@@ -80,7 +82,9 @@ function PsikologStep2() {
           </div>
           <div className="w-full">
             <Upload {...props}>
-              <Button className="w-80" icon={<UploadOutlined />}>Klik Untuk Mengunggah</Button>
+              <Button className="w-80" icon={<UploadOutlined />}>
+                Klik Untuk Mengunggah
+              </Button>
             </Upload>
           </div>
         </div>

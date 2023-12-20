@@ -36,6 +36,10 @@ body {
 .regis .ant-input::placeholder{
     color: white !important
 }
+:where(.css-dev-only-do-not-override-1u09lqq).ant-input:placeholder-shown {
+    text-overflow: ellipsis;
+    color: white !important
+}
 .login .ant-input-affix-wrapper >input.ant-input {
     background-color: transparent;
 }
@@ -77,5 +81,26 @@ body {
 button, [type='button'], [type='reset'], [type='submit'] {
     background-color: #ffffff33;
 }
-
-
+:where(.css-dev-only-do-not-override-1u09lqq).ant-upload-wrapper {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-layout .ant-layout-sider {
+    position: relative;
+    min-width: 0;
+    background: #ffffff;
+    transition: all 0.2s,background 0s;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark, :where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark>.ant-menu {
+    color: #016255;
+    background: #ffffff;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark .ant-menu-item-selected, :where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark>.ant-menu .ant-menu-item-selected {
+    background-color: #016255;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-card-bordered {
+    border: 1px solid #016255;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-card:not(.ant-card-bordered) {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    border: 1px solid #016255;
+}
