@@ -39,7 +39,7 @@ function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
                       >
                         <Input
                           onChange={(e) => {
-                            setData({ ...dataInput, email: e });
+                            setData({ ...dataInput, email: e.target.value });
                           }}
                           size="large"
                           placeholder="Masukan Email"
@@ -61,7 +61,7 @@ function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
                       >
                         <Input
                           onChange={(e) => {
-                            setData({ ...dataInput, phone_number: e });
+                            setData({ ...dataInput, phone_number: e.target.value });
                           }}
                           size="large"
                           placeholder="Masukan No Telepon"
@@ -83,7 +83,7 @@ function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
                       >
                         <Input.Password
                           onChange={(e) => {
-                            setData({ ...dataInput, password: e });
+                            setData({ ...dataInput, password: e.target.value });
                           }}
                           size="large"
                           placeholder="Masukan Kata Sandi"
@@ -98,7 +98,9 @@ function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
                     <p className="text-white text-2xl font-bold pb-3">Konfirmasi Kata Sandi</p>
                     <div className="w-full regis">
                       <Form.Item
-                        name="password"
+                        name="confirm"
+                        dependencies={['password']}
+                        hasFeedback
                         rules={[
                           {
                             required: true,
@@ -120,7 +122,7 @@ function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
                       >
                         <Input.Password
                           onChange={(e) => {
-                            setData({ ...dataInput, password: e });
+                            setData({ ...dataInput, password: e.target.value });
                           }}
                           size="large"
                           placeholder="Konfirmasi Kata Sandi"

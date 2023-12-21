@@ -43,7 +43,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
 				>
 					<Select
 					onChange={(e) => {
-						setData({ ...dataInput, gender: e });
+						setData({ ...dataInput, gender: e});
 					  }}
 					 placeholder="Pilih jenis kelamin" className="w-full regis">
 						<Option value="pria">Pria</Option>

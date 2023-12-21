@@ -4,7 +4,11 @@ import { http } from "#/utils/http"
 const url = {
     login: () => '/auth/login',
     register: () => '/auth/register',
-    register2: () => '/auth/register/psikolog'
+    register2: () => '/auth/register/psikolog',
+    photo: () => '/psikolog/upload',
+    legality: () => '/psikolog/upload/legality',
+
+
 }
 
 const manipulateData = {
@@ -16,6 +20,16 @@ const manipulateData = {
     },
     register2(data:any){
         return http.post(url.register2()).send(data)
+    },
+    Photo(data:any) {
+        const formData = new FormData();
+        formData.append("file", data);
+        return http.post(url.photo()).send(formData);
+      },
+    legality(data:any){
+        const formData = new FormData();
+        formData.append("file",data);
+        return http.post(url.legality()).send(formData);
     }
 }
 

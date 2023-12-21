@@ -13,6 +13,7 @@ import { RegisterCustomer } from "#/app/types/typeRegisCstr";
 
 function register_customer() {
 const router = useRouter();
+
 const [dataInput,setData] = useState<RegisterCustomer>({
   level_user: '',
   fullName:'',
@@ -57,7 +58,7 @@ const [formStep2] = Form.useForm();
   };
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
-  const onFinish = async (values: any) => {
+  const onFinish = async () => {
     try {
       const data = {
           level_user: '9109058c-3c51-4ce4-9415-e002357e9f18',

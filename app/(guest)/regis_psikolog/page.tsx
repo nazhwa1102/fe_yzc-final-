@@ -17,7 +17,7 @@ import { authRepository } from "#/repository/auth";
 
 function register_psikolog() {
   const router = useRouter();
-  const [dataInput,setDataInput] = useState<RegisterPsikolog>({
+  const [dataInput, setDataInput] = useState<RegisterPsikolog>({
     level_user: '',
     fullName:'',
     gender:'',
@@ -76,7 +76,7 @@ const [formStep3] = Form.useForm();
   };
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
-  const onFinish = async (values: any) => {
+  const onFinish = async () => {
     try {
       const data = {
           level_user: 'cedf2abb-bd61-4314-9075-d42f9303a88c',
@@ -89,12 +89,10 @@ const [formStep3] = Form.useForm();
           about_me: dataInput?.aboutMe,
           legality: dataInput?.legality,
           photo: dataInput?.photo,
-          email: dataInput?.email,
+          email: dataInput.email,
           phone_number: dataInput?.phone,
           password: dataInput?.password,
       };
-      console.log (data ,"ini data");
-      const register_psikolog = await authRepository.manipulateData.register2(data);
       console.log(register_psikolog,"hasilnya ini");
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
       router.push("/home");
