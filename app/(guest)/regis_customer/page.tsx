@@ -122,13 +122,12 @@ const [formStep2] = Form.useForm();
                         </Button>
                       )}
                     </div>
-                    <div></div>
-                    <div className="regisCustomer">
+                    <div className="regisCustomer  flex justify-end w-full">
                       {current < steps.length - 1 && (
                         <Button
                           type="primary"
                           onClick={() => next()}
-                          className="bg-primary"
+                          className="bg-primary flex justify-end" 
                         >
                           Lanjut
                         </Button>
@@ -148,9 +147,9 @@ const [formStep2] = Form.useForm();
                     </div>
                   </div>
                   <div className="text-white text-xl">
-                    <p className="mb-2">
+                    <p className="mt-6">
                       Sudah punya akun di Youthzen Connect ?
-                      <a href="/login" className="font-bold mb-3">
+                      <a href="/login" className="font-bold mb-3 ml-2">
                         Masuk
                       </a>
                     </p>

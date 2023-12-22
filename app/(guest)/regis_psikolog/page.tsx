@@ -95,7 +95,7 @@ const [formStep3] = Form.useForm();
       };
       console.log(register_psikolog,"hasilnya ini");
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
-      router.push("/home");
+      router.push("/login");
     } catch(err) {
       // message.error(err)
     }
@@ -142,7 +142,7 @@ const [formStep3] = Form.useForm();
                         )}
                       </div>
                       <div></div>
-                      <div className="regisCustomer">
+                      <div className="regisCustomer  flex justify-end w-full">
                         {current < steps.length - 1 && (
                           <Button
                             type="primary"
@@ -168,9 +168,9 @@ const [formStep3] = Form.useForm();
                     </div>
                   </div>
                   <div className="text-white text-xl">
-                    <p className="mb-2">
+                    <p className="mt-3">
                       Sudah punya akun di Youthzen Connect ?
-                      <a href="/login" className="font-bold mb-3">
+                      <a href="/login" className="font-bold mb-3 ml-2">
                         Masuk
                       </a>
                     </p>

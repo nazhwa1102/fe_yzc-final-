@@ -40,16 +40,6 @@ const LoginPage = () => {
     document.title = "Login - Youthzenconnect";
   }, []);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -108,7 +98,7 @@ const LoginPage = () => {
                         rules={[
                           {
                             required: true,
-                            message: "Harap Masukan EmailAnda!",
+                            message: "Harap Masukan Email Anda!",
                           },
                         ]}
                       >
@@ -153,34 +143,18 @@ const LoginPage = () => {
                   </div>
                   <div className="text-white text-xl">
                     <div className="mb-2 flex">
-                      Kamu belum punya akun?
-                      <Typography
-                        onClick={showModal}
-                        className="font-bold mb-2 ml-2 text-white text-xl"
-                      >
-                        Buat akun sekarang
-                      </Typography>
+                      Kamu belum punya akun? 
+                      <p className="font-bold mb-2 ml-2 text-white text-xl cursor-pointer"> 
+                      <a href="/regis_customer">Buat Akun Customer</a>
+                      </p>
+                      <p className="ml-2">atau</p>
+                      <p className="font-bold mb-2 ml-2 text-white text-xl cursor-pointer">
+                      <a href="/regis_psikolog">Buat Akun Psikolog</a> 
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <Modal
-                    title="Buat Akun Sebagai ?"
-                    open={isModalOpen}
-                    onOk={handleOk}
-                    onCancel={handleCancel}
-                  >
-                    <p className="mb-2">
-                      <a href="/regis_customer" className="font-bold mb-2">
-                        Buat Akun Sebagai Customer
-                      </a>
-                    </p>
-                    <p className="mb-2">
-                      <a href="/regis_psikolog" className="font-bold mb-2">
-                        Buat Akun Sebagai Psikolog
-                      </a>
-                    </p>
-                  </Modal>
                 </div>
                 <div className="w-full mt-20">
                   <Form.Item>

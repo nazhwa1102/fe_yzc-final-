@@ -108,6 +108,8 @@ function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
                           },
                           ({ getFieldValue}) => ({
                             validator(_, value) {
+                              console.log (value)
+                              console.log(getFieldValue('password'))
                               if (!value || getFieldValue('password')=== value) {
                                 return Promise.resolve();
                               }

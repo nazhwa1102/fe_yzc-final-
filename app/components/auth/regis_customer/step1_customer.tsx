@@ -31,7 +31,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
               }}
               size="large"
               placeholder="Masukan nama lengkap"
-              className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl bg-transparent"
+              className=" p-[10px] rounded-[10px] border border-rstroke regis bg-transparent"
             />
           </Form.Item>
         </div>
@@ -139,7 +139,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
                 setData({ ...dataInput, lastEducation: e });
               }}
               placeholder="Masukan Pendidikan Terakhir"
-              className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl text-white"
+              className=" p-[10px] rounded-[10px] border border-rstroke regis text-white"
             />
           </Form.Item>
         </div>

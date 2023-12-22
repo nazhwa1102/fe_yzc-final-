@@ -5,6 +5,7 @@ import { Layout, Menu, Button, theme, Card, Col, Row } from "antd";
 import Logo from "../components/gambar/logo";
 import { Icon } from "@iconify/react";
 import { parseJwt } from "#/utils/convert";
+import { useRouter } from "next/router";
 
 interface AuthenticatedLayoutProps {
   children: React.ReactNode;
@@ -28,6 +29,17 @@ const App: React.FC<AuthenticatedLayoutProps> = ({ children }) => {
     role = parseJwt(token).role;
     console.log(role, "role cocok");
   }
+
+// const router = useRouter();
+
+//   const showModal =() => {
+//     if (!localStorage.getItem("acces_token")) {
+//       alert("silahkan login");
+//       router.push('login');
+//     } else {
+//       setIsModalOpen(true);
+//     }
+//   };
 
   return (
     <Layout style={{ height: "100%" }}>
