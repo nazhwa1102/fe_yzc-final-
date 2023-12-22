@@ -153,7 +153,7 @@ const Layout2 = () => {
       </Header>
       <Header className="header flex bg-[#EDEDED] justify-between h-[230px] items-center mt-[-5px]">
         <div className="pl-10">
-           <Paragraph className="w-[400px]" >
+           <Paragraph className="w-[500px]" >
           <div className="text-2xl font-bold ">YouthZen Connect</div><br />
            YouthZen Connect ( koneksi pemuda gen z) merupakan platform edukasi online yang memberikan layanan berupa kesehatan mental, khususnya untuk para anak anak muda. aplikasi ini dibangun untuk mempermudah membantu anak anak untuk memahami dan mengelola emosi.
            </Paragraph>

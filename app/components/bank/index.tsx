@@ -11,7 +11,7 @@ const data =[
     {bank: 'Gopay', no: "230934092309", image: "rgvhjoweouh"},
 ]
 
-export default function Bank() {
+ const Bank: React.FC = () => {
  
  const renderBank = () =>{
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,3 +53,4 @@ export default function Bank() {
    </div>
  )
 }
+export default Bank

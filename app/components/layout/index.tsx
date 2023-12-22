@@ -28,7 +28,7 @@ import Headers2 from "../images/header2";
 
 const { Header, Content, Footer } = Layout;
 
-function Layout2 ({children,title}: any) {
+const Layout2 = ({children,title}: any) => {
 	const router = useRouter();
 
 	const {
@@ -155,7 +155,7 @@ function Layout2 ({children,title}: any) {
       </Header>
       <Layout>
         <Layout
-          style={{ padding: "0 24px 24px", height: "950px" }} 
+          style={{ padding: "0 24px 24px", height: "1100px" }} 
         >
           <Content
             style={{

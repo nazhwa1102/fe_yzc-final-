@@ -12,11 +12,9 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
 }) => {
 
   return (
-        <Layout
-          style={{height: "fit" }} 
-        >
-        {children}
-      </Layout>
+    <>
+    {children}
+    </>
   );
 };
 

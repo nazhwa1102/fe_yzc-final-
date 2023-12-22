@@ -21,7 +21,7 @@ const Psikologlist: React.FC = () => (
           <p className="text-center">Psikolog Klinis</p>
           <div className="flex gap-5 justify-center pt-10">
             <Button type="primary" className="rounded-xl">Konsultasi</Button>
-            <Button className="bg-yellow-400 text-green-800 rounded-xl" type="text">Lihat Profil</Button>
+            <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400">Lihat Profil</Button>
           </div>
         </Card>
       </Col>
@@ -42,7 +42,7 @@ const Psikologlist: React.FC = () => (
           <p className="text-center">Psikolog Klinis, Certified EMDR Consultant</p>
           <div className="flex gap-5 justify-center pt-5">
             <Button type="primary" className="rounded-xl">Konsultasi</Button>
-            <Button className="bg-yellow-400 text-green-800 rounded-xl" type="text">Lihat Profil</Button>
+            <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400">Lihat Profil</Button>
           </div>
         </Card>
       </Col>
@@ -63,7 +63,7 @@ const Psikologlist: React.FC = () => (
           <p className="text-center">Psikolog Klinis</p>
           <div className="flex gap-5 justify-center pt-10">
             <Button type="primary" className="rounded-xl">Konsultasi</Button>
-            <Button className="bg-yellow-400 text-green-800 rounded-xl" type="text">Lihat Profil</Button>
+            <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400">Lihat Profil</Button>
           </div>
         </Card>
       </Col>
