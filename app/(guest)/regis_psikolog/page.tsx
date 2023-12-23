@@ -93,10 +93,9 @@ const [formStep3] = Form.useForm();
           phone_number: dataInput?.phone,
           password: dataInput?.password,
       };
-      const register_psikolog = await authRepository.manipulateData.register2(data);
       console.log(register_psikolog,"hasilnya ini");
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
-      router.push("/home");
+      router.push("/login");
     } catch(err) {
       // message.error(err)
     }
@@ -143,7 +142,7 @@ const [formStep3] = Form.useForm();
                         )}
                       </div>
                       <div></div>
-                      <div className="regisCustomer">
+                      <div className="regisCustomer  flex justify-end w-full">
                         {current < steps.length - 1 && (
                           <Button
                             type="primary"
@@ -159,6 +158,22 @@ const [formStep3] = Form.useForm();
                         <Button
                           type="primary"
                           htmlType="submit"
+                          // disable={
+                          //   dataInput.level_user.length <= 1 ||
+                          //   dataInput.fullName.length <= 1 ||
+                          //   dataInput.birthDate.length <= 1 ||
+                          //   dataInput.Religion.length <=  1 ||
+                          //   dataInput.birthDate.length <= 1 ||
+                          //   dataInput.lastEducation.length <= 1 ||
+                          //   dataInput.caseHandled.length <= 1 ||
+                          //   dataInput.aboutMe.length <= 1 ||
+                          //   dataInput.legality.length <= 1 ||
+                          //   dataInput.photo.length <= 1 ||
+                          //   dataInput.email.length <= 1 ||
+                          //   dataInput.phone.length <= 1 ||
+                          //   dataInput.password.length <= 1 ||
+
+                          // }
                           onClick={onFinish}
                           className="bg-primary"
                         >
@@ -169,9 +184,9 @@ const [formStep3] = Form.useForm();
                     </div>
                   </div>
                   <div className="text-white text-xl">
-                    <p className="mb-2">
+                    <p className="mt-3">
                       Sudah punya akun di Youthzen Connect ?
-                      <a href="/login" className="font-bold mb-3">
+                      <a href="/login" className="font-bold mb-3 ml-2">
                         Masuk
                       </a>
                     </p>

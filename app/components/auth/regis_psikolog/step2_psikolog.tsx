@@ -52,7 +52,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
             );
             console.log(response.body.fileName, "hasilnya");
             setFoto(response.body.fileName);
-            setData({ ...dataInput, photo: response.body.fileName });
+            setData({ ...dataInput, legality: response.body.fileName });
           } else {
             message.error("Anda Hanya Dapat Mengunggah dengan ektensi JPG/JPEG/PNG");
           }
@@ -76,7 +76,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
               file?.originFileObj
             );
             console.log(response.body.fileName, "hasilnya");
-            setLegalitas(response.body.fileName);
+            setFoto(response.body.fileName);
             setData({ ...dataInput, legality: response.body.fileName });
           } else {
             message.error("Anda Hanya Dapat Mengunggah dengan ektensi JPG/JPEG/PNG");
