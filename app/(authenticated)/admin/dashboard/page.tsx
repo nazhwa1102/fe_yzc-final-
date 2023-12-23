@@ -24,14 +24,14 @@ const Dashboard: React.FC = () => {
                     height: 180,
                   }}
                   bordered={false}
-                  >
+                >
                   <div className="flex justify-between gap-10">
                     <div className="flex items-center justify-start">
                       <img
                         src="/asset/img/ps1.png"
                         className="w-[98px] h-[98px] flex items-center justify-center"
                         alt="psikolog1"
-                        />
+                      />
                     </div>
                     <div className="text-center">
                       <div className="font-bold mb-5 text-xl">
@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
                           icon="fluent:people-team-16-filled"
                           className="mt-1"
                           color="#736f6f"
-                          />
+                        />
                         <p>3300 Sesi</p>
                       </div>
                       <div className="flex gap-2 text-lg">
@@ -50,7 +50,7 @@ const Dashboard: React.FC = () => {
                           icon="mdi:emoticon-excited-outline"
                           className="mt-1"
                           color="#016255"
-                          />
+                        />
                         <p>99% Terbantu</p>
                       </div>
                     </div>
@@ -65,14 +65,14 @@ const Dashboard: React.FC = () => {
                     height: 180,
                   }}
                   bordered={false}
-                  >
+                >
                   <div className="flex justify-between gap-10">
                     <div className="flex items-center justify-start">
                       <img
                         src="/asset/img/ps2.png"
                         className="w-[100px] h-[100px]"
                         alt="psikolog2"
-                        />
+                      />
                     </div>
                     <div className="text-center">
                       <div className="font-bold mb-5 text-xl">
@@ -83,7 +83,7 @@ const Dashboard: React.FC = () => {
                           icon="fluent:people-team-16-filled"
                           className="mt-1"
                           color="#736f6f"
-                          />
+                        />
                         <p>3200 Sesi</p>
                       </div>
                       <div className="flex gap-2 text-lg">
@@ -91,7 +91,7 @@ const Dashboard: React.FC = () => {
                           icon="mdi:emoticon-excited-outline"
                           className="mt-1"
                           color="#016255"
-                          />
+                        />
                         <p>99% Terbantu</p>
                       </div>
                     </div>
@@ -106,14 +106,14 @@ const Dashboard: React.FC = () => {
                     height: 180,
                   }}
                   bordered={false}
-                  >
+                >
                   <div className="flex justify-between gap-10">
                     <div className="flex items-center justify-start">
                       <img
                         src="/asset/img/ps3.png"
                         className="w-[100px] h-[100px]"
                         alt="psikolog3"
-                        />
+                      />
                     </div>
                     <div className="text-center">
                       <div className="font-bold mb-5 text-xl">
@@ -124,7 +124,7 @@ const Dashboard: React.FC = () => {
                           icon="fluent:people-team-16-filled"
                           className="mt-1"
                           color="#736f6f"
-                          />
+                        />
                         <p>3100 Sesi</p>
                       </div>
                       <div className="flex gap-2 text-lg">
@@ -132,7 +132,7 @@ const Dashboard: React.FC = () => {
                           icon="mdi:emoticon-excited-outline"
                           className="mt-1"
                           color="#016255"
-                          />
+                        />
                         <p>99% Terbantu</p>
                       </div>
                     </div>
@@ -152,7 +152,7 @@ const Dashboard: React.FC = () => {
                     width: "100%",
                     height: 200,
                   }}
-                  >
+                >
                   <div className="container mx-auto px-4 py-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="bg-white rounded shadow p-4">
@@ -193,7 +193,7 @@ const Dashboard: React.FC = () => {
                 <Card
                   style={{
                     width: "100%",
-                    height: "fit",
+                    height: 200,
                   }}
                 >
                   <div className="flex items-center justify-start">
@@ -201,7 +201,7 @@ const Dashboard: React.FC = () => {
                       src="/asset/img/seminar.png"
                       className="w-[124px] h-[187px]"
                       alt="seminar"
-                      />
+                    />
                   </div>
                   <div className="mt-8">
                       <h3 className="text-xl font-bold mb-2">

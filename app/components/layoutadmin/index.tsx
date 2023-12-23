@@ -2,17 +2,14 @@
 import React, { useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Card, Col, Row } from "antd";
-import Logo from "#/app/components/images/logo";
+import Logo from "../images/logo";
 import { Icon } from "@iconify/react";
 import { parseJwt } from "#/utils/convert";
 import { useRouter } from "next/navigation";
 
 const { Header, Sider, Content } = Layout;
-const LayoutAdmin = ({children,menu}: any) => {
+const LayoutAdmin = ({ children, menu } : any) => {
   const [collapsed, setCollapsed] = useState(false);
-  // const {
-  //   token: { colorBgContainer, borderRadiusLG },
-  // } = theme.useToken();
   const router = useRouter()
 
   const {
@@ -28,14 +25,14 @@ const LayoutAdmin = ({children,menu}: any) => {
   }
 
   return (
-    <Layout style={{ height: "fit" }}>
-      <Sider trigger={null} collapsible collapsed={collapsed} style={{height: '1010px'}} theme="light">
-        <div className="dashboard admin"/>
+    <Layout style={{ height: "100%" }}>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className="dashboard admin" />
         <div className="flex justify-center w-[100%]">
           <Logo />
         </div>
         <Menu
-          theme="light"
+          theme="dark"
           mode="inline"
           className="font-semibold"
           defaultSelectedKeys={[menu]}
@@ -97,7 +94,7 @@ const LayoutAdmin = ({children,menu}: any) => {
           }}
         />
       </Sider>
-      <Layout style={{ height: "full" }}>
+      <Layout style={{ height: "100%" }}>
         <Header
           style={{
             padding: 0,
@@ -120,7 +117,7 @@ const LayoutAdmin = ({children,menu}: any) => {
           style={{
             margin: "24px 16px",
             padding: 24,
-            height: " ",
+            height: "100%",
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}

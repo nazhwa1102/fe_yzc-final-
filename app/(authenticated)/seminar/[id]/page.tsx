@@ -46,9 +46,9 @@ return (
          {data?.data.datetime}
       </div>
       <div className="pt-10 text-[#016255] font-bold text-3xl">
-      <IntlProvider>
+         <IntlProvider>
       <PriceFormatter value={data?.data.price}/>
-      </IntlProvider>
+         </IntlProvider>
       </div>
       <div className="flex items-center gap-16 justify-center pt-[100px] pl-20">
          {data?.data.psikologseminar.map((val: any) => {

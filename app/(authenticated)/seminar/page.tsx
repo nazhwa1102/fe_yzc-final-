@@ -42,9 +42,9 @@ const listSeminar= () => {
               <div className="font-bold text-2xl w-[290px]">{val.title}</div>
               <div className="font-semibold text-lg">{val.datetime}</div>
               <div className="text-base font-medium text-green-700">
-              <IntlProvider>
+                <IntlProvider>
               <PriceFormatter value={val.price}/>
-              </IntlProvider>
+                </IntlProvider>
               </div>
             <div className='flex justify-end gap-5 pt-10 items-end'>
                <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.id}`}><ZoomInOutlined/>Detail</Button>

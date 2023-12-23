@@ -8,7 +8,7 @@ import {
   ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { FormInstance } from "antd";
-import { RegisterCustomer } from "#/app/type/typeRegisCstr";
+import { RegisterCustomer } from "#/app/types/typeRegisCstr";
 
 type Props = {
   setData: any;

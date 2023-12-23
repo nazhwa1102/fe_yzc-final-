@@ -41,7 +41,7 @@ const SeminarSlider: React.FC = () => {
               onClick={() => handlePageChange(currentPage - 1)}
               className="flex items-center h-fit"
             >
-              <LeftOutlined style={{ fontSize: "35px" }} />
+              <LeftOutlined style={{ fontSize: "35px" }} className="arrow"/>
             </Button>
           </div>
           <div className="gap-7 flex">
@@ -60,7 +60,7 @@ const SeminarSlider: React.FC = () => {
               onClick={() => handlePageChange(currentPage + 1)}
               className="flex items-center h-fit"
             >
-              <RightOutlined style={{ fontSize: "35px" }} />
+              <RightOutlined style={{ fontSize: "35px" }} className="arrow"/>
             </Button>
           </div>
         </div>

@@ -65,11 +65,20 @@ const LoginPage = () => {
       const login = await authRepository.manipulateData.login(data);
       console.log(login, "Hasil API Login");
       localStorage.setItem("access_token", login?.body?.data?.access_token);
+      setTimeout(message.success("Anda Telah Berhasil Login!"),5000)
       router.push("/home");
     } catch (error) {
       // message.error(error.reponse.body?.error)
       console.log(error, "eror cuy");
     }
+
+    const token = localStorage.getItem('acces_token');
+    let role: string = '';
+    if (token) {
+      role = parseJwt(token).role;
+    }
+    
+    
   };
 
   return (
@@ -156,19 +165,19 @@ const LoginPage = () => {
                 </div>
                 <div>
                   <Modal
-                    title="Masuk Sebagai ?"
+                    title="Buat Akun Sebagai ?"
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
                     <p className="mb-2">
-                      <a href="/register_customer" className="font-bold mb-2">
-                        Masuk Sebagai Customer
+                      <a href="/regis_customer" className="font-bold mb-2">
+                        Buat Akun Sebagai Customer
                       </a>
                     </p>
                     <p className="mb-2">
                       <a href="/regis_psikolog" className="font-bold mb-2">
-                        Masuk Sebagai Psikolog
+                        Buat Akun Sebagai Psikolog
                       </a>
                     </p>
                   </Modal>

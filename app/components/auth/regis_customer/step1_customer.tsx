@@ -2,7 +2,7 @@ import { DatePicker, Select } from "antd/lib/index";
 import { Option } from "antd/es/mentions";
 import { Form, Input } from "antd/lib/index";
 import { FormInstance } from "antd";
-import { RegisterCustomer } from "#/app/type/typeRegisCstr";
+import { RegisterCustomer } from "#/app/types/typeRegisCstr";
 
 type Props = {
   setData: any;
@@ -31,7 +31,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
               }}
               size="large"
               placeholder="Masukan nama lengkap"
-              className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
+              className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl bg-transparent"
             />
           </Form.Item>
         </div>

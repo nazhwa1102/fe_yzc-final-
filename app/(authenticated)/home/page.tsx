@@ -85,7 +85,7 @@ const Layout2 = () => {
     {
       key: "5",
       label: (
-        <a href="" rel="">
+        <a href="http://localhost:3000/login" rel="noopener noreferrer">
           LogOut
         </a>
       ),
