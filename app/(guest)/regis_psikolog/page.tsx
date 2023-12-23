@@ -158,6 +158,22 @@ const [formStep3] = Form.useForm();
                         <Button
                           type="primary"
                           htmlType="submit"
+                          // disable={
+                          //   dataInput.level_user.length <= 1 ||
+                          //   dataInput.fullName.length <= 1 ||
+                          //   dataInput.birthDate.length <= 1 ||
+                          //   dataInput.Religion.length <=  1 ||
+                          //   dataInput.birthDate.length <= 1 ||
+                          //   dataInput.lastEducation.length <= 1 ||
+                          //   dataInput.caseHandled.length <= 1 ||
+                          //   dataInput.aboutMe.length <= 1 ||
+                          //   dataInput.legality.length <= 1 ||
+                          //   dataInput.photo.length <= 1 ||
+                          //   dataInput.email.length <= 1 ||
+                          //   dataInput.phone.length <= 1 ||
+                          //   dataInput.password.length <= 1 ||
+
+                          // }
                           onClick={onFinish}
                           className="bg-primary"
                         >
