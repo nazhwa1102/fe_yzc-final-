@@ -11,7 +11,6 @@ const url = {
     statusApprove: () => '/seminar/approve',
     statusReject: () => '/seminar/reject',
     statusPending: () => '/seminar/pending',
-    detailSeminar: (id: any) => `/seminar/${id}`,
 }
 
 const manipulateData = {
@@ -57,7 +56,7 @@ const hooks = {
     return useSWR(url.statusPending(), http.fetcher)
   },
   detailSeminar(id:any){
-    return useSWR(url.detailSeminar(id), http.fetcher)
+    return useSWR(url.seminarId(id), http.fetcher)
   }
 }
 

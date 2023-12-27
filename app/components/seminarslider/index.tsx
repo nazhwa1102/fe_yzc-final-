@@ -19,7 +19,7 @@ const SeminarSlider: React.FC = () => {
     // Add more slides as needed
   ];
 
-  const itemsPerPage = 2; // Number of cards to show per page
+  const itemsPerPage = 3; // Number of cards to show per page
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (page: number) => {
@@ -39,7 +39,7 @@ const SeminarSlider: React.FC = () => {
             <Button
               disabled={currentPage === 1}
               onClick={() => handlePageChange(currentPage - 1)}
-              className="flex items-center h-fit"
+              className="flex items-center h-fit text-black" type="link"
             >
               <LeftOutlined style={{ fontSize: "35px" }} className="arrow"/>
             </Button>
@@ -49,6 +49,7 @@ const SeminarSlider: React.FC = () => {
               <Card
                 key={index}
                 style={{ width: 500,height: 300 ,margin: "0 10px" }}
+                className="shadow-md bg-slate-50"
               >
                 <p>{slide.content}</p>
               </Card>
@@ -58,7 +59,7 @@ const SeminarSlider: React.FC = () => {
             <Button
               disabled={currentPage === Math.ceil(slides.length / itemsPerPage)}
               onClick={() => handlePageChange(currentPage + 1)}
-              className="flex items-center h-fit"
+              className="flex items-center h-fit text-black"  type="link"
             >
               <RightOutlined style={{ fontSize: "35px" }} className="arrow"/>
             </Button>

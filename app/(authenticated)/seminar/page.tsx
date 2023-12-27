@@ -30,7 +30,7 @@ const listSeminar= () => {
         <Row gutter={50}>
           {displayedData?.map((val: any) => (
            <Col span={100}>
-           <Card key={val.id} style={{marginBottom: '20px'}} className='w-[480px] h-[200px] flex items-center border-[#016255] font-sans'>
+           <Card key={val.id} style={{marginBottom: '20px'}} className='w-[480px] h-[200px] flex items-center border-[#016255] font-sans shadow-md'>
            <div className="flex">
             <div>
             <img
@@ -48,7 +48,7 @@ const listSeminar= () => {
               </div>
             <div className='flex justify-end gap-5 pt-10 items-end'>
                <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.id}`}><ZoomInOutlined/>Detail</Button>
-               <Button className='bg-yellow-400 text-green-700 hover:bg-yellow-400' href={`/seminar/pembayaran/${val.id}`}>Pesan</Button>
+               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' href={`/seminar/pembayaran/${val.id}`}>Pesan</Button>
             </div>
             </div>
            </div>

@@ -25,7 +25,7 @@ const LayoutAdmin = ({ children, menu } : any) => {
   }
 
   return (
-    <Layout style={{ height: "100%" }}>
+    <Layout style={{ height: "fit" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="dashboard admin" />
         <div className="flex justify-center w-[100%]">
@@ -38,12 +38,12 @@ const LayoutAdmin = ({ children, menu } : any) => {
           defaultSelectedKeys={[menu]}
           items={[
             {
-              key: "dashboard",
+              key: "/admin/dashboard",
               icon: <Icon icon="carbon:dashboard" />,
               label: "Dashboard",
             },
             {
-              key: "seminar",
+              key: "/admin/seminar",
               icon: <Icon icon="octicon:people-24" />,
               label: "Seminar",
             },
@@ -68,7 +68,7 @@ const LayoutAdmin = ({ children, menu } : any) => {
               label: "Notifikasi",
             },
             {
-              key: "7",
+              key: "pembayaran",
               icon: <Icon icon="material-symbols:payments-outline-sharp" />,
               label: "Pembayaran",
             },
@@ -117,7 +117,7 @@ const LayoutAdmin = ({ children, menu } : any) => {
           style={{
             margin: "24px 16px",
             padding: 24,
-            height: "100%",
+            minHeight: "850px",
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}

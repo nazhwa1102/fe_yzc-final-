@@ -244,11 +244,17 @@ body {
 }
 
 .yellowButt{
-    background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+    background-color: rgb(250 204 21 / var(--tw-bg-opacity)) !important;
     color: white;
 }
 
 .arrow :hover{
   color: black;
   border-color: #d9d9d9;
+}
+
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn-default {
+    border-color: #d9d9d9;
+    color: #fff;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
 }
