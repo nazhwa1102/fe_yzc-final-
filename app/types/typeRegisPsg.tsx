@@ -1,15 +1,15 @@
 export type RegisterPsikolog = {
-    level_user: string;
-    fullName:string;
-    gender:'pria' | 'wanita' | '';
-    Religion: 'islam' | 'katolik' | 'prostestan' |'budha' | 'hindu' |'konghucu'|'';
-    birthDate:string;
-    lastEducation:string;
-    caseHandled: string;
-    aboutMe: string;
-    legality:string;
-    photo:string;
-    email:string;
-    phone:string;
-    password:string;
-  }
+  level_user: string;
+  fullName:string;
+  gender:'pria' | 'wanita' | '';
+  Religion: 'islam' | 'katolik' | 'prostestan' |'budha' | 'hindu' |'konghucu'|'';
+  birthDate:string;
+  lastEducation:string;
+  caseHandled: string;
+  aboutMe: string;
+  legality:string;
+  photo:string;
+  email:string;
+  phone:string;
+  password:string;
+}

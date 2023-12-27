@@ -1,4 +1,4 @@
-/*@tailwind base;*/
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -104,95 +104,31 @@ button, [type='button'], [type='reset'], [type='submit'] {
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
     border: 1px solid #016255;
 }
-
-
-@font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Regular.ttf') format('ttf');
-}
-
-@font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Medium.ttf') format('ttf');
-}
-
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.login :where(.css-dev-only-do-not-override-z0trcs).ant-input{
-    background-color: transparent !important;
-    color: white !important
-}
-
-.login .ant-input-affix-wrapper >input.ant-input {
-    background-color: transparent !important;
-    color: white !important
-}
-
-.login .ant-input:placeholder-shown{
-    background-color: transparent !important;
-}
-
-.login .ant-input::placeholder{
-    color: white !important
-}
-.regis .ant-input::placeholder{
-    color: white !important
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-input:placeholder-shown {
-    text-overflow: ellipsis;
-    color: white !important
-}
-.login .ant-input-affix-wrapper >input.ant-input {
-    background-color: transparent;
-}
-.ant-picker .ant-picker-input >input:placeholder-shown {
-    padding: 9px;
-}
-.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
-    height: 100%;
-    padding: 9px;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
-    color: #ffffff;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-steps .ant-steps-item-wait>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
-    color: #ffffff;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
-    color: #ffffff;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-steps .ant-steps-item-wait .ant-steps-item-icon >.ant-steps-icon {
-    color: #ffffff;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-steps .ant-steps-item-wait .ant-steps-item-icon {
-    background-color: #ffffff00;
-    border-color: #ffffff;
+:where(.css-dev-only-do-not-override-1u09lqq).ant-input-lg {
+    padding: 7px 11px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 8px;
 }
 :where(.css-dev-only-do-not-override-1u09lqq).ant-input {
-    background-color: #ffffff33;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-select:not(.ant-select-customize-input) .ant-select-selector {
-    background-color: #ffffff33;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-picker {
-    background-color: #ffffff33;
-}
-:where(.css-dev-only-do-not-override-1u09lqq).ant-btn {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4px 11px;
     color: #ffffff;
 }
-/* button, [type='button'], [type='reset'], [type='submit'] {
-    background-color: #ffffff33;
-} */
-:where(.css-dev-only-do-not-override-1u09lqq).ant-upload-wrapper {
+:where(.css-dev-only-do-not-override-1u09lqq).ant-select-single .ant-select-selector {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     color: #ffffff;
 }
-:where(.css-dev-only-do-not-override-1u09lqq).ant-layout .ant-layout-sider {
+:where(.css-dev-only-do-not-override-1u09lqq).ant-picker .ant-picker-input >input {
     position: relative;
-    min-width: 0;
-    background: #ffffff;
-    transition: all 0.2s,background 0s;
+    display: inline-block;
+    width: 100%;
+    min-width: 1px;
+    padding: 0;
+    color: #ffffff;
 }
 :where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark, :where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark>.ant-menu {
     color: #016255;

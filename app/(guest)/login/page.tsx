@@ -10,8 +10,8 @@ import {
   ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
-import Logo from "#/app/components/images/logo";
-import Login from "#/app/components/images/login";
+import Logo from "#/app/components/gambar/logo";
+import Login from "#/app/components/gambar/login";
 import { authRepository } from "#/repository/auth";
 import { error } from "console";
 import { parseJwt } from "#/utils/convert";
@@ -40,16 +40,6 @@ const LoginPage = () => {
     document.title = "Login - Youthzenconnect";
   }, []);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -108,7 +98,7 @@ const LoginPage = () => {
                         rules={[
                           {
                             required: true,
-                            message: "Harap Masukan EmailAnda!",
+                            message: "Harap Masukan Email Anda!",
                           },
                         ]}
                       >
@@ -153,47 +143,27 @@ const LoginPage = () => {
                   </div>
                   <div className="text-white text-xl">
                     <div className="mb-2 flex">
-                      Kamu belum punya akun?
-                      <Typography
-                        onClick={showModal}
-                        className="font-bold mb-2 ml-2 text-white text-xl"
-                      >
-                        Buat akun sekarang
-                      </Typography>
+                      Kamu belum punya akun? 
+                      <p className="font-bold mb-2 ml-2 text-white text-xl cursor-pointer"> 
+                      <a href="/regis_customer">Buat Akun Customer</a>
+                      </p>
+                      <p className="ml-2">atau</p>
+                      <p className="font-bold mb-2 ml-2 text-white text-xl cursor-pointer">
+                      <a href="/regis_psikolog">Buat Akun Psikolog</a> 
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <Modal
-                    title="Buat Akun Sebagai ?"
-                    open={isModalOpen}
-                    onOk={handleOk}
-                    onCancel={handleCancel}
-                  >
-                    <p className="mb-2">
-                      <a href="/regis_customer" className="font-bold mb-2">
-                        Buat Akun Sebagai Customer
-                      </a>
-                    </p>
-                    <p className="mb-2">
-                      <a href="/regis_psikolog" className="font-bold mb-2">
-                        Buat Akun Sebagai Psikolog
-                      </a>
-                    </p>
-                  </Modal>
                 </div>
                 <div className="w-full mt-20">
                   <Form.Item>
                     <Button
                       loading={loading}
-                      onClick={() =>{
-                        message.success("Anda Telah Berhasil Login!")
-                        router.push('/home')
-                      }}
                       type="primary"
                       htmlType="submit"
                       block
-                      className="bg-tranparant border border-white rounded-full text-2xl font-bold py-3 h-max"
+                      className="bg-tranparant border border-white rounded-full text-2xl font-bold py-2 h-max"
                     >
                       Masuk
                     </Button>
