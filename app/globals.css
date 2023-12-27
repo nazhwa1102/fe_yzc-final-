@@ -204,3 +204,56 @@ button, [type='button'], [type='reset'], [type='submit'] {
     color: #fff;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
 }
+:where(.css-dev-only-do-not-override-3oiqkd).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-steps .ant-steps-item-wait .ant-steps-item-icon >.ant-steps-icon {
+    color: rgba(0, 0, 0, 0.88);
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-steps .ant-steps-item-wait>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-steps .ant-steps-item-wait .ant-steps-item-icon >.ant-steps-icon {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-steps .ant-steps-item-wait .ant-steps-item-icon {
+    background-color: #016255;
+    border-color: #0000003d;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+    color: #ffffff;
+}
+.bg-transparent {
+    background-color: #ffffff33;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    position: relative;
+    background-color: #ffffff33;
+    border: 1px solid #d9d9d9;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker {
+    background: #ffffff33;
+
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    background: #ffffff33;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-btn-default {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-select-single .ant-select-selector {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    color: #ffffff;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    height: max-content;
+}
+.ant-select .ant-select-arrow {
+    height: 30px;
+}

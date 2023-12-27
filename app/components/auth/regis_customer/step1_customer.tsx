@@ -11,8 +11,8 @@ type Props = {
 };
 function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
   return (
-    <div className="flex flex-col space-y-15 w-full">
-      <div className="grid gap-y-4 grid-cols-1">
+    <div className="flex flex-col space-y-2 w-full">
+      <div>
         <div>
           <p className="text-teks text-2xl font-bold text-white">
             Nama Lengkap
@@ -37,7 +37,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
         </div>
       </div>
       <div className="flex gap-x-5 grid-cols-1">
-        <div className="w-1/2 grid gap-y-4 grid-cols-1">
+        <div className="w-1/2">
           <div>
             <p className="text-teks text-2xl font-bold text-white">
               Jenis Kelamin
@@ -66,7 +66,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
             </Form.Item>
           </div>
         </div>
-        <div className="w-1/2 grid gap-y-4 grid-cols-1">
+        <div className="w-1/2">
           <div>
             <p className="text-teks text-2xl font-bold text-white">Agama</p>
           </div>
@@ -95,7 +95,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           </div>
         </div>
       </div>
-      <div className="grid gap-y-4 grid-cols-1">
+      <div>
         <div>
           <p className="text-teks text-2xl font-bold text-white">
             Tanggal Lahir
@@ -118,7 +118,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           </Form.Item>
         </div>
       </div>
-      <div className="grid gap-y-4 grid-cols-1">
+      <div>
         <div>
           <p className="text-teks text-2xl font-bold text-white">
             Pendidikan Terakhir

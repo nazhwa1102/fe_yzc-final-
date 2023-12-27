@@ -101,14 +101,14 @@ const [formStep3] = Form.useForm();
     }
   };
   return (
-    <div className="w-full h-full">
-      <div className="w-full h-full fixed bg-white flex justify-between">
+    <div className="w-full">
+      <div className="w-full bg-white flex justify-between">
         <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px]">
-          <div className="w-full h-full flex justify-center">
+          <div className="w-full flex justify-center">
             <div className="w-[710px] py-[100px]">
-                <div className="flex flex-col space-y-15 w-full">
+                <div className="flex flex-col space-y-15 w-full h-fit">
                   <div className="mb-35 flex">
-                    <div className="mb-[50px] ">
+                    <div>
                     <ArrowLeftOutlined className="text-white text-5xl" />
                     </div>
                     <div className="flex justify-center w-[100%]">
@@ -116,11 +116,11 @@ const [formStep3] = Form.useForm();
                     </div>
                   </div>
                   <div>
-                    <div className="text-white text-2xl font-bold flex justify-center space-y-15">
+                    <div className="text-white text-2xl font-bold flex justify-center space-y-5">
                       <p> Buat Akun di Youthzen Connect,Yuk!</p>
                     </div>
                   </div>
-                  <div className="w-[653px]">
+                  <div>
                     <Steps
                       current={current}
                       items={items}
@@ -183,8 +183,8 @@ const [formStep3] = Form.useForm();
                     </div>
                     </div>
                   </div>
-                  <div className="text-white text-xl">
-                    <p className="mt-3">
+                  <div className="text-white text-xl absolute bottom-0">
+                    <p className="mt-6">
                       Sudah punya akun di Youthzen Connect ?
                       <a href="/login" className="font-bold mb-3 ml-2">
                         Masuk
@@ -196,10 +196,8 @@ const [formStep3] = Form.useForm();
                 </div>
             </div>
           </div>
-          <div className="w-[1258px] h-[1258px] bg-primary rounded-e-full -my-32 -ml-72 blur-[2px] absolute top-0 left-0  -z-50"></div>
         </div>
         <div className="w-1/2 relative grid justify-items-stretch">
-          <div className="justify-self-end p-8"></div>
           <div className="grid justify-items-center ml-50">
             <Regis/>
           </div>
