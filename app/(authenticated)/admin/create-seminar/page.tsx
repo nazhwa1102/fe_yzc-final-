@@ -45,7 +45,7 @@ const CreateSeminar = () => {
   const {data: datapsikolog} = PsikologRepository.hooks.get()
   console.log(datapsikolog, 'ini data');
 
-  const parsePrice = (value) => {
+  const parsePrice = (value: any) => {
     return parseInt(value.replace(/[^0-9]/g, ''), 10);
   };
 
