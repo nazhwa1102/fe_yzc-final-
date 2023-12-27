@@ -4,7 +4,7 @@ import type { UploadProps } from 'antd';
 import { message, Upload } from 'antd';
 import { SeminarRepository } from '#/repository/seminar';
 import { UploadChangeParam ,UploadFile} from 'antd/lib/upload';
-import { CreateTransaksi } from '#/app/type/typeCreateTransaksi';
+import { CreateTransaksi } from '#/app/types/typeCreateTransaksi';
 import { TransaksiRepository } from '#/repository/transaksi';
 
 const { Dragger } = Upload;

@@ -101,16 +101,17 @@ const Seminar = () => {
             </Button>
             <Modal
               open={open}
+              onCancel={handleCancel}
               footer={(_) => (
                 <div className="justify-center flex pt-3">
                   <Button
                     onClick={handleCancel}
-                    className="bg-red-600 text-white hover:text-white w-20"
+                    className="bg-red-600 text-white hover:text-white w-20 cancelButt"
                   >
                     Batal
                   </Button>
                   <Button
-                    className="text-white bg-[#525F89] hover:text-white w-20"
+                    className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
                     onClick={async () => {
                       (await SeminarRepository.manipulateData.delete(
                         record.id
@@ -187,6 +188,7 @@ const Seminar = () => {
                 })}
                 className="font-semibold"
                 scroll={scroll}
+                pagination={false}
               />
             </TabPane>
             <TabPane tab="List Seminar Pending" key="Seminar Pending">
@@ -203,6 +205,7 @@ const Seminar = () => {
                 })}
                 className="font-semibold"
                 scroll={scroll}
+                pagination={false}
               />
             </TabPane>
             <TabPane tab="List Seminar Approve" key="Seminar Approve">
@@ -219,6 +222,7 @@ const Seminar = () => {
                 })}
                 className="font-semibold"
                 scroll={scroll}
+                pagination={false}
               />
             </TabPane>
             <TabPane tab="List Seminar Reject" key="Seminar Reject">
@@ -235,6 +239,7 @@ const Seminar = () => {
                 })}
                 className="font-semibold"
                 scroll={scroll}
+                pagination={false}
               />
             </TabPane>
           </Tabs>

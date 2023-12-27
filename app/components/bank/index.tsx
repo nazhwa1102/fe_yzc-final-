@@ -3,7 +3,7 @@
 import { Button, Menu, Modal, QRCode, Radio } from "antd";
 import { useState } from "react";
 import Layout2 from "../layout";
-import { CreateTransaksi } from "#/app/type/typeCreateTransaksi";
+import { CreateTransaksi } from "#/app/types/typeCreateTransaksi";
 
 interface DummyDataItem {
   id: string;

@@ -72,7 +72,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="w-full h-full">
+    <div className="">
       <div className="w-full h-full fixed bg-white flex justify-between">
         <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px]">
           <div className="w-full h-full flex justify-center">

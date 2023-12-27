@@ -20,7 +20,7 @@ import { SeminarRepository } from "#/repository/seminar";
 import { IntlProvider } from "react-intl";
 import PriceFormatter from "#/app/components/priceFormatter";
 import { TransaksiRepository } from "#/repository/transaksi";
-import { CreateTransaksi } from "#/app/type/typeCreateTransaksi";
+import { CreateTransaksi } from "#/app/types/typeCreateTransaksi";
 import FormItem from "antd/lib/form/FormItem";
 import UploadBukti from "#/app/components/buktiPembayaran";
 const { Countdown } = Statistic;
@@ -74,7 +74,7 @@ const bayarSeminar = () => {
         datas
       );
       console.log(create_Transaksi);
-      // router.push('/seminar')
+      router.push('/seminar')
       setTimeout(
         message.success("Anda Telah Berhasil Menambahkan Seminar"),
         5000
