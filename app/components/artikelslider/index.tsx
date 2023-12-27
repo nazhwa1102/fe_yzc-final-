@@ -39,16 +39,17 @@ const ArtikelSlider: React.FC = () => {
             <Button
               disabled={currentPage === 1}
               onClick={() => handlePageChange(currentPage - 1)}
-              className="flex items-center"
+              className="flex items-center w-fit h-fit text-black" type="link"
             >
-              <LeftOutlined style={{ fontSize: "25px" }} className="arrow"/>
+              <LeftOutlined style={{ fontSize: "35px" }} className="arrow"/>
             </Button>
           </div>
           <div className="gap-10 flex">
             {visibleSlides.map((slide, index) => (
               <Card
                 key={index}
-                style={{ width: 250, height: '290px', margin: "0 10px" }}
+                style={{ width: 450, height: '300px', margin: "0 10px" }}
+                className="shadow-md bg-slate-50"
               >
                 <p>{slide.content}</p>
               </Card>
@@ -58,9 +59,9 @@ const ArtikelSlider: React.FC = () => {
             <Button
               disabled={currentPage === Math.ceil(slides.length / itemsPerPage)}
               onClick={() => handlePageChange(currentPage + 1)}
-              className="flex items-center"
+              className="flex items-center h-fit w-fit text-black" type="link"
             >
-              <RightOutlined style={{ fontSize: "25px" }} className="arrow"/>
+              <RightOutlined style={{ fontSize: "35px" }} className="arrow"/>
             </Button>
           </div>
         </div>

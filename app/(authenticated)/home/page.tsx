@@ -19,7 +19,17 @@ import {
   YoutubeFilled,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme, Avatar, Space, Dropdown, Typography, Button } from "antd";
+import {
+  Breadcrumb,
+  Layout,
+  Menu,
+  theme,
+  Avatar,
+  Space,
+  Dropdown,
+  Typography,
+  Button,
+} from "antd";
 import { useRouter } from "next/navigation";
 import Logo from "#/app/components/images/logo";
 import LogoBig from "#/app/components/images/logoBig";
@@ -29,11 +39,11 @@ import Homehead from "#/app/components/images/homehead";
 import ArtikelSlider from "#/app/components/artikelslider";
 import Psikologlist from "#/app/components/psikologlist";
 import SeminarSlider from "#/app/components/seminarslider";
-const {Paragraph} = Typography
+const { Paragraph } = Typography;
 const { Header, Content, Footer } = Layout;
 
 const Layout2 = () => {
-    const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -112,7 +122,6 @@ const Layout2 = () => {
       label: <a className="text-white">Seminar</a>,
     },
   ];
-  
 
   return (
     <Layout>
@@ -151,12 +160,15 @@ const Layout2 = () => {
           </Dropdown>
         </div>
       </Header>
-      <Header className="header flex bg-[#EDEDED] justify-between h-[230px] items-center mt-[-5px]">
-        <div className="pl-10">
-           <Paragraph className="w-[500px]" >
-          <div className="text-2xl font-bold ">YouthZen Connect</div><br />
-           YouthZen Connect ( koneksi pemuda gen z) merupakan platform edukasi online yang memberikan layanan berupa kesehatan mental, khususnya untuk para anak anak muda. aplikasi ini dibangun untuk mempermudah membantu anak anak untuk memahami dan mengelola emosi.
-           </Paragraph>
+      <Header className="header flex bg-[#EDEDED] justify-center gap-[500px] h-[230px] items-center mt-[-5px]">
+        <div>
+          <Paragraph className="w-[600px] text-lg">
+            <div className="text-3xl font-bold pb-2">YouthZen Connect</div>
+            YouthZen Connect ( koneksi pemuda gen z) merupakan platform edukasi
+            online yang memberikan layanan berupa kesehatan mental, khususnya
+            untuk para anak anak muda. aplikasi ini dibangun untuk mempermudah
+            membantu anak anak untuk memahami dan mengelola emosi.
+          </Paragraph>
         </div>
         <Homehead />
       </Header>
@@ -168,44 +180,64 @@ const Layout2 = () => {
               margin: "16px 0 0 0",
               minHeight: 280,
               background: colorBgContainer,
-            }} className="justify-center"
+            }}
+            className="justify-center"
           >
             <div>
-                <div className="justify-center flex">
-                    <div > <div className="font-bold text-2xl justify-center flex">Artikel</div>
-                    <div className="w-[320px] text-center">Yuk belajar untuk memahami diri sendiri bareng youthzen connect !
-                    Kunjungi halaman artikel disini!</div>
+              <div>
+                <div className="pt-2">
+                  <div className="font-bold text-2xl justify-center flex">
+                    Seminar
+                  </div>
+                  <div className="flex justify-center pt-2">
+                    <div className="w-[350px] text-center">
+                      lebih kenal dengan dirimu lewat seminar menarik yuuk !!
                     </div>
+                  </div>
+                </div>
+                <div className="flex justify-center pt-7">
+                  <SeminarSlider />
+                </div>
+              </div>
+              <div>
+                <div className="justify-center flex pt-16">
+                  <div>
+                    <div className="font-bold text-2xl justify-center flex">
+                      Rekomendasi Psikolog Terbaik Bulan ini
+                    </div>
+                    <div className="flex justify-center pt-2">
+                      <div className="w-[200px] text-center">
+                        Mau Mulai Konsultasi? Yuk Kenali Psikolog Kami!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="justify-center pt-5">
+                  <Psikologlist />
+                  <div className="flex justify-center pt-7">
+                    <Button className="rounded-xl h-fit text-lg bg-yzc" type="text">
+                      Lihat Semua
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="justify-center flex pt-6">
+                  <div>
+                    <div className="font-bold text-2xl justify-center flex">
+                      Artikel
+                    </div>
+                    <div className="w-[320px] text-center">
+                      Yuk belajar untuk memahami diri sendiri bareng youthzen
+                      connect ! Kunjungi halaman artikel disini!
+                    </div>
+                  </div>
                 </div>
                 <br />
                 <div className="flex justify-center pt-5">
-                    <ArtikelSlider/>
+                  <ArtikelSlider />
                 </div>
-                <div className="justify-center flex pt-16">
-                    <div> 
-                    <div className="font-bold text-2xl justify-center flex">Rekomendasi Psikolog Terbaik Bulan ini</div>
-                    <div className="flex justify-center pt-2">
-                    <div className="w-[200px] text-center">Mau Mulai Konsultasi? Yuk Kenali Psikolog Kami!</div>
-                    </div>
-                    </div>
-                </div>
-                <div className="justify-center pt-5">
-                    <Psikologlist/>
-                    <div className="flex justify-center pt-5">
-                    <Button type="primary" className="rounded-xl h-fit text-lg">Lihat Semua</Button>
-                    </div>
-                </div>
-                <div>
-                <div className="pt-10"> 
-                    <div className="font-bold text-2xl justify-center flex">Seminar</div>
-                    <div className="flex justify-center pt-2">
-                    <div className="w-[350px] text-center">lebih kenal dengan dirimu lewat seminar menarik yuuk !!</div>
-                    </div>
-                    </div>
-                    <div className="flex justify-center pt-7">
-                        <SeminarSlider/>
-                    </div>
-                </div>
+              </div>
             </div>
           </Content>
         </Layout>

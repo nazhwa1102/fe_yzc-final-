@@ -2,13 +2,13 @@ import React from "react";
 import { Button, Card, Col, Row } from "antd";
 
 const Psikologlist: React.FC = () => (
-  <div className="justify-center pl-[90px] pt-[100px]">
-    <Row gutter={15} className="flex justify-center">
-      <Col span={5}>
+  <div className="justify-center pt-[100px] ml-[70px]">
+    <Row gutter={20} className="items-center flex justify-center">
+      <Col span={8}>
         <Card
           bordered={true}
-          style={{ width: "260px", height: "300px", borderRadius: "25px" }}
-          className=" justify-center flex bg-[#E1E1E1]"
+          style={{ width: "500px", height: "300px", borderRadius: "25px" }}
+          className=" justify-center flex shadow-md bg-slate-50"
         >
           <div className="flex justify-center">
             <img
@@ -25,11 +25,11 @@ const Psikologlist: React.FC = () => (
           </div>
         </Card>
       </Col>
-      <Col span={5}>
+      <Col span={8}>
         <Card
           bordered={true}
-          style={{ width: "260px", height: "300px", borderRadius: "25px" }}
-          className=" justify-center flex bg-[#E1E1E1]"
+          style={{ width: "500px", height: "300px", borderRadius: "25px" }}
+          className=" justify-center flex shadow-md bg-slate-50"
         >
           <div className="flex justify-center">
             <img
@@ -46,11 +46,11 @@ const Psikologlist: React.FC = () => (
           </div>
         </Card>
       </Col>
-      <Col span={5}>
+      <Col span={8}>
         <Card
           bordered={true}
-          style={{ width: "260px", height: "300px", borderRadius: "25px" }}
-          className=" justify-center flex bg-[#E1E1E1]"
+          style={{ width: "500px", height: "300px", borderRadius: "25px" }}
+          className=" justify-center flex shadow-md bg-slate-50"
         >
           <div className="flex justify-center">
             <img

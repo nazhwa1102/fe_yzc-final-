@@ -130,9 +130,69 @@ button, [type='button'], [type='reset'], [type='submit'] {
     padding: 0;
     color: #ffffff;
 }
-.text-xl {
-    font-size: 14px;
-    line-height: 1.75rem;
+:where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark, :where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark>.ant-menu {
+    color: #016255;
+    background: #ffffff;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark .ant-menu-item-selected, :where(.css-dev-only-do-not-override-1u09lqq).ant-menu-dark>.ant-menu .ant-menu-item-selected {
+    background-color: #016255;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-card-bordered {
+    border: 1px solid #016255;
+}
+:where(.css-dev-only-do-not-override-1u09lqq).ant-card:not(.ant-card-bordered) {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    border: 1px solid #016255;
+}
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn-text:not(:disabled):not(.ant-btn-disabled):hover {
+    color: white;
+    background: rgb(22 163 74 );
+}
+
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn-text:not(:disabled):not(.ant-btn-disabled){
+    color: white;
+    background: #016255;
+}
+
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+    font-weight: 450;
+    color: white;
+    border-color: background;
+}
+
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn.ant-btn-lg.ant-btn-icon-only {
+    width: 400px;
+    height: 150px;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    color: black;
+}
+
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+    font-weight: 450;
+    color: black;
+    border-color: background;
+}
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+    font-weight: 450;
+    color: white;
+    border-color: background;
+}
+
+.yellowButt{
+    background-color: rgb(250 204 21 / var(--tw-bg-opacity)) !important;
+    color: white;
+}
+
+.arrow :hover{
+  color: black;
+  border-color: #d9d9d9;
+}
+
+:where(.css-dev-only-do-not-override-cbv4tr).ant-btn-default {
+    border-color: #d9d9d9;
+    color: #fff;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
     color: #ffffff;

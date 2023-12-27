@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload } from 'antd';
-import { CreateSeminar } from '#/app/type/typeCreateSeminar';
 import { SeminarRepository } from '#/repository/seminar';
 import { UploadChangeParam ,UploadFile} from 'antd/lib/upload';
+import { CreateTransaksi } from '#/app/type/typeCreateTransaksi';
+import { TransaksiRepository } from '#/repository/transaksi';
 
 const { Dragger } = Upload;
 
 type Props ={
   setData: any,
-  dataInput: CreateSeminar,
+  dataInput: CreateTransaksi,
 }
-const UploadPoster = ({setData, dataInput}: Props) => {
+const UploadBukti = ({setData, dataInput}: Props) => {
 
 const props = {
     name: "file",
@@ -43,10 +44,10 @@ const images = async (args: UploadChangeParam<UploadFile<any>>) => {
       } else {
         if (file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg"
         ) {
-          const response = await SeminarRepository.manipulateData.UploadImage(file?.originFileObj);
+          const response = await TransaksiRepository.manipulateData.UploadImage(file?.originFileObj);
           console.log(response.body.fileName, "hasilnya");
           setImage(response.body.fileName);
-          setData({ ...dataInput, poster: response.body.fileName });
+          setData({ ...dataInput, payment_proof: response.body.fileName });
         } else {
           message.error("Anda Hanya Dapat Mengunggah dengan ektensi JPG/JPEG/PNG");
         }
@@ -72,4 +73,4 @@ return(
 )
 };
 
-export default UploadPoster;
+export default UploadBukti;

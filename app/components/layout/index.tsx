@@ -143,12 +143,12 @@ const Layout2 = ({ children, title }: any) => {
         <Headers2 />
       </Header>
       <Layout>
-        <Layout style={{ padding: "0 24px 24px", height: "1100px" }}>
+        <Layout style={{ padding: "0 24px 24px", height: "fit" }}>
           <Content
             style={{
               padding: 24,
               margin: "16px 0 0 0",
-              minHeight: 280,
+              minHeight: 700,
               background: colorBgContainer,
             }}
           >

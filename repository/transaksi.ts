@@ -3,15 +3,17 @@ import useSWR from "swr"
 
 
 const url = {
-    transaksi: () => '/transaksi',
+    transaksiSeminar: () => '/transaksi/seminar',
     transaksiId: (id:any) => '/transaksi/:id',
     cusToAd: () => '/transaksi/CusToAd',
-    adToPsi: () => '/transaksi/AdToPsi'
+    adToPsi: () => '/transaksi/AdToPsi',
+    image: () => '/transaksi/upload',
+
 }
 
 const manipulateData = {
     create(data: any){
-        return http.post(url.transaksi()).send(data)
+        return http.post(url.transaksiSeminar()).send(data)
     },
     update(data:any,id:any){
         return http.put(url.transaksiId(id)).send(data)
@@ -19,19 +21,26 @@ const manipulateData = {
     delete(data: any, id:any){
         return http.del(url.transaksiId(id)).send(data)
     },
-    
+    UploadImage(data:any){
+      const formData = new FormData()
+      formData.append("file", data)
+      return http.post(url.image()).send(formData)
+  },
 }
 
 const hooks = {
   get(){
-    return useSWR(url.transaksi(), http.fetcher)
+    return useSWR(url.transaksiSeminar(), http.fetcher)
   },
   getById(id:any){
     return useSWR(url.transaksiId(id), http.fetcher)
+  },
+  getImage(){
+    return useSWR(url.image(), http.fetcher)
   }
 }
 
-export const PsikologRepository = {
+export const TransaksiRepository = {
     url,
     manipulateData,
     hooks

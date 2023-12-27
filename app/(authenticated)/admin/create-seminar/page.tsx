@@ -45,6 +45,10 @@ const CreateSeminar = () => {
   const {data: datapsikolog} = PsikologRepository.hooks.get()
   console.log(datapsikolog, 'ini data');
 
+  const parsePrice = (value: any) => {
+    return parseInt(value.replace(/[^0-9]/g, ''), 10);
+  };
+
   return (
     <LayoutAdmin>
       <div>
@@ -103,6 +107,10 @@ const CreateSeminar = () => {
                         onChange={(e: any) => {
                           setSeminar({...dataInput, price: e })
                         }}
+                        min={0}
+                        step={1}
+                        formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                        parser={parsePrice}
                       />
                     </Form.Item>
                   </div>
