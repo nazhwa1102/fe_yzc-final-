@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { Pagination, Card, Button } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { SeminarRepository } from "#/repository/seminar";
+import { IntlProvider } from "react-intl";
+import PriceFormatter from "../priceFormatter";
 
 interface Slide {
   title: string;
@@ -9,15 +12,8 @@ interface Slide {
 }
 
 const SeminarSlider: React.FC = () => {
-  const slides: Slide[] = [
-    { title: "Slide 1", content: "Content 1" },
-    { title: "Slide 2", content: "Content 2" },
-    { title: "Slide 3", content: "Content 3" },
-    { title: "Slide 4", content: "Content 4" },
-    { title: "Slide 5", content: "Content 5" },
-    { title: "Slide 5", content: "Content 5" },
-    // Add more slides as needed
-  ];
+  const {data: dataSeminar} = SeminarRepository.hooks.statusApprove()
+
 
   const itemsPerPage = 3; // Number of cards to show per page
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,7 +25,7 @@ const SeminarSlider: React.FC = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const visibleSlides = slides.slice(startIndex, endIndex);
+  const visibleSlides = dataSeminar?.data.slice(startIndex, endIndex);
 
   return (
     <div style={{ alignItems: "center" }}>
@@ -45,19 +41,33 @@ const SeminarSlider: React.FC = () => {
             </Button>
           </div>
           <div className="gap-7 flex">
-            {visibleSlides.map((slide, index) => (
-              <Card
-                key={index}
-                style={{ width: 500,height: 300 ,margin: "0 10px" }}
-                className="shadow-md bg-slate-50"
-              >
-                <p>{slide.content}</p>
-              </Card>
+            {visibleSlides?.map((val: any) => (
+              <Card key={val.id} style={{marginBottom: '20px'}} className='w-[500px] h-[300px] flex items-center border-[#016255] font-sans shadow-md'>
+              <div className="flex">
+               <div>
+               <img
+             src={`http://localhost:3222/seminar/upload/${val.poster}/image`}
+             style={{width: 'auto', height: '200px'}}
+               />
+               </div>
+               <div className="pl-3 items-center flex">
+                <div>
+                 <div className="font-bold text-2xl w-[290px]">{val.title}</div>
+                 <div className="font-semibold text-lg">{val.datetime}</div>
+                 <div className="text-base font-medium text-green-700">
+                   <IntlProvider>
+                 <PriceFormatter value={val.price}/>
+                   </IntlProvider>
+                </div>
+                 </div>
+               </div>
+              </div>
+              </Card> 
             ))}
           </div>
           <div className="pt-[120px]">
             <Button
-              disabled={currentPage === Math.ceil(slides.length / itemsPerPage)}
+              disabled={currentPage === Math.ceil(dataSeminar?.data.length / itemsPerPage)}
               onClick={() => handlePageChange(currentPage + 1)}
               className="flex items-center h-fit text-black"  type="link"
             >
