@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Card, Col, Row } from "antd";
 
 const Psikologlist: React.FC = () => (
-  <div className="justify-center pt-[100px] ml-[70px]">
-    <Row gutter={20} className="items-center flex justify-center">
-      <Col span={8}>
+  <div className="justify-center pt-[100px] flex">
+    <Row gutter={20} className="items-center flex justify-center gap-12 pr-8">
+      <Col span={7}>
         <Card
           bordered={true}
           style={{ width: "500px", height: "300px", borderRadius: "25px" }}
@@ -25,7 +25,7 @@ const Psikologlist: React.FC = () => (
           </div>
         </Card>
       </Col>
-      <Col span={8}>
+      <Col span={7}>
         <Card
           bordered={true}
           style={{ width: "500px", height: "300px", borderRadius: "25px" }}
@@ -40,13 +40,13 @@ const Psikologlist: React.FC = () => (
           </div>
           <p className="font-bold text-xl pt-5 justify-center flex">Cecillia Siregar, M.Psi</p>
           <p className="text-center">Psikolog Klinis, Certified EMDR Consultant</p>
-          <div className="flex gap-5 justify-center pt-5">
+          <div className="flex gap-5 justify-center pt-10">
             <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
             <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400 yellowButt">Lihat Profil</Button>
           </div>
         </Card>
       </Col>
-      <Col span={8}>
+      <Col span={7}>
         <Card
           bordered={true}
           style={{ width: "500px", height: "300px", borderRadius: "25px" }}

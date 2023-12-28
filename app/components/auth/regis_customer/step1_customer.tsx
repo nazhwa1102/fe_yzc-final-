@@ -58,7 +58,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
                   setData({ ...dataInput, gender: e });
                 }}
                 placeholder="Pilih jenis kelamin"
-                className="w-full regis text-white"
+                className="w-full regis text-white bg-transparent"
               >
                 <Option value="pria">Pria</Option>
                 <Option value="wanita">Wanita</Option>
@@ -82,7 +82,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
                   setData({ ...dataInput, Religion: e });
                 }}
                 placeholder="Pilih Agama"
-                className="w-full regis"
+                className="w-full regis bg-transparent"
               >
                 <Option value="islam">Islam</Option>
                 <Option value="katolik">Katolik</Option>
@@ -113,7 +113,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
                 setData({ ...dataInput, birthDate: e });
               }}
               placeholder="Pilih tanggal"
-              className="w-full regis text-white"
+              className="w-full regis text-white bg-transparent"
             />
           </Form.Item>
         </div>
@@ -136,10 +136,10 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           >
             <Input
 			  onChange={(e) => {
-                setData({ ...dataInput, lastEducation: e });
+                setData({ ...dataInput, last_education: e });
               }}
               placeholder="Masukan Pendidikan Terakhir"
-              className=" p-[10px] rounded-[10px] border border-rstroke regis text-white"
+              className=" p-[10px] rounded-[10px] border border-rstroke regis text-white bg-transparent"
             />
           </Form.Item>
         </div>

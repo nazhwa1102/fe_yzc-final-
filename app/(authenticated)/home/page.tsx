@@ -200,7 +200,7 @@ const Layout2 = () => {
                 </div>
               </div>
               <div>
-                <div className="justify-center flex pt-16">
+                <div className="justify-center flex pt-20">
                   <div>
                     <div className="font-bold text-2xl justify-center flex">
                       Rekomendasi Psikolog Terbaik Bulan ini
@@ -212,17 +212,17 @@ const Layout2 = () => {
                     </div>
                   </div>
                 </div>
-                <div className="justify-center pt-5">
+                <div className="justify-center">
                   <Psikologlist />
-                  <div className="flex justify-center pt-7">
-                    <Button className="rounded-xl h-fit text-lg bg-yzc" type="text">
+                  <div className="flex justify-center pt-10">
+                    <Button className="rounded-xl h-fit text-lg w-[200px] bg-yzc" type="text">
                       Lihat Semua
                     </Button>
                   </div>
                 </div>
               </div>
               <div>
-                <div className="justify-center flex pt-6">
+                <div className="justify-center flex pt-20">
                   <div>
                     <div className="font-bold text-2xl justify-center flex">
                       Artikel
@@ -234,7 +234,7 @@ const Layout2 = () => {
                   </div>
                 </div>
                 <br />
-                <div className="flex justify-center pt-5">
+                <div className="flex justify-center pt-2">
                   <ArtikelSlider />
                 </div>
               </div>
