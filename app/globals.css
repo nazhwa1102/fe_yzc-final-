@@ -280,3 +280,7 @@ button, [type='button'], [type='reset'], [type='submit'] {
 :where(.css-dev-only-do-not-override-3oiqkd).ant-menu-dark .ant-menu-item-selected, :where(.css-dev-only-do-not-override-3oiqkd).ant-menu-dark>.ant-menu .ant-menu-item-selected {
     background-color: #016255;
 }
+.text-xl {
+    font-size: medium;
+    line-height: 1.75rem;
+}

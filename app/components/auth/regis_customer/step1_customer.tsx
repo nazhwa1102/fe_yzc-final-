@@ -136,7 +136,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           >
             <Input
 			  onChange={(e) => {
-                setData({ ...dataInput, lastEducation: e });
+                setData({ ...dataInput, lastEducation: e.target.value });
               }}
               placeholder="Masukan Pendidikan Terakhir"
               className=" p-[10px] rounded-[10px] border border-rstroke regis text-white"

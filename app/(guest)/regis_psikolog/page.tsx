@@ -86,13 +86,15 @@ const [formStep3] = Form.useForm();
           birth_date: dataInput?.birthDate,
           last_education: dataInput?.lastEducation,
           case_handled: dataInput?.caseHandled,
-          about_me: dataInput?.aboutMe,
+          aboutMe: dataInput?.aboutMe,
           legality: dataInput?.legality,
           photo: dataInput?.photo,
           email: dataInput.email,
           phone_number: dataInput?.phone,
           password: dataInput?.password,
       };
+      console.log (data ,"ini data");
+      const register_psikolog = await authRepository.manipulateData.register2(data);
       console.log(register_psikolog,"hasilnya ini");
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
       router.push("/login");
@@ -158,23 +160,37 @@ const [formStep3] = Form.useForm();
                         <Button
                           type="primary"
                           htmlType="submit"
-                          // disable={
-                          //   dataInput.level_user.length <= 1 ||
-                          //   dataInput.fullName.length <= 1 ||
-                          //   dataInput.birthDate.length <= 1 ||
-                          //   dataInput.Religion.length <=  1 ||
-                          //   dataInput.birthDate.length <= 1 ||
-                          //   dataInput.lastEducation.length <= 1 ||
-                          //   dataInput.caseHandled.length <= 1 ||
-                          //   dataInput.aboutMe.length <= 1 ||
-                          //   dataInput.legality.length <= 1 ||
-                          //   dataInput.photo.length <= 1 ||
-                          //   dataInput.email.length <= 1 ||
-                          //   dataInput.phone.length <= 1 ||
-                          //   dataInput.password.length <= 1 ||
+                          disabled={
+                            dataInput.fullName.length <= 1 ||
+                            dataInput.birthDate.length <= 1 ||
+                            dataInput.Religion.length <=  1 ||
+                            dataInput.birthDate.length <= 1 ||
+                            dataInput.lastEducation.length <= 1 ||
+                            dataInput.caseHandled.length <= 1 ||
+                            dataInput.aboutMe.length <= 1 ||
+                            dataInput.legality.length <= 1 ||
+                            dataInput.photo.length <= 1 ||
+                            dataInput.email.length <= 1 ||
+                            dataInput.phone.length <= 1 ||
+                            dataInput.password.length <= 1 
 
-                          // }
+                          }
                           onClick={onFinish}
+                          // onClick={() => {
+                          //   console.log(
+                          //     'fullname',dataInput.fullName.length,
+                          //     'birtdate', !dataInput.birthDate,
+                          //     'agama',dataInput.Religion.length,
+                          //     'pendidikan lo',dataInput.lastEducation.length,
+                          //     'kasus',dataInput.caseHandled.length,
+                          //     'tentang',dataInput.aboutMe.length,
+                          //     'legalitas',dataInput.legality.length,
+                          //     'photo',dataInput.photo.length,
+                          //     'email',dataInput.email.length,
+                          //     'hp',dataInput.phone.length,
+                          //     'pw',dataInput.password.length );
+                            
+                          // }}
                           className="bg-primary"
                         >
                           Daftar

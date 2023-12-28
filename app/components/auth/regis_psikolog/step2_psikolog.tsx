@@ -41,20 +41,25 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
   const photo = async (args: UploadChangeParam<UploadFile<any>>) => {
     const file = args.file;
     try {
-      if(file.status === 'done'){
+      if (file.status === "done") {
         if (file.size && file.size > 2097152) {
           message.error("ukuran file terlalu besar");
         } else {
-          if (file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg"
+          if (
+            file.type === "image/png" ||
+            file.type === "image/jpg" ||
+            file.type === "image/jpeg"
           ) {
             const response = await authRepository.manipulateData.Photo(
               file?.originFileObj
             );
             console.log(response.body.fileName, "hasilnya");
             setFoto(response.body.fileName);
-            setData({ ...dataInput, legality: response.body.fileName });
+            setData({ ...dataInput, photo: response.body.fileName });
           } else {
-            message.error("Anda Hanya Dapat Mengunggah dengan ektensi JPG/JPEG/PNG");
+            message.error(
+              "Anda Hanya Dapat Mengunggah dengan ektensi JPG/JPEG/PNG"
+            );
           }
         }
       }
@@ -66,11 +71,14 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
   const legality = async (args: UploadChangeParam<UploadFile<any>>) => {
     const file = args.file;
     try {
-      if(file.status === 'done'){
+      if (file.status === "done") {
         if (file.size && file.size > 2097152) {
           message.error("ukuran file terlalu besar");
         } else {
-          if (file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg"
+          if (
+            file.type === "image/png" ||
+            file.type === "image/jpg" ||
+            file.type === "image/jpeg"
           ) {
             const response = await authRepository.manipulateData.legality(
               file?.originFileObj
@@ -79,7 +87,9 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
             setFoto(response.body.fileName);
             setData({ ...dataInput, legality: response.body.fileName });
           } else {
-            message.error("Anda Hanya Dapat Mengunggah dengan ektensi JPG/JPEG/PNG");
+            message.error(
+              "Anda Hanya Dapat Mengunggah dengan ektensi JPG/JPEG/PNG"
+            );
           }
         }
       }
@@ -88,98 +98,93 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
     }
   };
   return (
-    <div className="flex flex-col space-y-15 w-full">
-      <div className="grid gap-y-4 grid-cols-1"></div>
-      <div className="grid gap-y-4 grid-cols-1">
-        <div>
-          <p className="text-teks text-2xl font-bold text-white">
-            Kasus yang Ditangani
-          </p>
-        </div>
-        <div className="w-full regis">
-          <Form.Item name="case_handled">
-            <TextArea
-              onChange={(e) => {
-                setData({ ...dataInput, caseHandled: e.target.value });
-              }}
-              rows={2}
-              placeholder="Tulis Disini"
-              className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
-            />
-          </Form.Item>
-        </div>
-      </div>
-      <div className="grid gap-y-4 grid-cols-1">
-        <div>
-          <p className="text-teks text-2xl font-bold text-white">
-            Tentang Saya
-          </p>
-        </div>
-        <div className="w-full regis">
-          <Form.Item name="about_me">
-            <TextArea
-              onChange={(e) => {
-                setData({ ...dataInput, about_me: e.target.value });
-              }}
-              rows={2}
-              placeholder="Tulis Disini"
-              className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
-            />
-          </Form.Item>
-        </div>
-      </div>
-      <div className="flex gap-x-5 grid-cols-1">
-        <div className="w-1/2 grid gap-y-4 grid-cols-1">
+    <Form form={formStep2}>
+      <div className="flex flex-col space-y-15 w-full">
+        <div className="grid gap-y-4 grid-cols-1"></div>
+        <div className="grid gap-y-4 grid-cols-1">
           <div>
             <p className="text-teks text-2xl font-bold text-white">
-              Sertifikat Legalitas
+              Kasus yang Ditangani
             </p>
           </div>
-          <div className="w-full">
-            <FormItem name="legality">
-              <Upload
-                {...props}
-                maxCount={1}
-                onChange={legality}
-              >
-                <Button
-                  onChange={(e) => {
-                    setData({ ...dataInput, legality: e });
-                  }}
-                  className="w-80"
-                  icon={<UploadOutlined />}
-                >
-                  Klik Untuk Mengunggah
-                </Button>
-              </Upload>
-            </FormItem>
+          <div className="w-full regis">
+            <Form.Item name="case_handled">
+              <TextArea
+                onChange={(e) => {
+                  setData({ ...dataInput, caseHandled: e.target.value });
+                }}
+                rows={2}
+                placeholder="Tulis Disini"
+                className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
+              />
+            </Form.Item>
           </div>
         </div>
-        <div className="w-1/2 grid gap-y-4 grid-cols-1">
+        <div className="grid gap-y-4 grid-cols-1">
           <div>
-            <p className="text-teks text-2xl font-bold text-white">Foto</p>
+            <p className="text-teks text-2xl font-bold text-white">
+              Tentang Saya
+            </p>
           </div>
-          <div className="w-full">
-            <FormItem name="photo">
-              <Upload 
-              {...props}
-              maxCount={1}
-              onChange={photo}>
-                <Button
-                  // onChange={(e) => {
-                  //   setData({ ...dataInput, photo: e });
-                  // }}
-                  className="w-80"
-                  icon={<UploadOutlined />}
-                >
-                  Klik Untuk Mengunggah
-                </Button>
-              </Upload>
-            </FormItem>
+          <div className="w-full regis">
+            <Form.Item name="about_me">
+              <TextArea
+                onChange={(e) => {
+                  setData({ ...dataInput, aboutMe: e.target.value });
+                }}
+                rows={2}
+                placeholder="Tulis Disini"
+                className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
+              />
+            </Form.Item>
+          </div>
+        </div>
+        <div className="flex gap-x-5 grid-cols-1">
+          <div className="w-1/2 grid gap-y-4 grid-cols-1">
+            <div>
+              <p className="text-teks text-2xl font-bold text-white">
+                Sertifikat Legalitas
+              </p>
+            </div>
+            <div className="w-full">
+              <FormItem name="legality">
+                <Upload {...props} maxCount={1} onChange={legality}>
+                  <Button
+                    onChange={(e) => {
+                      setData({ ...dataInput, legality: e });
+                    }}
+                    className="w-80"
+                    icon={<UploadOutlined />}
+                  >
+                    Klik Untuk Mengunggah
+                  </Button>
+                </Upload>
+              </FormItem>
+            </div>
+          </div>
+          <div className="w-1/2 grid gap-y-4 grid-cols-1">
+            <div>
+              <p className="text-teks text-2xl font-bold text-white">Foto</p>
+            </div>
+            <div className="w-full">
+              <FormItem name="photo">
+                <Upload {...props} maxCount={1} onChange={photo}>
+                  <Button
+                    onChange={(e) => {
+                      setData({ ...dataInput, photo: e });
+                    }}
+                    className="w-80"
+                    icon={<UploadOutlined />}
+                  >
+                    Klik Untuk Mengunggah
+                  </Button>
+                </Upload>
+              </FormItem>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Form>
   );
 }
 
