@@ -2,7 +2,7 @@
 
 import LayoutAdmin from "#/app/components/layoutadmin";
 import UploadPoster from "#/app/components/upload";
-import { CreateSeminar } from "#/app/type/typeCreateSeminar";
+import { CreateSeminar } from "#/app/types/typeCreateSeminar";
 import { PsikologRepository } from "#/repository/psikolog";
 import { SeminarRepository } from "#/repository/seminar";
 import { Button, DatePicker, Form, Input, InputNumber, Select, SelectProps, message } from "antd";

@@ -18,7 +18,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
             Nama Lengkap
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item
             name="full_name"
             rules={[
@@ -43,7 +43,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
               Jenis Kelamin
             </p>
           </div>
-          <div className="w-full">
+          <div className="w-full regis">
             <Form.Item
               name="gender"
               rules={[
@@ -70,7 +70,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           <div>
             <p className="text-teks text-2xl font-bold text-white">Agama</p>
           </div>
-          <div className="w-full">
+          <div className="w-full regis">
             <Form.Item
               name="religion"
               rules={[
@@ -101,7 +101,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
             Tanggal Lahir
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item
             name="birth_date"
             rules={[
@@ -124,7 +124,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
             Pendidikan Terakhir
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item
             name="last_education"
             rules={[
