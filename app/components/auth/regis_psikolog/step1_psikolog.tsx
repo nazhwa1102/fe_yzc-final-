@@ -20,7 +20,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
             Nama Lengkap
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item
             name="full_name"
             rules={[
@@ -44,7 +44,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
               Jenis Kelamin
             </p>
           </div>
-          <div className="w-full">
+          <div className="w-full regis">
             <Form.Item
               name="gender"
               rules={[
@@ -59,7 +59,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
                   setData({ ...dataInput, gender: e });
                 }}
                 placeholder="Pilih jenis kelamin"
-                className="w-full regis"
+                className="w-full regis text-white"
               >
                 <Option value="pria">Pria</Option>
                 <Option value="wanita">Wanita</Option>
@@ -71,7 +71,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
           <div>
             <p className="text-teks text-2xl font-bold text-white">Agama</p>
           </div>
-          <div className="w-full">
+          <div className="w-full regis">
             <Form.Item
               name="religion"
               rules={[
@@ -102,7 +102,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
             Tanggal Lahir
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item
             name="birth_date"
             rules={[
@@ -125,7 +125,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
             Pendidikan Terakhir
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item
             name="last_education"
             rules={[

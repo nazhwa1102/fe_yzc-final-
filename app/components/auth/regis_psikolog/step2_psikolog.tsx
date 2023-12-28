@@ -96,7 +96,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
             Kasus yang Ditangani
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item name="case_handled">
             <TextArea
               onChange={(e) => {
@@ -115,7 +115,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
             Tentang Saya
           </p>
         </div>
-        <div className="w-full">
+        <div className="w-full regis">
           <Form.Item name="about_me">
             <TextArea
               onChange={(e) => {
