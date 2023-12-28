@@ -48,7 +48,7 @@ const LayoutAdmin = ({ children, menu } : any) => {
               label: "Seminar",
             },
             {
-              key: "3",
+              key: "/admin/psikolog",
               icon: <Icon icon="pepicons-print:people" />,
               label: "Psikolog",
             },

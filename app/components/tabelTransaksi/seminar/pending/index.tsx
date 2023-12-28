@@ -1,47 +1,29 @@
 "use client";
 
-import LayoutAdmin from "#/app/components/layoutadmin";
-import React, { useState } from "react";
-import { Button, Modal, Tabs, message, Table, Form, Input } from "antd";
-import type { TabsProps } from "antd";
-import { ColumnsType } from "antd/es/table";
-import {
-  CheckOutlined,
-  CloseCircleOutlined,
-  CloseCircleTwoTone,
-  DeleteOutlined,
-  DeleteTwoTone,
-  EditOutlined,
-  ZoomInOutlined,
-} from "@ant-design/icons";
-import { TransaksiRepository } from "#/repository/transaksi";
-import { Alasan } from "#/app/types/typeAlasan";
 import DetailOrder from "#/app/components/detailOrder";
+import { Alasan } from "#/app/types/typeAlasan";
+import { TransaksiRepository } from "#/repository/transaksi";
+import { CheckOutlined, CloseCircleOutlined, CloseCircleTwoTone } from "@ant-design/icons";
+import { Button, Form, Input, Modal, message } from "antd";
+import { ColumnsType } from "antd/es/table";
+import { Table } from "antd/lib";
+import React, { useState } from "react";
 import { mutate } from "swr";
-import TransaksiApprove from "#/app/components/tabelTransaksi/seminar/approve";
-import TransaksiReject from "#/app/components/tabelTransaksi/seminar/reject";
-import TransaksiPending from "#/app/components/tabelTransaksi/seminar/pending";
 
 interface DataType {
-  id: string;
-  nama: string;
-  date: string;
-  transaction_amount: number;
-  payment_proof: string;
-  status: string;
-  detailOrder: string;
-}
+    id: string;
+    nama: string;
+    date: string;
+    transaction_amount: number;
+    payment_proof: string;
+    status: string
+    detailOrder: string
+  }
 
-const { TabPane } = Tabs;
-
-const Pembayaran = () => {
-  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminar();
-  const { data: dataTransaksiPrivateKonseling } =
-    TransaksiRepository.hooks.privateKonseling();
-
-  const [open, setOpen] = useState(false);
-
-  const showModal = () => {
+const TransaksiPending = () => {
+const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminarPending();
+const [open, setOpen] = useState(false);
+const showModal = () => {
     setOpen(true);
   };
   const handleOk = () => {
@@ -64,8 +46,8 @@ const Pembayaran = () => {
     const year = inputDate.getFullYear();
     const month = (inputDate.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-based
     const day = inputDate.getDate().toString().padStart(2, "0");
-    const hour = inputDate.getHours().toString().padStart(2, "0");
-    const minute = inputDate.getMinutes().toString().padStart(2, "0");
+    const hour = inputDate.getHours().toString().padStart(2, "0")
+    const minute = inputDate.getMinutes().toString().padStart(2, "0")
 
     return `${year}-${month}-${day}, ${hour}.${minute} WIB`;
   }
@@ -82,14 +64,14 @@ const Pembayaran = () => {
       const create_Transaksi = await TransaksiRepository.manipulateData.reject(
         datas,
         val
-      );
-      setOpen(false);
-      mutate;
-      setTimeout(
-        message.success("Anda Telah Berhasil Menolak Transaksi"),
-        5000
-      );
-    } catch (error) {
+        );
+        setOpen(false)
+        mutate
+        setTimeout(
+          message.success("Anda Telah Berhasil Menolak Transaksi"),
+          5000
+          );
+        } catch (error) {
       throw error;
     }
   };
@@ -129,7 +111,7 @@ const Pembayaran = () => {
       key: "detail",
       render: (_, record) => (
         <div className="justify-center flex">
-          <DetailOrder id={record.id} />
+           <DetailOrder id={record.id}/>
         </div>
       ),
     },
@@ -173,9 +155,7 @@ const Pembayaran = () => {
                   </Button>
                   <Button
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                    onClick={() => {
-                      onFinish(record.id);
-                    }}
+                    onClick={() =>{onFinish(record.id)}}
                   >
                     Ya
                   </Button>
@@ -224,6 +204,7 @@ const Pembayaran = () => {
             </Modal>
           </div>
         </div>
+        
       ),
     },
   ];
@@ -234,95 +215,24 @@ const Pembayaran = () => {
   };
 
   return (
-    <LayoutAdmin menu="pembayaran">
-      <div>
-        <Tabs defaultActiveKey="1">
-          <TabPane tab="List Transaksi Seminar" key="Transaksi Seminar">
-            <Tabs>
-              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
-                <TransaksiPending />
-              </TabPane>
-              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
-                <TransaksiApprove />
-              </TabPane>
-              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
-                <TransaksiReject />
-              </TabPane>
-            </Tabs>
-          </TabPane>
-          <TabPane
-            tab="List Transaksi Private Konseling"
-            key="Transaksi Private Konseling"
-          >
-            <Tabs>
-              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      console.log(val.poster, "isi poster");
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      console.log(val.poster, "isi poster");
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      console.log(val.poster, "isi poster");
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-            </Tabs>
-          </TabPane>
-        </Tabs>
-      </div>
-    </LayoutAdmin>
+    <>
+      <Table
+        columns={columns}
+        dataSource={dataTransaksiSeminar?.data.map((val: any) => {
+          console.log(val.poster, "isi poster");
+          return {
+            id: val.id,
+            nama: val.customer.fullName,
+            date: val.createdAt,
+            transaction_amount: val.transaction_amount,
+            payment_proof: val.payment_proof,
+          };
+        })}
+        className="font-semibold"
+        scroll={scroll}
+        pagination={false}
+      />
+    </>
   );
 };
-
-console.log();
-
-export default Pembayaran;
+export default TransaksiPending

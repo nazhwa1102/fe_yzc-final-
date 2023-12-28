@@ -11,6 +11,9 @@ const url = {
     reject: (id: any) => `/transaksi/reject/${id}`,
     approve: (id:any) => `/transaksi/approve/${id}`,
     seminar: () => '/transaksi/seminar',
+    seminarApprove: () => '/transaksi/seminar/approve',
+    seminarReject: () => '/transaksi/seminar/reject',
+    seminarPending: () => '/transaksi/seminar/pending',
     privateKonseling: () => '/transaksi/private_konseling'
 }
 
@@ -52,6 +55,15 @@ const hooks = {
   },
   seminar(){
     return useSWR(url.seminar(), http.fetcher)
+  },
+  seminarApprove(){
+    return useSWR(url.seminarApprove(), http.fetcher)
+  },
+  seminarReject(){
+    return useSWR(url.seminarReject(), http.fetcher)
+  },
+  seminarPending(){
+    return useSWR(url.seminarPending(), http.fetcher)
   },
   privateKonseling(){
     return useSWR(url.privateKonseling(), http.fetcher)

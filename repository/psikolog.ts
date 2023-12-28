@@ -5,7 +5,11 @@ import useSWR from "swr"
 const url = {
     psikolog: () => '/psikolog',
     psikologId: (id:any) => '/psikolog/:id',
-    psikologImage: () => '/psikolog/upload'
+    psikologImage: () => '/psikolog/upload',
+    psikologActive: () => '/psikolog/active',
+    psikologInActive: () => '/psikolog/not_active',
+    psikologPending: () => '/psikolog/pending',
+
 }
 
 const manipulateData = {
@@ -31,7 +35,16 @@ const hooks = {
   },
   getById(id:any){
     return useSWR(url.psikologId(id), http.fetcher)
-  }
+  },
+  active(){
+    return useSWR(url.psikologActive(),http.fetcher)
+  },
+  inactive(){
+    return useSWR(url.psikologInActive(),http.fetcher)
+  },
+  pending(){
+    return useSWR(url.psikologPending(),http.fetcher)
+  },
 }
 
 export const PsikologRepository = {
