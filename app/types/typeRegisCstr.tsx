@@ -4,8 +4,8 @@ export type RegisterCustomer = {
   gender:'pria' | 'wanita' | '';
   email:string;
   password:string;
-  birthDate:string;
-  Religion: 'islam' | 'katolik' | 'prostestan' |'budha' | 'hindu' |'konghucu'|'';
+  birth_date: Date;
+  religion: 'islam' | 'katolik' | 'prostestan' |'budha' | 'hindu' |'konghucu'|'';
   phone:string;
-  lastEducation:string;
+  last_education:string;
 }

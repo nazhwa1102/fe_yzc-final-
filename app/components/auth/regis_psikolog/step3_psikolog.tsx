@@ -61,7 +61,7 @@ function PsikologStep3({ setData, dataInput, formStep3 }: Props) {
                 >
                   <Input
                     onChange={(e) => {
-                      setData({ ...dataInput, phone: e.target.value });
+                      setData({ ...dataInput, phone : e.target.value });
                     }}
                     size="large"
                     placeholder="Masukan No Telepon"

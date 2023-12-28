@@ -81,17 +81,17 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
               >
                 <Select
                   onChange={(e) => {
-                    setData({ ...dataInput, Religion: e });
+                    setData({ ...dataInput, religion: e });
                   }}
                   placeholder="Pilih Agama"
                   className="w-full regis"
                 >
-                  <Option value="islam">Islam</Option>
-                  <Option value="katolik">Katolik</Option>
-                  <Option value="prostestan">Prostestan</Option>
-                  <Option value="budha">Budha</Option>
-                  <Option value="hindu">Hindu</Option>
-                  <Option value="konghucu">Konghucu</Option>
+                  <Option value="Islam">Islam</Option>
+                  <Option value="Katolik">Katolik</Option>
+                  <Option value="Prostestan">Prostestan</Option>
+                  <Option value="Budha">Budha</Option>
+                  <Option value="Hindu">Hindu</Option>
+                  <Option value="Konghucu">Konghucu</Option>
                 </Select>
               </Form.Item>
             </div>
@@ -116,7 +116,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
               <DatePicker
                 onChange={(e: any) => {
                   console.log(e?.$d, 'isinya')
-                  setData({ ...dataInput, birthDate: e?.$d });
+                  setData({ ...dataInput, birth_date: e?.$d });
                 }}
                 placeholder="Pilih tanggal"
                 className="w-full regis text-white"
@@ -142,7 +142,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
             >
               <Input
                 onChange={(e) => {
-                  setData({ ...dataInput, lastEducation: e.target.value });
+                  setData({ ...dataInput, last_education: e.target.value });
                 }}
                 placeholder="Masukan Pendidikan Terakhir"
                 className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"

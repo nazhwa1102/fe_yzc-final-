@@ -12,9 +12,9 @@ const Psikologlist: React.FC = () => (
         >
           <div className="flex justify-center">
             <img
-              src="https://img.freepik.com/free-photo/handsome-bearded-guy-posing-against-white-wall_273609-20597.jpg?size=626&ext=jpg&ga=GA1.1.2116175301.1701475200&semt=ais"
+              src="https://img.freepik.com/premium-photo/young-asian-male-smiling-laughing-with-arms-crossed_264197-33745.jpg?w=826"
               alt=""
-              className="rounded-[50%] w-[150px] h-[150px] mt-[-90px]"
+              className="rounded-[50%] w-[150px] h-[150px] mt-[-90px] shadow-lg"
             />
           </div>
           <p className="font-bold text-xl pt-5 justify-center flex">Danar Kahfi, M. Psi</p>
@@ -35,7 +35,7 @@ const Psikologlist: React.FC = () => (
             <img
               src="https://www.georgetown.edu/wp-content/uploads/2022/02/Jkramerheadshot-scaled-e1645036825432-1050x1050-c-default.jpg"
               alt=""
-              className="rounded-[50%] w-[150px] h-[150px] mt-[-90px]"
+              className="rounded-[50%] w-[150px] h-[150px] mt-[-90px] shadow-lg"
             />
           </div>
           <p className="font-bold text-xl pt-5 justify-center flex">Cecillia Siregar, M.Psi</p>
@@ -54,9 +54,9 @@ const Psikologlist: React.FC = () => (
         >
           <div className="flex justify-center">
             <img
-              src="https://img.freepik.com/free-photo/happy-successful-muslim-businesswoman-posing-outside_74855-2007.jpg"
+              src="https://img.freepik.com/premium-photo/female-indonesian-woman-posing-facing-camera_802140-1795.jpg?w=826"
               alt=""
-              className="rounded-[50%] w-[150px] h-[150px] mt-[-90px]"
+              className="rounded-[50%] w-[150px] h-[150px] mt-[-90px] shadow-lg"
             />
           </div>
           <p className="font-bold text-xl pt-5 justify-center flex">Nazhwa Nur , M. Psi</p>

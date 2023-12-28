@@ -4,8 +4,9 @@ import useSWR from "swr"
 
 const url = {
     psikolog: () => '/psikolog',
-    psikologId: (id:any) => '/psikolog/:id',
+    psikologId: (id:any) => `/psikolog/${id}`,
     psikologImage: () => '/psikolog/upload',
+    psikologLegality: () => '/psikolog/upload/legality',
     psikologActive: () => '/psikolog/active',
     psikologInActive: () => '/psikolog/not_active',
     psikologPending: () => '/psikolog/pending',

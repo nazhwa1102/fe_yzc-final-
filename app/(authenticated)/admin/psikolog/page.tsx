@@ -3,19 +3,37 @@
 import React, { useState } from "react";
 import LayoutAdmin from "#/app/components/layoutadmin";
 import {
-    CheckOutlined,
+    CheckCircleTwoTone,
+  CheckOutlined,
   CloseCircleOutlined,
+  CloseCircleTwoTone,
   DeleteOutlined,
   DeleteTwoTone,
   EditOutlined,
   PlusOutlined,
   ZoomInOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Modal, Pagination, Space, Tabs, Typography } from "antd";
+import {
+  Button,
+  Card,
+  Form,
+  Input,
+  Modal,
+  Pagination,
+  Space,
+  Tabs,
+  Typography,
+  message,
+} from "antd";
 import { ColumnsType } from "antd/es/table";
 import { Table } from "antd/lib";
 import { SeminarRepository } from "#/repository/seminar";
 import { PsikologRepository } from "#/repository/psikolog";
+import { Alasan } from "#/app/types/typeAlasan";
+import { UserYzcRepository } from "#/repository/userYzc";
+import { mutate } from "swr";
+import PsikologActive from "#/app/components/tabelPsikolog/active";
+import PsikologInActive from "#/app/components/tabelPsikolog/inactive";
 const { Text, Paragraph } = Typography;
 
 interface DataType {
@@ -40,12 +58,48 @@ const Psikolog = () => {
     setOpen(false);
   };
 
+  const [open2, setOpen2] = useState(false);
+
+  const showModal2 = () => {
+    setOpen2(true);
+  };
+  const handleOk2 = () => {
+    setOpen2(false);
+  };
+
+  const handleCancel2 = () => {
+    setOpen2(false);
+  };
+
   const { data: dataPsikolog } = PsikologRepository.hooks.get();
   const { data: dataPsikologActive } = PsikologRepository.hooks.active();
   const { data: dataPsikologInActive } = PsikologRepository.hooks.inactive();
   const { data: dataPsikologPending } = PsikologRepository.hooks.pending();
 
   const { TabPane } = Tabs;
+
+  const [dataInput, setUser] = useState<Alasan>({
+    alasan: "",
+  });
+
+  const onFinish = async (val: any) => {
+    try {
+      const datas = {
+        alasan: dataInput.alasan,
+      };
+      const create_Transaksi =
+        await UserYzcRepository.manipulateData.userInActive(datas, val);
+      setOpen(false);
+      mutate;
+      setTimeout(
+        message.success("Anda Telah Berhasil Menolak Transaksi"),
+        5000
+      );
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const columns: ColumnsType<DataType> = [
     {
       title: "Foto",
@@ -100,12 +154,53 @@ const Psikolog = () => {
           <div className="pb-1">
             <Button
               className="bg-[#525F89] text-white flex items-center w-[125px] justify-center"
-              href={`seminar/edit/${record.id}`}
+              onClick={showModal2}
               type="text"
             >
               <CheckOutlined className="flex pt-[2px]" />
               Terima
             </Button>
+            <Modal
+              open={open2}
+              onCancel={handleCancel2}
+              footer={(_) => (
+                <div className="justify-center flex pt-3">
+                  <Button
+                    onClick={handleCancel2}
+                    className="bg-red-600 text-white hover:text-white w-20 cancelButt"
+                  >
+                    Batal
+                  </Button>
+                  <Button
+                    className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
+                    onClick={async () => {
+                        (await UserYzcRepository.manipulateData.userActive(
+                          record.id
+                        )) && window.location.reload();
+                      }}
+                  >
+                    Ya
+                  </Button>
+                </div>
+              )}
+              className="pt-[130px]"
+            >
+              <div className="justify-center">
+                <div>
+                  <CheckCircleTwoTone
+                    twoToneColor={"lightgreen"}
+                    style={{ fontSize: "90px" }}
+                    className="justify-center flex pt-3"
+                  />
+                </div>
+                <div className="font-bold text-3xl flex justify-center pt-4">
+                  Terima Psikolog
+                </div>
+                <div className="flex justify-center text-lg pt-3">
+                  Apa Anda Yakin Ingin Menerima Psikolog
+                </div>
+              </div>
+            </Modal>
           </div>
           <div className="pb-1">
             <Button
@@ -129,10 +224,8 @@ const Psikolog = () => {
                   </Button>
                   <Button
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                    onClick={async () => {
-                      (await SeminarRepository.manipulateData.delete(
-                        record.id
-                      )) && window.location.reload();
+                    onClick={() => {
+                      onFinish(record.id);
                     }}
                   >
                     Ya
@@ -143,17 +236,40 @@ const Psikolog = () => {
             >
               <div className="justify-center">
                 <div>
-                  <DeleteTwoTone
+                  <CloseCircleTwoTone
                     twoToneColor={"red"}
                     style={{ fontSize: "90px" }}
                     className="justify-center flex pt-3"
                   />
                 </div>
                 <div className="font-bold text-3xl flex justify-center pt-4">
-                  Hapus Seminar
+                  Tolak Psikolog
                 </div>
                 <div className="flex justify-center text-lg pt-3">
-                  Apa Anda Yakin Ingin Menghapus Seminar
+                  Apa Anda Yakin Ingin Menolak Psikolog
+                </div>
+                <div className="flex justify-center">
+                  <div className="justify-center pt-3">
+                    <div className="flex justify-center">
+                      <div className="font-semibold text-lg justify-center">
+                        Alasan
+                      </div>
+                    </div>
+                    <Form size="middle" style={{ maxWidth: "500px" }}>
+                      <Form.Item>
+                        <Input
+                          placeholder="Masukan Alasan Penolakan Transaksi"
+                          className="w-[300px]"
+                          onChange={(e) => {
+                            setUser({
+                              ...dataInput,
+                              alasan: e.target.value,
+                            });
+                          }}
+                        />
+                      </Form.Item>
+                    </Form>
+                  </div>
                 </div>
               </div>
             </Modal>
@@ -171,22 +287,32 @@ const Psikolog = () => {
   return (
     <LayoutAdmin menu="psikolog">
       <div>
-        <Table
-          columns={columns}
-          dataSource={dataPsikolog?.data.map((val: any) => {
-            console.log(val.poster, "isi poster");
-            return {
-                id: val.id,
-                foto: val.photo,
-                nama: val.fullName,
-                jenis_kelamin: val.gender,
-                email: val.user_yzc?.email,
-            };
-          })}
-          className="font-semibold"
-          scroll={scroll}
-          pagination={false}
-        />
+        <Tabs>
+          <TabPane tab="List Psikolog Pending" key="Psikolog Pending">
+            <Table
+              columns={columns}
+              dataSource={dataPsikologPending?.data.map((val: any) => {
+                console.log(val.poster, "isi poster");
+                return {
+                  id: val.id,
+                  foto: val.photo,
+                  nama: val.fullName,
+                  jenis_kelamin: val.gender,
+                  email: val.user_yzc?.email,
+                };
+              })}
+              className="font-semibold"
+              scroll={scroll}
+              pagination={false}
+            />
+          </TabPane>
+          <TabPane tab="List Psikolog Active" key="Psikolog Active">
+            <PsikologActive />
+          </TabPane>
+          <TabPane tab="List Psikolog Inactive" key="Psikolog InActive">
+            <PsikologInActive />
+          </TabPane>
+        </Tabs>
       </div>
     </LayoutAdmin>
   );

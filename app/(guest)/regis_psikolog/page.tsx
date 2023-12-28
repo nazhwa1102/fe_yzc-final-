@@ -18,12 +18,12 @@ import { authRepository } from "#/repository/auth";
 function register_psikolog() {
   const router = useRouter();
   const [dataInput, setDataInput] = useState<RegisterPsikolog>({
-    level_user: '',
+    level_user: '703f41b0-1004-4965-a3ff-9c71f5fc4f6f',
     fullName:'',
     gender:'',
-    Religion: '',
-    birthDate:'',
-    lastEducation:'',
+    religion: '',
+    birth_date:new Date,
+    last_education:'',
     caseHandled: '',
     aboutMe: '',
     legality:'',
@@ -82,15 +82,15 @@ const [formStep3] = Form.useForm();
           level_user: 'cedf2abb-bd61-4314-9075-d42f9303a88c',
           full_name: dataInput?.fullName,
           gender: dataInput?.gender,
-          religion: dataInput?.Religion,
-          birth_date: dataInput?.birthDate,
-          last_education: dataInput?.lastEducation,
+          religion: dataInput?.religion,
+          birth_date: dataInput?.birth_date,
+          last_education: dataInput?.last_education,
           case_handled: dataInput?.caseHandled,
           aboutMe: dataInput?.aboutMe,
           legality: dataInput?.legality,
           photo: dataInput?.photo,
           email: dataInput.email,
-          phone_number: dataInput?.phone,
+          phone: dataInput?.phone,
           password: dataInput?.password,
       };
       console.log (data ,"ini data");
@@ -160,21 +160,19 @@ const [formStep3] = Form.useForm();
                         <Button
                           type="primary"
                           htmlType="submit"
-                          disabled={
-                            dataInput.fullName.length <= 1 ||
-                            dataInput.birthDate.length <= 1 ||
-                            dataInput.Religion.length <=  1 ||
-                            dataInput.birthDate.length <= 1 ||
-                            dataInput.lastEducation.length <= 1 ||
-                            dataInput.caseHandled.length <= 1 ||
-                            dataInput.aboutMe.length <= 1 ||
-                            dataInput.legality.length <= 1 ||
-                            dataInput.photo.length <= 1 ||
-                            dataInput.email.length <= 1 ||
-                            dataInput.phone.length <= 1 ||
-                            dataInput.password.length <= 1 
+                          // disabled={
+                          //   dataInput.fullName.length <= 1 ||
+                          //   dataInput.religion.length <=  1 ||
+                          //   dataInput.last_education.length <= 1 ||
+                          //   dataInput.caseHandled.length <= 1 ||
+                          //   dataInput.aboutMe.length <= 1 ||
+                          //   dataInput.legality.length <= 1 ||
+                          //   dataInput.photo.length <= 1 ||
+                          //   dataInput.email.length <= 1 ||
+                          //   dataInput.phone.length <= 1 ||
+                          //   dataInput.password.length <= 1 
 
-                          }
+                          // }
                           onClick={onFinish}
                           // onClick={() => {
                           //   console.log(

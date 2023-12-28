@@ -79,17 +79,17 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
             >
               <Select
                 onChange={(e) => {
-                  setData({ ...dataInput, Religion: e });
+                  setData({ ...dataInput, religion: e });
                 }}
                 placeholder="Pilih Agama"
                 className="w-full regis bg-transparent"
               >
-                <Option value="islam">Islam</Option>
-                <Option value="katolik">Katolik</Option>
-                <Option value="protestan">Prostestan</Option>
-                <Option value="budha">Budha</Option>
-                <Option value="hindu">Hindu</Option>
-                <Option value="konghucu">Konghucu</Option>
+                <Option value="Islam">Islam</Option>
+                <Option value="Katolik">Katolik</Option>
+                <Option value="Protestan">Prostestan</Option>
+                <Option value="Budha">Budha</Option>
+                <Option value="Hindu">Hindu</Option>
+                <Option value="Konghucu">Konghucu</Option>
               </Select>
             </Form.Item>
           </div>
@@ -110,7 +110,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           >
             <DatePicker
               onChange={(e) => {
-                setData({ ...dataInput, birthDate: e });
+                setData({ ...dataInput, birth_date: e });
               }}
               placeholder="Pilih tanggal"
               className="w-full regis text-white bg-transparent"
@@ -136,7 +136,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           >
             <Input
 			  onChange={(e) => {
-                setData({ ...dataInput, lastEducation: e.target.value });
+                setData({ ...dataInput, last_education: e.target.value });
               }}
               placeholder="Masukan Pendidikan Terakhir"
               className=" p-[10px] rounded-[10px] border border-rstroke regis text-white bg-transparent"

@@ -56,7 +56,7 @@ const ArtikelSlider: React.FC = () => {
                 <div className="justify-center flex">
                   <div>
                  <div className="object-cover flex justify-center">
-                  <img src={slide.image} className="rounded-xl w-[370px] h-[200px] flex justify-center"  />
+                  <img src={slide.image} className="rounded-xl w-[370px] h-[200px] flex justify-center shadow-lg"  />
                  </div>
                  <div className="pt-3 font-bold text-[22px] justify-center flex">
                   {slide.title}

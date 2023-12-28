@@ -26,8 +26,8 @@ const manipulateData = {
     reject(data:any, id:any){
         return http.put(url.reject(id)).send(data)
     },
-    approve(data:any, id:any){
-        return http.put(url.approve(id)).send(data)
+    approve(id:any){
+        return http.put(url.approve(id))
     },
     UploadImage(data:any){
         const formData = new FormData()

@@ -13,6 +13,8 @@ const pageSize = 6; // Number of cards to display per page
 
 const listSeminar= () => {
   const {data: dataSeminar} = SeminarRepository.hooks.statusApprove()
+  console.log(dataSeminar);
+  
 
   const [currentPage, setCurrentPage] = useState(1);
 

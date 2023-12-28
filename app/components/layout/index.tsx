@@ -66,7 +66,7 @@ const Layout2 = ({ children, title }: any) => {
     {
       key: "4",
       label: (
-        <a rel="noopener noreferrer" href="">
+        <a rel="noopener noreferrer" href="/riwayat_transaksi">
           Riwayat Transaksi
         </a>
       ),

@@ -1,7 +1,7 @@
 // CustomPagination.tsx
 import React, { useState } from "react";
 import { Pagination, Card, Button } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { LeftOutlined, RightOutlined, ZoomInOutlined } from "@ant-design/icons";
 import { SeminarRepository } from "#/repository/seminar";
 import { IntlProvider } from "react-intl";
 import PriceFormatter from "../priceFormatter";
@@ -48,9 +48,10 @@ const SeminarSlider: React.FC = () => {
                <img
              src={`http://localhost:3222/seminar/upload/${val.poster}/image`}
              style={{width: 'auto', height: '200px'}}
+             className="mt-16 flex shadow-lg"
                />
                </div>
-               <div className="pl-3 items-center flex">
+               <div className="pl-3 items-center flex pt-12">
                 <div>
                  <div className="font-bold text-2xl w-[290px]">{val.title}</div>
                  <div className="font-semibold text-lg">{val.datetime}</div>
@@ -62,6 +63,12 @@ const SeminarSlider: React.FC = () => {
                  </div>
                </div>
               </div>
+                 <div>
+                 <div className='flex justify-end gap-5 items-end pb-5'>
+               <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.id}`}><ZoomInOutlined/>Detail</Button>
+               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' href={`/seminar/pembayaran/${val.id}`}>Pesan</Button>
+               </div>
+                 </div>
               </Card> 
             ))}
           </div>
