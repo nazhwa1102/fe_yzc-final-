@@ -6,9 +6,9 @@ import { Button, Modal, Tabs, message, Table, Form, Input } from "antd";
 import type { TabsProps } from "antd";
 import { ColumnsType } from "antd/es/table";
 import {
-    CheckOutlined,
-    CloseCircleOutlined,
-    CloseCircleTwoTone,
+  CheckOutlined,
+  CloseCircleOutlined,
+  CloseCircleTwoTone,
   DeleteOutlined,
   DeleteTwoTone,
   EditOutlined,
@@ -23,6 +23,10 @@ interface DataType {
   date: string;
   transaction_amount: number;
   payment_proof: string;
+  status: string
+  detailOrder: [{
+    types: string
+  }]
 }
 
 const { TabPane } = Tabs;
@@ -60,20 +64,19 @@ const Pembayaran = () => {
 
   function formatDateWithHyphens(date: any) {
     const inputDate = new Date(date);
-  
+
     if (isNaN(inputDate.getTime())) {
       // Handle the case where 'date' is not a valid date
-      console.error('Invalid date:', date);
-      return 'Invalid Date';
+      console.error("Invalid date:", date);
+      return "Invalid Date";
     }
-  
+
     const year = inputDate.getFullYear();
-    const month = (inputDate.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
-    const day = inputDate.getDate().toString().padStart(2, '0');
-  
+    const month = (inputDate.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-based
+    const day = inputDate.getDate().toString().padStart(2, "0");
+
     return `${year}-${month}-${day}`;
   }
-  
 
   const [dataInput, setTransaksi] = useState<Alasan>({
     alasan: "",
@@ -98,6 +101,45 @@ const Pembayaran = () => {
     }
   };
 
+  function ModalDetail(val: any) {
+    if (val.detailOrder?.types === "seminar") {
+      return (
+        <div className="pt-5 justify-between">
+          <div>
+            <div className="font-semibold text-lg">Bukti Transaksi :</div>
+            <div className="pl-5">
+              <img
+                src={`http://localhost:3222/transaksi/upload/${val.payment_proof}/image`}
+                style={{ width: "200px", height: "300px" }}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (val.detailOrder?.types === "private_konseling") {
+      return (
+        <div className="pt-5 justify-between">
+          <div>
+            <div className="font-semibold text-lg">Bukti Transaksi :</div>
+            <div className="pl-5">
+              <img
+                src={`http://localhost:3222/transaksi/upload/${val.payment_proof}/image`}
+                style={{ width: "200px", height: "300px" }}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    }else{
+      return(
+        <div>
+         Salah
+        </div>
+      )
+      }
+  }
+
   const columns: ColumnsType<DataType> = [
     {
       title: "Nama",
@@ -108,9 +150,7 @@ const Pembayaran = () => {
       title: "Tanggal",
       dataIndex: "date",
       key: "date",
-      render: (_, record) => (
-        <div>{formatDateWithHyphens(record.date)}</div>
-      )
+      render: (_, record) => <div>{formatDateWithHyphens(record.date)}</div>,
     },
     {
       title: "Nominal",
@@ -119,7 +159,7 @@ const Pembayaran = () => {
     },
     {
       title: "Foto",
-      dataIndex: 'payment_proof',
+      dataIndex: "payment_proof",
       key: "payment_proof",
       render: (_, record) => (
         <img
@@ -151,22 +191,20 @@ const Pembayaran = () => {
                   <Button
                     onClick={handleCancelDetail}
                     className="bg-red-600 text-white hover:text-white w-20 yaButt"
-                
                   >
                     OK
                   </Button>
                 </div>
               )}
               className="pt-[130px]"
-            >
-              <div>
-                <div>
-                <img
-          src={`http://localhost:3222/transaksi/upload/${record.payment_proof}/image`}
-          style={{ width: "50%", height: "auto" }}
-        />
+              width={1000}
+              title={
+                <div className="font-bold text-2xl">
+                  Detail Riwayat Transaksi
                 </div>
-              </div>
+              }
+            >
+            <ModalDetail val={record.detailOrder}/>
             </Modal>
           </div>
         </div>
@@ -181,7 +219,10 @@ const Pembayaran = () => {
             <Button
               className="bg-green-500 text-white flex items-center w-[125px] justify-center"
               style={{ backgroundColor: "#22C55E" }}
-              onClick={async () => {(await TransaksiRepository.manipulateData.approve(record.id) && window.location.reload())}}
+              onClick={async () => {
+                (await TransaksiRepository.manipulateData.approve(record.id)) &&
+                  window.location.reload();
+              }}
             >
               <CheckOutlined className="flex pt-[2px]" />
               Setujui
@@ -209,7 +250,7 @@ const Pembayaran = () => {
                   </Button>
                   <Button
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                    onClick={onFinish}
+                    onClick={() =>{onFinish(record.id)}}
                   >
                     Ya
                   </Button>
@@ -232,18 +273,27 @@ const Pembayaran = () => {
                   Apa Anda Yakin Ingin Menolak Seminar
                 </div>
                 <div className="flex justify-center">
-                <div className="justify-center pt-3">
+                  <div className="justify-center pt-3">
                     <div className="flex justify-center">
-                    <div className="font-semibold text-lg justify-center">Alasan</div>
+                      <div className="font-semibold text-lg justify-center">
+                        Alasan
+                      </div>
                     </div>
                     <Form size="middle" style={{ maxWidth: "500px" }}>
-                        <Form.Item>
-                            <Input placeholder="Masukan Alasan Penolakan Transaksi" className="w-[300px]" onChange={(e) => {
-                                setTransaksi({...dataInput, alasan: e.target.value})
-                            }}/>
-                        </Form.Item>
+                      <Form.Item>
+                        <Input
+                          placeholder="Masukan Alasan Penolakan Transaksi"
+                          className="w-[300px]"
+                          onChange={(e) => {
+                            setTransaksi({
+                              ...dataInput,
+                              alasan: e.target.value,
+                            });
+                          }}
+                        />
+                      </Form.Item>
                     </Form>
-                </div>
+                  </div>
                 </div>
               </div>
             </Modal>
@@ -273,6 +323,10 @@ const Pembayaran = () => {
                   date: val.createdAt,
                   transaction_amount: val.transaction_amount,
                   payment_proof: val.payment_proof,
+                  staus: val.status,
+                  detailOrder: [{
+                    types: val.detailOrder?.types
+                  }]
                 };
               })}
               className="font-semibold"
@@ -281,7 +335,7 @@ const Pembayaran = () => {
             />
           </TabPane>
           <TabPane tab="List Transaksi Seminar" key="Transaksi Seminar">
-          <Table
+            <Table
               columns={columns}
               dataSource={dataTransaksiSeminar?.data.map((val: any) => {
                 console.log(val.poster, "isi poster");
@@ -304,16 +358,18 @@ const Pembayaran = () => {
           >
             <Table
               columns={columns}
-              dataSource={dataTransaksiPrivateKonseling?.data.map((val: any) => {
-                console.log(val.poster, "isi poster");
-                return {
-                  id: val.id,
-                  nama: val.customer.fullName,
-                  date: val.createdAt,
-                  transaction_amount: val.transaction_amount,
-                  payment_proof: val.payment_proof,
-                };
-              })}
+              dataSource={dataTransaksiPrivateKonseling?.data.map(
+                (val: any) => {
+                  console.log(val.poster, "isi poster");
+                  return {
+                    id: val.id,
+                    nama: val.customer.fullName,
+                    date: val.createdAt,
+                    transaction_amount: val.transaction_amount,
+                    payment_proof: val.payment_proof,
+                  };
+                }
+              )}
               className="font-semibold"
               scroll={scroll}
               pagination={false}

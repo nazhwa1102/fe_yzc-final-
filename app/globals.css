@@ -190,16 +190,6 @@ button, [type='button'], [type='reset'], [type='submit'] {
   border-color: #d9d9d9;
 }
 
-.cancelButt{
-    background-color: rgb(220 38 38 );
-    color: white;
-}
-
-.yaButt{
-    background-color: #525F89;
-    color: white;
-}
-
 :where(.css-dev-only-do-not-override-cbv4tr).ant-btn-default {
     border-color: #d9d9d9;
     color: #fff;
@@ -257,6 +247,16 @@ button, [type='button'], [type='reset'], [type='submit'] {
 }
 .ant-select .ant-select-arrow {
     height: 30px;
+}
+
+.cancelButt{
+    background-color: rgb(220 38 38 );
+    color: white;
+}
+
+.yaButt{
+    background-color: #525F89;
+    color: white;
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder{
     color: white;

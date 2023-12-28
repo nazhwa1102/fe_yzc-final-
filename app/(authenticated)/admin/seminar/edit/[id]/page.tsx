@@ -1,92 +1,247 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Card } from "antd/lib/index";
-import { Button } from "antd";
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  message,
+} from "antd";
 import { SeminarRepository } from "#/repository/seminar";
 import { parseJwt } from "#/app/components/helper/convert";
 import { IntlProvider } from "react-intl";
 import PriceFormatter from "#/app/components/priceFormatter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LayoutAdmin from "#/app/components/layoutadmin";
-import { CheckCircleOutlined, CloseCircleOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  RedoOutlined,
+  UndoOutlined,
+} from "@ant-design/icons";
+import FormItem from "antd/es/form/FormItem";
+import UploadPoster from "#/app/components/upload";
+import { PsikologRepository } from "#/repository/psikolog";
 
 const detailSeminar = () => {
+  const router = useRouter();
 
+  const [form] = Form.useForm();
   const pathname = usePathname().split("/");
-  const { data } = SeminarRepository.hooks.detailSeminar(
+  const { data: dataSeminar } = SeminarRepository.hooks.detailSeminar(
     pathname[pathname.length - 1]
   );
+  const { data: datapsikolog } = PsikologRepository.hooks.get();
 
-   
+  const [updateSeminar, setUpdateSeminar] = useState({
+    title: dataSeminar?.data.title,
+    datetime: dataSeminar?.data.datetime,
+    price: dataSeminar?.data.price,
+    link: dataSeminar?.data.link,
+    poster: dataSeminar?.data.poster,
+    psikolog: dataSeminar?.data.psikolog,
+  });
+
+  useEffect(() => {
+    form.setFieldsValue({
+      title: dataSeminar?.data.title,
+      datetime: dataSeminar?.data.datetime,
+      price: dataSeminar?.data.price,
+      link: dataSeminar?.data.link,
+      poster: dataSeminar?.data.poster,
+      psikolog: dataSeminar?.data.psikolog,
+    });
+  }, [dataSeminar]);
+
+  const onFinish = async (val: any) => {
+    try {
+      const data = {
+        title: val.title,
+        datetime: val.datetime,
+        price: val.price,
+        link: val.link,
+        poster: val.poster,
+        psikolog: val.psikolog,
+      };
+      const updateSeminar = await SeminarRepository.manipulateData.update(
+        dataSeminar.data.id,
+        data
+      );
+      setTimeout(
+        message.success("Anda Telah Berhasil Menambahkan Seminar"),
+        5000
+      );
+      router.push("seminar");
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  type FieldType = {
+    title: string;
+    datetime: Date;
+    price: number;
+    link: string;
+    poster: string;
+    psikolog: [];
+  };
+
+  const parsePrice = (value: any) => {
+    return parseInt(value.replace(/[^0-9]/g, ""), 10);
+  };
+
   return (
     <LayoutAdmin>
-      <div className="text-3xl font-bold flex justify-center">
-        Lihat Detail Seminar
-      </div>
-      <div className="flex justify-center pt-5 ">
-          <div className="flex justify-between gap-[100px] mt-5">
-            <div className="items-center">
-              <div className="font-bold text-2xl">
-                Poster Seminar
+      <div className="flex justify-center pt-5">
+        <div>
+          <div>
+            <Form
+              size="large"
+              style={{ maxWidth: "500px" }}
+              onFinish={onFinish}
+            >
+              <div className="font-bold text-2xl">Poster</div>
+              <div>Harap Masukan Poster Seminar</div>
+              <div className="w-[500px] h-[250px] pt-5">
+                <FormItem<FieldType> name="poster">
+                  <UploadPoster
+                    setData={setUpdateSeminar}
+                    dataInput={updateSeminar}
+                  />
+                </FormItem>
               </div>
-              <div>
-                <img
-                  src={`http://localhost:3222/seminar/upload/${data?.data.poster}/image`}
-                  style={{ height: "400px", width: "auto" }} className="rounded-lg"
-                />
-              </div>
-              <div className="pt-10">
-                <div className="font-bold text-2xl">
-                  Pemateri
+              <div className="">
+                <div className="font-bold text-2xl">Judul Seminar</div>
+                <div>Harap Masukan Judul Seminar</div>
+                <div className="pt-2">
+                  <Form.Item<FieldType>
+                    name="title"
+                    initialValue={dataSeminar?.data.title}
+                  >
+                    <Input
+                      placeholder="Masukan Judul Seminar"
+                      className="w-[500px]"
+                      onChange={(e) => {
+                        setUpdateSeminar({
+                          ...updateSeminar,
+                          title: e.target.value,
+                        });
+                      }}
+                    />
+                  </Form.Item>
                 </div>
-              <div className="justify-center pt-5 pl-5 border-yzc rounded-xl" style={{border: '1px solid #016255', width: '350px'}}>
-                <ul>
-                {data?.data.psikologseminar?.map((val: any) => (
-                  <div>
-                      <li>
-                    <p className="font-bold text-xl">{val.psikolog.fullName}</p>
-                      </li>
-                  </div>
-                ))}
-                </ul>
+                <div className="font-bold text-2xl">Tanggal Seminar</div>
+                <div>Harap Masukan Tanggal Seminar</div>
+                <div className="pt-2">
+                  <Form.Item<FieldType>
+                    name="datetime"
+                    initialValue={dataSeminar?.data.datetime}
+                  >
+                    <DatePicker
+                      className="w-[500px] h-10"
+                      onChange={(e: any) => {
+                        setUpdateSeminar({ ...updateSeminar, datetime: e });
+                      }}
+                    />
+                  </Form.Item>
+                </div>
               </div>
+            </Form>
+          </div>
+        </div>
+        <div className="flex pl-[100px]">
+          <div>
+            <div className="pt-5">
+              <Form size="large" onFinish={onFinish}>
+                <div className="font-bold text-2xl">Harga Seminar</div>
+                <div>Harap Masukan Harga Seminar</div>
+                <div className="pt-2">
+                  <Form.Item<FieldType>
+                    name="price"
+                    initialValue={dataSeminar?.data.price}
+                  >
+                    <InputNumber
+                      placeholder="Masukan Harga Seminar"
+                      className="w-[500px]"
+                      onChange={(e: any) => {
+                        setUpdateSeminar({ ...updateSeminar, price: e });
+                      }}
+                      min={0}
+                      step={1}
+                      formatter={(value) =>
+                        `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      }
+                      parser={parsePrice}
+                    />
+                  </Form.Item>
+                </div>
+                <div className="font-bold text-2xl">Tautan Seminar</div>
+                <div>Harap Masukan Tautan Seminar</div>
+                <div className="pt-2">
+                  <Form.Item<FieldType>
+                    name="link"
+                    initialValue={dataSeminar?.data.link}
+                  >
+                    <Input
+                      placeholder="Masukan Tautan Seminar"
+                      className="w-[500px]"
+                      onChange={(e) => {
+                        setUpdateSeminar({
+                          ...updateSeminar,
+                          link: e.target.value,
+                        });
+                      }}
+                      defaultValue={dataSeminar?.data.link}
+                    />
+                  </Form.Item>
+                </div>
+              </Form>
+              <div className="font-bold text-2xl">Pemateri</div>
+              <div>Harap Masukan Namam Pemateri Masksimal 3 Orang</div>
+              <div className="pt-2 flex">
+                <Form onFinish={onFinish} size="middle">
+                  <Form.Item<FieldType>
+                    name="psikolog"
+                    initialValue={dataSeminar?.data.psikolog}
+                  >
+                    <Select
+                      mode="multiple"
+                      allowClear
+                      style={{ width: "500px", height: "40px" }}
+                      placeholder="Please select"
+                      options={datapsikolog?.data.map((val: any) => {
+                        return {
+                          value: val.id,
+                          label: val.fullName,
+                        };
+                      })}
+                      maxLength={3}
+                      maxTagCount={3}
+                      maxTagPlaceholder={3}
+                      maxTagTextLength={3}
+                      onChange={(e) => {
+                        setUpdateSeminar({ ...updateSeminar, psikolog: e });
+                      }}
+                    />
+                  </Form.Item>
+                </Form>
               </div>
-            </div>
-            <div>
-              <div className="font-bold text-2xl">
-              Judul Seminar
-              </div>
-              <div className="font-semibold text-lg rounded-lg p-2" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
-                "{data?.data.title}"
-              </div>
-              <div className="font-bold text-2xl pt-5 pb-1">
-                Tanggal Seminar
-              </div>
-              <div className="font-semibold text-lg rounded-lg p-2" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
-                {data?.data.datetime}
-              </div>
-              <div className="font-bold text-2xl pt-5 pb-1">
-                Harga Seminar
-              </div>
-              <div className="font-semibold text-lg rounded-lg p-2" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
-                <IntlProvider>
-                  <PriceFormatter value={data?.data.price} />
-                </IntlProvider>
-              </div>
-              <div className="font-bold text-2xl pt-5 pb-1">
-                Tautan Seminar
-              </div>
-              <div className="font-semibold text-base rounded-lg p-2" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
-              {data?.data.link}
-              </div>
-              <div className="font-bold text-2xl pt-5 pb-1">
-                Status Seminar
-              </div>
-              <div>
+              <div className="flex justify-center pt-20">
+                <Button
+                  type="text"
+                  className="bg-primary text-2xl h-fit w-[400px] rounded-[20px]"
+                  onClick={onFinish}
+                >
+                  Perbarui Seminar
+                </Button>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </LayoutAdmin>
   );
