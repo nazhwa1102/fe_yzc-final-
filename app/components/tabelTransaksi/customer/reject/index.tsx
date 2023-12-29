@@ -16,11 +16,8 @@ interface DataType {
   detailOrder: string;
 }
 
-const TransaksiReject = () => {
-  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminarReject();
-
-  console.log(dataTransaksiSeminar);
-  
+const TransaksiRejectCus = () => {
+  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.getReject();
   const [open, setOpen] = useState(false);
   const showModal = () => {
     setOpen(true);
@@ -117,4 +114,4 @@ const TransaksiReject = () => {
     </>
   );
 };
-export default TransaksiReject
+export default TransaksiRejectCus

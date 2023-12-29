@@ -2,21 +2,15 @@
 import React, { useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Card, Col, Row } from "antd";
+import Logo from "../images/logo";
 import { Icon } from "@iconify/react";
 import { parseJwt } from "#/utils/convert";
-import { useRouter } from "next/router";
-import Logo from "#/app/components/gambar/logo";
-
-
-
-
+import { useRouter } from "next/navigation";
 
 const { Header, Sider, Content } = Layout;
-const LayoutPsikolog = ({ children ,menu}: any) => {
+const LayoutCustomer = ({ children, menu }: any) => {
   const [collapsed, setCollapsed] = useState(false);
-  // const {
-  //   token: { colorBgContainer, borderRadiusLG },
-  // } = theme.useToken();
+  const router = useRouter();
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -30,71 +24,54 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
     console.log(role, "role cocok");
   }
 
-// const router = useRouter();
-
-//   const showModal =() => {
-//     if (!localStorage.getItem("acces_token")) {
-//       alert("silahkan login");
-//       router.push('login');
-//     } else {
-//       setIsModalOpen(true);
-//     }
-//   };
-
   return (
     <Layout style={{ height: "fit" }}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
         <div className="dashboard admin" />
         <div className="flex justify-center w-[100%]">
           <Logo />
         </div>
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
           className="font-semibold"
           defaultSelectedKeys={[menu]}
           items={[
             {
-              key: "/psikolog/dashboard",
+              key: "/profil",
               icon: <Icon icon="carbon:dashboard" />,
-              label: "Dashboard",
+              label: "Profil",
             },
             {
-              key: "/psikolog/seminar",
-              icon: <Icon icon="octicon:people-24" />,
-              label: "Seminar",
-            },
-            {
-              key: "3",
-              icon: <Icon icon="pepicons-print:people" />,
-              label: "Private Konseling",
-            },
-            {
-              key: "4",
-              icon: <Icon icon="grommet-icons:article" />,
-              label: "Artikel",
-            },
-            {
-              key: "5",
-              icon: <Icon icon="fluent:chat-12-regular" />,
-              label: "Obroloan",
-            },
-            {
-              key: "6",
+              key: "/notifikasi",
               icon: <Icon icon="mdi:bell-ring-outline" />,
               label: "Notifikasi",
             },
             {
-              key: "8",
+              key: "/obrolan",
+              icon: <Icon icon="fluent:chat-12-regular" />,
+              label: "Obroloan",
+            },
+            {
+              key: "/riwayat_transaksi",
               icon: <Icon icon="bi:clock" />,
               label: "Riwayat Transaksi",
             },
             {
-              key: "10",
+              key: "/ubah-sandi",
+              icon: <Icon icon="bi:lock" />,
+              label: "Ubah Kata Sandi",
+            },
+            {
+              key: "/logout",
               icon: <Icon icon="solar:logout-broken" />,
               label: "Logout",
             },
           ]}
+          onClick={({ key }) => {
+            router.push(key);
+            // console.log(`key ${key} route not found`);
+          }}
         />
       </Sider>
       <Layout style={{ height: "100%" }}>
@@ -131,4 +108,4 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
     </Layout>
   );
 };
-export default LayoutPsikolog;
+export default LayoutCustomer;

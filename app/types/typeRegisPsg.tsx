@@ -2,9 +2,9 @@ export type RegisterPsikolog = {
   level_user: string;
   fullName:string;
   gender:'pria' | 'wanita' | '';
-  religion: 'islam' | 'katolik' | 'prostestan' |'budha' | 'hindu' |'konghucu'|'';
-  birthDate:string;
-  lastEducation:string;
+  religion: 'Islam' | 'Katolik' | 'Prostestan' |'Budha' | 'Hindu' |'Konghucu'|'';
+  birth_date:Date;
+  last_education:string;
   caseHandled: string;
   aboutMe: string;
   legality:string;

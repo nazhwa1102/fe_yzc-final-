@@ -20,10 +20,10 @@ const [dataInput,setData] = useState<RegisterCustomer>({
   gender:'',
   email:'',
   password:'',
-  birthDate: '',
+  birth_date: new Date,
   religion: '',
   phone:'',
-  lastEducation:'',
+  last_education:'',
 });
 
 const [formStep1] = Form.useForm();
@@ -61,15 +61,15 @@ const [formStep2] = Form.useForm();
   const onFinish = async () => {
     try {
       const data = {
-          level_user: '9109058c-3c51-4ce4-9415-e002357e9f18',
+          level_user: '2b9814f9-befa-41e4-9f95-1f759b411801',
           full_name: dataInput?.fullName,
           gender: dataInput?.gender,
           email: dataInput?.email,
           password: dataInput?.password,
-          birth_date: dataInput?.birthDate,
+          birth_date: dataInput?.birth_date,
           religion: dataInput?.religion,
           phone: dataInput?.phone,
-          last_education: dataInput?.lastEducation
+          last_education: dataInput?.last_education
       };
       
       // console.log (

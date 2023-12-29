@@ -86,7 +86,7 @@ const Layout2 = () => {
     {
       key: "4",
       label: (
-        <a rel="noopener noreferrer" href="">
+        <a rel="noopener noreferrer" href="/riwayat_transaksi">
           Riwayat Transaksi
         </a>
       ),
@@ -215,7 +215,7 @@ const Layout2 = () => {
                 <div className="justify-center">
                   <Psikologlist />
                   <div className="flex justify-center pt-10">
-                    <Button className="rounded-xl h-fit text-lg w-[200px] bg-yzc" type="text">
+                    <Button className="rounded-xl h-fit text-lg w-[200px] bg-yzc shadow-lg" type="text">
                       Lihat Semua
                     </Button>
                   </div>

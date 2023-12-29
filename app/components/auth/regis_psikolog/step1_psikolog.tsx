@@ -116,7 +116,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
               <DatePicker
                 onChange={(e: any) => {
                   console.log(e?.$d, 'isinya')
-                  setData({ ...dataInput, birthDate: e?.$d });
+                  setData({ ...dataInput, birth_date: e?.$d });
                 }}
                 placeholder="Pilih tanggal"
                 className="w-full regis text-white"
@@ -142,7 +142,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
             >
               <Input
                 onChange={(e) => {
-                  setData({ ...dataInput, lastEducation: e.target.value });
+                  setData({ ...dataInput, last_education: e.target.value });
                 }}
                 placeholder="Masukan Pendidikan Terakhir"
                 className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"

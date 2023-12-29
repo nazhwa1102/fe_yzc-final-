@@ -14,7 +14,11 @@ const url = {
     seminarApprove: () => '/transaksi/seminar/approve',
     seminarReject: () => '/transaksi/seminar/reject',
     seminarPending: () => '/transaksi/seminar/pending',
-    privateKonseling: () => '/transaksi/private_konseling'
+    privateKonseling: () => '/transaksi/private_konseling',
+    transaksiApprove: () => '/transaksi/approve',
+    transaksiReject: () => '/transaksi/reject',
+    transaksiPending: () => '/transaksi/pending',
+
 }
 
 const manipulateData = {
@@ -67,7 +71,16 @@ const hooks = {
   },
   privateKonseling(){
     return useSWR(url.privateKonseling(), http.fetcher)
-  }
+  },
+  getApprove(){
+    return useSWR(url.transaksiApprove(), http.fetcher)
+  },
+  getReject(){
+    return useSWR(url.transaksiReject(), http.fetcher)
+  },
+  getPending(){
+    return useSWR(url.transaksiPending(), http.fetcher)
+  },
 }
 
 export const TransaksiRepository = {

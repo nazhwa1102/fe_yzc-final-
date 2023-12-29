@@ -1,10 +1,25 @@
 "use client";
 
-import { TransaksiRepository } from "#/repository/transaksi";
-import { ColumnsType } from "antd/es/table";
+import LayoutAdmin from "#/app/components/layoutadmin";
 import React, { useState } from "react";
+import { Button, Modal, Tabs, message, Table, Form, Input } from "antd";
+import type { TabsProps } from "antd";
+import { ColumnsType } from "antd/es/table";
+import {
+  CheckOutlined,
+  CloseCircleOutlined,
+  CloseCircleTwoTone,
+  DeleteOutlined,
+  DeleteTwoTone,
+  EditOutlined,
+  ZoomInOutlined,
+} from "@ant-design/icons";
+import { TransaksiRepository } from "#/repository/transaksi";
 import DetailOrder from "#/app/components/detailOrder";
-import { Table } from "antd/lib";
+import LayoutCustomer from "#/app/components/layoutCustomer";
+import TransaksiPendingCus from "#/app/components/tabelTransaksi/customer/pending";
+import TransaksiApproveCus from "#/app/components/tabelTransaksi/customer/approve";
+import TransaksiRejectCus from "#/app/components/tabelTransaksi/customer/reject";
 
 interface DataType {
   id: string;
@@ -16,22 +31,14 @@ interface DataType {
   detailOrder: string;
 }
 
-const TransaksiReject = () => {
-  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminarReject();
+const { TabPane } = Tabs;
 
-  console.log(dataTransaksiSeminar);
-  
+const RiwayatTransaksi = () => {
+  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminar();
+  const { data: dataTransaksiPrivateKonseling } =
+    TransaksiRepository.hooks.privateKonseling();
+
   const [open, setOpen] = useState(false);
-  const showModal = () => {
-    setOpen(true);
-  };
-  const handleOk = () => {
-    setOpen(false);
-  };
-
-  const handleCancel = () => {
-    setOpen(false);
-  };
 
   function formatDateWithHyphens(date: any) {
     const inputDate = new Date(date);
@@ -91,30 +98,31 @@ const TransaksiReject = () => {
       ),
     },
   ];
+
   const scroll = {
     x: "max-content",
     y: 600,
   };
 
   return (
-    <>
-      <Table
-        columns={columns}
-        dataSource={dataTransaksiSeminar?.data.map((val: any) => {
-          console.log(val.poster, "isi poster");
-          return {
-            id: val.id,
-            nama: val.customer.fullName,
-            date: val.createdAt,
-            transaction_amount: val.transaction_amount,
-            payment_proof: val.payment_proof,
-          };
-        })}
-        className="font-semibold"
-        scroll={scroll}
-        pagination={false}
-      />
-    </>
+    <LayoutCustomer menu="/riwayat_transaksi">
+      <div>
+            <Tabs>
+              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
+                <TransaksiPendingCus />
+              </TabPane>
+              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
+                <TransaksiApproveCus />
+              </TabPane>
+              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
+                <TransaksiRejectCus />
+              </TabPane>
+            </Tabs>
+      </div>
+    </LayoutCustomer>
   );
 };
-export default TransaksiReject
+
+console.log();
+
+export default RiwayatTransaksi;

@@ -258,6 +258,11 @@ button, [type='button'], [type='reset'], [type='submit'] {
     background-color: #525F89;
     color: white;
 }
+
+.greenButt{
+    --tw-bg-opacity: 1;
+    background-color: rgb(34 197 94 / var(--tw-bg-opacity)) !important; 
+}
 :where(.css-dev-only-do-not-override-3oiqkd).ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder{
     color: white;
 }

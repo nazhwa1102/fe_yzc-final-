@@ -110,7 +110,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           >
             <DatePicker
               onChange={(e) => {
-                setData({ ...dataInput, birthDate: e });
+                setData({ ...dataInput, birth_date: e });
               }}
               placeholder="Pilih tanggal"
               className="w-full regis text-white bg-transparent"
@@ -136,7 +136,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           >
             <Input
 			  onChange={(e) => {
-                setData({ ...dataInput, lastEducation: e.target.value });
+                setData({ ...dataInput, last_education: e.target.value });
               }}
               placeholder="Masukan Pendidikan Terakhir"
               className=" p-[10px] rounded-[10px] border border-rstroke regis text-white bg-transparent"

@@ -74,7 +74,7 @@ const bayarSeminar = () => {
         datas
       );
       console.log(create_Transaksi);
-      router.push('/seminar')
+      router.push('/riwayat_transaksi')
       setTimeout(
         message.success("Anda Telah Berhasil Menambahkan Seminar"),
         5000
