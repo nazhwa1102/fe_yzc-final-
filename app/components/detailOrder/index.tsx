@@ -1,7 +1,7 @@
 "use client"
 
 import { TransaksiRepository } from "#/repository/transaksi"
-import { ZoomInOutlined } from "@ant-design/icons"
+import { CheckCircleOutlined, CloseCircleOutlined, RedoOutlined, ZoomInOutlined } from "@ant-design/icons"
 import { Button, Modal } from "antd"
 import React, { useState } from "react"
 import { IntlProvider } from "react-intl"
@@ -27,6 +27,34 @@ const DetailOrder = ({id}: any) => {
     const minute = inputDate.getMinutes().toString().padStart(2, "0")
 
     return `${year}-${month}-${day}, ${hour}.${minute} WIB`;
+  }
+
+  const Status = () => {
+    if (dataTransaksi?.data.status === 'reject') {
+      return(
+        <div>
+          <div className="font-semibold text-base rounded-lg p-2 items-center flex gap-1 bg-red-600 text-white" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
+              <CloseCircleOutlined/> Pembayaran Ditolak Admin
+          </div>
+        </div>
+      )
+    }if (dataTransaksi?.data.status === 'approve') {
+      return(
+        <div>
+          <div className="font-semibold text-base rounded-lg p-2 items-center flex gap-1 bg-green-500 text-white" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
+              <CheckCircleOutlined/> Pembayran Telah Disetejui Admin
+          </div>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+          <div className="font-semibold text-base rounded-lg p-2 items-center flex gap-1 text-yzc" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
+              <RedoOutlined rotate={-90}/> Menunggu Konfirmasi Admin
+          </div>
+        </div>
+      )
+    }
   }
 
   const [openDetail, setOpenDetail] = useState(false);
@@ -74,6 +102,9 @@ const DetailOrder = ({id}: any) => {
                   <PriceFormatter value={dataTransaksi?.data.transaction_amount} />
                 </IntlProvider>
                     </div>
+                </div>
+                <div className="pt-5">
+                  <Status/>
                 </div>
               </div>
               </div>
