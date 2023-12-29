@@ -5,7 +5,7 @@ export type RegisterCustomer = {
   email:string;
   password:string;
   birthDate:string;
-  Religion: 'islam' | 'katolik' | 'prostestan' |'budha' | 'hindu' |'konghucu'|'';
+  religion: 'islam' | 'katolik' | 'prostestan' |'budha' | 'hindu' |'konghucu'|'';
   phone:string;
   lastEducation:string;
 }

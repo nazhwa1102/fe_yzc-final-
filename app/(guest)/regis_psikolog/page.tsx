@@ -21,7 +21,7 @@ function register_psikolog() {
     level_user: '',
     fullName:'',
     gender:'',
-    Religion: '',
+    religion: '',
     birthDate:'',
     lastEducation:'',
     caseHandled: '',
@@ -82,7 +82,7 @@ const [formStep3] = Form.useForm();
           level_user: 'cedf2abb-bd61-4314-9075-d42f9303a88c',
           full_name: dataInput?.fullName,
           gender: dataInput?.gender,
-          religion: dataInput?.Religion,
+          religion: dataInput?.religion,
           birth_date: dataInput?.birthDate,
           last_education: dataInput?.lastEducation,
           case_handled: dataInput?.caseHandled,
@@ -90,7 +90,7 @@ const [formStep3] = Form.useForm();
           legality: dataInput?.legality,
           photo: dataInput?.photo,
           email: dataInput.email,
-          phone_number: dataInput?.phone,
+          phone: dataInput?.phone,
           password: dataInput?.password,
       };
       console.log (data ,"ini data");
@@ -163,7 +163,7 @@ const [formStep3] = Form.useForm();
                           disabled={
                             dataInput.fullName.length <= 1 ||
                             dataInput.birthDate.length <= 1 ||
-                            dataInput.Religion.length <=  1 ||
+                            dataInput.religion.length <=  1 ||
                             dataInput.birthDate.length <= 1 ||
                             dataInput.lastEducation.length <= 1 ||
                             dataInput.caseHandled.length <= 1 ||

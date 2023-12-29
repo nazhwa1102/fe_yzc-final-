@@ -81,17 +81,17 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
               >
                 <Select
                   onChange={(e) => {
-                    setData({ ...dataInput, Religion: e });
+                    setData({ ...dataInput, religion: e });
                   }}
                   placeholder="Pilih Agama"
                   className="w-full regis"
                 >
-                  <Option value="islam">Islam</Option>
-                  <Option value="katolik">Katolik</Option>
-                  <Option value="prostestan">Prostestan</Option>
-                  <Option value="budha">Budha</Option>
-                  <Option value="hindu">Hindu</Option>
-                  <Option value="konghucu">Konghucu</Option>
+                  <Option value="Islam">Islam</Option>
+                  <Option value="Katolik">Katolik</Option>
+                  <Option value="Prostestan">Prostestan</Option>
+                  <Option value="Budha">Budha</Option>
+                  <Option value="Hindu">Hindu</Option>
+                  <Option value="Konghucu">Konghucu</Option>
                 </Select>
               </Form.Item>
             </div>

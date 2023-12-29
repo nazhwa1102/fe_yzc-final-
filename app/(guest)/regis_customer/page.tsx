@@ -21,7 +21,7 @@ const [dataInput,setData] = useState<RegisterCustomer>({
   email:'',
   password:'',
   birthDate: '',
-  Religion: '',
+  religion: '',
   phone:'',
   lastEducation:'',
 });
@@ -67,11 +67,22 @@ const [formStep2] = Form.useForm();
           email: dataInput?.email,
           password: dataInput?.password,
           birth_date: dataInput?.birthDate,
-          religion: dataInput?.Religion,
-          phone_number: dataInput?.phone,
+          religion: dataInput?.religion,
+          phone: dataInput?.phone,
           last_education: dataInput?.lastEducation
       };
-      console.log (data ,"ini data");
+      
+      // console.log (
+      //     'full_name', dataInput.fullName.length,
+      //     'gender', dataInput.gender.length,
+      //     'email', dataInput.email.length,
+      //     'password', dataInput.password.length,
+      //     'birth_date', !dataInput.birthDate.length,
+      //     'religion',dataInput.Religion.length,
+      //     'phone_number', dataInput.phone.length,
+      //     'last_education', dataInput.lastEducation.length );
+          
+      // console.log (data ,"ini data");
       const register_customer = await authRepository.manipulateData.register(data);
       console.log(register_customer,"hasilnya ini");
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
