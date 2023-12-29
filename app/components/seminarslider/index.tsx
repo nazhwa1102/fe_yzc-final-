@@ -35,7 +35,7 @@ const SeminarSlider: React.FC = () => {
             <Button
               disabled={currentPage === 1}
               onClick={() => handlePageChange(currentPage - 1)}
-              className="flex items-center h-fit text-black" type="link"
+              className="flex items-center h-fit text-black background-white-custom" type="link"
             >
               <LeftOutlined style={{ fontSize: "35px" }} className="arrow"/>
             </Button>
@@ -76,9 +76,9 @@ const SeminarSlider: React.FC = () => {
             <Button
               disabled={currentPage === Math.ceil(dataSeminar?.data.length / itemsPerPage)}
               onClick={() => handlePageChange(currentPage + 1)}
-              className="flex items-center h-fit text-black"  type="link"
+              className="flex items-center h-fit text-black background-white-custom"  type="link"
             >
-              <RightOutlined style={{ fontSize: "35px" }} className="arrow"/>
+              <RightOutlined style={{ fontSize: "35px" }} className="arrow "/>
             </Button>
           </div>
         </div>

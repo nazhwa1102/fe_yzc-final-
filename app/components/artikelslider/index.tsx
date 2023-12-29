@@ -41,7 +41,7 @@ const ArtikelSlider: React.FC = () => {
             <Button
               disabled={currentPage === 1}
               onClick={() => handlePageChange(currentPage - 1)}
-              className="flex items-center w-fit h-fit text-black" type="link"
+              className="flex items-center w-fit h-fit text-black background-white-custom" type="link"
             >
               <LeftOutlined style={{ fontSize: "45px" }} className="arrow"/>
             </Button>
@@ -80,7 +80,7 @@ const ArtikelSlider: React.FC = () => {
             <Button
               disabled={currentPage === Math.ceil(slides.length / itemsPerPage)}
               onClick={() => handlePageChange(currentPage + 1)}
-              className="flex items-center h-fit w-fit text-black" type="link"
+              className="flex items-center h-fit w-fit text-black background-white-custom" type="link"
             >
               <RightOutlined style={{ fontSize: "45px" }} className="arrow"/>
             </Button>

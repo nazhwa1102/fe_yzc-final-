@@ -73,7 +73,7 @@ const CreateSeminar = () => {
                     <Form.Item name="title">
                       <Input
                         placeholder="Masukan Judul Seminar"
-                        className="w-[500px]"
+                        className="w-[500px] text-black"
                         onChange={(e) => {
                           setSeminar({...dataInput, title: e.target.value})
                         }}

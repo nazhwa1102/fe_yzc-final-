@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload } from 'antd';
-import { CreateSeminar } from '#/app/type/typeCreateSeminar';
+import { CreateSeminar } from '#/app/types/typeCreateSeminar';
 import { SeminarRepository } from '#/repository/seminar';
 import { UploadChangeParam ,UploadFile} from 'antd/lib/upload';
 
