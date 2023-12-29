@@ -28,6 +28,11 @@ const manipulateData = {
       formData.append("file", data)
       return http.post(url.psikologImage()).send(formData)
   },
+  PsikologLegality(data:any){
+    const formData = new FormData()
+    formData.append("file", data)
+    return http.post(url.psikologLegality()).send(formData)
+},
 }
 
 const hooks = {
