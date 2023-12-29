@@ -71,7 +71,18 @@ const [formStep2] = Form.useForm();
           phone: dataInput?.phone,
           last_education: dataInput?.last_education
       };
-      console.log (data ,"ini data");
+      
+      // console.log (
+      //     'full_name', dataInput.fullName.length,
+      //     'gender', dataInput.gender.length,
+      //     'email', dataInput.email.length,
+      //     'password', dataInput.password.length,
+      //     'birth_date', !dataInput.birthDate.length,
+      //     'religion',dataInput.Religion.length,
+      //     'phone_number', dataInput.phone.length,
+      //     'last_education', dataInput.lastEducation.length );
+          
+      // console.log (data ,"ini data");
       const register_customer = await authRepository.manipulateData.register(data);
       console.log(register_customer,"hasilnya ini");
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
