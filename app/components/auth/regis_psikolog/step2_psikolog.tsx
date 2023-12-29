@@ -84,7 +84,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
               file?.originFileObj
             );
             console.log(response.body.fileName, "hasilnya");
-            setFoto(response.body.fileName);
+            setLegalitas(response.body.fileName);
             setData({ ...dataInput, legality: response.body.fileName });
           } else {
             message.error(

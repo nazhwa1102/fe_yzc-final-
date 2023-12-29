@@ -15,7 +15,7 @@ function register_customer() {
 const router = useRouter();
 
 const [dataInput,setData] = useState<RegisterCustomer>({
-  level_user: '',
+  level_user: '2b9814f9-befa-41e4-9f95-1f759b411801',
   fullName:'',
   gender:'',
   email:'',
