@@ -1,3 +1,4 @@
+"use client"
 import './globals.css';
 import 'antd/dist/reset.css';
 import {Provider} from "./provider";
