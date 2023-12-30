@@ -85,6 +85,7 @@ const Pembayaran = () => {
       );
       setOpen(false);
       mutate;
+      window.location.reload()
       setTimeout(
         message.success("Anda Telah Berhasil Menolak Transaksi"),
         5000
