@@ -153,9 +153,9 @@ const Psikolog = () => {
         <div className="list-item justify-center">
           <div className="pb-1">
             <Button
-              className="bg-[#525F89] text-white flex items-center w-[125px] justify-center"
+              className="bg-[#525F89] text-white flex items-center w-[125px] justify-center bg-green-500 "
               onClick={showModal2}
-              type="text"
+              type="primary"
             >
               <CheckOutlined className="flex pt-[2px]" />
               Terima
@@ -163,7 +163,7 @@ const Psikolog = () => {
             <Modal
               open={open2}
               onCancel={handleCancel2}
-              footer={(_) => (
+              footer={
                 <div className="justify-center flex pt-3">
                   <Button
                     onClick={handleCancel2}
@@ -182,7 +182,7 @@ const Psikolog = () => {
                     Ya
                   </Button>
                 </div>
-              )}
+            }
               className="pt-[130px]"
             >
               <div className="justify-center">
@@ -214,7 +214,7 @@ const Psikolog = () => {
             <Modal
               open={open}
               onCancel={handleCancel}
-              footer={(_) => (
+              footer={
                 <div className="justify-center flex pt-3">
                   <Button
                     onClick={handleCancel}
@@ -231,7 +231,7 @@ const Psikolog = () => {
                     Ya
                   </Button>
                 </div>
-              )}
+              }
               className="pt-[130px]"
             >
               <div className="justify-center">

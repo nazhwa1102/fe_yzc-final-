@@ -29,7 +29,6 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
   let role: string = '';
   let email: string = '';
   console.log(token, "ini tokennya");
-  console.log(parseJwt(token));
   
 
   if (token) {

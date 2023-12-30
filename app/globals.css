@@ -289,3 +289,33 @@ button, [type='button'], [type='reset'], [type='submit'] {
     font-size: medium;
     line-height: 1.75rem;
 }
+
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #000;
+}
+
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    color: #000;
+}
+
+:where(.css-dev-only-do-not-override-3oiqkd).ant-btn {
+    color: #ffffff;
+}
+
+.background-white-custom{
+    background-color: #fff !important;
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+    background-color: #016255;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-menu-dark, :where(.css-dev-only-do-not-override-3oiqkd).ant-menu-dark>.ant-menu {
+    color: #ffffff;
+    background: #016255;
+}
+/* .background-white-custom{
+    background-color: #fff !important;
+}
+button, [type='button'], [type='reset'], [type='submit'] {
+    background-color: #016255;
+} */

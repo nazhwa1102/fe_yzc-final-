@@ -102,7 +102,7 @@ const Seminar = () => {
             <Modal
               open={open}
               onCancel={handleCancel}
-              footer={(_) => (
+              footer={
                 <div className="justify-center flex pt-3">
                   <Button
                     onClick={handleCancel}
@@ -121,7 +121,7 @@ const Seminar = () => {
                     Ya
                   </Button>
                 </div>
-              )}
+              }
               className="pt-[130px]"
             >
               <div className="justify-center">
