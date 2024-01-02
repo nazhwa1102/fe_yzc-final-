@@ -40,11 +40,9 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
     router.push('/');
   }
 
+
   return (
     <>
-    {/* {role !== isRole.customer && role !== isRole.psikolog && router.push('/admin/dashboard')}
-    {role !== isRole.customer && role !== isRole.admin && router.push('/psikolog/dashboard')}
-    {role !== isRole.admin && role !== isRole.psikolog && router.push('/home')} */}
     {children}
     </>
   );

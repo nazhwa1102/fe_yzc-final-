@@ -12,7 +12,7 @@ import {
   Statistic,
   message,
 } from "antd";
-import { LeftOutlined, ReloadOutlined } from "@ant-design/icons";
+import { CheckCircleTwoTone, LeftOutlined, ReloadOutlined } from "@ant-design/icons";
 import Bank from "#/app/components/bank";
 import { useState } from "react";
 import Uploads from "#/app/components/upload";
@@ -73,12 +73,28 @@ const bayarSeminar = () => {
       const create_Transaksi = await TransaksiRepository.manipulateData.create(
         datas
       );
+      Modal.success({
+        icon:(
+          <div className="flex justify-center">
+            <CheckCircleTwoTone twoToneColor="lightgreen" style={{fontSize: '90px'}}/>
+          </div>
+        ),
+        title:(
+          <div className="flex justify-center text-lg font-bold">
+            Success
+          </div>
+        ),
+        content: (
+          <div className="flex justify-center text-xl font-bold">
+            Anda Berhasil Melakukan Transaksi
+          </div>
+        ),
+      })
+      setTimeout(() => {
+        Modal.destroyAll
+      }, 5000);
       console.log(create_Transaksi);
-      router.push('/riwayat_transaksi')
-      setTimeout(
-        message.success("Anda Telah Berhasil Menambahkan Seminar"),
-        5000
-      );
+      router.push('/seminar')
     } catch (error) {
       throw error;
     }

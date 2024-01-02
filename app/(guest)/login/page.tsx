@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import Logo from "#/app/components/gambar/logo";
 import Login from "#/app/components/gambar/login";
 import { authRepository } from "#/repository/auth";
-import { error } from "console";
+import { error, log } from "console";
 import { parseJwt } from "#/utils/convert";
 
 interface ErrorLogin {
@@ -45,7 +45,6 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (values: any) => {
-    console.log("Received values of from", values);
     try {
       const data = {
         email: values?.email,
@@ -53,22 +52,32 @@ const LoginPage = () => {
       };
 
       const login = await authRepository.manipulateData.login(data);
-      console.log(login, "Hasil API Login");
-      localStorage.setItem("access_token", login?.body?.data?.access_token);
-      setTimeout(message.success("Anda Telah Berhasil Login!"),5000)
-      router.push("/home");
-    } catch (error) {
-      // message.error(error.reponse.body?.error)
-      console.log(error, "eror cuy");
-    }
 
-    const token = localStorage.getItem('acces_token');
-    let role: string = '';
-    if (token) {
-      role = parseJwt(token).role;
+      localStorage.setItem('access_token', login?.body?.data?.access_token);
+
+      const token = localStorage.getItem('access_token');
+      let role: string = '';
+      if (token) {
+        role = parseJwt(token).role;
+      }
+      console.log(parseJwt(token));
+      
+
+      if (role === 'Admin') {
+        router.push('/admin/dashboard');
+        setTimeout(message.success('Anda Telah Berhasil Login!'), 5000);
+      } else if (role === 'Psikolog') {
+        router.push('/psikolog/dashboard');
+        setTimeout(message.success('Anda Telah Berhasil Login!'), 5000);
+      } else if(role === 'Customer'){
+        router.push('/home');
+        setTimeout(message.success('Anda Telah Berhasil Login!'), 5000);
+      }else{
+        message.error('Akun Tidak Terdaftar')
+      }
+    } catch (err: any) {
+      message.error(err.response.body?.error);
     }
-    
-    
   };
 
   return (
