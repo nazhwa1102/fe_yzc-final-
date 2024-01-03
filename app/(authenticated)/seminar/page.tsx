@@ -43,7 +43,7 @@ const listSeminar= () => {
             <div className="pl-3">
               <div className="font-bold text-2xl w-[290px]">{val.title}</div>
               <div className="font-semibold text-lg">{val.datetime}</div>
-              <div className="text-base font-medium text-green-700">
+              <div className="text-base font-medium text-yzc">
                 <IntlProvider>
               <PriceFormatter value={val.price}/>
                 </IntlProvider>

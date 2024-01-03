@@ -319,3 +319,7 @@ button, [type='button'], [type='reset'], [type='submit'] {
 button, [type='button'], [type='reset'], [type='submit'] {
     background-color: #016255;
 } */
+.slider .ant-menu-dark , .slider.ant-menu-dark>.ant-menu {
+    color: #016255;
+    background: #fff;
+}
