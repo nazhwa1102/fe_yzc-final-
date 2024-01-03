@@ -28,13 +28,19 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
   console.log(token, "yuk bisa");
   let role: string = '';
   let email: string = '';
+  let fullNameCus: string = ''
   console.log(token, "ini tokennya");
+  console.log(parseJwt(token), "hasilnya");
+  
   
 
   if (token) {
     role = parseJwt(token).role;
     email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
     console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    
   }
   if (!token) {
     router.push('/');

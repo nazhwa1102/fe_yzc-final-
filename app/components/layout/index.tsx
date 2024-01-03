@@ -25,11 +25,34 @@ import Logo from "../images/logo";
 import LogoBig from "../images/logoBig";
 import Headers1 from "../images/header1";
 import Headers2 from "../images/header2";
+import { parseJwt } from "#/utils/convert";
 
 const { Header, Content, Footer } = Layout;
 
 const Layout2 = ({ children, title }: any) => {
+
+  const token = localStorage.getItem('access_token');
+  console.log(token, "yuk bisa");
+  let role: string = '';
+  let email: string = '';
+  let fullNameCus: string = ''
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
+    console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    
+  }
+
+
   const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    router.push('/');
+  };
 
   const {
     token: { colorBgContainer },
@@ -74,7 +97,7 @@ const Layout2 = ({ children, title }: any) => {
     },
     {
       key: "5",
-      label: (<a rel="noopener noreferrer" href="http://localhost:3000/login">LogOut</a>),
+      label: (<a rel="noopener noreferrer" onClick={handleLogout}>LogOut</a>),
       danger: true,
       icon: <LogoutOutlined />,
     },
@@ -103,8 +126,8 @@ const Layout2 = ({ children, title }: any) => {
     <Layout>
       <Header className="header flex bg-[#016255]" style={{ height: "75px" }}>
         <div className={"flex mt-[-42x]"}>
-          <a href="/home">
-            <Logo />
+        <a onClick={() => router.push('/home')}>
+          <Logo />
           </a>
         </div>
         <Menu
@@ -130,7 +153,7 @@ const Layout2 = ({ children, title }: any) => {
           >
             <a onClick={(e) => e.preventDefault()}>
               <Space>
-                Reyner W.L
+                {fullNameCus}
                 <DownOutlined />
               </Space>
             </a>

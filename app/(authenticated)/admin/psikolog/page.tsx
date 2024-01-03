@@ -42,25 +42,41 @@ interface DataType {
   nama: string;
   jenis_kelamin: string;
   email: string;
+  user_yzc: string
 }
 
 const Psikolog = () => {
-  const [open, setOpen] = useState(false);
+  const { data: dataPsikolog } = PsikologRepository.hooks.get();
+  const { data: dataPsikologActive } = PsikologRepository.hooks.active();
+  const { data: dataPsikologInActive } = PsikologRepository.hooks.inactive();
+  const { data: dataPsikologPending } = PsikologRepository.hooks.pending();
 
-  const showModal = () => {
-    setOpen(true);
+
+  const [selectedOption, setSelectedOption] = useState<DataType | null>(
+    null
+  );
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const showModal = (option: DataType) => {
+    setSelectedOption(option);
+    setModalVisible(true);
   };
+
   const handleOk = () => {
-    setOpen(false);
+    setModalVisible(false);
   };
 
   const handleCancel = () => {
-    setOpen(false);
+    setModalVisible(false);
   };
 
   const [open2, setOpen2] = useState(false);
+  const [selectedOption2, setSelectedOption2] = useState<DataType | null>(
+    null
+  );
 
-  const showModal2 = () => {
+  const showModal2 = (option: DataType) => {
+    setSelectedOption2(option);
     setOpen2(true);
   };
   const handleOk2 = () => {
@@ -71,10 +87,7 @@ const Psikolog = () => {
     setOpen2(false);
   };
 
-  const { data: dataPsikolog } = PsikologRepository.hooks.get();
-  const { data: dataPsikologActive } = PsikologRepository.hooks.active();
-  const { data: dataPsikologInActive } = PsikologRepository.hooks.inactive();
-  const { data: dataPsikologPending } = PsikologRepository.hooks.pending();
+  
 
   const { TabPane } = Tabs;
 
@@ -87,16 +100,15 @@ const Psikolog = () => {
       const datas = {
         alasan: dataInput.alasan,
       };
-      const create_Transaksi =
         await UserYzcRepository.manipulateData.userInActive(datas, val);
-      setOpen(false);
-      mutate;
-      setTimeout(
-        message.success("Anda Telah Berhasil Menolak Transaksi"),
-        5000
-      );
-    } catch (error) {
-      throw error;
+        setModalVisible(false);
+        mutate;
+        setTimeout(
+          message.success("Anda Telah Berhasil Menolak Transaksi"),
+          5000
+          );
+        } catch (error) {
+          throw error;
     }
   };
 
@@ -153,13 +165,14 @@ const Psikolog = () => {
         <div className="list-item justify-center">
           <div className="pb-1">
             <Button
-              className="bg-[#525F89] text-white flex items-center w-[125px] justify-center bg-green-500 "
-              onClick={showModal2}
+              className="text-white flex items-center w-[125px] justify-center bg-green-500 "
+              onClick={() => showModal2(record)}
               type="primary"
             >
               <CheckOutlined className="flex pt-[2px]" />
               Terima
             </Button>
+            {selectedOption2 && (
             <Modal
               open={open2}
               onCancel={handleCancel2}
@@ -175,7 +188,7 @@ const Psikolog = () => {
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
                     onClick={async () => {
                         (await UserYzcRepository.manipulateData.userActive(
-                          record.id
+                          selectedOption2.user_yzc
                         )) && window.location.reload();
                       }}
                   >
@@ -201,18 +214,20 @@ const Psikolog = () => {
                 </div>
               </div>
             </Modal>
+            )}
           </div>
           <div className="pb-1">
             <Button
               className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
               style={{ backgroundColor: "#EC5151" }}
-              onClick={showModal}
+              onClick={() => showModal(record)}
             >
               <CloseCircleOutlined className="flex pt-[2px]" />
               Tolak
             </Button>
+            {selectedOption && (
             <Modal
-              open={open}
+              open={modalVisible}
               onCancel={handleCancel}
               footer={
                 <div className="justify-center flex pt-3">
@@ -225,7 +240,7 @@ const Psikolog = () => {
                   <Button
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
                     onClick={() => {
-                      onFinish(record.id);
+                      onFinish(selectedOption.user_yzc);
                     }}
                   >
                     Ya
@@ -258,7 +273,7 @@ const Psikolog = () => {
                     <Form size="middle" style={{ maxWidth: "500px" }}>
                       <Form.Item>
                         <Input
-                          placeholder="Masukan Alasan Penolakan Transaksi"
+                          placeholder="Masukan Alasan Penolakan Psikolog"
                           className="w-[300px]"
                           onChange={(e) => {
                             setUser({
@@ -273,6 +288,7 @@ const Psikolog = () => {
                 </div>
               </div>
             </Modal>
+            )}
           </div>
         </div>
       ),
@@ -299,6 +315,7 @@ const Psikolog = () => {
                   nama: val.fullName,
                   jenis_kelamin: val.gender,
                   email: val.user_yzc?.email,
+                  user_yzc: val.user_yzc?.id
                 };
               })}
               className="font-semibold"

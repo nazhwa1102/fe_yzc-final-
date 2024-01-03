@@ -77,7 +77,7 @@ const Seminar = () => {
               href={`seminar/${record.id}`}
             >
               <ZoomInOutlined className="flex pt-[2px]" />
-              Lihat Detail
+              Detail
             </Button>
           </div>
           <div className="pb-1">

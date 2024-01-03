@@ -28,23 +28,30 @@ interface DataType {
   nama: string;
   jenis_kelamin: string;
   email: string;
+  user_yzc: string
 }
 
 const PsikologActive = () => {
 
   const { data: dataPsikologActive } = PsikologRepository.hooks.active();
+  
 
-  const [open, setOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<DataType | null>(
+    null
+  );
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const showModal = () => {
-    setOpen(true);
+  const showModal = (option: DataType) => {
+    setSelectedOption(option);
+    setModalVisible(true);
   };
+
   const handleOk = () => {
-    setOpen(false);
+    setModalVisible(false);
   };
 
   const handleCancel = () => {
-    setOpen(false);
+    setModalVisible(false);
   };
 
   const [dataInput, setUser] = useState<Alasan>({
@@ -57,11 +64,11 @@ const PsikologActive = () => {
         alasan: dataInput.alasan,
       };
       const create_Transaksi =
-        await UserYzcRepository.manipulateData.userInActive(datas, val);
-      setOpen(false);
-      mutate;
+        await UserYzcRepository.manipulateData.userInActive(val, datas);
+        
+      setModalVisible(false);
       setTimeout(
-        message.success("Anda Telah Berhasil Menolak Transaksi"),
+        message.success("Anda Telah Berhasil Menolak Psikolog"),
         5000
       );
     } catch (error) {
@@ -117,20 +124,22 @@ const PsikologActive = () => {
     },
     {
         title: "Aksi",
-        key: "Aksi",
+        key: "aksi",
         render: (_, record) => (
+          
           <div className="list-item justify-center">
             <div className="pb-1">
               <Button
                 className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
                 style={{ backgroundColor: "#EC5151" }}
-                onClick={showModal}
+                onClick={() => showModal(record)}
               >
                 <CloseCircleOutlined className="flex pt-[2px]" />
                 Non Aktifkan
               </Button>
+              {selectedOption && (
               <Modal
-                open={open}
+                open={modalVisible}
                 onCancel={handleCancel}
                 footer={(_) => (
                   <div className="justify-center flex pt-3">
@@ -142,9 +151,7 @@ const PsikologActive = () => {
                     </Button>
                     <Button
                       className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                      onClick={() => {
-                        onFinish(record.id);
-                      }}
+                      onClick={() => onFinish(selectedOption.user_yzc)}
                     >
                       Ya
                     </Button>
@@ -152,6 +159,7 @@ const PsikologActive = () => {
                 )}
                 className="pt-[130px]"
               >
+                  <>
                 <div className="justify-center">
                   <div>
                     <CloseCircleTwoTone
@@ -174,10 +182,11 @@ const PsikologActive = () => {
                         </div>
                       </div>
                       <Form size="middle" style={{ maxWidth: "500px" }}>
-                        <Form.Item>
+                        <Form.Item name="alasan">
                           <Input
-                            placeholder="Masukan Alasan Penolakan Transaksi"
+                            placeholder="Masukan Alasan Penolakan Psikolog"
                             className="w-[300px]"
+                            name="alasan"
                             onChange={(e) => {
                               setUser({
                                 ...dataInput,
@@ -190,7 +199,9 @@ const PsikologActive = () => {
                     </div>
                   </div>
                 </div>
+                  </>
               </Modal>
+                )}
             </div>
           </div>
         ),
@@ -208,13 +219,13 @@ const PsikologActive = () => {
             <Table
           columns={columns}
           dataSource={dataPsikologActive?.data.map((val: any) => {
-            console.log(val.poster, "isi poster");
             return {
                 id: val.id,
                 foto: val.photo,
                 nama: val.fullName,
                 jenis_kelamin: val.gender,
                 email: val.user_yzc?.email,
+                user_yzc: val.user_yzc?.id
             };
           })}
           className="font-semibold"

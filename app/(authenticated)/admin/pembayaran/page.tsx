@@ -94,6 +94,7 @@ const Pembayaran = () => {
       throw error;
     }
   };
+  
 
   const columns: ColumnsType<DataType> = [
     {
@@ -190,13 +191,14 @@ const Pembayaran = () => {
                     twoToneColor={"red"}
                     style={{ fontSize: "90px" }}
                     className="justify-center flex pt-3"
-                  />
+                    />
                 </div>
                 <div className="font-bold text-3xl flex justify-center pt-4">
-                  Tolak Seminar
+                    <div>{record.id}</div>
+                  Tolak Transaksi
                 </div>
                 <div className="flex justify-center text-lg pt-3">
-                  Apa Anda Yakin Ingin Menolak Seminar
+                  Apa Anda Yakin Ingin Menolak Transaksi
                 </div>
                 <div className="flex justify-center">
                   <div className="justify-center pt-3">
@@ -261,7 +263,6 @@ const Pembayaran = () => {
                   columns={columns}
                   dataSource={dataTransaksiPrivateKonseling?.data.map(
                     (val: any) => {
-                      console.log(val.poster, "isi poster");
                       return {
                         id: val.id,
                         nama: val.customer.fullName,

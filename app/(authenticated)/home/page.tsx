@@ -39,6 +39,8 @@ import Homehead from "#/app/components/images/homehead";
 import ArtikelSlider from "#/app/components/artikelslider";
 import Psikologlist from "#/app/components/psikologlist";
 import SeminarSlider from "#/app/components/seminarslider";
+import { Icon } from '@iconify/react';
+import { parseJwt } from "#/utils/convert";
 const { Paragraph } = Typography;
 const { Header, Content, Footer } = Layout;
 
@@ -49,11 +51,32 @@ const Layout2 = () => {
     setCurrentPage(page);
   };
 
+
   const router = useRouter();
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const token = localStorage.getItem('access_token');
+  console.log(token, "yuk bisa");
+  let role: string = '';
+  let email: string = '';
+  let fullNameCus: string = ''
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
+    console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    router.push('/');
+  };
 
   const items: MenuProps["items"] = [
     {
@@ -95,7 +118,7 @@ const Layout2 = () => {
     {
       key: "5",
       label: (
-        <a href="http://localhost:3000/login" rel="noopener noreferrer">
+        <a onClick={handleLogout} rel="noopener noreferrer">
           LogOut
         </a>
       ),
@@ -153,7 +176,7 @@ const Layout2 = () => {
           >
             <a onClick={(e) => e.preventDefault()}>
               <Space>
-                Reyner W.L
+                {fullNameCus}
                 <DownOutlined />
               </Space>
             </a>
@@ -259,17 +282,17 @@ const Layout2 = () => {
               <div className="flex gap-5 items-end">
                 <div>
                   <p>Ikuti Kami Di:</p>
-                  <FacebookFilled /> YouthZen Connect
+                  <Icon icon="ic:baseline-facebook" color="white" /> YouthZen Connect
                   <br />
                   <br />
-                  <TwitterOutlined /> youth.zen_connect
+                  <Icon icon="pajamas:twitter" color="white" /> youth.zen_connect
                 </div>
                 <div>
                   <br />
-                  <InstagramFilled /> youth.zen_connect
+                  <Icon icon="mdi:instagram" color="white" /> youth.zen_connect
                   <br />
                   <br />
-                  <YoutubeFilled /> YouthZen Connect
+                  <Icon icon="mdi:youtube" color="white" /> YouthZen Connect
                 </div>
                 <br />
               </div>

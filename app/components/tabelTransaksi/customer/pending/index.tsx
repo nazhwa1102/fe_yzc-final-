@@ -5,6 +5,7 @@ import { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
 import DetailOrder from "#/app/components/detailOrder";
 import { Table } from "antd/lib";
+import { parseJwt } from "#/utils/convert";
 
 interface DataType {
   id: string;
@@ -17,7 +18,23 @@ interface DataType {
 }
 
 const TransaksiPendingCus = () => {
-  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.getPending();
+  const token = localStorage.getItem('access_token');
+  console.log(token, "yuk bisa");
+  let role: string = '';
+  let email: string = '';
+  let fullNameCus: string = ''
+  let idCus: string = ''
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
+    idCus = parseJwt(token).idCus
+    console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    console.log(idCus, 'ini id')
+  }
+  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.getPending(idCus);
   const [open, setOpen] = useState(false);
   const showModal = () => {
     setOpen(true);
