@@ -334,3 +334,7 @@ button, [type='button'], [type='reset'], [type='submit'] {
 :where(.css-dev-only-do-not-override-p7e5j5).ant-modal-confirm .ant-modal-confirm-body{
     display: grid;
 }
+.slider .ant-menu-dark , .slider.ant-menu-dark>.ant-menu {
+    color: #016255;
+    background: #fff;
+}

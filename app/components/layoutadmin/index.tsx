@@ -25,8 +25,8 @@ const LayoutAdmin = ({ children, menu } : any) => {
   }
 
   return (
-    <Layout style={{ height: "fit" }}>
-      <Sider trigger={null} collapsible collapsed={collapsed} >
+    <Layout className="slider" style={{ height: "fit" }}>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="dashboard admin" />
         <div className="flex justify-center w-[100%]">
           <Logo />

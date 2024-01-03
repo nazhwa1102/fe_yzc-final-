@@ -28,7 +28,7 @@ const SeminarSlider: React.FC = () => {
   const visibleSlides = dataSeminar?.data.slice(startIndex, endIndex);
 
   return (
-    <div style={{ alignItems: "center" }}>
+    <div className= "slider" style={{ alignItems: "center" }}>
       <div style={{ marginTop: "10px", textAlign: "center" }}>
         <div style={{ display: "flex" }}>
           <div className="pt-[120px]">

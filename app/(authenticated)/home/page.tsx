@@ -127,7 +127,7 @@ const Layout2 = () => {
     },
   ];
 
-  const menu: MenuProps["items"] = [
+  const menu : MenuProps["items"] = [
     {
       key: "/about_us",
       label: <a className="text-white">About Us</a>,
