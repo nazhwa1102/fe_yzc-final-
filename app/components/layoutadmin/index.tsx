@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Card, Col, Row } from "antd";
-import Logo from "../images/logo";
+
 import { Icon } from "@iconify/react";
 import { parseJwt } from "#/utils/convert";
 import { useRouter } from "next/navigation";
+import Logo from "../gambar/logo";
 
 const { Header, Sider, Content } = Layout;
 const LayoutAdmin = ({ children, menu } : any) => {
