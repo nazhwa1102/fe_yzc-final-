@@ -42,9 +42,6 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
     console.log(fullNameCus, 'nama');
     
   }
-  if (!token) {
-    router.push('/');
-  }
 
 
   return (

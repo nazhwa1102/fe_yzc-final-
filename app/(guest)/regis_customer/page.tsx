@@ -88,7 +88,7 @@ const [formStep2] = Form.useForm();
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
       router.push("/login");
     } catch(err) {
-      // message.error(err)
+      message.error("Error")
     }
   };
 

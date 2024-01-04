@@ -152,7 +152,7 @@ const Seminar = () => {
   };
 
   return (
-    <LayoutAdmin menu="seminar">
+    <LayoutAdmin menu="/admin/seminar">
       <div>
         <div>
           <Button

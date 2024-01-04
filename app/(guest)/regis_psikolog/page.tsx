@@ -100,17 +100,23 @@ const [formStep3] = Form.useForm();
       Modal.success({
         icon:(
           <div className="justify-center">
+            <div className="flex justify-center">
             <CheckCircleTwoTone twoToneColor="lightgreen" style={{fontSize: '90px'}}/>
+            </div>
           </div>
         ),
         title:(
           <div className="justify-center text-lg font-bold flex">
+            <div className="flex justify-center">
             Pendaftaran Berhasil
+            </div>
           </div>
         ),
         content: (
           <div className="justify-center text-xl font-bold flex">
+            <div className="flex justify-center">
             Harap tunggu aktivasi dari Admin
+            </div>
           </div>
         ),
       })

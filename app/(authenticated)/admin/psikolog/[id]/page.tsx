@@ -173,7 +173,7 @@ const detailSeminar = () => {
           </div>
             </div>
             <div>
-            <div className="font-bold text-2xl">Case Handled:</div>
+            <div className="font-bold text-2xl">Kasus Ditangani:</div>
           <div
             className="font-semibold text-lg rounded-lg p-2"
             style={{

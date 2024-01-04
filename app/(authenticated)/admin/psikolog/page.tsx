@@ -301,7 +301,7 @@ const Psikolog = () => {
   };
 
   return (
-    <LayoutAdmin menu="psikolog">
+    <LayoutAdmin menu="/admin/psikolog">
       <div>
         <Tabs>
           <TabPane tab="List Psikolog Pending" key="Psikolog Pending">

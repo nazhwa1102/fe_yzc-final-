@@ -19,7 +19,7 @@ import {
   YoutubeFilled,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme, Avatar, Space, Dropdown } from "antd";
+import { Breadcrumb, Layout, Menu, theme, Avatar, Space, Dropdown, Button } from "antd";
 import { useRouter } from "next/navigation";
 import Logo from "../images/logo";
 import LogoBig from "../images/logoBig";
@@ -143,8 +143,10 @@ const Layout2 = ({ children, title }: any) => {
             // console.log(`key ${key} route not found`);
           }}
         ></Menu>
-        <div className="flex items-center gap-7 justify-end">
-          <Avatar size="large" icon={<UserOutlined />} />
+        <div className="flex items-center gap-7 pl-5 justify-end">
+        {token ? (
+          <>
+          <div className="text-white font-bold text-[16px] pr-1">Halo,</div>
           <Dropdown
             menu={{ items }}
             overlayStyle={{ width: "170px", color: "white" }}
@@ -158,6 +160,12 @@ const Layout2 = ({ children, title }: any) => {
               </Space>
             </a>
           </Dropdown>
+          </>
+        ) : (
+          <>
+          <Button style={{background: '#22c55e'}} className="hover:bg-green-600 text-white text-lg font-bold" onClick={() => router.push('/')}>Masuk</Button>
+          </>
+        )}
         </div>
       </Header>
       <Header className="header flex bg-[#EDEDED] justify-between mt-[-5px] h-[75px] text-2xl font-bold items-center">

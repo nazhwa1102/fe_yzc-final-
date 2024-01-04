@@ -4,8 +4,9 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Card, Col, Row } from "antd";
 import { Icon } from "@iconify/react";
 import { parseJwt } from "#/utils/convert";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Logo from "#/app/components/gambar/logo";
+import { keys } from "mobx";
 
 
 
@@ -18,51 +19,60 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
   //   token: { colorBgContainer, borderRadiusLG },
   // } = theme.useToken();
 
+  const token = localStorage.getItem("access_token");
+  console.log(token, "yuk bisa");
+  let role: string = "";
+  let email: string = "";
+  let fullNamePsi: string = "";
+  let idPsi: string = ""
+
+  console.log(parseJwt(token));
+  
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNamePsi = parseJwt(token).fullNamePsi;
+    idPsi = parseJwt(token).idPsi
+    console.log(role, "role cocok");
+    console.log(fullNamePsi, "nama");
+    console.log(idPsi, 'id');
+  }
+  const router = useRouter()
+  
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  const token = localStorage.getItem("acces_token");
-  console.log(token, "yuk bisa");
-  let role: string = "kosong";
-  console.log(token, "ini tokennya");
-  if (token) {
-    role = parseJwt(token).role;
-    console.log(role, "role cocok");
-  }
 
-// const router = useRouter();
 
-//   const showModal =() => {
-//     if (!localStorage.getItem("acces_token")) {
-//       alert("silahkan login");
-//       router.push('login');
-//     } else {
-//       setIsModalOpen(true);
-//     }
-//   };
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    router.push('/');
+  };
 
   return (
     <Layout style={{ height: "fit" }}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
         <div className="dashboard admin" />
         <div className="flex justify-center w-[100%]">
           <Logo />
         </div>
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
           className="font-semibold"
           defaultSelectedKeys={[menu]}
           items={[
             {
-              key: "/psikolog/dashboard",
+              key: "dashboard",
               icon: <Icon icon="carbon:dashboard" />,
               label: "Dashboard",
+              onClick: (() => {router.push('/psikolog/dashboard')})
             },
             {
-              key: "/psikolog/seminar",
+              key: "seminar",
               icon: <Icon icon="octicon:people-24" />,
               label: "Seminar",
+              onClick: (() => {router.push('/psikolog/seminar')})
             },
             {
               key: "3",
@@ -85,14 +95,16 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
               label: "Notifikasi",
             },
             {
-              key: "8",
-              icon: <Icon icon="bi:clock" />,
-              label: "Riwayat Transaksi",
+              key: "pembayaran",
+              icon: <Icon icon="material-symbols:payments-outline-sharp" />,
+              label: "Pembayaran",
+              onClick: (() => {router.push('/psikolog/pembayaran')})
             },
             {
               key: "10",
               icon: <Icon icon="solar:logout-broken" />,
               label: "Logout",
+              onClick: handleLogout
             },
           ]}
         />
@@ -102,8 +114,11 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
           style={{
             padding: 0,
             background: "#016255",
+            justifyContent: 'space-between'
           }}
         >
+          <div className="flex justify-between items-center">
+            <div>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -115,6 +130,11 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
               backgroundColor: "#016255",
             }}
           />
+            </div>
+            <div className="pr-5 font-bold text-[22px] text-white items-center">
+           Halo!, {fullNamePsi}
+            </div>
+          </div>
         </Header>
         <Content
           style={{

@@ -167,12 +167,15 @@ const Layout2 = () => {
             // console.log(`key ${key} route not found`);
           }}
         ></Menu>
-        <div className="flex items-center gap-7 justify-end">
-          <Avatar size="large" icon={<UserOutlined />} />
+        <div className="flex items-center pl-5 justify-end">
+        {token ? (
+          <>
+          <div className="text-white font-bold text-[16px] pr-1">Halo,</div>
           <Dropdown
             menu={{ items }}
             overlayStyle={{ width: "170px", color: "white" }}
             className="text-white font-bold -mr-3 text-[16px]"
+
           >
             <a onClick={(e) => e.preventDefault()}>
               <Space>
@@ -181,6 +184,12 @@ const Layout2 = () => {
               </Space>
             </a>
           </Dropdown>
+          </>
+        ) : (
+          <>
+          <Button style={{background: '#22c55e'}} className="hover:bg-green-600 hover:font-bold text-white text-base font-bold" onClick={() => router.push('/')}>Masuk</Button>
+          </>
+        )}
         </div>
       </Header>
       <Header className="header flex bg-[#EDEDED] justify-center gap-[500px] h-[230px] items-center mt-[-5px]">
