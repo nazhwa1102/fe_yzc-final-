@@ -338,6 +338,23 @@ button, [type='button'], [type='reset'], [type='submit'] {
     color: #016255;
     background: #fff;
 }
+<<<<<<< HEAD
 :where(.css-dev-only-do-not-override-3oiqkd).ant-input {
     color: #ffffff;
+=======
+:where(.css-7wxm6k).ant-menu-dark .ant-menu-item-selected, :where(.css-7wxm6k).ant-menu-dark>.ant-menu .ant-menu-item-selected {
+    background-color: #016255;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    color: #ffffff;
+}
+textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
+    height: 150px;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-suffix{
+    color: white !important;
+>>>>>>> 6619b4bb391a67175b928a8ba643a9474dba60d1
 }

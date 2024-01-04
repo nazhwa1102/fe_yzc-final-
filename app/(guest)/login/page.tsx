@@ -85,7 +85,7 @@ const LoginPage = () => {
         <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px]">
           <div className="w-full h-full flex justify-center">
             <div className="w-[710px] py-[100px]">
-              <Form name="login" className="login" onFinish={onFinish}>
+              <Form name="login" className="login" onFinish={onFinish} autoComplete="off">
                 <div className="flex flex-col space-y-15 w-full">
                   <div className="mb-35 flex">
                     <div className="mb-[50px] ">

@@ -115,7 +115,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
                 }}
                 rows={2}
                 placeholder="Tulis Disini"
-                className=" p-[30px] rounded-[10px] border border-rstroke regis text-xl"
+                className="px-5 py-5 rounded-[10px] border border-rstroke regis text-xl"
               />
             </Form.Item>
           </div>
@@ -134,7 +134,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
                 }}
                 rows={2}
                 placeholder="Tulis Disini"
-                className=" p-[30px] rounded-[10px] border border-rstroke regis text-xl"
+                className="px-5 py-5 rounded-[10px] border border-rstroke regis text-xl"
               />
             </Form.Item>
           </div>

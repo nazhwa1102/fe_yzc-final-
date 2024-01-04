@@ -97,7 +97,7 @@ const [formStep2] = Form.useForm();
       <div className="w-full h-full bg-white flex justify-between">
         <div className="w-1/2 bg-[#005449] rounded-tr-[200px]">
           <div className="w-full flex justify-center">
-            <div className="w-[710px] py-[20px]">
+            <div className="w-[800px] py-[20px]">
               <div className="flex flex-col space-y-15 w-full h-fit">
                 <div className="mb-35 flex">
                   <div>
