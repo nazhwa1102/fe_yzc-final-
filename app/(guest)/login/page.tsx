@@ -76,7 +76,7 @@ const LoginPage = () => {
         message.error('Akun Tidak Terdaftar')
       }
     } catch (err: any) {
-      message.error(err.response.body?.error);
+      // message.error(err.response.body?.error);
     }
   };
 

@@ -338,3 +338,6 @@ button, [type='button'], [type='reset'], [type='submit'] {
     color: #016255;
     background: #fff;
 }
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #ffffff;
+}
