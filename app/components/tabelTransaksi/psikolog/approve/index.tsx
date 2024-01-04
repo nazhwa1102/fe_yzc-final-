@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import DetailOrder from "#/app/components/detailOrder";
 import { Table } from "antd/lib";
 import { parseJwt } from "#/utils/convert";
+import { useRouter } from "next/navigation";
 
 interface DataType {
   id: string;
@@ -17,24 +18,28 @@ interface DataType {
   detailOrder: string;
 }
 
-const TransaksiRejectCus = () => {
-  const token = localStorage.getItem('access_token');
-  console.log(token, "yuk bisa");
-  let role: string = '';
-  let email: string = '';
-  let fullNameCus: string = ''
-  let idCus: string = ''
-
-  if (token) {
-    role = parseJwt(token).role;
-    email = parseJwt(token).email;
-    fullNameCus = parseJwt(token).fullNameCus
-    idCus = parseJwt(token).idCus
-    console.log(role, "role cocok");
-    console.log(fullNameCus, 'nama');
-    console.log(idCus, 'ini id')
-  }
-  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.getReject(idCus);
+const TransaksiApprovePsi = () => {
+    const token = localStorage.getItem("access_token");
+    console.log(token, "yuk bisa");
+    let role: string = "";
+    let email: string = "";
+    let fullNamePsi: string = "";
+    let idPsi: string = ""
+  
+    console.log(parseJwt(token));
+    
+    if (token) {
+      role = parseJwt(token).role;
+      email = parseJwt(token).email;
+      fullNamePsi = parseJwt(token).fullNamePsi;
+      idPsi = parseJwt(token).idPsi
+      console.log(role, "role cocok");
+      console.log(fullNamePsi, "nama");
+      console.log(idPsi, 'id');
+    }
+    const router = useRouter()
+    
+  const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.transaksiPsikologApprove(idPsi);
   const [open, setOpen] = useState(false);
   const showModal = () => {
     setOpen(true);
@@ -114,11 +119,10 @@ const TransaksiRejectCus = () => {
     <>
       <Table
         columns={columns}
-        dataSource={dataTransaksiSeminar?.data.map((val: any) => {
-          console.log(val.poster, "isi poster");
+        dataSource={dataTransaksiSeminar?.data?.map((val: any) => {
           return {
             id: val.id,
-            nama: val.customer.fullName,
+            nama: val.psikolog.fullName,
             date: val.createdAt,
             transaction_amount: val.transaction_amount,
             payment_proof: val.payment_proof,
@@ -131,4 +135,4 @@ const TransaksiRejectCus = () => {
     </>
   );
 };
-export default TransaksiRejectCus
+export default TransaksiApprovePsi

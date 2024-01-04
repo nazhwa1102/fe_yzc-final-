@@ -10,15 +10,19 @@ const url = {
     image: () => '/transaksi/upload',
     reject: (id: any) => `/transaksi/reject/${id}`,
     approve: (id:any) => `/transaksi/approve/${id}`,
+    done: (id: any) => `/transaksi/done/:id`,
     seminar: () => '/transaksi/seminar',
     seminarApprove: () => '/transaksi/seminar/approve',
     seminarReject: () => '/transaksi/seminar/reject',
     seminarPending: () => '/transaksi/seminar/pending',
     privateKonseling: () => '/transaksi/private_konseling',
-    transaksiApprove: () => '/transaksi/approve',
-    transaksiReject: () => '/transaksi/reject',
-    transaksiPending: () => '/transaksi/pending',
-
+    transaksiApprove: (id: any) => `/transaksi/approve/${id}`,
+    transaksiReject: (id: any) => `/transaksi/reject/${id}`,
+    transaksiPending: (id: any) => `/transaksi/pending/${id}`,
+    transaksiPsikolog: (id: any) =>  `/transaksi/psikolog/${id}`,
+    transaksiPsikologApprove: (id: any) =>  `/transaksi/psikolog/approve/${id}`,
+    transaksiPsikologReject: (id: any) =>  `/transaksi/psikolog/reject/${id}`,
+    transaksiPsikologPending: (id: any) =>  `/transaksi/psikolog/pending/${id}`,
 }
 
 const manipulateData = {
@@ -41,6 +45,9 @@ const manipulateData = {
   },
   approve(id: any){
     return http.put(url.approve(id))
+  },
+  done(id:any){
+    return http.put(url.done(id))
   }
 }
 
@@ -72,15 +79,27 @@ const hooks = {
   privateKonseling(){
     return useSWR(url.privateKonseling(), http.fetcher)
   },
-  getApprove(){
-    return useSWR(url.transaksiApprove(), http.fetcher)
+  getApprove(id:any){
+    return useSWR(url.transaksiApprove(id), http.fetcher)
   },
-  getReject(){
-    return useSWR(url.transaksiReject(), http.fetcher)
+  getReject(id:any){
+    return useSWR(url.transaksiReject(id), http.fetcher)
   },
-  getPending(){
-    return useSWR(url.transaksiPending(), http.fetcher)
+  getPending(id:any){
+    return useSWR(url.transaksiPending(id), http.fetcher)
   },
+  transaksiPsikolog(id: any){
+    return useSWR(url.transaksiPsikolog(id), http.fetcher)
+  },
+  transaksiPsikologApprove(id: any){
+    return useSWR(url.transaksiPsikologApprove(id), http.fetcher)
+  },
+  transaksiPsikologReject(id: any){
+    return useSWR(url.transaksiPsikologReject(id), http.fetcher)
+  },
+  transaksiPsikologPending(id: any){
+    return useSWR(url.transaksiPsikologPending(id), http.fetcher)
+  }
 }
 
 export const TransaksiRepository = {

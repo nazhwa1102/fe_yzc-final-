@@ -23,6 +23,7 @@ import { TransaksiRepository } from "#/repository/transaksi";
 import { CreateTransaksi } from "#/app/types/typeCreateTransaksi";
 import FormItem from "antd/lib/form/FormItem";
 import UploadBukti from "#/app/components/buktiPembayaran";
+import { parseJwt } from "#/utils/convert";
 const { Countdown } = Statistic;
 const deadline = Date.now() + 24000 * 60 * 60 + 1000;
 
@@ -40,10 +41,27 @@ const bayarSeminar = () => {
   }
   const tomorrowDate = getTomorrowDate();
 
+  const token = localStorage.getItem('access_token');
+  console.log(token, "yuk bisa");
+  let role: string = '';
+  let email: string = '';
+  let fullNameCus: string = ''
+  let idCus: string = ''
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
+    idCus = parseJwt(token).idCus
+    console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    console.log(idCus, 'ini id')
+  }
+
   const router = useRouter();
   const [dataInput, setTransaksi] = useState<CreateTransaksi>({
     bank: "",
-    customer: "8fcd79af-a1f9-42c4-a59b-c0ba31b2f621",
+    customer: idCus,
     detailOrder: [{
       id: data?.data.id,
       types: "seminar",
@@ -59,7 +77,7 @@ const bayarSeminar = () => {
     try {
       const datas = {
         bank: dataInput.bank,
-        customer: "8fcd79af-a1f9-42c4-a59b-c0ba31b2f621",
+        customer: idCus,
         detailOrder: [{
           id: data?.data.id,
           types: "seminar",
@@ -76,25 +94,31 @@ const bayarSeminar = () => {
       Modal.success({
         icon:(
           <div className="flex justify-center">
+            <div className="flex justify-center">
             <CheckCircleTwoTone twoToneColor="lightgreen" style={{fontSize: '90px'}}/>
+            </div>
           </div>
         ),
         title:(
           <div className="flex justify-center text-lg font-bold">
+            <div className="flex justify-center">
             Success
+            </div>
           </div>
         ),
         content: (
           <div className="flex justify-center text-xl font-bold">
+            <div className="flex justify-center">
             Anda Berhasil Melakukan Transaksi
+            </div>
           </div>
         ),
       })
       setTimeout(() => {
         Modal.destroyAll
-      }, 5000);
+      }, 10000);
       console.log(create_Transaksi);
-      router.push('/seminar')
+      router.push(`/seminar/${pathname[pathname.length - 1]}`)
     } catch (error) {
       throw error;
     }

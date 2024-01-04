@@ -71,19 +71,17 @@ const CreateSeminar = () => {
         <div className="flex justify-center pt-5">
           <div>
             <div>
-              <Form size="large" style={{ maxWidth: "500px" }}>
+              <Form size="large" style={{ maxWidth: "500px" }} layout="vertical">
                 <div className="font-bold text-2xl pt-5">Poster</div>
-                <div>Harap Masukan Poster Seminar</div>
-                <div className="w-[500px] h-[250px] pt-5">
-                  <FormItem name="poster">
+                <div className="w-[500px] h-[250px]">
+                  <FormItem name="poster" label="Harap Masukan Poster Seminar" required={true}>
                     <UploadPoster setData={setSeminar} dataInput={dataInput} />
                   </FormItem>
                 </div>
                 <div className="">
                   <div className="font-bold text-2xl">Judul Seminar</div>
-                  <div>Harap Masukan Judul Seminar</div>
-                  <div className="pt-2">
-                    <Form.Item name="title">
+                  <div className="">
+                    <Form.Item name="title" label="Harap Masukan Judul Seminar" rules={[{required:true}]}>
                       <Input
                         placeholder="Masukan Judul Seminar"
                         className="w-[500px] text-black"
@@ -94,14 +92,14 @@ const CreateSeminar = () => {
                     </Form.Item>
                   </div>
                   <div className="font-bold text-2xl">Tanggal Seminar</div>
-                  <div>Harap Masukan Tanggal Seminar</div>
-                  <div className="pt-2">
-                    <Form.Item name="datetime">
+                  <div>
+                    <Form.Item name="datetime" label="Harap Masukan Tanggal Seminar" required={true}>
                       <DatePicker
                         className="w-[500px] h-10"
                         onChange={(e: any) => {
                           setSeminar({ ...dataInput, datetime: e });
                         }}
+                        placeholder="Pilih Tanggal"
                       />
                     </Form.Item>
                   </div>
@@ -112,11 +110,10 @@ const CreateSeminar = () => {
           <div className="flex pl-[100px]">
             <div>
               <div className="pt-5">
-                <Form size="large">
+                <Form size="large" layout="vertical">
                   <div className="font-bold text-2xl">Harga Seminar</div>
-                  <div>Harap Masukan Harga Seminar</div>
-                  <div className="pt-2">
-                    <Form.Item name="price">
+                  <div>
+                    <Form.Item name="price" label="Harap Masukan Harga Seminar" required={true}>
                       <InputNumber
                         placeholder="Masukan Harga Seminar"
                         className="w-[500px]"
@@ -133,9 +130,8 @@ const CreateSeminar = () => {
                     </Form.Item>
                   </div>
                   <div className="font-bold text-2xl">Tautan Seminar</div>
-                  <div>Harap Masukan Tautan Seminar</div>
-                  <div className="pt-2">
-                    <Form.Item name="link">
+                  <div>
+                    <Form.Item name="link" label="Harap Masukan Tautan Seminar" required={true}>
                       <Input
                         placeholder="Masukan Judul Seminar"
                         className="w-[500px]"
@@ -147,10 +143,9 @@ const CreateSeminar = () => {
                   </div>
                 </Form>
                 <div className="font-bold text-2xl">Pemateri</div>
-                <div>Harap Masukan Namam Pemateri Masksimal 3 Orang</div>
-                <div className="pt-2 flex">
-                  <Form size="large">
-                    <Form.Item name="psikolog" className="h-[50px]">
+                <div className="flex">
+                  <Form size="large" layout="vertical">
+                    <Form.Item name="psikolog" className="h-[50px]" label="Harap Masukan Namam Pemateri Masksimal 3 Orang" required={true}>
                       <Select
                         mode="multiple"
                         allowClear

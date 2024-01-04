@@ -19,17 +19,40 @@ import {
   YoutubeFilled,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme, Avatar, Space, Dropdown } from "antd";
+import { Breadcrumb, Layout, Menu, theme, Avatar, Space, Dropdown, Button } from "antd";
 import { useRouter } from "next/navigation";
 import Logo from "../images/logo";
 import LogoBig from "../images/logoBig";
 import Headers1 from "../images/header1";
 import Headers2 from "../images/header2";
+import { parseJwt } from "#/utils/convert";
 
 const { Header, Content, Footer } = Layout;
 
 const Layout2 = ({ children, title }: any) => {
+
+  const token = localStorage.getItem('access_token');
+  console.log(token, "yuk bisa");
+  let role: string = '';
+  let email: string = '';
+  let fullNameCus: string = ''
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
+    console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    
+  }
+
+
   const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    router.push('/');
+  };
 
   const {
     token: { colorBgContainer },
@@ -74,7 +97,7 @@ const Layout2 = ({ children, title }: any) => {
     },
     {
       key: "5",
-      label: (<a rel="noopener noreferrer" href="http://localhost:3000/login">LogOut</a>),
+      label: (<a rel="noopener noreferrer" onClick={handleLogout}>LogOut</a>),
       danger: true,
       icon: <LogoutOutlined />,
     },
@@ -103,8 +126,8 @@ const Layout2 = ({ children, title }: any) => {
     <Layout>
       <Header className="header flex bg-[#016255]" style={{ height: "75px" }}>
         <div className={"flex mt-[-42x]"}>
-          <a href="/home">
-            <Logo />
+        <a onClick={() => router.push('/home')}>
+          <Logo />
           </a>
         </div>
         <Menu
@@ -120,8 +143,10 @@ const Layout2 = ({ children, title }: any) => {
             // console.log(`key ${key} route not found`);
           }}
         ></Menu>
-        <div className="flex items-center gap-7 justify-end">
-          <Avatar size="large" icon={<UserOutlined />} />
+        <div className="flex items-center gap-7 pl-5 justify-end">
+        {token ? (
+          <>
+          <div className="text-white font-bold text-[16px] pr-1">Halo,</div>
           <Dropdown
             menu={{ items }}
             overlayStyle={{ width: "170px", color: "white" }}
@@ -130,11 +155,17 @@ const Layout2 = ({ children, title }: any) => {
           >
             <a onClick={(e) => e.preventDefault()}>
               <Space>
-                Reyner W.L
+                {fullNameCus}
                 <DownOutlined />
               </Space>
             </a>
           </Dropdown>
+          </>
+        ) : (
+          <>
+          <Button style={{background: '#22c55e'}} className="hover:bg-green-600 text-white text-lg font-bold" onClick={() => router.push('/')}>Masuk</Button>
+          </>
+        )}
         </div>
       </Header>
       <Header className="header flex bg-[#EDEDED] justify-between mt-[-5px] h-[75px] text-2xl font-bold items-center">

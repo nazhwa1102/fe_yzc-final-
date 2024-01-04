@@ -319,3 +319,22 @@ button, [type='button'], [type='reset'], [type='submit'] {
 button, [type='button'], [type='reset'], [type='submit'] {
     background-color: #016255;
 } */
+:where(.css-dev-only-do-not-override-cbv4tr).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    position: relative;
+    background-color: #ffffff33;
+    border: 1px solid #d9d9d9;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+:where(.css-dev-only-do-not-override-cbv4tr).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-cbv4tr).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-modal-confirm .ant-modal-confirm-body{
+    display: grid;
+}
+.slider .ant-menu-dark , .slider.ant-menu-dark>.ant-menu {
+    color: #016255;
+    background: #fff;
+}

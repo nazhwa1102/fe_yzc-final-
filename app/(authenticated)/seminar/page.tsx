@@ -7,6 +7,8 @@ import Layout2 from "#/app/components/layout";
 import { SeminarRepository } from "#/repository/seminar";
 import PriceFormatter from "#/app/components/priceFormatter";
 import { IntlProvider } from "react-intl";
+import { parseJwt } from "#/utils/convert";
+import { useRouter } from "next/navigation";
 
 
 const pageSize = 6; // Number of cards to display per page
@@ -14,6 +16,22 @@ const pageSize = 6; // Number of cards to display per page
 const listSeminar= () => {
   const {data: dataSeminar} = SeminarRepository.hooks.statusApprove()
   console.log(dataSeminar);
+  const token = localStorage.getItem('access_token');
+  console.log(token, "yuk bisa");
+  let role: string = '';
+  let email: string = '';
+  let fullNameCus: string = ''
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
+    console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    
+  }
+
+  const router = useRouter();
   
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,14 +61,20 @@ const listSeminar= () => {
             <div className="pl-3">
               <div className="font-bold text-2xl w-[290px]">{val.title}</div>
               <div className="font-semibold text-lg">{val.datetime}</div>
-              <div className="text-base font-medium text-green-700">
+              <div className="text-base font-medium text-yzc">
                 <IntlProvider>
               <PriceFormatter value={val.price}/>
                 </IntlProvider>
               </div>
             <div className='flex justify-end gap-5 pt-10 items-end'>
                <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.id}`}><ZoomInOutlined/>Detail</Button>
-               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' href={`/seminar/pembayaran/${val.id}`}>Pesan</Button>
+               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' onClick={() => {
+                if (token) {
+                  router.push(`/seminar/pembayaran/${val.id}`)
+                }else{
+                  router.push('/')
+                }
+               }}>Pesan</Button>
             </div>
             </div>
            </div>

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Steps, message } from "antd";
+import { Button, Form, Input, Modal, Steps, message } from "antd";
 import {
-  ArrowLeftOutlined,
+  ArrowLeftOutlined, CheckCircleTwoTone,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import Logo from "#/app/components/gambar/logo";
@@ -85,7 +85,7 @@ const [formStep3] = Form.useForm();
           religion: dataInput?.religion,
           birth_date: dataInput?.birth_date,
           last_education: dataInput?.last_education,
-          case_handled: dataInput?.caseHandled,
+          caseHandled: dataInput?.caseHandled,
           aboutMe: dataInput?.aboutMe,
           legality: dataInput?.legality,
           photo: dataInput?.photo,
@@ -97,6 +97,29 @@ const [formStep3] = Form.useForm();
       const register_psikolog = await authRepository.manipulateData.register2(data);
       console.log(register_psikolog,"hasilnya ini");
       setTimeout(message.success("Anda Telah Berhasil Registrasi!"),5000)
+      Modal.success({
+        icon:(
+          <div className="justify-center">
+            <div className="flex justify-center">
+            <CheckCircleTwoTone twoToneColor="lightgreen" style={{fontSize: '90px'}}/>
+            </div>
+          </div>
+        ),
+        title:(
+          <div className="justify-center text-lg font-bold flex">
+            <div className="flex justify-center">
+            Pendaftaran Berhasil
+            </div>
+          </div>
+        ),
+        content: (
+          <div className="justify-center text-xl font-bold flex">
+            <div className="flex justify-center">
+            Harap tunggu aktivasi dari Admin
+            </div>
+          </div>
+        ),
+      })
       router.push("/login");
     } catch(err) {
       // message.error(err)

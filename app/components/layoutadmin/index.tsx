@@ -24,33 +24,41 @@ const LayoutAdmin = ({ children, menu } : any) => {
     console.log(role, "role cocok");
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    router.push('/');
+  };
+
   return (
-    <Layout style={{ height: "fit" }}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+    <Layout className="slider" style={{ height: "fit" }}>
+      <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
         <div className="dashboard admin" />
         <div className="flex justify-center w-[100%]">
           <Logo />
         </div>
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
           className="font-semibold"
           defaultSelectedKeys={[menu]}
           items={[
             {
-              key: "/admin/dashboard",
+              key: "dashboard",
               icon: <Icon icon="carbon:dashboard" />,
               label: "Dashboard",
+              onClick: (() => {router.push('/admin/dashboard')})
             },
             {
               key: "/admin/seminar",
               icon: <Icon icon="octicon:people-24" />,
               label: "Seminar",
+              onClick: (() => {router.push('/admin/seminar')})
             },
             {
               key: "/admin/psikolog",
               icon: <Icon icon="pepicons-print:people" />,
               label: "Psikolog",
+              onClick: (() => {router.push('/admin/psikolog')})
             },
             {
               key: "4",
@@ -71,6 +79,7 @@ const LayoutAdmin = ({ children, menu } : any) => {
               key: "pembayaran",
               icon: <Icon icon="material-symbols:payments-outline-sharp" />,
               label: "Pembayaran",
+              onClick: (() => {router.push('/admin/pembayaran')})
             },
             {
               key: "8",
@@ -86,12 +95,9 @@ const LayoutAdmin = ({ children, menu } : any) => {
               key: "10",
               icon: <Icon icon="solar:logout-broken" />,
               label: "Logout",
+              onClick: handleLogout
             },
           ]}
-          onClick={({key}) => {
-            router.push(key);
-            // console.log(`key ${key} route not found`);
-          }}
         />
       </Sider>
       <Layout style={{ height: "100%" }}>

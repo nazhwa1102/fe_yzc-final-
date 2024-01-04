@@ -29,22 +29,29 @@ interface DataType {
   nama: string;
   jenis_kelamin: string;
   email: string;
+  user_yzc: string
 }
 
 const PsikologInActive = () => {
 
   const { data: dataPsikologInActive } = PsikologRepository.hooks.inactive();
-  const [open2, setOpen2] = useState(false);
 
-  const showModal2 = () => {
-    setOpen2(true);
-  };
-  const handleOk2 = () => {
-    setOpen2(false);
+  const [selectedOption, setSelectedOption] = useState<DataType | null>(
+    null
+  );
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const showModal = (option: DataType) => {
+    setSelectedOption(option);
+    setModalVisible(true);
   };
 
-  const handleCancel2 = () => {
-    setOpen2(false);
+  const handleOk = () => {
+    setModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setModalVisible(false);
   };
 
 
@@ -103,19 +110,21 @@ const PsikologInActive = () => {
             <div className="pb-1">
             <Button
               className="bg-[#525F89] text-white flex items-center w-[125px] justify-center"
-              onClick={showModal2}
+              onClick={() => showModal(record)}
               type="text"
             >
               <CheckOutlined className="flex pt-[2px]" />
               Terima
             </Button>
+            {selectedOption && (
+
             <Modal
-              open={open2}
-              onCancel={handleCancel2}
+              open={modalVisible}
+              onCancel={handleCancel}
               footer={(_) => (
                 <div className="justify-center flex pt-3">
                   <Button
-                    onClick={handleCancel2}
+                    onClick={handleCancel}
                     className="bg-red-600 text-white hover:text-white w-20 cancelButt"
                   >
                     Batal
@@ -124,7 +133,7 @@ const PsikologInActive = () => {
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
                     onClick={async () => {
                         (await UserYzcRepository.manipulateData.userActive(
-                          record.id
+                          selectedOption.user_yzc
                         )) && window.location.reload();
                       }}
                   >
@@ -150,6 +159,7 @@ const PsikologInActive = () => {
                 </div>
               </div>
             </Modal>
+            )}
           </div>
           </div>
         ),
@@ -174,6 +184,7 @@ const PsikologInActive = () => {
                 nama: val.fullName,
                 jenis_kelamin: val.gender,
                 email: val.user_yzc?.email,
+                user_yzc: val.user_yzc?.id
             };
           })}
           className="font-semibold"
