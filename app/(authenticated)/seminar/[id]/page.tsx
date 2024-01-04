@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Card } from "antd/lib/index";
 import Layout2 from "#/app/components/layout";
 import { Button } from "antd";
@@ -16,7 +16,26 @@ const detailSeminar = () => {
   const pathname = usePathname().split("/");
   const { data } = SeminarRepository.hooks.detailSeminar(
     pathname[pathname.length - 1]
-  );
+  );    
+  
+    const {data: dataSeminar} = SeminarRepository.hooks.statusApprove()
+    console.log(dataSeminar);
+    const token = localStorage.getItem('access_token');
+    console.log(token, "yuk bisa");
+    let role: string = '';
+    let email: string = '';
+    let fullNameCus: string = ''
+  
+    if (token) {
+      role = parseJwt(token).role;
+      email = parseJwt(token).email;
+      fullNameCus = parseJwt(token).fullNameCus
+      console.log(role, "role cocok");
+      console.log(fullNameCus, 'nama');
+      
+    }
+  
+    const router = useRouter();
   
   return (
     <Layout2 title="Detail Seminar">
@@ -46,7 +65,7 @@ const detailSeminar = () => {
                   <PriceFormatter value={data?.data.price} />
                 </IntlProvider>
               </div>
-              <div className="flex items-center gap-16 justify-center pt-[100px] pl-20">
+              <div className="flex items-center gap-16 justify-around pt-[100px] pl-10">
                 {data?.data.psikologseminar?.map((val: any) => (
                   <div className="items-center justify-center gap-5">
                     <div className="flex justify-center">
@@ -61,11 +80,19 @@ const detailSeminar = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-center items-center pl-10">
-              <div className="flex justify-center pt-10 pl-10">
-                <Button type="primary" href={`/seminar/pembayaran/${data?.data.id}`} style={{width: '300px', height: 'auto', fontSize: '30px'}} className="shadow-lg hover:shadow-md">
+              <div>
+              <div className="flex justify-end items-center pl-[500px]">
+              <div className="flex pt-[131px] pl-10">
+                <Button type="primary" style={{width: '300px', height: 'auto', fontSize: '30px'}} className="shadow-lg hover:shadow-md" onClick={() => {
+                if (token) {
+                  router.push(`/seminar/pembayaran/${data?.data.id}`)
+                }else{
+                  router.push('/')
+                }
+               }}>
                   Daftar Seminar
                 </Button>
+              </div>
               </div>
               </div>
             </div>
@@ -75,4 +102,5 @@ const detailSeminar = () => {
     </Layout2>
   );
 };
+
 export default detailSeminar;

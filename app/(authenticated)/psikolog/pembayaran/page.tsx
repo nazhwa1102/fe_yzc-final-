@@ -18,9 +18,12 @@ import { TransaksiRepository } from "#/repository/transaksi";
 import { Alasan } from "#/app/types/typeAlasan";
 import DetailOrder from "#/app/components/detailOrder";
 import { mutate } from "swr";
-import TransaksiApprove from "#/app/components/tabelTransaksi/seminar/approve";
-import TransaksiReject from "#/app/components/tabelTransaksi/seminar/reject";
-import TransaksiPending from "#/app/components/tabelTransaksi/seminar/pending";
+import LayoutPsikolog from "#/app/components/dashboardPsikolog";
+import { parseJwt } from "#/utils/convert";
+import { useRouter } from "next/navigation";
+import TransaksiApprovePsi from "#/app/components/tabelTransaksi/psikolog/approve";
+import TransaksiPendingPsi from "#/app/components/tabelTransaksi/psikolog/pending";
+import TransaksiRejectPsi from "#/app/components/tabelTransaksi/psikolog/reject";
 
 interface DataType {
   id: string;
@@ -51,6 +54,25 @@ const Pembayaran = () => {
   const handleCancel = () => {
     setOpen(false);
   };
+
+  const token = localStorage.getItem("access_token");
+  console.log(token, "yuk bisa");
+  let role: string = "";
+  let email: string = "";
+  let fullNamePsi: string = "";
+  let idPsi: string = ""
+
+  
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNamePsi = parseJwt(token).fullNamePsi;
+    idPsi = parseJwt(token).idPsi
+    console.log(role, "role cocok");
+    console.log(fullNamePsi, "nama");
+    console.log(idPsi, 'id');
+  }
+  const router = useRouter()
 
   function formatDateWithHyphens(date: any) {
     const inputDate = new Date(date);
@@ -85,7 +107,7 @@ const Pembayaran = () => {
       );
       setOpen(false);
       mutate;
-      window.location.reload()
+      window.location.reload();
       setTimeout(
         message.success("Anda Telah Berhasil Menolak Transaksi"),
         5000
@@ -94,7 +116,6 @@ const Pembayaran = () => {
       throw error;
     }
   };
-  
 
   const columns: ColumnsType<DataType> = [
     {
@@ -191,10 +212,10 @@ const Pembayaran = () => {
                     twoToneColor={"red"}
                     style={{ fontSize: "90px" }}
                     className="justify-center flex pt-3"
-                    />
+                  />
                 </div>
                 <div className="font-bold text-3xl flex justify-center pt-4">
-                    <div>{record.id}</div>
+                  <div>{record.id}</div>
                   Tolak Transaksi
                 </div>
                 <div className="flex justify-center text-lg pt-3">
@@ -237,91 +258,26 @@ const Pembayaran = () => {
   };
 
   return (
-    <LayoutAdmin menu="pembayaran">
+    <LayoutPsikolog menu="pembayaran">
       <div>
-        <Tabs defaultActiveKey="1">
-          <TabPane tab="List Transaksi Seminar" key="Transaksi Seminar">
-            <Tabs>
-              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
-                <TransaksiPending />
-              </TabPane>
-              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
-                <TransaksiApprove />
-              </TabPane>
-              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
-                <TransaksiReject />
-              </TabPane>
-            </Tabs>
+        <div>
+        <Button href="bank" className="hover:bg-green-700" style={{backgroundColor: '#016255'}}>Kelola Bank</Button>
+        </div>
+        <div>
+        <Tabs>
+          <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
+            <TransaksiPendingPsi />
           </TabPane>
-          <TabPane
-            tab="List Transaksi Private Konseling"
-            key="Transaksi Private Konseling"
-          >
-            <Tabs>
-              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      console.log(val.poster, "isi poster");
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      console.log(val.poster, "isi poster");
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-            </Tabs>
+          <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
+            <TransaksiApprovePsi />
+          </TabPane>
+          <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
+            <TransaksiRejectPsi />
           </TabPane>
         </Tabs>
+        </div>
       </div>
-    </LayoutAdmin>
+    </LayoutPsikolog>
   );
 };
 

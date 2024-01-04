@@ -5,13 +5,34 @@ import { LeftOutlined, RightOutlined, ZoomInOutlined } from "@ant-design/icons";
 import { SeminarRepository } from "#/repository/seminar";
 import { IntlProvider } from "react-intl";
 import PriceFormatter from "../priceFormatter";
+import { parseJwt } from "#/utils/convert";
+import { useRouter } from "next/navigation";
 
 interface Slide {
   title: string;
   content: string;
 }
 
-const SeminarSlider: React.FC = () => {
+const SeminarSlider = () => {
+
+  const token = localStorage.getItem('access_token');
+  console.log(token, "yuk bisa");
+  let role: string = '';
+  let email: string = '';
+  let fullNameCus: string = ''
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNameCus = parseJwt(token).fullNameCus
+    console.log(role, "role cocok");
+    console.log(fullNameCus, 'nama');
+    
+  }
+
+  const router = useRouter();
+
+
   const {data: dataSeminar} = SeminarRepository.hooks.statusApprove()
 
 
@@ -66,7 +87,13 @@ const SeminarSlider: React.FC = () => {
                  <div>
                  <div className='flex justify-end gap-5 items-end pb-5'>
                <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.id}`}><ZoomInOutlined/>Detail</Button>
-               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' href={`/seminar/pembayaran/${val.id}`}>Pesan</Button>
+               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' onClick={() => {
+                if (token) {
+                  router.push(`/seminar/pembayaran/${val.id}`)
+                }else{
+                  router.push('/')
+                }
+               }}>Pesan</Button>
                </div>
                  </div>
               </Card> 

@@ -7,7 +7,7 @@ import LayoutAdmin from "#/app/components/layoutadmin";
 
 const Dashboard: React.FC = () => {
  return(
-  <LayoutAdmin>
+  <LayoutAdmin menu="/admin/dashboard">
   <div className="w-[943] h-11 bg-yzc rounded-[10px] items-center">
             <p className="text-white text-base p-2 font-bold ">
               3 Rekomendasi Psikolog Terbaik Bulan ini!
