@@ -12,6 +12,7 @@ type Props = {
 function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
   return (
     <div className="flex flex-col space-y-2 w-full">
+      <Form style={{maxWidth: '800px'}} size="large" className="pl-10 pr-10">
       <div>
         <div>
           <p className="text-teks text-2xl font-bold text-white">
@@ -144,6 +145,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
           </Form.Item>
         </div>
       </div>
+      </Form>
     </div>
   );
 }

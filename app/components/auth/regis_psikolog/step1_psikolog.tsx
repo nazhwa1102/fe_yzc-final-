@@ -13,7 +13,7 @@ type Props = {
 };
 function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
   return (
-    <Form form={formStep1}>
+    <Form form={formStep1} style={{maxWidth: '800px'}} size="large" className="pl-10 pr-10">
       <div className="flex flex-col space-y-2 w-full">
         <div>
           <div>

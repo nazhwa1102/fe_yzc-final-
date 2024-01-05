@@ -7,7 +7,7 @@ const Psikologlist: React.FC = () => (
       <Col span={7}>
         <Card
           bordered={true}
-          style={{ width: "500px", height: "300px", borderRadius: "25px" }}
+          style={{ width: "400px", height: "270px", borderRadius: "25px" }}
           className=" justify-center flex shadow-md bg-slate-50"
         >
           <div className="flex justify-center">
@@ -28,7 +28,7 @@ const Psikologlist: React.FC = () => (
       <Col span={7}>
         <Card
           bordered={true}
-          style={{ width: "500px", height: "300px", borderRadius: "25px" }}
+          style={{ width: "400px", height: "270px", borderRadius: "25px" }}
           className=" justify-center flex shadow-md bg-slate-50"
         >
           <div className="flex justify-center">
@@ -49,7 +49,7 @@ const Psikologlist: React.FC = () => (
       <Col span={7}>
         <Card
           bordered={true}
-          style={{ width: "500px", height: "300px", borderRadius: "25px" }}
+          style={{ width: "400px", height: "270px", borderRadius: "25px" }}
           className=" justify-center flex shadow-md bg-slate-50"
         >
           <div className="flex justify-center">

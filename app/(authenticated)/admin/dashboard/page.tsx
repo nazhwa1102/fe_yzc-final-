@@ -142,7 +142,7 @@ const Dashboard: React.FC = () => {
             </Row>
           </div>
           <br></br>
-          <Row>
+          {/* <Row>
             <Col span={12}>
               <div className="w-3/5 h-9 bg-yzc rounded-[10px] items-center">
                 <p className="text-white text-base p-2 font-bold">Ulasan</p>
@@ -220,7 +220,7 @@ const Dashboard: React.FC = () => {
                 </Card>
               </div>
             </Col>
-          </Row>
+          </Row> */}
   </LayoutAdmin>
  )
 }

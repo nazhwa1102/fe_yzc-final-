@@ -18,10 +18,11 @@ type Props = {
 
 function CustomerStep2({ setData, dataInput, formStep2 }: Props) {
   return (
-    <div className="w-full h-full">
+    <div className="w-full">
       <div className="w-full h-full flex justify-center">
         <div className="flex flex-col w-full">
           <div className="grid gap-y-2">
+          <Form style={{maxWidth: '800px'}} size="large" className="pl-10 pr-10">
             <p className="text-white text-2xl font-bold">Email</p>
             <div className="w-full regis">
               <Form.Item
@@ -136,6 +137,7 @@ function CustomerStep2({ setData, dataInput, formStep2 }: Props) {
                 </div>
               </div>
             </div>
+            </Form>
           </div>
         </div>
       </div>

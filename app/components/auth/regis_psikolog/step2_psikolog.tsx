@@ -98,7 +98,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
     }
   };
   return (
-    <Form form={formStep2}>
+    <Form form={formStep2} style={{maxWidth: '800px'}} size="large" className="pl-10 pr-10">
       <div className="flex flex-col space-y-15 w-full">
         <div className="grid gap-y-4 grid-cols-1"></div>
         <div className="grid gap-y-4 grid-cols-1">
@@ -107,7 +107,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
               Kasus yang Ditangani
             </p>
           </div>
-          <div className="w-full regis">
+          <div className="regis">
             <Form.Item name="case_handled">
               <TextArea
                 onChange={(e) => {
@@ -126,7 +126,7 @@ function PsikologStep2({ setData, dataInput, formStep2 }: Props) {
               Tentang Saya
             </p>
           </div>
-          <div className="w-full regis">
+          <div className="regis">
             <Form.Item name="about_me">
               <TextArea
                 onChange={(e) => {

@@ -81,14 +81,14 @@ const LoginPage = () => {
   };
 
   return (
-      <div className="w-full h-full bg-white flex justify-between">
-        <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px]">
+      <div className="w-full h-[950px] bg-white flex justify-between">
+        <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px] h-[950px]">
           <div className="w-full h-full flex justify-center">
             <div className="w-[710px] py-[100px]">
               <Form name="login" className="login" onFinish={onFinish} autoComplete="off">
                 <div className="flex flex-col space-y-15 w-full">
                   <div className="mb-35 flex">
-                    <div className="mb-[50px] ">
+                    <div className="mb-[50px]">
                       <ArrowLeftOutlined className="text-white text-5xl" />
                     </div>
                     <div className="flex justify-center w-[100%]">
@@ -180,7 +180,7 @@ const LoginPage = () => {
               </Form>
             </div>
           </div>
-          <div className="w-[1258px] h-[1258px] bg-primary rounded-e-full -my-32 -ml-72 blur-[2px] absolute top-0 left-0  -z-50"></div>
+          {/* <div className="w-[1258px] h-[1258px] bg-primary rounded-e-full -my-32 -ml-72 blur-[2px] absolute top-0 left-0  -z-50"></div> */}
         </div>
         <div className="w-1/2 relative grid justify-items-stretch">
           <div className="justify-self-end p-8"></div>

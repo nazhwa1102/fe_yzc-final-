@@ -338,10 +338,6 @@ button, [type='button'], [type='reset'], [type='submit'] {
     color: #016255;
     background: #fff;
 }
-<<<<<<< HEAD
-:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
-    color: #ffffff;
-=======
 :where(.css-7wxm6k).ant-menu-dark .ant-menu-item-selected, :where(.css-7wxm6k).ant-menu-dark>.ant-menu .ant-menu-item-selected {
     background-color: #016255;
 }
@@ -356,5 +352,31 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-suffix{
     color: white !important;
->>>>>>> 6619b4bb391a67175b928a8ba643a9474dba60d1
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #000;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    color: #000;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-select-single.ant-select-lg .ant-select-selector {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-upload-wrapper {
+    color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #000;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    color: rgba(0, 0, 0, 0.88);
+}
+.ant-picker-input >input{
+    color: white !important;
 }

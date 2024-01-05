@@ -134,7 +134,7 @@ const [formStep3] = Form.useForm();
                 <div className="flex flex-col space-y-15 w-full h-fit">
                   <div className="mb-35 flex">
                     <div>
-                    <ArrowLeftOutlined className="text-white text-5xl" />
+                    <ArrowLeftOutlined className="text-white text-5xl" onClick={() => {router.back()}} />
                     </div>
                     <div className="flex justify-center w-[100%]">
                       <Logo />
@@ -149,25 +149,24 @@ const [formStep3] = Form.useForm();
                     <Steps
                       current={current}
                       items={items}
-                      className="mb-[33px]"
+                      className="mb-[33px] justify-center flex pl-10 pr-10"
                     />
                     <div>{steps[current].content}</div>
                     <div
                       style={{ marginTop: 34 }}
                       className="flex justify-between"
                     >
-                      <div className="regisCustomer">
+                      <div className="regisCustomer pl-9">
                         {current > 0 && (
                           <Button
                             style={{ margin: "0 8px" }}
                             onClick={() => prev()}
                           >
                             Kembali
-                          </Button>
+                          </Button> 
                         )}
                       </div>
-                      <div></div>
-                      <div className="regisCustomer  flex justify-end w-full">
+                      <div className="regisCustomer flex justify-end pl-[500px]">
                         {current < steps.length - 1 && (
                           <Button
                             type="primary"
@@ -178,7 +177,7 @@ const [formStep3] = Form.useForm();
                           </Button>
                         )}
                       </div>
-                    <div className="regisCustomer">
+                    <div className="regisCustomer pr-10">
                     {current === steps.length - 1 && (
                         <Button
                           type="primary"
@@ -220,7 +219,7 @@ const [formStep3] = Form.useForm();
                     </div>
                     </div>
                   </div>
-                  <div className="text-white text-xl absolute bottom-0">
+                  <div className="text-white text-xl absolute bottom-0 pl-10">
                     <p className="mt-6">
                       Sudah punya akun di Youthzen Connect ?
                       <a href="/login" className="font-bold mb-3 ml-2">
