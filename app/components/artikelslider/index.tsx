@@ -50,19 +50,19 @@ const ArtikelSlider: React.FC = () => {
             {visibleSlides.map((slide, index) => (
               <Card
                 key={index}
-                style={{ width: '450px', height: '450px', margin: "0 10px" }}
+                style={{ width: '350px', height: '350px', margin: "0 10px" }}
                 className="shadow-md bg-slate-50"
               >
                 <div className="justify-center flex">
                   <div>
                  <div className="object-cover flex justify-center">
-                  <img src={slide.image} className="rounded-xl w-[370px] h-[200px] flex justify-center shadow-lg"  />
+                  <img src={slide.image} className="rounded-xl w-[270px] h-[150px] flex justify-center shadow-lg"  />
                  </div>
-                 <div className="pt-3 font-bold text-[22px] justify-center flex">
+                 <div className="pt-3 font-bold text-[16px] justify-center flex">
                   {slide.title}
                  </div>
                  <div className="flex justify-center">
-                 <div className="pt-2 text-justify w-[350px] h-auto flex justify-center text-lg">
+                 <div className="pt-2 text-justify w-[350px] h-auto flex justify-center text-base">
                   {slide.content}
                  </div>
                  </div>

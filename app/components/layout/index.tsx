@@ -113,7 +113,7 @@ const Layout2 = ({ children, title }: any) => {
       label: <a className="text-white">Artikel</a>,
     },
     {
-      key: "/psikolog",
+      key: "/psikolog",    
       label: <a className="text-white">Psikolog</a>,
     },
     {
@@ -133,7 +133,7 @@ const Layout2 = ({ children, title }: any) => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={[]}
+          defaultSelectedKeys={[   ]}
           className={
             "flex-1 bg-[#016255] justify-end items-center gap-5 text-[18px] mt-[-2px]"
           }

@@ -15,7 +15,9 @@ import Logo from "../images/logo";
 import { Icon } from "@iconify/react";
 import { parseJwt } from "#/utils/convert";
 import { useRouter } from "next/navigation";
-import { MenuProps } from "antd";
+import { MenuProps } from "antd/lib";
+import { LOGOBIG } from "#/app/constans/image";
+import LogoBig from "../images/logoBig";
 import { Avatar, Dropdown, Space } from "antd/lib";
 
 const { Header, Sider, Content } = Layout;
@@ -114,13 +116,15 @@ const LayoutCustomer = ({ children, menu }: any) => {
     },
   ];
 
+
+
   return (
     <Layout style={{ height: "fit" }}>
       <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
         <div className="dashboard admin" />
         <div className="flex justify-center w-[100%]">
           <a onClick={() => router.push("/home")}>
-            <Logo />
+          <LogoBig />
           </a>
         </div>
         <Menu
