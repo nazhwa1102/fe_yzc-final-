@@ -31,6 +31,8 @@ import { SeminarRepository } from "#/repository/seminar";
 import LayoutPsikolog from "#/app/components/dashboardPsikolog";
 import { Alasan } from "#/app/types/typeAlasan";
 import { mutate } from "swr";
+import { parseJwt } from "#/utils/convert";
+import { useRouter } from "next/navigation";
 const { Text, Paragraph } = Typography;
 
 interface DataType {
@@ -41,7 +43,26 @@ interface DataType {
 }
 
 const SeminarReject = () => {
-  const { data: dataSeminarReject } = SeminarRepository.hooks.statusReject();
+  const token = localStorage.getItem("access_token");
+  console.log(token, "yuk bisa");
+  let role: string = "";
+  let email: string = "";
+  let fullNamePsi: string = "";
+  let idPsi: string = ""
+
+  console.log(parseJwt(token));
+  
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNamePsi = parseJwt(token).fullNamePsi;
+    idPsi = parseJwt(token).idPsi
+    console.log(role, "role cocok");
+    console.log(fullNamePsi, "nama");
+    console.log(idPsi, 'id');
+  }
+  const router = useRouter()
+  const { data: dataSeminarReject } = SeminarRepository.hooks.statusRejectPsi(idPsi);
 
   const columns: ColumnsType<DataType> = [
     {

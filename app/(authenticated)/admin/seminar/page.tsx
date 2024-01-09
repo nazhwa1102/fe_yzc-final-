@@ -23,9 +23,13 @@ interface DataType {
 }
 
 const Seminar = () => {
+  const [selectedOption, setSelectedOption] = useState<DataType | null>(
+    null
+  );
   const [open, setOpen] = useState(false);
 
-  const showModal = () => {
+  const showModal = (option: DataType) => {
+    setSelectedOption(option)
     setOpen(true);
   };
   const handleOk = () => {
@@ -94,12 +98,13 @@ const Seminar = () => {
             <Button
               className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
               style={{ backgroundColor: "#EC5151" }}
-              onClick={showModal}
+              onClick={() => showModal(record)}
             >
               <DeleteOutlined className="flex pt-[2px]" />
               Hapus
             </Button>
-            <Modal
+            {selectedOption && (
+              <Modal
               open={open}
               onCancel={handleCancel}
               footer={
@@ -114,7 +119,7 @@ const Seminar = () => {
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
                     onClick={async () => {
                       (await SeminarRepository.manipulateData.delete(
-                        record.id
+                        selectedOption.id
                       )) && window.location.reload();
                     }}
                   >
@@ -140,6 +145,7 @@ const Seminar = () => {
                 </div>
               </div>
             </Modal>
+            )}
           </div>
         </div>
       ),

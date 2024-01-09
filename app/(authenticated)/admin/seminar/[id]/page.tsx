@@ -71,9 +71,11 @@ const detailSeminar = () => {
                 <ul>
                 {data?.data.psikologseminar?.map((val: any) => (
                   <div>
+                    <ul className="list-disc">
                       <li>
                     <p className="font-bold text-xl">{val.psikolog.fullName}</p>
                       </li>
+                    </ul>
                   </div>
                 ))}
                 </ul>

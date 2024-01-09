@@ -23,6 +23,7 @@ const url = {
     transaksiPsikologApprove: (id: any) =>  `/transaksi/psikolog/approve/${id}`,
     transaksiPsikologReject: (id: any) =>  `/transaksi/psikolog/reject/${id}`,
     transaksiPsikologPending: (id: any) =>  `/transaksi/psikolog/pending/${id}`,
+    rekomenPsikolog: () => `/transaksi/rekomen_psikolog`
 }
 
 const manipulateData = {
@@ -99,6 +100,9 @@ const hooks = {
   },
   transaksiPsikologPending(id: any){
     return useSWR(url.transaksiPsikologPending(id), http.fetcher)
+  },
+  rekomenPsikolog(){
+    return useSWR(url.rekomenPsikolog(), http.fetcher)
   }
 }
 
