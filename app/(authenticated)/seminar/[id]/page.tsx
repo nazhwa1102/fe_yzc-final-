@@ -57,13 +57,19 @@ const detailSeminar = () => {
               <div className="font-extrabold text-4xl">
                 "{data?.data.title}"
               </div>
-              <div className="pt-10 text-2xl font-bold">
-                {data?.data.datetime}
+              <div className="pt-10 text-2xl font-bold flex">
+               Tanggal Seminar: {data?.data.datetime}
               </div>
-              <div className="pt-10 text-[#016255] font-bold text-3xl">
+              <div className="pt-10 text-2xl font-bold flex">
+               Kuota Tersisa: {data?.data.kuota}
+              </div>
+              <div className="pt-10 text-[#016255] font-bold text-2xl flex">
+                Harga Seminar:
+                <div className="pl-2">
                 <IntlProvider>
-                  <PriceFormatter value={data?.data.price} />
+                  <PriceFormatter value={data?.data.price}/>
                 </IntlProvider>
+                </div>
               </div>
               <div className="flex items-center gap-16 justify-around pt-[100px] pl-10">
                 {data?.data.psikologseminar?.map((val: any) => (
@@ -75,7 +81,7 @@ const detailSeminar = () => {
                     />
                     </div>
                     <div className=" flex justify-center pt-2">
-                    <p className="font-bold text-xl justify-center flex">"{val.psikolog.fullName}"</p>
+                    <p className="font-bold text-xl justify-center flex">{val.psikolog.fullName}</p>
                     </div>
                   </div>
                 ))}

@@ -14,7 +14,8 @@ const url = {
     statusApprove: () => '/seminar/approve',
     statusReject: () => '/seminar/reject',
     statusPending: () => '/seminar/pending',
-    approval: (id: any) => `/seminar/approval/${id}`
+    approval: (id: any) => `/seminar/approval/${id}`,
+    seminarRekomen: () => `/seminar/seminar_rekomen`
 }
 
 const manipulateData = {
@@ -73,6 +74,9 @@ const hooks = {
   },
   detailSeminar(id:any){
     return useSWR(url.seminarId(id), http.fetcher)
+  },
+  seminarRekomen(){
+    return useSWR(url.seminarRekomen(), http.fetcher)
   }
 }
 

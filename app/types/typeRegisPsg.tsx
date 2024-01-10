@@ -12,4 +12,5 @@ export type RegisterPsikolog = {
   email:string;
   phone:string;
   password:string;
+  spesialis: string
 }

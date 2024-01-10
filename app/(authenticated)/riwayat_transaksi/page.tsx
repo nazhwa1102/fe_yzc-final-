@@ -108,13 +108,13 @@ const RiwayatTransaksi = () => {
     <LayoutCustomer menu="/riwayat_transaksi">
       <div>
             <Tabs>
-              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
+              <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
                 <TransaksiPendingCus />
               </TabPane>
-              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
+              <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
                 <TransaksiApproveCus />
               </TabPane>
-              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
+              <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
                 <TransaksiRejectCus />
               </TabPane>
             </Tabs>

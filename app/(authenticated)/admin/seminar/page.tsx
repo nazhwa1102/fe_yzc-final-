@@ -9,7 +9,7 @@ import {
   PlusOutlined,
   ZoomInOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Modal, Pagination, Space, Tabs, Typography } from "antd";
+import { Button, Card, Modal, Pagination, Space, Tabs, Tooltip, Typography } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { Table } from "antd/lib";
 import { SeminarRepository } from "#/repository/seminar";
@@ -18,6 +18,7 @@ const { Text, Paragraph } = Typography;
 interface DataType {
   id: string;
   poster: string;
+  link: string
   title: string;
   datetime: Date;
 }
@@ -54,20 +55,37 @@ const Seminar = () => {
       render: (_, record) => (
         <img
           src={`http://localhost:3222/seminar/upload/${record.poster}/image`}
-          style={{ width: "25%", height: "auto" }}
+          style={{ width: "75%", height: "auto" }}
         />
       ),
-      width: 500,
+      width: 350,
+      className: 'justify-center'
     },
     {
       title: "Judul",
       dataIndex: "title",
       key: "title",
+      width: 250
+    },
+    {
+      title: "Tautan Seminar",
+      dataIndex: "link",
+      key: "link",
+      width: 100,
+      ellipsis: {
+       showTitle: false
+      },
+      render: (link) => (
+        <Tooltip placement="topLeft" title={link}>
+          {link}
+        </Tooltip>
+      )
     },
     {
       title: "Tanggal",
       dataIndex: "datetime",
       key: "datetime",
+      width: 250
     },
     {
       title: "Aksi",
@@ -180,7 +198,7 @@ const Seminar = () => {
         </div>
         <div className="pt-5">
           <Tabs defaultActiveKey="1">
-            <TabPane tab="List Seminar All" key="Seminar All">
+            <TabPane tab="Semua Seminar" key="Seminar All">
               <Table
                 columns={columns}
                 dataSource={dataSeminar?.data.map((val: any) => {
@@ -190,6 +208,7 @@ const Seminar = () => {
                     poster: val.poster,
                     title: val.title,
                     datetime: val.datetime,
+                    link: val.link
                   };
                 })}
                 className="font-semibold"
@@ -197,7 +216,7 @@ const Seminar = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="List Seminar Pending" key="Seminar Pending">
+            <TabPane tab="Seminar Pending" key="Seminar Pending">
               <Table
                 columns={columns}
                 dataSource={dataSeminarPending?.data.map((val: any) => {
@@ -207,6 +226,8 @@ const Seminar = () => {
                     poster: val.poster,
                     title: val.title,
                     datetime: val.datetime,
+                    link: val.link
+
                   };
                 })}
                 className="font-semibold"
@@ -214,7 +235,7 @@ const Seminar = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="List Seminar Approve" key="Seminar Approve">
+            <TabPane tab="Seminar Approve" key="Seminar Approve">
               <Table
                 columns={columns}
                 dataSource={dataSeminarApprove?.data.map((val: any) => {
@@ -224,6 +245,8 @@ const Seminar = () => {
                     poster: val.poster,
                     title: val.title,
                     datetime: val.datetime,
+                    link: val.link
+
                   };
                 })}
                 className="font-semibold"
@@ -231,7 +254,7 @@ const Seminar = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="List Seminar Reject" key="Seminar Reject">
+            <TabPane tab="Seminar Reject" key="Seminar Reject">
               <Table
                 columns={columns}
                 dataSource={dataSeminarReject?.data.map((val: any) => {
@@ -241,6 +264,8 @@ const Seminar = () => {
                     poster: val.poster,
                     title: val.title,
                     datetime: val.datetime,
+                    link: val.link
+
                   };
                 })}
                 className="font-semibold"

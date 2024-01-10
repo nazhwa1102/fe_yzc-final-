@@ -33,7 +33,7 @@ const SeminarSlider = () => {
   const router = useRouter();
 
 
-  const {data: dataSeminar} = SeminarRepository.hooks.statusApprove()
+  const {data: dataSeminar} = SeminarRepository.hooks.seminarRekomen()
 
 
   const itemsPerPage = 3; // Number of cards to show per page
@@ -47,6 +47,24 @@ const SeminarSlider = () => {
   const endIndex = startIndex + itemsPerPage;
 
   const visibleSlides = dataSeminar?.data.slice(startIndex, endIndex);
+
+  function formatDateWithHyphens(date: any) {
+    const inputDate = new Date(date);
+
+    if (isNaN(inputDate.getTime())) {
+      // Handle the case where 'date' is not a valid date
+      console.error("Invalid date:", date);
+      return "Invalid Date";
+    }
+
+    const year = inputDate.getFullYear();
+    const month = (inputDate.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-based
+    const day = inputDate.getDate().toString().padStart(2, "0");
+    const hour = inputDate.getHours().toString().padStart(2, "0")
+    const minute = inputDate.getMinutes().toString().padStart(2, "0")
+
+    return `${year}-${month}-${day}`;
+  }
 
   return (
     <div className= "slider" style={{ alignItems: "center" }}>
@@ -67,18 +85,18 @@ const SeminarSlider = () => {
               <div className="flex">
                <div>
                <img
-             src={`http://localhost:3222/seminar/upload/${val.poster}/image`}
+             src={`http://localhost:3222/seminar/upload/${val.seminar_poster}/image`}
              style={{width: 'auto', height: '200px'}}
              className="mt-16 flex shadow-lg"
                />
                </div>
                <div className="pl-3 items-center flex pt-12">
                 <div>
-                 <div className="font-bold text-2xl w-[290px]">{val.title}</div>
-                 <div className="font-semibold text-lg">{val.datetime}</div>
+                 <div className="font-bold text-2xl w-[290px]">{val.seminar_title}</div>
+                 <div className="font-semibold text-lg">{formatDateWithHyphens(val.seminar_datetime)}</div>
                  <div className="text-base font-medium text-green-700">
                    <IntlProvider>
-                 <PriceFormatter value={val.price}/>
+                 <PriceFormatter value={val.seminar_price}/>
                    </IntlProvider>
                 </div>
                  </div>
@@ -86,10 +104,10 @@ const SeminarSlider = () => {
               </div>
                  <div>
                  <div className='flex justify-end gap-5 items-end pb-5'>
-               <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.id}`}><ZoomInOutlined/>Detail</Button>
-               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' onClick={() => {
+               <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.seminar_id}`}><ZoomInOutlined/>Detail</Button>
+               <Button className='text-black yellowButt hover:bg-yzc' type="dashed" onClick={() => {
                 if (token) {
-                  router.push(`/seminar/pembayaran/${val.id}`)
+                  router.push(`/seminar/pembayaran/${val.seminar_id}`)
                 }else{
                   router.push('/')
                 }

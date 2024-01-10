@@ -49,6 +49,7 @@ const detailSeminar = () => {
     link: "",
     poster: "",
     psikolog: "",
+    kuota: "",
   });
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const detailSeminar = () => {
         link: dataSeminar?.data.link,
         poster: dataSeminar?.data.poster,
         psikolog: dataSeminar?.data.psikolog,
+        kuota: dataSeminar?.data.kuota
       });
     }
     form.setFieldsValue({
@@ -69,6 +71,7 @@ const detailSeminar = () => {
       link: dataSeminar?.data.link,
       poster: dataSeminar?.data.poster,
       psikolog: dataSeminar?.data.psikolog,
+      kuota: dataSeminar?.data.kuota
     });
   }, [dataSeminar]);
 
@@ -81,6 +84,7 @@ const detailSeminar = () => {
         link: updateSeminar?.link,
         poster: updateSeminar?.poster,
         psikolog: updateSeminar?.psikolog,
+        kuota: updateSeminar?.kuota
       };
       const updates = await SeminarRepository.manipulateData.update(
         data,
@@ -103,6 +107,7 @@ const detailSeminar = () => {
     link: string;
     poster: string;
     psikolog: [];
+    kuota: number;
   };
 
   const parsePrice = (value: any) => {
@@ -206,6 +211,7 @@ const detailSeminar = () => {
                           title: e.target.value,
                         });
                       }}
+                      value={dataSeminar?.data.title}
                     />
                   </Form.Item>
                 </div>
@@ -221,6 +227,7 @@ const detailSeminar = () => {
                       onChange={(e: any) => {
                         setUpdateSeminar({ ...updateSeminar, datetime: e });
                       }}
+                      value={dataSeminar?.data.datetime}
                     />
                   </Form.Item>
                 </div>
@@ -251,6 +258,27 @@ const detailSeminar = () => {
                         `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                       }
                       parser={parsePrice}
+                      value={dataSeminar?.data.price}
+                    />
+                  </Form.Item>
+                </div>
+                <div className="font-bold text-2xl">Kuota Seminar</div>
+                <div>Harap Masukan Kuota Seminar</div>
+                <div className="pt-2">
+                  <Form.Item<FieldType>
+                    name="link"
+                    initialValue={dataSeminar?.data.kuota}
+                  >
+                    <Input
+                      placeholder="Masukan Kuota Seminar"
+                      className="w-[500px]"
+                      onChange={(e: any) => {
+                        setUpdateSeminar({
+                          ...updateSeminar,
+                          kuota: e.target.value,
+                        });
+                      }}
+                      value={dataSeminar?.data.kuota}
                     />
                   </Form.Item>
                 </div>
@@ -270,7 +298,7 @@ const detailSeminar = () => {
                           link: e.target.value,
                         });
                       }}
-                      defaultValue={dataSeminar?.data.link}
+                      value={dataSeminar?.data.link}
                     />
                   </Form.Item>
                 </div>

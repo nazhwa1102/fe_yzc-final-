@@ -29,6 +29,7 @@ const CreateSeminar = () => {
     link: "",
     datetime: new Date(),
     status: "",
+    kuota: 0,
   });
 
   const onFinish = async (val: any) => {
@@ -40,6 +41,7 @@ const CreateSeminar = () => {
         poster: dataInput.poster,
         link: dataInput.link,
         datetime: dataInput.datetime,
+        kuota: dataInput.kuota,
         status: "pending",
       };
       const create_seminar = await SeminarRepository.manipulateData.create(
@@ -78,7 +80,7 @@ const CreateSeminar = () => {
                     <UploadPoster setData={setSeminar} dataInput={dataInput} />
                   </FormItem>
                 </div>
-                <div className="">
+                <div className="pt-2.5">
                   <div className="font-bold text-2xl">Judul Seminar</div>
                   <div className="">
                     <Form.Item name="title" label="Harap Masukan Judul Seminar" rules={[{required:true}]}>
@@ -129,11 +131,23 @@ const CreateSeminar = () => {
                       />
                     </Form.Item>
                   </div>
+                  <div className="font-bold text-2xl">Kuota Seminar</div>
+                  <div>
+                    <Form.Item name="kuota" label="Harap Masukan Kuota Seminar" required={true}>
+                      <InputNumber
+                        placeholder="Masukan Kuota Seminar"
+                        className="w-[500px]"
+                        onChange={(e: any) => {
+                          setSeminar({ ...dataInput, kuota: e });
+                        }}
+                      />
+                    </Form.Item>
+                  </div>
                   <div className="font-bold text-2xl">Tautan Seminar</div>
                   <div>
                     <Form.Item name="link" label="Harap Masukan Tautan Seminar" required={true}>
                       <Input
-                        placeholder="Masukan Judul Seminar"
+                        placeholder="Masukan Tautan Seminar"
                         className="w-[500px]"
                         onChange={(e) => {
                           setSeminar({ ...dataInput, link: e.target.value });

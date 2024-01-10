@@ -5,5 +5,6 @@ export type CreateSeminar = {
     poster: string,
     link: string,
     datetime: Date,
+    kuota: number,
     status: 'pending' | 'reject' | 'approve' | '',
 }

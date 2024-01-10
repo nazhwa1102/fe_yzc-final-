@@ -108,8 +108,9 @@ const bayarSeminar = () => {
         ),
         content: (
           <div className="flex justify-center text-xl font-bold">
-            <div className="flex justify-center">
+            <div className="justify-center">
             Anda Berhasil Melakukan Transaksi
+            <p>Menunggu Konfirmasi Admin..</p>
             </div>
           </div>
         ),

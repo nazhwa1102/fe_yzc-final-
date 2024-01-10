@@ -46,7 +46,7 @@ const listSeminar= () => {
     const displayedData = dataSeminar?.data.slice(startIndex, endIndex);
 
     return (
-      <div className="flex justify-center">
+      <div className="flex justify-center pl-[130px]">
         <Row gutter={50}>
           {displayedData?.map((val: any) => (
            <Col span={100}>
@@ -68,7 +68,7 @@ const listSeminar= () => {
               </div>
             <div className='flex justify-end gap-5 pt-10 items-end'>
                <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.id}`}><ZoomInOutlined/>Detail</Button>
-               <Button className='yellowButt bg-yellow-500 text-green-700 hover:bg-yellow-400' onClick={() => {
+               <Button className='yellowButt' type="dashed" onClick={() => {
                 if (token) {
                   router.push(`/seminar/pembayaran/${val.id}`)
                 }else{

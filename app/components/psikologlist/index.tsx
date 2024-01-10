@@ -23,9 +23,10 @@ const Psikologlist: React.FC = () => {
           />
         </div>
         <p className="font-bold text-2xl pt-5 justify-center flex">{dataRekomen?.data[0].psikolog_nama}</p>
+        <div className="font-semibold text-lg flex justify-center">{dataRekomen?.data[0].psikolog_spesialis}</div>
         <div className="flex gap-5 justify-center pt-10">
           <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
-          <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400 yellowButt">Lihat Profil</Button>
+          <Button className="rounded-xl yellowButt" type="dashed">Lihat Profil</Button>
         </div>
       </Card>
     </Col>
@@ -43,9 +44,10 @@ const Psikologlist: React.FC = () => {
           />
         </div>
         <p className="font-bold text-2xl pt-5 justify-center flex">{dataRekomen?.data[1].psikolog_nama}</p>
+        <div className="font-semibold text-lg flex justify-center">{dataRekomen?.data[1].psikolog_spesialis}</div>
         <div className="flex gap-5 justify-center pt-10">
           <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
-          <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400 yellowButt">Lihat Profil</Button>
+          <Button className="rounded-xl yellowButt" type="dashed">Lihat Profil</Button>
         </div>
       </Card>
     </Col>
@@ -63,9 +65,10 @@ const Psikologlist: React.FC = () => {
           />
         </div>
         <p className="font-bold text-2xl pt-5 justify-center flex">{dataRekomen?.data[2].psikolog_nama}</p>
+        <div className="font-semibold text-lg flex justify-center">{dataRekomen?.data[2].psikolog_spesialis}</div>
         <div className="flex gap-5 justify-center pt-10">
           <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
-          <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400 yellowButt">Lihat Profil</Button>
+          <Button className="yellowButt rounded-xl" type="dashed">Lihat Profil</Button>
         </div>
       </Card>
     </Col>

@@ -50,7 +50,7 @@ const ArtikelSlider: React.FC = () => {
             {visibleSlides.map((slide, index) => (
               <Card
                 key={index}
-                style={{ width: '350px', height: '350px', margin: "0 10px" }}
+                style={{ width: '350px', height: '375px', margin: "0 10px" }}
                 className="shadow-md bg-slate-50"
               >
                 <div className="justify-center flex">
@@ -62,7 +62,7 @@ const ArtikelSlider: React.FC = () => {
                   {slide.title}
                  </div>
                  <div className="flex justify-center">
-                 <div className="pt-2 text-justify w-[350px] h-auto flex justify-center text-base">
+                 <div className="pt-2 text-justify w-[300px] h-auto flex justify-center text-base">
                   {slide.content}
                  </div>
                  </div>

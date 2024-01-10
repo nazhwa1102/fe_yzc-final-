@@ -83,12 +83,15 @@ const DetailOrder = ({id}: any) => {
                 </div>
               </div>
               <div className="pt-10">
-              <div className="font-bold text-xl">
-               {formatDateWithHyphens(dataTransaksi?.data.createdAt)}
+              <div className="font-bold text-xl justify-end right-0 pl-[300px] mt-[-35px] top-0">
+                <div>
+                  Tanggal Transaksi:
+                </div>
+                {formatDateWithHyphens(dataTransaksi?.data.createdAt)}
               </div>
               <div className="font-semibold text-lg pt-5">
                 <div>
-                    Judul Seminar: {dataTransaksi?.data.detailOrder[0]?.seminar?.title}
+                {dataTransaksi?.data.detailOrder[0]?.seminar?.title}
                 </div>
                 <div>
                     Tanggal Seminar: {dataTransaksi?.data.detailOrder[0]?.seminar?.datetime}
@@ -143,12 +146,6 @@ const DetailOrder = ({id}: any) => {
               onCancel={handleCancelDetail}
               footer={(_) => (
                 <div className="justify-center flex pt-3">
-                  <Button
-                    onClick={handleCancelDetail}
-                    className="bg-red-600 text-white hover:text-white w-20 yaButt"
-                  >
-                    OK
-                  </Button>
                 </div>
               )}
               className="pt-[130px]"

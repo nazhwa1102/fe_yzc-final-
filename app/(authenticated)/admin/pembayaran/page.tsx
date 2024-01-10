@@ -6,6 +6,7 @@ import { Button, Modal, Tabs, message, Table, Form, Input, Select } from "antd";
 import type { TabsProps } from "antd";
 import { ColumnsType } from "antd/es/table";
 import {
+  CheckCircleTwoTone,
   CheckOutlined,
   CloseCircleOutlined,
   CloseCircleTwoTone,
@@ -54,6 +55,22 @@ const Pembayaran = () => {
   const handleCancel = () => {
     setOpen(false);
   };
+
+  const [selectedOption2, setSelectedOption2] = useState<DataType | null>(null);
+  const [open2, setOpen2] = useState(false);
+
+  const showModal2 = (option: DataType) => {
+    setSelectedOption2(option);
+    setOpen2(true);
+  };
+  const handleOk2 = () => {
+    setOpen2(false);
+  };
+
+  const handleCancel2 = () => {
+    setOpen2(false);
+  };
+
 
   function formatDateWithHyphens(date: any) {
     const inputDate = new Date(date);
@@ -143,19 +160,57 @@ const Pembayaran = () => {
       render: (_, record) => (
         <div className="list-item justify-center">
           <div className="pb-1">
-            {selectedOption && (
               <Button
                 className="bg-green-500 text-white flex items-center w-[125px] justify-center"
                 style={{ backgroundColor: "#22C55E" }}
-                onClick={async () => {
-                  (await TransaksiRepository.manipulateData.approve(
-                    selectedOption.id
-                  )) && window.location.reload();
-                }}
+                onClick={() => showModal2(record)}
               >
                 <CheckOutlined className="flex pt-[2px]" />
                 Setujui
               </Button>
+            {selectedOption2 && (
+              <Modal
+              open={open2}
+              onCancel={handleCancel2}
+              footer={(_) => (
+                <div className="justify-center flex">
+                  <Button
+                    onClick={handleCancel2}
+                    className="bg-red-600 text-white hover:text-white w-20 cancelButt"
+                  >
+                    Batal
+                  </Button>
+                  <Button
+                    className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
+                    onClick={async () => {
+                      (await TransaksiRepository.manipulateData.approve(
+                        selectedOption2.id
+                        )) && window.location.reload();
+                      }}
+                  >
+                    Ya
+                  </Button>
+                </div>
+              )}
+              className="pt-[130px]"
+            >
+              <div className="justify-center">
+                <div>
+                  <CheckCircleTwoTone
+                    twoToneColor={"green"}
+                    style={{ fontSize: "90px" }}
+                    className="justify-center flex pt-3"
+                  />
+                </div>
+                <div className="font-bold text-3xl flex justify-center pt-4">
+                  {/* <div>{record.id}</div> */}
+                  Setujui Transaksi
+                </div>
+                <div className="flex justify-center text-lg pt-3">
+                  Apa Anda Yakin Ingin Menyetujui Transaksi
+                </div>
+              </div>
+            </Modal>
             )}
           </div>
           <div className="pb-1">
@@ -200,7 +255,7 @@ const Pembayaran = () => {
                     />
                   </div>
                   <div className="font-bold text-3xl flex justify-center pt-4">
-                    <div>{record.id}</div>
+                    {/* <div>{record.id}</div> */}
                     Tolak Transaksi
                   </div>
                   <div className="flex justify-center text-lg pt-3">
@@ -243,10 +298,10 @@ const Pembayaran = () => {
     y: 600,
   };
 
-  const [selectedOption2, setSelectedOption2] = useState("seminar");
+  const [selectedOption3, setSelectedOption3] = useState("seminar");
 
   const handleOptionChange = (value: any) => {
-    setSelectedOption2(value);
+    setSelectedOption3(value);
   };
 
   return (
@@ -262,7 +317,7 @@ const Pembayaran = () => {
           </Button>
         </div>
         <div>
-          <Select value={selectedOption2} onChange={handleOptionChange}>
+          <Select value={selectedOption3} onChange={handleOptionChange}>
             <Option value="seminar">Pembayaran Seminar</Option>
             <Option value="privatekonseling">
               Pembayaran Private Konseling
@@ -271,21 +326,21 @@ const Pembayaran = () => {
         </div>
       </div>
       <div>
-        {selectedOption2 === "seminar" ? (
+        {selectedOption3 === "seminar" ? (
           <Tabs>
-            <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
+            <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
               <TransaksiPending />
             </TabPane>
-            <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
+            <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
               <TransaksiApprove />
             </TabPane>
-            <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
+            <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
               <TransaksiReject />
             </TabPane>
           </Tabs>
         ) : (
           <Tabs>
-            <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
+            <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
               <Table
                 columns={columns}
                 dataSource={dataTransaksiPrivateKonseling?.data.map(
@@ -304,7 +359,7 @@ const Pembayaran = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
+            <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
               <Table
                 columns={columns}
                 dataSource={dataTransaksiPrivateKonseling?.data.map(
@@ -324,7 +379,7 @@ const Pembayaran = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
+            <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
               <Table
                 columns={columns}
                 dataSource={dataTransaksiPrivateKonseling?.data.map(

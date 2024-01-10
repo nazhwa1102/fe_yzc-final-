@@ -130,7 +130,6 @@ const Seminar = () => {
           style={{ width: "25%", height: "auto" }}
         />
       ),
-      width: 500,
     },
     {
       title: "Judul",
@@ -141,6 +140,7 @@ const Seminar = () => {
       title: "Tanggal",
       dataIndex: "datetime",
       key: "datetime",
+      
     },
     {
       title: "Detail",

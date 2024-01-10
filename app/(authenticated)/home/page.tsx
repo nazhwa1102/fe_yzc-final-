@@ -130,7 +130,7 @@ const Layout2 = () => {
   const menu : MenuProps["items"] = [
     {
       key: "/about_us",
-      label: <a className="text-white">About Us</a>,
+      label: <a className="text-white">Tentang Kami</a>,
     },
     {
       key: "/artikel",
@@ -159,7 +159,7 @@ const Layout2 = () => {
           mode="horizontal"
           defaultSelectedKeys={[]}
           className={
-            "flex-1 bg-[#016255] justify-end items-center gap-5 text-[18px] mt-[-2px]"
+            "flex-1 bg-[#016255] justify-end items-center gap-4 text-[18px] mt-[-2px]"
           }
           items={menu}
           onClick={({ key }) => {
@@ -232,7 +232,7 @@ const Layout2 = () => {
                 </div>
               </div>
               <div>
-                <div className="justify-center flex pt-20">
+                <div className="justify-center flex pt-28">
                   <div>
                     <div className="font-bold text-2xl justify-center flex">
                       Rekomendasi Psikolog Terbaik Bulan ini
@@ -254,7 +254,7 @@ const Layout2 = () => {
                 </div>
               </div>
               <div>
-                <div className="justify-center flex pt-20">
+                <div className="justify-center flex pt-28">
                   <div>
                     <div className="font-bold text-2xl justify-center flex">
                       Artikel

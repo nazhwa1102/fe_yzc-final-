@@ -71,9 +71,9 @@ const detailSeminar = () => {
                 <ul>
                 {data?.data.psikologseminar?.map((val: any) => (
                   <div>
-                    <ul className="list-disc">
-                      <li>
-                    <p className="font-bold text-xl">{val.psikolog.fullName}</p>
+                    <ul className="list-disc pl-5">
+                      <li className="font-bold text-xl">
+                      {val.psikolog.fullName}
                       </li>
                     </ul>
                   </div>
@@ -102,6 +102,12 @@ const detailSeminar = () => {
                 <IntlProvider>
                   <PriceFormatter value={data?.data.price} />
                 </IntlProvider>
+              </div>
+              <div className="font-bold text-2xl pt-5 pb-1">
+                Kuota Seminar
+              </div>
+              <div className="font-semibold text-base rounded-lg p-2" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
+              {data?.data.kuota}
               </div>
               <div className="font-bold text-2xl pt-5 pb-1">
                 Tautan Seminar
