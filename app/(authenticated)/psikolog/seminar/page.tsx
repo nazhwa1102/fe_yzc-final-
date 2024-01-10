@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import LayoutAdmin from "#/app/components/layoutadmin";
 import {
-    CheckCircleTwoTone,
-    CheckOutlined,
+  CheckCircleTwoTone,
+  CheckOutlined,
   CloseCircleOutlined,
   CloseCircleTwoTone,
   DeleteOutlined,

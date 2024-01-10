@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@douyinfe/semi-ui": "^2.50.1",
     "@iconify/react": "^4.1.1",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",

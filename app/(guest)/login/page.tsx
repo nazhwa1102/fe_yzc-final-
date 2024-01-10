@@ -60,7 +60,7 @@ const LoginPage = () => {
       if (token) {
         role = parseJwt(token).role;
       }
-      console.log(parseJwt(token));
+
       
 
       if (role === 'Admin') {

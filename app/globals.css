@@ -313,12 +313,6 @@ button, [type='button'], [type='reset'], [type='submit'] {
     color: #ffffff;
     background: #016255;
 }
-/* .background-white-custom{
-    background-color: #fff !important;
-}
-button, [type='button'], [type='reset'], [type='submit'] {
-    background-color: #016255;
-} */
 :where(.css-dev-only-do-not-override-cbv4tr).ant-select:not(.ant-select-customize-input) .ant-select-selector {
     position: relative;
     background-color: #ffffff33;
@@ -379,4 +373,40 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
 }
 .ant-picker-input >input{
     color: white !important;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-upload-wrapper {
+    color: rgba(0, 0, 0, 0.88);
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    color: #000;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-row{
+    display: grid !important;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-form-item .ant-form-item-label >label{
+    width: 100% !important;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input-number .ant-input-number-input {
+    padding: 10px 30px;
+}
+:where(.css-dev-only-do-not-override-3oiqkd).ant-select-single .ant-select-selector {
+    color: #000;
+}
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    padding: 2px;
+}
+.calender .ant-select .ant-select-arrow{
+    height: 15px !important;
+}
+.semi-datepicker-day-selected .semi-datepicker-day-main, .semi-datepicker-day-selected-start .semi-datepicker-day-main, .semi-datepicker-day-selected-end .semi-datepicker-day-main {
+    background-color: #016255;
+    color: var(--semi-color-white);
+}
+.semi-input-wrapper-default {
+    height: 55px;
+}
+.semi-datepicker-day-today .semi-datepicker-day-main {
+    color: #016255;
+    background-color: var(--semi-color-fill-0);
+    font-weight: 600;
 }

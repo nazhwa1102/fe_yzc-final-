@@ -25,8 +25,6 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
   let email: string = "";
   let fullNamePsi: string = "";
   let idPsi: string = ""
-
-  console.log(parseJwt(token));
   
   if (token) {
     role = parseJwt(token).role;
@@ -78,6 +76,7 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
               key: "3",
               icon: <Icon icon="pepicons-print:people" />,
               label: "Private Konseling",
+              onClick: (() => {router.push('/psikolog/private_konselling')})
             },
             {
               key: "4",

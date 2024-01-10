@@ -17,11 +17,17 @@ const Psikologlist: React.FC = () => (
               className="rounded-[50%] w-[150px] h-[150px] mt-[-90px] shadow-lg"
             />
           </div>
-          <p className="font-bold text-xl pt-5 justify-center flex">Danar Kahfi, M. Psi</p>
+          <p className="font-bold text-xl pt-5 justify-center flex">
+            Danar Kahfi, M. Psi
+          </p>
           <p className="text-center">Psikolog Klinis</p>
           <div className="flex gap-5 justify-center pt-10">
-            <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
-            <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400 yellowButt">Lihat Profil</Button>
+            <Button type="text" className="rounded-xl bg-[#00b96b] hover:bg-green-200">
+              Konsultasi
+            </Button>
+            <Button className="rounded-xl !bg-transparent border-green-600 !text-green-600 hover:bg-gray-100 transition-colors duration-200">
+              Lihat Profile
+            </Button>
           </div>
         </Card>
       </Col>
@@ -38,11 +44,19 @@ const Psikologlist: React.FC = () => (
               className="rounded-[50%] w-[150px] h-[150px] mt-[-90px] shadow-lg"
             />
           </div>
-          <p className="font-bold text-xl pt-5 justify-center flex">Cecillia Siregar, M.Psi</p>
-          <p className="text-center">Psikolog Klinis, Certified EMDR Consultant</p>
+          <p className="font-bold text-xl pt-5 justify-center flex">
+            Cecillia Siregar, M.Psi
+          </p>
+          <p className="text-center">
+            Psikolog Klinis, Certified EMDR Consultant
+          </p>
           <div className="flex gap-5 justify-center pt-10">
-            <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
-            <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400 yellowButt">Lihat Profil</Button>
+            <Button type="text" className="rounded-xl bg-[#00b96b] text-white">
+              Konsultasi
+            </Button>
+            <Button className= "rounded-xl !bg-transparent border-green-600 !text-green-600 hover:bg-gray-100 transition-colors duration-200">
+              Lihat Profil
+            </Button>
           </div>
         </Card>
       </Col>
@@ -59,11 +73,17 @@ const Psikologlist: React.FC = () => (
               className="rounded-[50%] w-[150px] h-[150px] mt-[-90px] shadow-lg"
             />
           </div>
-          <p className="font-bold text-xl pt-5 justify-center flex">Nazhwa Nur , M. Psi</p>
+          <p className="font-bold text-xl pt-5 justify-center flex">
+            Nazhwa Nur , M. Psi
+          </p>
           <p className="text-center">Psikolog Klinis</p>
           <div className="flex gap-5 justify-center pt-10">
-            <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
-            <Button className="bg-yellow-400 text-green-800 rounded-xl hover:bg-yellow-400 yellowButt">Lihat Profil</Button>
+            <Button type="text" className="rounded-xl bg-[#00b96b]">
+              Konsultasi
+            </Button>
+            <Button className= "rounded-xl !bg-transparent border-green-600 !text-green-600 hover:bg-gray-100 transition-colors duration-200">
+              Lihat Profil
+            </Button>
           </div>
         </Card>
       </Col>

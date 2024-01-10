@@ -12,12 +12,12 @@ interface Slide {
 
 const ArtikelSlider: React.FC = () => {
   const slides: Slide[] = [
-    {id: '1', image: "https://i.ibb.co/gFXZmYp/dcdcd628-aa7a-4467-834c-0218c6082737.jpg", title: "“Ketika Hidup Terasa Begitu Berat”", content: "Terkadang, hidup dapat terasa begitu berat. Seperti saat rencana yang telah kita susun tidak berjalan dengan seharusnya, atau ketika hidu....." },
+    {id: '1', image: "https://i.ibb.co/gFXZmYp/dcdcd628-aa7a-4467-834c-0218c6082737.jpg", title: "“Ketika Hidup Terasa Begitu Berat”", content: "Terkadang, hidup dapat terasa begitu berat. Seperti saat rencana yang telah kita susun tidak berjalan dengan....." },
     {id: '2',image: "https://i.ibb.co/N6dC0BW/3c569a03-2ddb-4e00-b774-c0e97ebc4f37.jpg", title: "“Kapan Seseorang Butuh Konseling?”", content: "Konseling bagi sebagian orang sering dianggap sebagai sesi curhat semata. Padahal..." },
     {id: '3',image: "https://i.ibb.co/jvxkqMZ/c8d263-4e499f977bd34f35ba501c0bd8299407-mv2.webp", title: "“Alasan Konseling Nggak Cukup Sekali”", content: "“hah, harus konseling lagi? “berarti konselling aku gagal kah?”..." },
-    {id: '4',image: "https://static.vecteezy.com/system/resources/previews/021/153/283/non_2x/psychology-depression-people-elderly-asian-adult-man-men-consulting-with-psychologist-psychiatrist-while-elderly-old-patient-counseling-mental-with-doctor-woman-at-clinic-encouraging-therapy-free-photo.jpg", title: "Artikel 4", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
-    {id: '5',image: "https://static.vecteezy.com/system/resources/previews/033/229/232/non_2x/woman-with-mental-health-problems-is-consulting-psychiatrist-is-recording-the-patient-s-condition-for-treatment-encouragement-love-and-family-problem-bipolar-depression-patient-protect-suicide-free-photo.jpg", title: "Artikel 5", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
-    {id: '6',image: "https://static.vecteezy.com/system/resources/previews/019/050/370/non_2x/male-businessmen-support-and-encourage-colleagues-who-are-fired-free-photo.jpg", title: "Artikel 6", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    {id: '4',image: "https://static.vecteezy.com/system/resources/previews/021/153/283/non_2x/psychology-depression-people-elderly-asian-adult-man-men-consulting-with-psychologist-psychiatrist-while-elderly-old-patient-counseling-mental-with-doctor-woman-at-clinic-encouraging-therapy-free-photo.jpg", title: "“Konseling Itu Penting”", content: "“hah, harus konseling lagi? “berarti konselling aku gagal kah?..."  },
+    {id: '5',image: "https://static.vecteezy.com/system/resources/previews/033/229/232/non_2x/woman-with-mental-health-problems-is-consulting-psychiatrist-is-recording-the-patient-s-condition-for-treatment-encouragement-love-and-family-problem-bipolar-depression-patient-protect-suicide-free-photo.jpg",title: "“Kecemasan adalah bagian dari pendewasan?”", content: "“Terkadang, hidup dapat terasa begitu berat. Seperti saat rencana yang telah kita susun tidak....." },
+    {id: '6',image: "https://static.vecteezy.com/system/resources/previews/019/050/370/non_2x/male-businessmen-support-and-encourage-colleagues-who-are-fired-free-photo.jpg",title: "“5 Cara Efektif Mencegah Parental Burnout”", content: "Konseling bagi sebagian orang sering dianggap sebagai sesi curhat semata. Padahal..." },
     // Add more slides as needed
   ];
 
@@ -35,7 +35,7 @@ const ArtikelSlider: React.FC = () => {
 
   return (
     <div style={{ alignItems: "center" }}>
-      <div style={{ marginTop: "10px", textAlign: "center" }}>
+      <div style={{ marginTop: "10px", textAlign: "justify" }}>
         <div style={{ display: "flex" }}>
           <div className="pt-[175px] pr-5">
             <Button
@@ -62,13 +62,13 @@ const ArtikelSlider: React.FC = () => {
                   {slide.title}
                  </div>
                  <div className="flex justify-center">
-                 <div className="pt-2 text-justify w-[350px] h-auto flex justify-center text-base">
+                 <div className="p-3 text-justify w-[300px] h-auto flex justify-center text-base">
                   {slide.content}
                  </div>
                  </div>
                   </div>
                 </div>
-                 <div className="flex justify-end bottom-3 right-3 absolute">
+                 <div className="flex justify-end bottom-2 right-3 absolute">
                   <Button type="text" className="rounded-xl">
                     Baca Selengkapnya
                   </Button>

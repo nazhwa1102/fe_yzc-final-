@@ -123,7 +123,7 @@ const [formStep2] = Form.useForm();
                     style={{ marginTop: 34 }}
                     className="flex justify-between"
                   >
-                    <div className="regisCustomer pl-10">
+                    <div className="regisCustomer pr-10">
                       {current > 0 && (
                         <Button
                           style={{ margin: "0 8px" }}
@@ -138,7 +138,7 @@ const [formStep2] = Form.useForm();
                         <Button
                           type="primary"
                           onClick={() => next()}
-                          className="bg-primary flex justify-end" 
+                          className="bg-primary" 
                         >
                           Lanjut
                         </Button>

@@ -39,7 +39,7 @@ import Homehead from "#/app/components/images/homehead";
 import ArtikelSlider from "#/app/components/artikelslider";
 import Psikologlist from "#/app/components/psikologlist";
 import SeminarSlider from "#/app/components/seminarslider";
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 import { parseJwt } from "#/utils/convert";
 const { Paragraph } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -51,31 +51,29 @@ const Layout2 = () => {
     setCurrentPage(page);
   };
 
-
   const router = useRouter();
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem("access_token");
   console.log(token, "yuk bisa");
-  let role: string = '';
-  let email: string = '';
-  let fullNameCus: string = ''
+  let role: string = "";
+  let email: string = "";
+  let fullNameCus: string = "";
 
   if (token) {
     role = parseJwt(token).role;
     email = parseJwt(token).email;
-    fullNameCus = parseJwt(token).fullNameCus
+    fullNameCus = parseJwt(token).fullNameCus;
     console.log(role, "role cocok");
-    console.log(fullNameCus, 'nama');
-    
+    console.log(fullNameCus, "nama");
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('access_token');
-    router.push('/');
+    localStorage.removeItem("access_token");
+    router.push("/");
   };
 
   const items: MenuProps["items"] = [
@@ -127,7 +125,7 @@ const Layout2 = () => {
     },
   ];
 
-  const menu : MenuProps["items"] = [
+  const menu: MenuProps["items"] = [
     {
       key: "/about_us",
       label: <a className="text-white">About Us</a>,
@@ -168,28 +166,33 @@ const Layout2 = () => {
           }}
         ></Menu>
         <div className="flex items-center pl-5 justify-end">
-        {token ? (
-          <>
-          <div className="text-white font-bold text-[16px] pr-1">Halo,</div>
-          <Dropdown
-            menu={{ items }}
-            overlayStyle={{ width: "170px", color: "white" }}
-            className="text-white font-bold -mr-3 text-[16px]"
-
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-                {fullNameCus}
-                <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
-          </>
-        ) : (
-          <>
-          <Button style={{background: '#22c55e'}} className="hover:bg-green-600 hover:font-bold text-white text-base font-bold" onClick={() => router.push('/')}>Masuk</Button>
-          </>
-        )}
+          {token ? (
+            <>
+              <div className="text-white font-bold text-[16px] pr-1">Halo,</div>
+              <Dropdown
+                menu={{ items }}
+                overlayStyle={{ width: "170px", color: "white" }}
+                className="text-white font-bold -mr-3 text-[16px]"
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space>
+                    {fullNameCus}
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+            </>
+          ) : (
+            <>
+              <Button
+                style={{ background: "#22c55e" }}
+                className="hover:bg-green-600 hover:font-bold text-white text-base font-bold"
+                onClick={() => router.push("/")}
+              >
+                Masuk
+              </Button>
+            </>
+          )}
         </div>
       </Header>
       <Header className="header flex bg-[#EDEDED] justify-center gap-[500px] h-[230px] items-center mt-[-5px]">
@@ -247,7 +250,10 @@ const Layout2 = () => {
                 <div className="justify-center">
                   <Psikologlist />
                   <div className="flex justify-center pt-10">
-                    <Button className="rounded-xl h-fit text-lg w-[200px] bg-yzc shadow-lg" type="text">
+                    <Button
+                      className="rounded-xl h-fit text-lg w-[200px] bg-yzc shadow-lg"
+                      type="text"
+                    >
                       Lihat Semua
                     </Button>
                   </div>
@@ -259,9 +265,11 @@ const Layout2 = () => {
                     <div className="font-bold text-2xl justify-center flex">
                       Artikel
                     </div>
-                    <div className="w-[320px] text-center">
-                      Yuk belajar untuk memahami diri sendiri bareng youthzen
-                      connect ! Kunjungi halaman artikel disini!
+                    <div className="flex justify-center pt-2">
+                      <div className="w-[320px] text-center">
+                        Yuk belajar untuk memahami diri sendiri bareng youthzen
+                        connect ! Kunjungi halaman artikel disini!
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -291,10 +299,12 @@ const Layout2 = () => {
               <div className="flex gap-5 items-end">
                 <div>
                   <p>Ikuti Kami Di:</p>
-                  <Icon icon="ic:baseline-facebook" color="white" /> YouthZen Connect
+                  <Icon icon="ic:baseline-facebook" color="white" /> YouthZen
+                  Connect
                   <br />
                   <br />
-                  <Icon icon="pajamas:twitter" color="white" /> youth.zen_connect
+                  <Icon icon="pajamas:twitter" color="white" />{" "}
+                  youth.zen_connect
                 </div>
                 <div>
                   <br />
