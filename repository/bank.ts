@@ -35,7 +35,7 @@ const hooks = {
      return useSWR(url.bankPsi(id), http.fetcher)
     }
 }
-export const bankRepository = {
+export const BankRepository = {
     url,
     manipulateData,
     hooks

@@ -2,7 +2,7 @@
 
 import LayoutPsikolog from "#/app/components/dashboardPsikolog";
 import LayoutAdmin from "#/app/components/layoutadmin";
-import { bankRepository } from "#/repository/bank";
+import { BankRepository, bankRepository } from "#/repository/bank";
 import { parseJwt } from "#/utils/convert";
 import { InboxOutlined } from "@ant-design/icons";
 import {
@@ -67,7 +67,7 @@ const CreateBank = () => {
         account_owner_name: dataInput.account_owner_name,
         account_number: dataInput.account_number,
       };
-      const create_bank = await bankRepository.manipulateData.createBankPsi(
+      const create_bank = await BankRepository.manipulateData.createBankPsi(
         data
       );
       setTimeout(message.success("Anda Telah Berhasil Menambahkan Bank"), 5000);
@@ -109,7 +109,7 @@ const CreateBank = () => {
             file.type === "image/jpg" ||
             file.type === "image/jpeg"
           ) {
-            const response = await bankRepository.manipulateData.UploadImage(
+            const response = await BankRepository.manipulateData.UploadImage(
               file?.originFileObj
             );
             console.log(response.body.fileName, "hasilnya");
@@ -171,7 +171,7 @@ const CreateBank = () => {
               <div>
                 <div className="font-bold text-2xl">Nama Bank</div>
                 <Form.Item
-                  name="title"
+                  name="bank_name"
                   label="Harap Masukan Nama Bank"
                   rules={[{ required: true }]}
                 >
@@ -187,7 +187,7 @@ const CreateBank = () => {
               <div>
                 <div className="font-bold text-2xl">Nomer Rekening</div>
                 <Form.Item
-                  name="title"
+                  name="account_number"
                   label="Harap Masukan Nomer Rekening"
                   rules={[{ required: true }]}
                 >
@@ -203,7 +203,7 @@ const CreateBank = () => {
               <div>
                 <div className="font-bold text-2xl">Nama Pemilik</div>
                 <Form.Item
-                  name="title"
+                  name="account_owner_name"
                   label="Harap Masukan Nama Pemilik"
                   rules={[{ required: true }]}
                 >
@@ -226,7 +226,7 @@ const CreateBank = () => {
           className="bg-primary text-2xl h-fit w-[400px] rounded-[20px]"
           onClick={onFinish}
         >
-          Ajukan Seminar
+          Tambah Bank
         </Button>
       </div>
     </LayoutPsikolog>

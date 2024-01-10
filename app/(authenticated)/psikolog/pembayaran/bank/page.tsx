@@ -12,7 +12,7 @@ import {
 import { Button, Card, Modal, Pagination, Space, Tabs, Typography } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { Table } from "antd/lib";
-import { bankRepository } from "#/repository/bank";
+import { BankRepository, bankRepository } from "#/repository/bank";
 import { parseJwt } from "#/utils/convert";
 import { useRouter } from "next/navigation";
 import LayoutPsikolog from "#/app/components/dashboardPsikolog";
@@ -27,12 +27,12 @@ interface DataType {
 }
 
 type createBank = {
-    psikolog: string;
-    bank_name: string;
-    qr: string;
-    account_owner_name: string;
-    account_number: string;
-}
+  psikolog: string;
+  bank_name: string;
+  qr: string;
+  account_owner_name: string;
+  account_number: string;
+};
 
 const Bank = () => {
   const [open, setOpen] = useState(false);
@@ -49,27 +49,28 @@ const Bank = () => {
   };
 
   const token = localStorage.getItem("access_token");
-    console.log(token, "yuk bisa");
-    let role: string = "";
-    let email: string = "";
-    let fullNamePsi: string = "";
-    let idPsi: string = ""
+  console.log(token, "yuk bisa");
+  let role: string = "";
+  let email: string = "";
+  let fullNamePsi: string = "";
+  let idPsi: string = "";
+
+  console.log(parseJwt(token));
+
+  if (token) {
+    role = parseJwt(token).role;
+    email = parseJwt(token).email;
+    fullNamePsi = parseJwt(token).fullNamePsi;
+    idPsi = parseJwt(token).idPsi;
+    console.log(role, "role cocok");
+    console.log(fullNamePsi, "nama");
+    console.log(idPsi, "id");
+  }
+  const router = useRouter();
+
+  const { data: dataBank } = BankRepository.hooks.bankPsi(idPsi)
+  console.log('ini',dataBank);
   
-    console.log(parseJwt(token));
-    
-    if (token) {
-      role = parseJwt(token).role;
-      email = parseJwt(token).email;
-      fullNamePsi = parseJwt(token).fullNamePsi;
-      idPsi = parseJwt(token).idPsi
-      console.log(role, "role cocok");
-      console.log(fullNamePsi, "nama");
-      console.log(idPsi, 'id');
-    }
-    const router = useRouter()
-
-  const { data: dataBank } = bankRepository.hooks.bankPsi(idPsi);
-
 
   const columns: ColumnsType<DataType> = [
     {
@@ -79,10 +80,10 @@ const Bank = () => {
       render: (_, record) => (
         <img
           src={`http://localhost:3222/bank/upload/${record.qr}/image`}
-          style={{ width: "25%", height: "auto" }}
+          style={{ width: "50%", height: "auto" }}
         />
       ),
-      width: 500,
+      width: 300,
     },
     {
       title: "Bank",
@@ -95,10 +96,10 @@ const Bank = () => {
       key: "account_number",
     },
     {
-        title: "Nama Pemilik",
-        dataIndex: "account_owner_name",
-        key: "account_owner_name",
-      },
+      title: "Nama Pemilik",
+      dataIndex: "account_owner_name",
+      key: "account_owner_name",
+    },
     {
       title: "Aksi",
       key: "Aksi",
@@ -147,9 +148,8 @@ const Bank = () => {
                   <Button
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
                     onClick={async () => {
-                      (await bankRepository.manipulateData.delete(
-                        record.id
-                      )) && window.location.reload();
+                      (await bankRepository.manipulateData.delete(record.id)) &&
+                        window.location.reload();
                     }}
                   >
                     Ya
@@ -207,22 +207,21 @@ const Bank = () => {
           </Button>
         </div>
         <div className="pt-5">
-        <Table
-                columns={columns}
-                dataSource={dataBank?.data.map((val: any) => {
-                  console.log(val.poster, "isi poster");
-                  return {
-                    id: val.id,
-                    bank_name: val.bank_name,
-                    qr: val.qr,
-                    account_owner_name: val.account_owner_name,
-                    account_number: val.account_number
-                  };
-                })}
-                className="font-semibold"
-                scroll={scroll}
-                pagination={false}
-              />
+          <Table
+            columns={columns}
+            dataSource={dataBank?.data.map((val: any) => {
+              return {
+                id: val.id,
+                bank_name: val.bank_name,
+                qr: val.qr,
+                account_owner_name: val.account_owner_name,
+                account_number: val.account_number,
+              };
+            })}
+            className="font-semibold"
+            scroll={scroll}
+            pagination={false}
+          />
         </div>
       </div>
     </LayoutPsikolog>
