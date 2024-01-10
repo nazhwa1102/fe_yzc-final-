@@ -301,10 +301,10 @@ const Psikolog = () => {
   };
 
   return (
-    <LayoutAdmin menu="/admin/psikolog">
+    <LayoutAdmin menu="psikolog">
       <div>
         <Tabs>
-          <TabPane tab="List Psikolog Pending" key="Psikolog Pending">
+          <TabPane tab="Psikolog Pending" key="Psikolog Pending">
             <Table
               columns={columns}
               dataSource={dataPsikologPending?.data.map((val: any) => {
@@ -323,10 +323,10 @@ const Psikolog = () => {
               pagination={false}
             />
           </TabPane>
-          <TabPane tab="List Psikolog Active" key="Psikolog Active">
+          <TabPane tab="Psikolog Active" key="Psikolog Active">
             <PsikologActive />
           </TabPane>
-          <TabPane tab="List Psikolog Inactive" key="Psikolog InActive">
+          <TabPane tab="Psikolog Inactive" key="Psikolog InActive">
             <PsikologInActive />
           </TabPane>
         </Tabs>

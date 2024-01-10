@@ -6,11 +6,16 @@ const url = {
     seminar: () => '/seminar',
     seminarId: (id:any) => `/seminar/${id}`,
     image: () => '/seminar/upload',
-    reject: (id:any) => `/seminar/reject/${id}`,
-    approve: (id: any) => `/seminar/approve/${id}`,
+    reject: (id:any, seminar: any) => `/seminar/reject/${seminar}/${id}`,
+    approve: (id: any, seminar: any) => `/seminar/approve/${seminar}/${id}`,
+    statusApprovePsi: (id:any) => `/seminar/approve/${id}`,
+    statusRejectPsi: (id:any) => `/seminar/reject/${id}`,
+    statusPendingPsi: (id:any) => `/seminar/pending/${id}`,
     statusApprove: () => '/seminar/approve',
     statusReject: () => '/seminar/reject',
     statusPending: () => '/seminar/pending',
+    approval: (id: any) => `/seminar/approval/${id}`,
+    seminarRekomen: () => `/seminar/seminar_rekomen`
 }
 
 const manipulateData = {
@@ -23,17 +28,20 @@ const manipulateData = {
     delete(id:any){
         return http.del(url.seminarId(id))
     },
-    reject(data:any, id:any){
-        return http.put(url.reject(id)).send(data)
+    reject(data:any, id:any, seminar: any){
+        return http.put(url.reject(id, seminar)).send(data)
     },
-    approve(id:any){
-        return http.put(url.approve(id))
+    approve(id:any, seminar: any){
+        return http.put(url.approve(id, seminar))
     },
     UploadImage(data:any){
         const formData = new FormData()
         formData.append("file", data)
         return http.post(url.image()).send(formData)
     },
+    approval(id: any){
+      return http.put(url.approval(id))
+    }
 }
 
 const hooks = {
@@ -55,8 +63,20 @@ const hooks = {
   statusPending(){
     return useSWR(url.statusPending(), http.fetcher)
   },
+  statusApprovePsi(id:any){
+    return useSWR(url.statusApprovePsi(id), http.fetcher)
+  },
+  statusRejectPsi(id:any){
+    return useSWR(url.statusRejectPsi(id), http.fetcher)
+  },
+  statusPendingPsi(id:any){
+    return useSWR(url.statusPendingPsi(id), http.fetcher)
+  },
   detailSeminar(id:any){
     return useSWR(url.seminarId(id), http.fetcher)
+  },
+  seminarRekomen(){
+    return useSWR(url.seminarRekomen(), http.fetcher)
   }
 }
 

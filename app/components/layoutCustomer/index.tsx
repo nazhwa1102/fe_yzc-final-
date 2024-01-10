@@ -100,7 +100,7 @@ const LayoutCustomer = ({ children, menu }: any) => {
   const menus: MenuProps["items"] = [
     {
       key: "/about_us",
-      label: <a className="text-white">About Us</a>,
+      label: <a className="text-white">Tentang Kami</a>,
     },
     {
       key: "/artikel",

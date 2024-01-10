@@ -31,6 +31,7 @@ function register_psikolog() {
     email:'',
     phone:'',
     password:'',
+    spesialis:''
   })
   
 const [formStep1] = Form.useForm();
@@ -92,6 +93,7 @@ const [formStep3] = Form.useForm();
           email: dataInput.email,
           phone: dataInput?.phone,
           password: dataInput?.password,
+          speialis: dataInput?.spesialis
       };
       console.log (data ,"ini data");
       const register_psikolog = await authRepository.manipulateData.register2(data);

@@ -181,8 +181,9 @@ button, [type='button'], [type='reset'], [type='submit'] {
 }
 
 .yellowButt{
-    background-color: rgb(250 204 21 / var(--tw-bg-opacity)) !important;
-    color: white;
+    background-color: white !important;
+    border: 1px solid #016255;
+    color: #016255;
 }
 
 .arrow :hover{

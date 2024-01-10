@@ -3,7 +3,7 @@
 import DetailOrder from "#/app/components/detailOrder";
 import { Alasan } from "#/app/types/typeAlasan";
 import { TransaksiRepository } from "#/repository/transaksi";
-import { CheckOutlined, CloseCircleOutlined, CloseCircleTwoTone } from "@ant-design/icons";
+import { CheckCircleTwoTone, CheckOutlined, CloseCircleOutlined, CloseCircleTwoTone } from "@ant-design/icons";
 import { Button, Form, Input, Modal, message } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { Table } from "antd/lib";
@@ -22,8 +22,11 @@ interface DataType {
 
 const TransaksiPending = () => {
 const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminarPending();
-const [open, setOpen] = useState(false);
-const showModal = () => {
+const [selectedOption, setSelectedOption] = useState<DataType | null>(null);
+  const [open, setOpen] = useState(false);
+
+  const showModal = (option: DataType) => {
+    setSelectedOption(option);
     setOpen(true);
   };
   const handleOk = () => {
@@ -33,6 +36,22 @@ const showModal = () => {
   const handleCancel = () => {
     setOpen(false);
   };
+
+  const [selectedOption2, setSelectedOption2] = useState<DataType | null>(null);
+  const [open2, setOpen2] = useState(false);
+
+  const showModal2 = (option: DataType) => {
+    setSelectedOption2(option);
+    setOpen2(true);
+  };
+  const handleOk2 = () => {
+    setOpen2(false);
+  };
+
+  const handleCancel2 = () => {
+    setOpen2(false);
+  };
+
 
   function formatDateWithHyphens(date: any) {
     const inputDate = new Date(date);
@@ -124,38 +143,30 @@ const showModal = () => {
             <Button
               className="bg-green-500 text-white flex items-center w-[125px] justify-center"
               style={{ backgroundColor: "#22C55E" }}
-              onClick={async () => {
-                (await TransaksiRepository.manipulateData.approve(record.id)) &&
-                  window.location.reload();
-              }}
+              onClick={() => showModal2(record)}
             >
               <CheckOutlined className="flex pt-[2px]" />
               Setujui
             </Button>
-          </div>
-          <div className="pb-1">
-            <Button
-              className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
-              style={{ backgroundColor: "#EC5151" }}
-              onClick={showModal}
-            >
-              <CloseCircleOutlined className="flex pt-[2px]" />
-              Tolak
-            </Button>
-            <Modal
-              open={open}
-              onCancel={handleCancel}
+            {selectedOption2 && (
+              <Modal
+              open={open2}
+              onCancel={handleCancel2}
               footer={(_) => (
                 <div className="justify-center flex">
                   <Button
-                    onClick={handleCancel}
+                    onClick={handleCancel2}
                     className="bg-red-600 text-white hover:text-white w-20 cancelButt"
                   >
                     Batal
                   </Button>
                   <Button
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                    onClick={() =>{onFinish(record.id)}}
+                    onClick={async () => {
+                      (await TransaksiRepository.manipulateData.approve(
+                        selectedOption2.id
+                        )) && window.location.reload();
+                      }}
                   >
                     Ya
                   </Button>
@@ -165,43 +176,97 @@ const showModal = () => {
             >
               <div className="justify-center">
                 <div>
-                  <CloseCircleTwoTone
-                    twoToneColor={"red"}
+                  <CheckCircleTwoTone
+                    twoToneColor={"green"}
                     style={{ fontSize: "90px" }}
                     className="justify-center flex pt-3"
                   />
                 </div>
                 <div className="font-bold text-3xl flex justify-center pt-4">
-                  Tolak Seminar
+                  {/* <div>{record.id}</div> */}
+                  Setujui Transaksi
                 </div>
                 <div className="flex justify-center text-lg pt-3">
-                  Apa Anda Yakin Ingin Menolak Seminar
-                </div>
-                <div className="flex justify-center">
-                  <div className="justify-center pt-3">
-                    <div className="flex justify-center">
-                      <div className="font-semibold text-lg justify-center">
-                        Alasan
-                      </div>
-                    </div>
-                    <Form size="middle" style={{ maxWidth: "500px" }}>
-                      <Form.Item>
-                        <Input
-                          placeholder="Masukan Alasan Penolakan Transaksi"
-                          className="w-[300px]"
-                          onChange={(e) => {
-                            setTransaksi({
-                              ...dataInput,
-                              alasan: e.target.value,
-                            });
-                          }}
-                        />
-                      </Form.Item>
-                    </Form>
-                  </div>
+                  Apa Anda Yakin Ingin Menyetujui Transaksi
                 </div>
               </div>
             </Modal>
+            )}
+          </div>
+          <div className="pb-1">
+            <Button
+              className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
+              style={{ backgroundColor: "#EC5151" }}
+              onClick={() => showModal(record)}
+            >
+              <CloseCircleOutlined className="flex pt-[2px]" />
+              Tolak
+            </Button>
+            {selectedOption && (
+              <Modal
+                open={open}
+                onCancel={handleCancel}
+                footer={(_) => (
+                  <div className="justify-center flex">
+                    <Button
+                      onClick={handleCancel}
+                      className="bg-red-600 text-white hover:text-white w-20 cancelButt"
+                    >
+                      Batal
+                    </Button>
+                    <Button
+                      className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
+                      onClick={() => {
+                        onFinish(selectedOption.id);
+                      }}
+                    >
+                      Ya
+                    </Button>
+                  </div>
+                )}
+                className="pt-[130px]"
+              >
+                <div className="justify-center">
+                  <div>
+                    <CloseCircleTwoTone
+                      twoToneColor={"red"}
+                      style={{ fontSize: "90px" }}
+                      className="justify-center flex pt-3"
+                    />
+                  </div>
+                  <div className="font-bold text-3xl flex justify-center pt-4">
+                    {/* <div>{record.id}</div> */}
+                    Tolak Transaksi
+                  </div>
+                  <div className="flex justify-center text-lg pt-3">
+                    Apa Anda Yakin Ingin Menolak Transaksi
+                  </div>
+                  <div className="flex justify-center">
+                    <div className="justify-center pt-3">
+                      <div className="flex justify-center">
+                        <div className="font-semibold text-lg justify-center">
+                          Alasan
+                        </div>
+                      </div>
+                      <Form size="middle" style={{ maxWidth: "500px" }}>
+                        <Form.Item>
+                          <Input
+                            placeholder="Masukan Alasan Penolakan Transaksi"
+                            className="w-[300px]"
+                            onChange={(e) => {
+                              setTransaksi({
+                                ...dataInput,
+                                alasan: e.target.value,
+                              });
+                            }}
+                          />
+                        </Form.Item>
+                      </Form>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            )}
           </div>
         </div>
         

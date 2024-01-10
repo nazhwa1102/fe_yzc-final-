@@ -106,7 +106,7 @@ const Layout2 = ({ children, title }: any) => {
   const menu: MenuProps["items"] = [
     {
       key: "/about_us",
-      label: <a className="text-white">About Us</a>,
+      label: <a className="text-white">Tentang Kami</a>,
     },
     {
       key: "/artikel",
@@ -143,7 +143,7 @@ const Layout2 = ({ children, title }: any) => {
             // console.log(`key ${key} route not found`);
           }}
         ></Menu>
-        <div className="flex items-center gap-7 pl-5 justify-end">
+        <div className="flex items-center pl-5 justify-end">
         {token ? (
           <>
           <div className="text-white font-bold text-[16px] pr-1">Halo,</div>

@@ -100,16 +100,17 @@ const bayarSeminar = () => {
           </div>
         ),
         title:(
-          <div className="flex justify-center text-lg font-bold">
+          <div className="flex justify-center text-lg font-bold text-center">
             <div className="flex justify-center">
             Success
             </div>
           </div>
         ),
         content: (
-          <div className="flex justify-center text-xl font-bold">
-            <div className="flex justify-center">
+          <div className="flex justify-center text-xl font-bold text-center">
+            <div className="justify-center">
             Anda Berhasil Melakukan Transaksi
+            <p>Menunggu Konfirmasi Admin..</p>
             </div>
           </div>
         ),

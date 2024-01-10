@@ -2,10 +2,11 @@
 
 import LayoutAdmin from "#/app/components/layoutadmin";
 import React, { useState } from "react";
-import { Button, Modal, Tabs, message, Table, Form, Input } from "antd";
+import { Button, Modal, Tabs, message, Table, Form, Input, Select } from "antd";
 import type { TabsProps } from "antd";
 import { ColumnsType } from "antd/es/table";
 import {
+  CheckCircleTwoTone,
   CheckOutlined,
   CloseCircleOutlined,
   CloseCircleTwoTone,
@@ -33,15 +34,18 @@ interface DataType {
 }
 
 const { TabPane } = Tabs;
+const { Option } = Select;
 
 const Pembayaran = () => {
   const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminar();
   const { data: dataTransaksiPrivateKonseling } =
     TransaksiRepository.hooks.privateKonseling();
 
+  const [selectedOption, setSelectedOption] = useState<DataType | null>(null);
   const [open, setOpen] = useState(false);
 
-  const showModal = () => {
+  const showModal = (option: DataType) => {
+    setSelectedOption(option);
     setOpen(true);
   };
   const handleOk = () => {
@@ -51,6 +55,22 @@ const Pembayaran = () => {
   const handleCancel = () => {
     setOpen(false);
   };
+
+  const [selectedOption2, setSelectedOption2] = useState<DataType | null>(null);
+  const [open2, setOpen2] = useState(false);
+
+  const showModal2 = (option: DataType) => {
+    setSelectedOption2(option);
+    setOpen2(true);
+  };
+  const handleOk2 = () => {
+    setOpen2(false);
+  };
+
+  const handleCancel2 = () => {
+    setOpen2(false);
+  };
+
 
   function formatDateWithHyphens(date: any) {
     const inputDate = new Date(date);
@@ -85,7 +105,7 @@ const Pembayaran = () => {
       );
       setOpen(false);
       mutate;
-      window.location.reload()
+      window.location.reload();
       setTimeout(
         message.success("Anda Telah Berhasil Menolak Transaksi"),
         5000
@@ -94,7 +114,6 @@ const Pembayaran = () => {
       throw error;
     }
   };
-  
 
   const columns: ColumnsType<DataType> = [
     {
@@ -141,43 +160,33 @@ const Pembayaran = () => {
       render: (_, record) => (
         <div className="list-item justify-center">
           <div className="pb-1">
-            <Button
-              className="bg-green-500 text-white flex items-center w-[125px] justify-center"
-              style={{ backgroundColor: "#22C55E" }}
-              onClick={async () => {
-                (await TransaksiRepository.manipulateData.approve(record.id)) &&
-                  window.location.reload();
-              }}
-            >
-              <CheckOutlined className="flex pt-[2px]" />
-              Setujui
-            </Button>
-          </div>
-          <div className="pb-1">
-            <Button
-              className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
-              style={{ backgroundColor: "#EC5151" }}
-              onClick={showModal}
-            >
-              <CloseCircleOutlined className="flex pt-[2px]" />
-              Tolak
-            </Button>
-            <Modal
-              open={open}
-              onCancel={handleCancel}
+              <Button
+                className="bg-green-500 text-white flex items-center w-[125px] justify-center"
+                style={{ backgroundColor: "#22C55E" }}
+                onClick={() => showModal2(record)}
+              >
+                <CheckOutlined className="flex pt-[2px]" />
+                Setujui
+              </Button>
+            {selectedOption2 && (
+              <Modal
+              open={open2}
+              onCancel={handleCancel2}
               footer={(_) => (
                 <div className="justify-center flex">
                   <Button
-                    onClick={handleCancel}
+                    onClick={handleCancel2}
                     className="bg-red-600 text-white hover:text-white w-20 cancelButt"
                   >
                     Batal
                   </Button>
                   <Button
                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                    onClick={() => {
-                      onFinish(record.id);
-                    }}
+                    onClick={async () => {
+                      (await TransaksiRepository.manipulateData.approve(
+                        selectedOption2.id
+                        )) && window.location.reload();
+                      }}
                   >
                     Ya
                   </Button>
@@ -187,44 +196,97 @@ const Pembayaran = () => {
             >
               <div className="justify-center">
                 <div>
-                  <CloseCircleTwoTone
-                    twoToneColor={"red"}
+                  <CheckCircleTwoTone
+                    twoToneColor={"green"}
                     style={{ fontSize: "90px" }}
                     className="justify-center flex pt-3"
-                    />
+                  />
                 </div>
                 <div className="font-bold text-3xl flex justify-center pt-4">
-                    <div>{record.id}</div>
-                  Tolak Transaksi
+                  {/* <div>{record.id}</div> */}
+                  Setujui Transaksi
                 </div>
                 <div className="flex justify-center text-lg pt-3">
-                  Apa Anda Yakin Ingin Menolak Transaksi
-                </div>
-                <div className="flex justify-center">
-                  <div className="justify-center pt-3">
-                    <div className="flex justify-center">
-                      <div className="font-semibold text-lg justify-center">
-                        Alasan
-                      </div>
-                    </div>
-                    <Form size="middle" style={{ maxWidth: "500px" }}>
-                      <Form.Item>
-                        <Input
-                          placeholder="Masukan Alasan Penolakan Transaksi"
-                          className="w-[300px]"
-                          onChange={(e) => {
-                            setTransaksi({
-                              ...dataInput,
-                              alasan: e.target.value,
-                            });
-                          }}
-                        />
-                      </Form.Item>
-                    </Form>
-                  </div>
+                  Apa Anda Yakin Ingin Menyetujui Transaksi
                 </div>
               </div>
             </Modal>
+            )}
+          </div>
+          <div className="pb-1">
+            <Button
+              className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
+              style={{ backgroundColor: "#EC5151" }}
+              onClick={() => showModal(record)}
+            >
+              <CloseCircleOutlined className="flex pt-[2px]" />
+              Tolak
+            </Button>
+            {selectedOption && (
+              <Modal
+                open={open}
+                onCancel={handleCancel}
+                footer={(_) => (
+                  <div className="justify-center flex">
+                    <Button
+                      onClick={handleCancel}
+                      className="bg-red-600 text-white hover:text-white w-20 cancelButt"
+                    >
+                      Batal
+                    </Button>
+                    <Button
+                      className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
+                      onClick={() => {
+                        onFinish(selectedOption.id);
+                      }}
+                    >
+                      Ya
+                    </Button>
+                  </div>
+                )}
+                className="pt-[130px]"
+              >
+                <div className="justify-center">
+                  <div>
+                    <CloseCircleTwoTone
+                      twoToneColor={"red"}
+                      style={{ fontSize: "90px" }}
+                      className="justify-center flex pt-3"
+                    />
+                  </div>
+                  <div className="font-bold text-3xl flex justify-center pt-4">
+                    {/* <div>{record.id}</div> */}
+                    Tolak Transaksi
+                  </div>
+                  <div className="flex justify-center text-lg pt-3">
+                    Apa Anda Yakin Ingin Menolak Transaksi
+                  </div>
+                  <div className="flex justify-center">
+                    <div className="justify-center pt-3">
+                      <div className="flex justify-center">
+                        <div className="font-semibold text-lg justify-center">
+                          Alasan
+                        </div>
+                      </div>
+                      <Form size="middle" style={{ maxWidth: "500px" }}>
+                        <Form.Item>
+                          <Input
+                            placeholder="Masukan Alasan Penolakan Transaksi"
+                            className="w-[300px]"
+                            onChange={(e) => {
+                              setTransaksi({
+                                ...dataInput,
+                                alasan: e.target.value,
+                              });
+                            }}
+                          />
+                        </Form.Item>
+                      </Form>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            )}
           </div>
         </div>
       ),
@@ -236,90 +298,109 @@ const Pembayaran = () => {
     y: 600,
   };
 
+  const [selectedOption3, setSelectedOption3] = useState("seminar");
+
+  const handleOptionChange = (value: any) => {
+    setSelectedOption3(value);
+  };
+
   return (
     <LayoutAdmin menu="pembayaran">
-      <div>
-        <Tabs defaultActiveKey="1">
-          <TabPane tab="List Transaksi Seminar" key="Transaksi Seminar">
-            <Tabs>
-              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
-                <TransaksiPending />
-              </TabPane>
-              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
-                <TransaksiApprove />
-              </TabPane>
-              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
-                <TransaksiReject />
-              </TabPane>
-            </Tabs>
-          </TabPane>
-          <TabPane
-            tab="List Transaksi Private Konseling"
-            key="Transaksi Private Konseling"
+      <div className=" flex justify-between">
+        <div>
+          <Button
+            href="pembayaran/psikolog"
+            className="hover:bg-green-700"
+            style={{ backgroundColor: "#016255" }}
           >
-            <Tabs>
-              <TabPane tab="List Transaksi Tertunda" key="Transaksi Pending">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-              <TabPane tab="List Transaksi Disetejui" key="Transaksi Approve">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      console.log(val.poster, "isi poster");
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-              <TabPane tab="List Transaksi Ditolak" key="Transaksi Reject">
-                <Table
-                  columns={columns}
-                  dataSource={dataTransaksiPrivateKonseling?.data.map(
-                    (val: any) => {
-                      console.log(val.poster, "isi poster");
-                      return {
-                        id: val.id,
-                        nama: val.customer.fullName,
-                        date: val.createdAt,
-                        transaction_amount: val.transaction_amount,
-                        payment_proof: val.payment_proof,
-                      };
-                    }
-                  )}
-                  className="font-semibold"
-                  scroll={scroll}
-                  pagination={false}
-                />
-              </TabPane>
-            </Tabs>
-          </TabPane>
-        </Tabs>
+            Kelola Pembayaran Psikolog
+          </Button>
+        </div>
+        <div>
+          <Select value={selectedOption3} onChange={handleOptionChange}>
+            <Option value="seminar">Pembayaran Seminar</Option>
+            <Option value="privatekonseling">
+              Pembayaran Private Konseling
+            </Option>
+          </Select>
+        </div>
+      </div>
+      <div>
+        {selectedOption3 === "seminar" ? (
+          <Tabs>
+            <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
+              <TransaksiPending />
+            </TabPane>
+            <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
+              <TransaksiApprove />
+            </TabPane>
+            <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
+              <TransaksiReject />
+            </TabPane>
+          </Tabs>
+        ) : (
+          <Tabs>
+            <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
+              <Table
+                columns={columns}
+                dataSource={dataTransaksiPrivateKonseling?.data.map(
+                  (val: any) => {
+                    return {
+                      id: val.id,
+                      nama: val.customer.fullName,
+                      date: val.createdAt,
+                      transaction_amount: val.transaction_amount,
+                      payment_proof: val.payment_proof,
+                    };
+                  }
+                )}
+                className="font-semibold"
+                scroll={scroll}
+                pagination={false}
+              />
+            </TabPane>
+            <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
+              <Table
+                columns={columns}
+                dataSource={dataTransaksiPrivateKonseling?.data.map(
+                  (val: any) => {
+                    console.log(val.poster, "isi poster");
+                    return {
+                      id: val.id,
+                      nama: val.customer.fullName,
+                      date: val.createdAt,
+                      transaction_amount: val.transaction_amount,
+                      payment_proof: val.payment_proof,
+                    };
+                  }
+                )}
+                className="font-semibold"
+                scroll={scroll}
+                pagination={false}
+              />
+            </TabPane>
+            <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
+              <Table
+                columns={columns}
+                dataSource={dataTransaksiPrivateKonseling?.data.map(
+                  (val: any) => {
+                    console.log(val.poster, "isi poster");
+                    return {
+                      id: val.id,
+                      nama: val.customer.fullName,
+                      date: val.createdAt,
+                      transaction_amount: val.transaction_amount,
+                      payment_proof: val.payment_proof,
+                    };
+                  }
+                )}
+                className="font-semibold"
+                scroll={scroll}
+                pagination={false}
+              />
+            </TabPane>
+          </Tabs>
+        )}
       </div>
     </LayoutAdmin>
   );

@@ -109,7 +109,7 @@ const Pembayaran = () => {
       mutate;
       window.location.reload();
       setTimeout(
-        message.success("Anda Telah Berhasil Menolak Transaksi"),
+        message.success("Anda Telah Berhasil Menambahkan Bank"),
         5000
       );
     } catch (error) {
@@ -117,151 +117,151 @@ const Pembayaran = () => {
     }
   };
 
-  const columns: ColumnsType<DataType> = [
-    {
-      title: "Nama",
-      dataIndex: "nama",
-      key: "nama",
-    },
-    {
-      title: "Tanggal",
-      dataIndex: "date",
-      key: "date",
-      render: (_, record) => <div>{formatDateWithHyphens(record.date)}</div>,
-    },
-    {
-      title: "Nominal",
-      dataIndex: "transaction_amount",
-      key: "transaction_amount",
-    },
-    {
-      title: "Foto",
-      dataIndex: "payment_proof",
-      key: "payment_proof",
-      render: (_, record) => (
-        <img
-          src={`http://localhost:3222/transaksi/upload/${record.payment_proof}/image`}
-          style={{ width: "100%", height: "auto" }}
-        />
-      ),
-      width: 100,
-    },
-    {
-      title: "Detail",
-      dataIndex: "id",
-      key: "detail",
-      render: (_, record) => (
-        <div className="justify-center flex">
-          <DetailOrder id={record.id} />
-        </div>
-      ),
-    },
-    {
-      title: "Aksi",
-      key: "Aksi",
-      render: (_, record) => (
-        <div className="list-item justify-center">
-          <div className="pb-1">
-            <Button
-              className="bg-green-500 text-white flex items-center w-[125px] justify-center"
-              style={{ backgroundColor: "#22C55E" }}
-              onClick={async () => {
-                (await TransaksiRepository.manipulateData.approve(record.id)) &&
-                  window.location.reload();
-              }}
-            >
-              <CheckOutlined className="flex pt-[2px]" />
-              Setujui
-            </Button>
-          </div>
-          <div className="pb-1">
-            <Button
-              className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
-              style={{ backgroundColor: "#EC5151" }}
-              onClick={showModal}
-            >
-              <CloseCircleOutlined className="flex pt-[2px]" />
-              Tolak
-            </Button>
-            <Modal
-              open={open}
-              onCancel={handleCancel}
-              footer={(_) => (
-                <div className="justify-center flex">
-                  <Button
-                    onClick={handleCancel}
-                    className="bg-red-600 text-white hover:text-white w-20 cancelButt"
-                  >
-                    Batal
-                  </Button>
-                  <Button
-                    className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                    onClick={() => {
-                      onFinish(record.id);
-                    }}
-                  >
-                    Ya
-                  </Button>
-                </div>
-              )}
-              className="pt-[130px]"
-            >
-              <div className="justify-center">
-                <div>
-                  <CloseCircleTwoTone
-                    twoToneColor={"red"}
-                    style={{ fontSize: "90px" }}
-                    className="justify-center flex pt-3"
-                  />
-                </div>
-                <div className="font-bold text-3xl flex justify-center pt-4">
-                  <div>{record.id}</div>
-                  Tolak Transaksi
-                </div>
-                <div className="flex justify-center text-lg pt-3">
-                  Apa Anda Yakin Ingin Menolak Transaksi
-                </div>
-                <div className="flex justify-center">
-                  <div className="justify-center pt-3">
-                    <div className="flex justify-center">
-                      <div className="font-semibold text-lg justify-center">
-                        Alasan
-                      </div>
-                    </div>
-                    <Form size="middle" style={{ maxWidth: "500px" }}>
-                      <Form.Item>
-                        <Input
-                          placeholder="Masukan Alasan Penolakan Transaksi"
-                          className="w-[300px]"
-                          onChange={(e) => {
-                            setTransaksi({
-                              ...dataInput,
-                              alasan: e.target.value,
-                            });
-                          }}
-                        />
-                      </Form.Item>
-                    </Form>
-                  </div>
-                </div>
-              </div>
-            </Modal>
-          </div>
-        </div>
-      ),
-    },
-  ];
+//   const columns: ColumnsType<DataType> = [
+//     {
+//       title: "Nama",
+//       dataIndex: "nama",
+//       key: "nama",
+//     },
+//     {
+//       title: "Tanggal",
+//       dataIndex: "date",
+//       key: "date",
+//       render: (_, record) => <div>{formatDateWithHyphens(record.date)}</div>,
+//     },
+//     {
+//       title: "Nominal",
+//       dataIndex: "transaction_amount",
+//       key: "transaction_amount",
+//     },
+//     {
+//       title: "Foto",
+//       dataIndex: "payment_proof",
+//       key: "payment_proof",
+//       render: (_, record) => (
+//         <img
+//           src={`http://localhost:3222/transaksi/upload/${record.payment_proof}/image`}
+//           style={{ width: "100%", height: "auto" }}
+//         />
+//       ),
+//       width: 100,
+//     },
+//     {
+//       title: "Detail",
+//       dataIndex: "id",
+//       key: "detail",
+//       render: (_, record) => (
+//         <div className="justify-center flex">
+//           <DetailOrder id={record.id} />
+//         </div>
+//       ),
+//     },
+//     {
+//       title: "Aksi",
+//       key: "Aksi",
+//       render: (_, record) => (
+//         <div className="list-item justify-center">
+//           <div className="pb-1">
+//             <Button
+//               className="bg-green-500 text-white flex items-center w-[125px] justify-center"
+//               style={{ backgroundColor: "#22C55E" }}
+//               onClick={async () => {
+//                 (await TransaksiRepository.manipulateData.approve(record.id)) &&
+//                   window.location.reload();
+//               }}
+//             >
+//               <CheckOutlined className="flex pt-[2px]" />
+//               Setujui
+//             </Button>
+//           </div>
+//           <div className="pb-1">
+//             <Button
+//               className="bg-[#EC5151] text-white flex items-center w-[125px] justify-center"
+//               style={{ backgroundColor: "#EC5151" }}
+//               onClick={showModal}
+//             >
+//               <CloseCircleOutlined className="flex pt-[2px]" />
+//               Tolak
+//             </Button>
+//             <Modal
+//               open={open}
+//               onCancel={handleCancel}
+//               footer={(_) => (
+//                 <div className="justify-center flex">
+//                   <Button
+//                     onClick={handleCancel}
+//                     className="bg-red-600 text-white hover:text-white w-20 cancelButt"
+//                   >
+//                     Batal
+//                   </Button>
+//                   <Button
+//                     className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
+//                     onClick={() => {
+//                       onFinish(record.id);
+//                     }}
+//                   >
+//                     Ya
+//                   </Button>
+//                 </div>
+//               )}
+//               className="pt-[130px]"
+//             >
+//               <div className="justify-center">
+//                 <div>
+//                   <CloseCircleTwoTone
+//                     twoToneColor={"red"}
+//                     style={{ fontSize: "90px" }}
+//                     className="justify-center flex pt-3"
+//                   />
+//                 </div>
+//                 <div className="font-bold text-3xl flex justify-center pt-4">
+//                   <div>{record.id}</div>
+//                   Tolak Transaksi
+//                 </div>
+//                 <div className="flex justify-center text-lg pt-3">
+//                   Apa Anda Yakin Ingin Menolak Transaksi
+//                 </div>
+//                 <div className="flex justify-center">
+//                   <div className="justify-center pt-3">
+//                     <div className="flex justify-center">
+//                       <div className="font-semibold text-lg justify-center">
+//                         Alasan
+//                       </div>
+//                     </div>
+//                     <Form size="middle" style={{ maxWidth: "500px" }}>
+//                       <Form.Item>
+//                         <Input
+//                           placeholder="Masukan Alasan Penolakan Transaksi"
+//                           className="w-[300px]"
+//                           onChange={(e) => {
+//                             setTransaksi({
+//                               ...dataInput,
+//                               alasan: e.target.value,
+//                             });
+//                           }}
+//                         />
+//                       </Form.Item>
+//                     </Form>
+//                   </div>
+//                 </div>
+//               </div>
+//             </Modal>
+//           </div>
+//         </div>
+//       ),
+//     },
+//   ];
 
-  const scroll = {
-    x: "max-content",
-    y: 600,
-  };
+//   const scroll = {
+//     x: "max-content",
+//     y: 600,
+//   };
 
   return (
     <LayoutPsikolog menu="pembayaran">
       <div>
         <div>
-        <Button href="bank" className="hover:bg-green-700" style={{backgroundColor: '#016255'}}>Kelola Bank</Button>
+        <Button href="pembayaran/bank" className="hover:bg-green-700" style={{backgroundColor: '#016255'}}>Kelola Bank</Button>
         </div>
         <div>
         <Tabs>

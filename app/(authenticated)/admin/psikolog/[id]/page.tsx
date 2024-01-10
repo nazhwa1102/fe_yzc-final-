@@ -16,12 +16,14 @@ import {
   UndoOutlined,
 } from "@ant-design/icons";
 import { PsikologRepository } from "#/repository/psikolog";
+import TextArea from "antd/lib/input/TextArea";
 
 const detailSeminar = () => {
   const pathname = usePathname().split("/");
   const { data } = PsikologRepository.hooks.getById(
     pathname[pathname.length - 1]
   );
+
 
   const Status = () => {
     if (data?.data.user_yzc?.status === "not active") {
@@ -121,7 +123,7 @@ const detailSeminar = () => {
             >
               {data?.data.birth_date}
             </div>
-            s
+            
           </div>
           <div>
             <div className="font-bold text-2xl pb-1 pt-2">Agama:</div>
@@ -170,23 +172,37 @@ const detailSeminar = () => {
             >
               {data?.data.lastEducation}
             </div>
-            <div className="font-bold text-2xl pt-20 pb-1">Status Psikolog</div>
+            <div className="font-bold text-2xl pt-28 pb-1">Status Psikolog</div>
             <div>
               <Status />
             </div>
           </div>
           <div>
             <div className="font-bold text-2xl pb-1 pt-2">Tantang Saya:</div>
-            <div
-              className="font-semibold text-lg rounded-lg p-2"
-              style={{
-                border: "1px solid #016225",
-                width: "300px",
-                height: "300px",
-                overflow: "scroll",
-              }}
-            >
-              {data?.data.aboutMe}
+            <div>
+              <TextArea
+                value={data?.data.aboutMe}
+                readOnly={true}
+                className="font-semibold text-lg rounded-lg p-2"
+                style={{
+                  border: "1px solid #016225",
+                  width: "375px",
+                  height: "100px",
+                }}
+              />
+            </div>
+            <div className="font-bold text-2xl pb-1 pt-2">Kasus Ditangani:</div>
+            <div>
+              <TextArea
+                value={data?.data.caseHandled}
+                readOnly={true}
+                className="font-semibold text-lg rounded-lg p-2"
+                style={{
+                  border: "1px solid #016225",
+                  width: "375px",
+                  height: "100px",
+                }}
+              />
             </div>
             <div className="font-bold text-2xl pb-1 pt-2">Legalitas:</div>
             <div className="font-semibold text-lg rounded-lg p-2">
