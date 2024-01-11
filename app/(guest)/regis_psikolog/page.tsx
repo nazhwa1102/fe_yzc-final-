@@ -93,7 +93,7 @@ const [formStep3] = Form.useForm();
           email: dataInput.email,
           phone: dataInput?.phone,
           password: dataInput?.password,
-          speialis: dataInput?.spesialis
+          spesialis: dataInput?.spesialis
       };
       console.log (data ,"ini data");
       const register_psikolog = await authRepository.manipulateData.register2(data);
@@ -109,14 +109,14 @@ const [formStep3] = Form.useForm();
         ),
         title:(
           <div className="justify-center text-lg font-bold flex">
-            <div className="flex justify-center">
+            <div className="justify-center">
             Pendaftaran Berhasil
             </div>
           </div>
         ),
         content: (
           <div className="justify-center text-xl font-bold flex">
-            <div className="flex justify-center">
+            <div className="justify-center">
             Harap tunggu aktivasi dari Admin
             </div>
           </div>
@@ -168,12 +168,12 @@ const [formStep3] = Form.useForm();
                           </Button> 
                         )}
                       </div>
-                      <div className="regisCustomer flex justify-end pl-[500px]">
+                      <div className="regisCustomer flex float-right justify-end pl-[500px]">
                         {current < steps.length - 1 && (
                           <Button
                             type="primary"
                             onClick={() => next()}
-                            className="bg-primary"
+                            className="bg-primary float-right"
                           >
                             Lanjut
                           </Button>

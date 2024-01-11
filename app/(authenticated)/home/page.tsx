@@ -248,7 +248,9 @@ const Layout2 = () => {
                   </div>
                 </div>
                 <div className="justify-center">
+                  <div>
                   <Psikologlist />
+                  </div>
                   <div className="flex justify-center pt-10">
                     <Button
                       className="rounded-xl h-fit text-lg w-[200px] bg-yzc shadow-lg"

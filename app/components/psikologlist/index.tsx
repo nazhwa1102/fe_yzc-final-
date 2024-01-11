@@ -8,7 +8,7 @@ const Psikologlist: React.FC = () => {
 
   return (
     <div className="justify-center pt-[100px] flex">
-    <Row gutter={20} className="items-center flex justify-center gap-12 pr-8">
+    <Row gutter={20} className="items-center justify-center gap-12 pr-8 flex">
       <Col span={7}>
       <Card
         bordered={true}
@@ -26,7 +26,7 @@ const Psikologlist: React.FC = () => {
         <div className="font-semibold text-lg flex justify-center">{dataRekomen?.data[0].psikolog_spesialis}</div>
         <div className="flex gap-5 justify-center pt-10">
           <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
-          <Button className="rounded-xl yellowButt" type="dashed">Lihat Profil</Button>
+          <Button className="rounded-xl yellowButt text-yzc" type="dashed">Lihat Profil</Button>
         </div>
       </Card>
     </Col>

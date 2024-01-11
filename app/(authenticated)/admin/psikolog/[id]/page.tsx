@@ -172,7 +172,20 @@ const detailSeminar = () => {
             >
               {data?.data.lastEducation}
             </div>
-            <div className="font-bold text-2xl pt-28 pb-1">Status Psikolog</div>
+            <div className="font-bold text-2xl pb-1 pt-2">
+              Spesialisasi:
+            </div>
+            <div
+              className="font-semibold text-lg rounded-lg p-2"
+              style={{
+                border: "1px solid #016225",
+                width: "300px",
+                height: "auto",
+              }}
+            >
+              {data?.data.spesialis}
+            </div>
+            <div className="font-bold text-2xl pt-8 pb-1">Status Psikolog</div>
             <div>
               <Status />
             </div>
