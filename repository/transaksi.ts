@@ -16,6 +16,9 @@ const url = {
     seminarReject: () => '/transaksi/seminar/reject',
     seminarPending: () => '/transaksi/seminar/pending',
     privateKonseling: () => '/transaksi/private_konseling',
+    PrivateKonselingApprove: () => '/transaksi/private_konseling/approve',
+    PrivateKonselingReject: () => '/transaksi/private_konseling/reject',
+    PrivateKonselingPending: () => '/transaksi/private_konseling/pending',
     transaksiApprove: (id: any) => `/transaksi/approve/${id}`,
     transaksiReject: (id: any) => `/transaksi/reject/${id}`,
     transaksiPending: (id: any) => `/transaksi/pending/${id}`,
@@ -79,6 +82,15 @@ const hooks = {
   },
   privateKonseling(){
     return useSWR(url.privateKonseling(), http.fetcher)
+  },
+  PrivateKonselingApprove(){
+    return useSWR(url.PrivateKonselingApprove(), http.fetcher)
+  },
+  PrivateKonselingReject(){
+    return useSWR(url.PrivateKonselingReject(), http.fetcher)
+  },
+  PrivateKonselingPending(){
+    return useSWR(url.PrivateKonselingPending(), http.fetcher)
   },
   getApprove(id:any){
     return useSWR(url.transaksiApprove(id), http.fetcher)

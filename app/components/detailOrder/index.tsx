@@ -115,7 +115,7 @@ const DetailOrder = ({id}: any) => {
           );
     }if (dataTransaksi?.data.detailOrder[0]?.types === 'private_konseling') {
         return (
-            <div className="pt-5 justify-between">
+            <div className="pt-5 justify-stretch gap-10 flex">
               <div>
                 <div className="font-semibold text-lg">Bukti Transaksi :</div>
                 <div className="pl-5">
@@ -124,6 +124,45 @@ const DetailOrder = ({id}: any) => {
                     style={{ width: "200px", height: "300px" }}
                   />
                 </div>
+              </div>
+              <div className="pt-10">
+              <div className="font-bold text-xl justify-end right-0 pl-[300px] mt-[-35px] top-0">
+                <div>
+                  Tanggal Transaksi:
+                </div>
+                {formatDateWithHyphens(dataTransaksi?.data.createdAt)}
+              </div>
+              <div className="font-semibold text-lg pt-5">
+                <div>
+                {dataTransaksi?.data.detailOrder[0]?.privateKonseling?.title}
+                </div>
+                <div>
+                  Psikolog: {dataTransaksi?.data.detailOrder[0]?.privateKonseling?.psikolog?.fullName}
+                </div>
+                <div className="pt-2">
+                Tanggal Seminar: 
+                <div>
+                {dataTransaksi?.data.detailOrder[0]?.privateKonseling?.datetime.map((val: any) => (
+                  <div>
+                      {formatDateWithHyphens(val)}
+                  </div>
+                ))}
+                </div>
+                </div>
+                <div className="gap-1 flex pt-5">
+                    <div>
+                  Total Transaksi:
+                    </div>
+                    <div>
+                <IntlProvider>
+                  <PriceFormatter value={dataTransaksi?.data.transaction_amount} />
+                </IntlProvider>
+                    </div>
+                </div>
+                <div className="pt-5">
+                  <Status/>
+                </div>
+              </div>
               </div>
             </div>
           );

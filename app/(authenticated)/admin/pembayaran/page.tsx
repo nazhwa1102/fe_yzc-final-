@@ -38,8 +38,12 @@ const { Option } = Select;
 
 const Pembayaran = () => {
   const { data: dataTransaksiSeminar } = TransaksiRepository.hooks.seminar();
-  const { data: dataTransaksiPrivateKonseling } =
-    TransaksiRepository.hooks.privateKonseling();
+  const { data: dataTransaksiPrivateKonselingPending } =
+    TransaksiRepository.hooks.PrivateKonselingPending();
+  const { data: dataTransaksiPrivateKonselingApprove } =
+    TransaksiRepository.hooks.PrivateKonselingApprove();
+  const { data: dataTransaksiPrivateKonselingReject } =
+    TransaksiRepository.hooks.PrivateKonselingReject();
 
   const [selectedOption, setSelectedOption] = useState<DataType | null>(null);
   const [open, setOpen] = useState(false);
@@ -70,7 +74,6 @@ const Pembayaran = () => {
   const handleCancel2 = () => {
     setOpen2(false);
   };
-
 
   function formatDateWithHyphens(date: any) {
     const inputDate = new Date(date);
@@ -160,57 +163,57 @@ const Pembayaran = () => {
       render: (_, record) => (
         <div className="list-item justify-center">
           <div className="pb-1">
-              <Button
-                className="bg-green-500 text-white flex items-center w-[125px] justify-center"
-                style={{ backgroundColor: "#22C55E" }}
-                onClick={() => showModal2(record)}
-              >
-                <CheckOutlined className="flex pt-[2px]" />
-                Setujui
-              </Button>
+            <Button
+              className="bg-green-500 text-white flex items-center w-[125px] justify-center"
+              style={{ backgroundColor: "#22C55E" }}
+              onClick={() => showModal2(record)}
+            >
+              <CheckOutlined className="flex pt-[2px]" />
+              Setujui
+            </Button>
             {selectedOption2 && (
               <Modal
-              open={open2}
-              onCancel={handleCancel2}
-              footer={(_) => (
-                <div className="justify-center flex">
-                  <Button
-                    onClick={handleCancel2}
-                    className="bg-red-600 text-white hover:text-white w-20 cancelButt"
-                  >
-                    Batal
-                  </Button>
-                  <Button
-                    className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
-                    onClick={async () => {
-                      (await TransaksiRepository.manipulateData.approve(
-                        selectedOption2.id
+                open={open2}
+                onCancel={handleCancel2}
+                footer={(_) => (
+                  <div className="justify-center flex">
+                    <Button
+                      onClick={handleCancel2}
+                      className="bg-red-600 text-white hover:text-white w-20 cancelButt"
+                    >
+                      Batal
+                    </Button>
+                    <Button
+                      className="text-white bg-[#525F89] hover:text-white w-20 yaButt"
+                      onClick={async () => {
+                        (await TransaksiRepository.manipulateData.approve(
+                          selectedOption2.id
                         )) && window.location.reload();
                       }}
-                  >
-                    Ya
-                  </Button>
+                    >
+                      Ya
+                    </Button>
+                  </div>
+                )}
+                className="pt-[130px]"
+              >
+                <div className="justify-center">
+                  <div>
+                    <CheckCircleTwoTone
+                      twoToneColor={"green"}
+                      style={{ fontSize: "90px" }}
+                      className="justify-center flex pt-3"
+                    />
+                  </div>
+                  <div className="font-bold text-3xl flex justify-center pt-4">
+                    {/* <div>{record.id}</div> */}
+                    Setujui Transaksi
+                  </div>
+                  <div className="flex justify-center text-lg pt-3">
+                    Apa Anda Yakin Ingin Menyetujui Transaksi
+                  </div>
                 </div>
-              )}
-              className="pt-[130px]"
-            >
-              <div className="justify-center">
-                <div>
-                  <CheckCircleTwoTone
-                    twoToneColor={"green"}
-                    style={{ fontSize: "90px" }}
-                    className="justify-center flex pt-3"
-                  />
-                </div>
-                <div className="font-bold text-3xl flex justify-center pt-4">
-                  {/* <div>{record.id}</div> */}
-                  Setujui Transaksi
-                </div>
-                <div className="flex justify-center text-lg pt-3">
-                  Apa Anda Yakin Ingin Menyetujui Transaksi
-                </div>
-              </div>
-            </Modal>
+              </Modal>
             )}
           </div>
           <div className="pb-1">
@@ -293,6 +296,48 @@ const Pembayaran = () => {
     },
   ];
 
+  const columns2: ColumnsType<DataType> = [
+    {
+      title: "Nama",
+      dataIndex: "nama",
+      key: "nama",
+    },
+    {
+      title: "Tanggal",
+      dataIndex: "date",
+      key: "date",
+      render: (_, record) => <div>{formatDateWithHyphens(record.date)}</div>,
+    },
+    {
+      title: "Nominal",
+      dataIndex: "transaction_amount",
+      key: "transaction_amount",
+    },
+    {
+      title: "Foto",
+      dataIndex: "payment_proof",
+      key: "payment_proof",
+      render: (_, record) => (
+        <img
+          src={`http://localhost:3222/transaksi/upload/${record.payment_proof}/image`}
+          style={{ width: "100%", height: "auto" }}
+        />
+      ),
+      width: 100,
+    },
+    {
+      title: "Detail",
+      dataIndex: "id",
+      key: "detail",
+      render: (_, record) => (
+        <div className="justify-center flex">
+          <DetailOrder id={record.id} />
+        </div>
+      ),
+    },
+    
+  ];
+
   const scroll = {
     x: "max-content",
     y: 600,
@@ -317,7 +362,7 @@ const Pembayaran = () => {
           </Button>
         </div>
         <div>
-          <Select value={selectedOption3} onChange={handleOptionChange}>
+          <Select value={selectedOption3} onChange={handleOptionChange} className="w-[175px] flex items-center" size="middle">
             <Option value="seminar">Pembayaran Seminar</Option>
             <Option value="privatekonseling">
               Pembayaran Private Konseling
@@ -343,7 +388,7 @@ const Pembayaran = () => {
             <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
               <Table
                 columns={columns}
-                dataSource={dataTransaksiPrivateKonseling?.data.map(
+                dataSource={dataTransaksiPrivateKonselingPending?.data.map(
                   (val: any) => {
                     return {
                       id: val.id,
@@ -361,8 +406,8 @@ const Pembayaran = () => {
             </TabPane>
             <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
               <Table
-                columns={columns}
-                dataSource={dataTransaksiPrivateKonseling?.data.map(
+                columns={columns2}
+                dataSource={dataTransaksiPrivateKonselingApprove?.data.map(
                   (val: any) => {
                     console.log(val.poster, "isi poster");
                     return {
@@ -381,8 +426,8 @@ const Pembayaran = () => {
             </TabPane>
             <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
               <Table
-                columns={columns}
-                dataSource={dataTransaksiPrivateKonseling?.data.map(
+                columns={columns2}
+                dataSource={dataTransaksiPrivateKonselingReject?.data.map(
                   (val: any) => {
                     console.log(val.poster, "isi poster");
                     return {

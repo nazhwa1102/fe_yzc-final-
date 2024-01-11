@@ -409,3 +409,8 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
     background-color: var(--semi-color-fill-0);
     font-weight: 600;
 }
+
+:where(.css-dev-only-do-not-override-3oiqkd)[class^="ant-select"] [class^="ant-select"], :where(.css-dev-only-do-not-override-3oiqkd)[class*=" ant-select"] [class^="ant-select"], :where(.css-dev-only-do-not-override-3oiqkd)[class^="ant-select"] [class*=" ant-select"], :where(.css-dev-only-do-not-override-3oiqkd)[class*=" ant-select"] [class*=" ant-select"] {
+    box-sizing: border-box;
+    padding-bottom: 7px;
+}

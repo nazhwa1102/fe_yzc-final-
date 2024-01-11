@@ -10,12 +10,13 @@ interface DummyDataItem {
   bank: string;
   number: string;
   image: string; // Assuming image is a string here, update accordingly
+  owner_name: string;
 }
-type Props ={
-  setData: any,
-  dataInput: CreateTransaksi,
-}
-const Bank = ({setData, dataInput}: Props) => {
+type Props = {
+  setData: any;
+  dataInput: CreateTransaksi;
+};
+const Bank = ({ setData, dataInput }: Props) => {
   const data: DummyDataItem[] = [
     {
       id: "9ca3de37-9fb9-47d6-8d52-61f2a4601926",
@@ -23,15 +24,29 @@ const Bank = ({setData, dataInput}: Props) => {
       number: "5781062961",
       image:
         "00020101021240530013ID.CO.BCA.WWW0118936000141578106296021057810629615204482953033605802ID5921REYNER WILLIAMS LIONG6013Jakarta Pusat61051031062470804DMCT993500020001255781062961202312261259022630460F0",
+      owner_name: "Reyner Williams Liong",
     },
     {
       id: "2",
       bank: "BNI",
       number: "009085695679128",
       image: "009085695679128",
+      owner_name: "Reyner Williams Liong",
     },
-    { id: "3", bank: "Dana", number: "085695679128", image: "085695679128" },
-    { id: "4", bank: "Gopay", number: "085695679128", image: "085695679128" },
+    {
+      id: "3",
+      bank: "Dana",
+      number: "085695679128",
+      image: "085695679128",
+      owner_name: "Reyner Williams Liong",
+    },
+    {
+      id: "4",
+      bank: "Gopay",
+      number: "085695679128",
+      image: "085695679128",
+      owner_name: "Reyner Williams Liong",
+    },
   ];
 
   const [selectedOption, setSelectedOption] = useState<DummyDataItem | null>(
@@ -65,12 +80,19 @@ const Bank = ({setData, dataInput}: Props) => {
       >
         {data.map((item) => (
           <div className="pt-5">
-          <Radio.Button key={item.id} value={item.id} onClick={() => {showModal(item)
-          }} className="w-[250px] h-[35px] text-lg text-white font-semibold flex items-center bg-yzc hover:bg-green-500 hover:text-white" onChange={(e) => {
-            setData({...dataInput, bank: e.target.value})
-          }}>
-            {item.bank}
-          </Radio.Button> 
+            <Radio.Button
+              key={item.id}
+              value={item.id}
+              onClick={() => {
+                showModal(item);
+              }}
+              className="w-[250px] h-[35px] text-lg text-white font-semibold flex items-center bg-yzc hover:bg-green-500 hover:text-white"
+              onChange={(e) => {
+                setData({ ...dataInput, bank: e.target.value });
+              }}
+            >
+              {item.bank}
+            </Radio.Button>
           </div>
         ))}
       </Radio.Group>
@@ -105,6 +127,9 @@ const Bank = ({setData, dataInput}: Props) => {
                 </div>
                 <div className="flex justify-center font-semibold text-xl">
                   {selectedOption.number}
+                </div>
+                <div className="flex justify-center font-semibold text-xl">
+                  {selectedOption.owner_name}
                 </div>
               </div>
             </div>

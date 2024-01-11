@@ -51,7 +51,7 @@ const CreateSeminar = () => {
         message.success("Anda Telah Berhasil Menambahkan Seminar"),
         5000
       );
-      router.push("seminar");
+      router.push("admin/seminar");
     } catch (error) {
       throw error;
     }

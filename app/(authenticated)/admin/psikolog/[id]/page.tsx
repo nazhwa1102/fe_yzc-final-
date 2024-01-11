@@ -83,7 +83,7 @@ const detailSeminar = () => {
       <div className="flex justify-center pl-16 pt-5 ">
         <div className="flex justify-between gap-[100px] mt-5">
           <div className="items-center">
-            <div className="font-bold text-2xl">Poster Seminar</div>
+            <div className="font-bold text-2xl justify-center flex">Foto Psikolog</div>
             <div className="flex justify-center pt-2">
               <img
                 src={`http://localhost:3222/psikolog/upload/${data?.data.photo}/image`}
@@ -221,7 +221,7 @@ const detailSeminar = () => {
             <div className="font-semibold text-lg rounded-lg p-2">
               <img
                 src={`http://localhost:3222/psikolog/upload/legality/${data?.data.legality}/image`}
-                style={{ width: "75%", height: "auto" }}
+                style={{ width: "50%", height: "auto" }}
               />
             </div>
           </div>
