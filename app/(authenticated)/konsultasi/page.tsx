@@ -12,8 +12,9 @@ const konsultasi= () => {
   
 
 
+
   return (
-    <Layout2 title="Konsultasi">
+    <Layout2 title="Seminar">
       
     </Layout2>
   );
