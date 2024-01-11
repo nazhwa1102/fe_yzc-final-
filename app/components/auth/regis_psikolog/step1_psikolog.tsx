@@ -33,7 +33,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
                   setData({ ...dataInput, fullName: e.target.value });
                 }}
                 placeholder="Masukan nama lengkap"
-                className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl "
+                className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl bg-transparent"
               />
             </Form.Item>
           </div>
@@ -45,7 +45,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
                 Jenis Kelamin
               </p>
             </div>
-            <div className="w-full regis">
+            <div className="w-full regis text-white">
               <Form.Item
                 name="gender"
                 rules={[
@@ -72,19 +72,20 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
             <div>
               <p className="text-teks text-2xl font-bold text-white">Agama</p>
             </div>
-            <div className="w-full regis">
+            <div className="w-full regis text-white">
               <Form.Item
                 name="religion"
                 rules={[
                   { required: true, message: "Harap masukan nama agama anda!" },
                 ]}
+                className="text-white regis"
               >
                 <Select
                   onChange={(e) => {
                     setData({ ...dataInput, religion: e });
                   }}
                   placeholder="Pilih Agama"
-                  className="w-full regis"
+                  className="w-full regis text-white"
                 >
                   <Option value="Islam">Islam</Option>
                   <Option value="Katolik">Katolik</Option>
@@ -103,7 +104,7 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
               Tanggal Lahir
             </p>
           </div>
-          <div className="w-full regis">
+          <div className="w-full regis text-white">
             <Form.Item
               name="birth_date"
               rules={[
@@ -119,7 +120,8 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
                   setData({ ...dataInput, birth_date: e?.$d });
                 }}
                 placeholder="Pilih tanggal"
-                className="w-full regis text-white"
+                className="w-full regis text-white bg-transparent"
+                size="middle"
               />
             </Form.Item>
           </div>
@@ -145,7 +147,33 @@ function PsikologStep1({ setData, dataInput, formStep1 }: Props) {
                   setData({ ...dataInput, last_education: e.target.value });
                 }}
                 placeholder="Masukan Pendidikan Terakhir"
-                className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl"
+                className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl bg-transparent"
+              />
+            </Form.Item>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p className="text-teks text-2xl font-bold text-white">
+              Spesialisasi
+            </p>
+          </div>
+          <div className="w-full regis">
+            <Form.Item
+              name="spesialis"
+              rules={[
+                {
+                  required: true,
+                  message: "Harap masukan Spesialisasi terakhir anda!",
+                },
+              ]}
+            >
+              <Input
+                onChange={(e) => {
+                  setData({ ...dataInput, spesialis: e.target.value });
+                }}
+                placeholder="Masukan Spesialisasi"
+                className=" p-[10px] rounded-[10px] border border-rstroke regis text-xl bg-transparent"
               />
             </Form.Item>
           </div>
