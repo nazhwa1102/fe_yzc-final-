@@ -181,7 +181,7 @@ const Seminar = () => {
         <div>
           <Button
             className="flex justify-center gap-2 bg-yzc hover:bg-green-400"
-            href="create-seminar"
+            href="/create-seminar"
             type="text"
             style={{
               height: "35px",

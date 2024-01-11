@@ -30,7 +30,6 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
   let email: string = '';
   let fullNameCus: string = ''
   console.log(token, "ini tokennya");
-  console.log(parseJwt(token), "hasilnya");
   
   
 

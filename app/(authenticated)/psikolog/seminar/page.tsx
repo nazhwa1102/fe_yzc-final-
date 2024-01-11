@@ -309,7 +309,7 @@ const Seminar = () => {
       <div>
         <div className="pt-5">
           <Tabs defaultActiveKey="1">
-            <TabPane tab="List Seminar Pending" key="Seminar Pending">
+            <TabPane tab="Menunggu Konfirmasi" key="Seminar Pending">
               <Table
                 columns={columns}
                 dataSource={dataSeminarPending?.data.map((val: any) => {
@@ -326,10 +326,10 @@ const Seminar = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="List Seminar Approve" key="Seminar Approve">
+            <TabPane tab="Disetujui" key="Seminar Approve">
               <SeminarApprove />
             </TabPane>
-            <TabPane tab="List Seminar Reject" key="Seminar Reject">
+            <TabPane tab="Ditolak " key="Seminar Reject">
               <SeminarReject />
             </TabPane>
           </Tabs>

@@ -76,7 +76,7 @@ const LayoutPsikolog = ({ children ,menu}: any) => {
               key: "3",
               icon: <Icon icon="pepicons-print:people" />,
               label: "Private Konseling",
-              onClick: (() => {router.push('/psikolog/private_konselling')})
+              onClick: (() => {router.push('/psikolog/private-konselling')})
             },
             {
               key: "4",

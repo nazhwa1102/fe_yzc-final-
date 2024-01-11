@@ -7,7 +7,7 @@ const url = {
     bankId: (id: any) => `/bank/${id}`,
     bankPsi: (id: any) => `/bank/psikolog/${id}`,
     createBankPsi: () => '/bank/psikolog/bank',
-    qr: () =>  `/bank/upload`
+    qr: () =>  `/bank/upload`, 
 }
 
 const manipulateData = {
@@ -33,7 +33,7 @@ const hooks = {
     },
     bankPsi(id:any){
      return useSWR(url.bankPsi(id), http.fetcher)
-    }
+    },
 }
 export const BankRepository = {
     url,
