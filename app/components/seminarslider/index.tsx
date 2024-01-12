@@ -70,7 +70,7 @@ const SeminarSlider = () => {
     <div className= "slider" style={{ alignItems: "center" }}>
       <div style={{ marginTop: "10px", textAlign: "center" }}>
         <div style={{ display: "flex" }}>
-          <div className="pt-[120px]">
+          <div className="pt-[100px]">
             <Button
               disabled={currentPage === 1}
               onClick={() => handlePageChange(currentPage - 1)}
@@ -81,20 +81,20 @@ const SeminarSlider = () => {
           </div>
           <div className="gap-7 flex">
             {visibleSlides?.map((val: any) => (
-              <Card key={val.id} style={{marginBottom: '20px'}} className='w-[500px] h-[300px] flex items-center border-[#016255] font-sans shadow-md'>
+              <Card key={val.id} style={{marginBottom: '20px'}} className='w-[425px] h-[225px] flex items-center border-[#016255] font-sans shadow-md'>
               <div className="flex">
                <div>
                <img
              src={`http://localhost:3222/seminar/upload/${val.seminar_poster}/image`}
-             style={{width: 'auto', height: '200px'}}
+             style={{width: 'auto', height: '170px'}}
              className="mt-16 flex shadow-lg"
                />
                </div>
-               <div className="pl-3 items-center flex pt-12">
+               <div className="pl-14 items-center flex pt-10">
                 <div>
-                 <div className="font-bold text-2xl w-[290px]">{val.seminar_title}</div>
-                 <div className="font-semibold text-lg">{formatDateWithHyphens(val.seminar_datetime)}</div>
-                 <div className="text-base font-medium text-green-700">
+                 <div className="font-bold text-xl w-[150px]">{val.seminar_title}</div>
+                 <div className="font-semibold text-base">{formatDateWithHyphens(val.seminar_datetime)}</div>
+                 <div className="text-base font-sm text-green-700">
                    <IntlProvider>
                  <PriceFormatter value={val.seminar_price}/>
                    </IntlProvider>
@@ -102,8 +102,8 @@ const SeminarSlider = () => {
                  </div>
                </div>
               </div>
-                 <div>
-                 <div className='flex justify-end gap-5 items-end pb-5'>
+                 <div className="pl-20 flex justify-end ml-[80px] mb-14">
+                 <div className='flex justify-end gap-5 items-end]'> 
                <Button type='text' className='bg-green-700 text-white hover:bg-green-600 items-center flex' href={`/seminar/${val.seminar_id}`}><ZoomInOutlined/>Detail</Button>
                <Button className='text-black yellowButt hover:bg-yzc' type="dashed" onClick={() => {
                 if (token) {
@@ -117,7 +117,7 @@ const SeminarSlider = () => {
               </Card> 
             ))}
           </div>
-          <div className="pt-[120px]">
+          <div className="pt-[100px]">
             <Button
               disabled={currentPage === Math.ceil(dataSeminar?.data.length / itemsPerPage)}
               onClick={() => handlePageChange(currentPage + 1)}

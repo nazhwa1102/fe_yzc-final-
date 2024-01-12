@@ -43,7 +43,7 @@ const ArtikelSlider: React.FC = () => {
               onClick={() => handlePageChange(currentPage - 1)}
               className="flex items-center w-fit h-fit text-black background-white-custom" type="link"
             >
-              <LeftOutlined style={{ fontSize: "45px" }} className="arrow"/>
+              <LeftOutlined style={{ fontSize: "45px" ,color: "black"}} className="arrow"/>
             </Button>
           </div>
           <div className="gap-10 flex">
@@ -82,7 +82,7 @@ const ArtikelSlider: React.FC = () => {
               onClick={() => handlePageChange(currentPage + 1)}
               className="flex items-center h-fit w-fit text-black background-white-custom" type="link"
             >
-              <RightOutlined style={{ fontSize: "45px" }} className="arrow"/>
+              <RightOutlined style={{ fontSize: "45px" ,color:"black"}} className="arrow"/>
             </Button>
           </div>
         </div>

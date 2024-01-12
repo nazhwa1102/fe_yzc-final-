@@ -113,7 +113,7 @@ const Layout2 = ({ children, title }: any) => {
       label: <a className="text-white">Artikel</a>,
     },
     {
-      key: "/psikolog",    
+      key: "/psikologList",    
       label: <a className="text-white">Psikolog</a>,
     },
     {

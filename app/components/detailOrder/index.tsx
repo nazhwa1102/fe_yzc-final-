@@ -29,7 +29,7 @@ const DetailOrder = ({id}: any) => {
     return `${year}-${month}-${day}, ${hour}.${minute} WIB`;
   }
 
-  const Status = () => {
+  const Status = (links: any) => {
     if (dataTransaksi?.data.status === 'reject') {
       return(
         <div>
@@ -41,6 +41,9 @@ const DetailOrder = ({id}: any) => {
     }if (dataTransaksi?.data.status === 'approve') {
       return(
         <div>
+          <div className="font-semibold text-lg">
+           {links}
+          </div>
           <div className="font-semibold text-base rounded-lg p-2 items-center flex gap-1 bg-green-500 text-white" style={{border: '1px solid #016225', width: '400px', height: 'auto'}}>
               <CheckCircleOutlined/> Pembayran Telah Disetejui Admin
           </div>
@@ -107,7 +110,7 @@ const DetailOrder = ({id}: any) => {
                     </div>
                 </div>
                 <div className="pt-5">
-                  <Status/>
+                  <Status links=""/>
                 </div>
               </div>
               </div>
@@ -158,9 +161,9 @@ const DetailOrder = ({id}: any) => {
                   <PriceFormatter value={dataTransaksi?.data.transaction_amount} />
                 </IntlProvider>
                     </div>
-                </div>
+                </div>    
                 <div className="pt-5">
-                  <Status/>
+                  <Status links={dataTransaksi?.data.detailOrder[0]?.seminar?.link}/>
                 </div>
               </div>
               </div>
