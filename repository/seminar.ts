@@ -14,7 +14,10 @@ const url = {
     statusApprove: () => '/seminar/approve',
     statusReject: () => '/seminar/reject',
     statusPending: () => '/seminar/pending',
+    statusFull: () => '/seminar/full',
+    statusDone: () => '/seminar/done',
     approval: (id: any) => `/seminar/approval/${id}`,
+    done: (id:any)=> `/seminar/done/${id}`,
     seminarRekomen: () => `/seminar/seminar_rekomen`
 }
 
@@ -41,6 +44,9 @@ const manipulateData = {
     },
     approval(id: any){
       return http.put(url.approval(id))
+    },
+    done(id:any){
+      return http.put(url.done(id))
     }
 }
 
@@ -62,6 +68,12 @@ const hooks = {
   },
   statusPending(){
     return useSWR(url.statusPending(), http.fetcher)
+  },
+  statusFull(){
+    return useSWR(url.statusFull(), http.fetcher)
+  },
+  statusDone(){
+    return useSWR(url.statusDone(), http.fetcher)
   },
   statusApprovePsi(id:any){
     return useSWR(url.statusApprovePsi(id), http.fetcher)

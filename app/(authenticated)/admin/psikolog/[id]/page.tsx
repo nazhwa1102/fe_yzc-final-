@@ -24,7 +24,6 @@ const detailSeminar = () => {
     pathname[pathname.length - 1]
   );
 
-
   const Status = () => {
     if (data?.data.user_yzc?.status === "not active") {
       return (
@@ -80,118 +79,126 @@ const detailSeminar = () => {
       <div className="text-3xl font-bold flex justify-center">
         Lihat Detail Psikolog
       </div>
-      <div className="flex justify-center pl-16 pt-5 ">
-        <div className="flex justify-between gap-[100px] mt-5">
-          <div className="items-center">
-            <div className="font-bold text-2xl justify-center flex">Foto Psikolog</div>
+      <div>
+        <div className="flex justify-center pt-10">
+          <div>
             <div className="flex justify-center pt-2">
               <img
                 src={`http://localhost:3222/psikolog/upload/${data?.data.photo}/image`}
-                style={{ width: "50%", height: "auto" }}
+                style={{ width: "200px", height: "auto"}} className="rounded-[50%]"
               />
             </div>
-            <div className="font-bold text-2xl pb-1 pt-2">Nama:</div>
+          </div>
+        </div>
+          <div className="flex justify-center text-2xl font-bold pt-5">
+            <div>
+              <div className="flex justify-center">
+            Profil Psikolog
+              </div>
+            <div className="flex justify-center pt-3">
+              <Status/>
+            </div>
+            </div>
+          </div>
+        <div className="flex justify-center gap-7 pt-5">
+          <div>
+            <div className="font-bold text-2xl pb-1 pt-3">Nama:</div>
             <div
               className="font-semibold text-lg rounded-lg p-2"
               style={{
                 border: "1px solid #016225",
-                width: "300px",
+                width: "500px",
                 height: "auto",
               }}
             >
               {data?.data.fullName}
             </div>
-            <div className="font-bold text-2xl pb-1 pt-2">Janis Kelamin:</div>
+            <div className="font-bold text-2xl pb-1 pt-3">Jenis Kelamin:</div>
             <div
               className="font-semibold text-lg rounded-lg p-2"
               style={{
                 border: "1px solid #016225",
-                width: "300px",
+                width: "500px",
                 height: "auto",
               }}
             >
               {data?.data.gender}
             </div>
-            <div className="font-bold text-2xl pb-1 pt-2">Tanggal Lahir:</div>
+            <div className="font-bold text-2xl pb-1 pt-3">Tanggal Lahir:</div>
             <div
               className="font-semibold text-lg rounded-lg p-2"
               style={{
                 border: "1px solid #016225",
-                width: "300px",
+                width: "500px",
                 height: "auto",
               }}
             >
               {data?.data.birth_date}
             </div>
-            
-          </div>
-          <div>
-            <div className="font-bold text-2xl pb-1 pt-2">Agama:</div>
-            <div
-              className="font-semibold text-lg rounded-lg p-2"
-              style={{
-                border: "1px solid #016225",
-                width: "300px",
-                height: "auto",
-              }}
-            >
-              {data?.data.religion}
-            </div>
-            <div className="font-bold text-2xl pb-1 pt-2">Email:</div>
-            <div
-              className="font-semibold text-lg rounded-lg p-2"
-              style={{
-                border: "1px solid #016225",
-                width: "300px",
-                height: "auto",
-              }}
-            >
-              {data?.data.user_yzc?.email}
-            </div>
-            <div className="font-bold text-2xl pb-1 pt-2">Nomor Telepon:</div>
-            <div
-              className="font-semibold text-lg rounded-lg p-2"
-              style={{
-                border: "1px solid #016225",
-                width: "300px",
-                height: "auto",
-              }}
-            >
-              {data?.data.phone}
-            </div>
-            <div className="font-bold text-2xl pb-1 pt-2">
+            <div className="font-bold text-2xl pb-1 pt-3">
               Pendidikan Terakhir:
             </div>
             <div
               className="font-semibold text-lg rounded-lg p-2"
               style={{
                 border: "1px solid #016225",
-                width: "300px",
+                width: "500px",
                 height: "auto",
               }}
             >
               {data?.data.lastEducation}
             </div>
-            <div className="font-bold text-2xl pb-1 pt-2">
-              Spesialisasi:
-            </div>
+          </div>
+          <div>
+            <div className="font-bold text-2xl pb-1 pt-3">Agama:</div>
             <div
               className="font-semibold text-lg rounded-lg p-2"
               style={{
                 border: "1px solid #016225",
-                width: "300px",
+                width: "500px",
+                height: "auto",
+              }}
+            >
+              {data?.data.religion}
+            </div>
+            <div className="font-bold text-2xl pb-1 pt-3">Email:</div>
+            <div
+              className="font-semibold text-lg rounded-lg p-2"
+              style={{
+                border: "1px solid #016225",
+                width: "500px",
+                height: "auto",
+              }}
+            >
+              {data?.data.user_yzc?.email}
+            </div>
+            <div className="font-bold text-2xl pb-1 pt-3">Nomor Telepon:</div>
+            <div
+              className="font-semibold text-lg rounded-lg p-2"
+              style={{
+                border: "1px solid #016225",
+                width: "500px",
+                height: "auto",
+              }}
+            >
+              {data?.data.phone}
+            </div>
+            <div className="font-bold text-2xl pb-1 pt-3">Spesialisasi:</div>
+            <div
+              className="font-semibold text-lg rounded-lg p-2"
+              style={{
+                border: "1px solid #016225",
+                width: "500px",
                 height: "auto",
               }}
             >
               {data?.data.spesialis}
             </div>
-            <div className="font-bold text-2xl pt-8 pb-1">Status Psikolog</div>
-            <div>
-              <Status />
-            </div>
           </div>
+        </div>
+        <div className="flex justify-center gap-7 text-black">
           <div>
-            <div className="font-bold text-2xl pb-1 pt-2">Tantang Saya:</div>
+            <div className="font-bold text-2xl pb-1 pt-3">Tantang Saya:</div>
             <div>
               <TextArea
                 value={data?.data.aboutMe}
@@ -199,12 +206,15 @@ const detailSeminar = () => {
                 className="font-semibold text-lg rounded-lg p-2"
                 style={{
                   border: "1px solid #016225",
-                  width: "375px",
+                  width: "500px",
                   height: "100px",
+                  color: "black"
                 }}
               />
             </div>
-            <div className="font-bold text-2xl pb-1 pt-2">Kasus Ditangani:</div>
+          </div>
+          <div>
+            <div className="font-bold text-2xl pb-1 pt-3">Kasus Ditangani:</div>
             <div>
               <TextArea
                 value={data?.data.caseHandled}
@@ -212,13 +222,18 @@ const detailSeminar = () => {
                 className="font-semibold text-lg rounded-lg p-2"
                 style={{
                   border: "1px solid #016225",
-                  width: "375px",
+                  width: "500px",
                   height: "100px",
+                  color:"black"
                 }}
               />
             </div>
-            <div className="font-bold text-2xl pb-1 pt-2">Legalitas:</div>
-            <div className="font-semibold text-lg rounded-lg p-2">
+          </div>
+        </div>
+        <div className="flex justify-center pt-5">
+          <div>
+            <div className="font-bold text-2xl pb-1 pt-2 flex justify-center">Legalitas:</div>
+            <div className="font-semibold text-lg rounded-lg p-2 flex justify-center">
               <img
                 src={`http://localhost:3222/psikolog/upload/legality/${data?.data.legality}/image`}
                 style={{ width: "50%", height: "auto" }}
