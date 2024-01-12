@@ -223,7 +223,6 @@ const privateKonseling = () => {
                 )}
                 className="pt-[130px]"
               >
-                {selectedOption2.id}
                 <div className="justify-center">
                   <div>
                     <CheckCircleTwoTone

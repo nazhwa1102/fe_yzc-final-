@@ -51,7 +51,7 @@ const CreateSeminar = () => {
         message.success("Anda Telah Berhasil Menambahkan Seminar"),
         5000
       );
-      router.push("admin/seminar");
+      router.push("/admin/seminar");
     } catch (error) {
       throw error;
     }
@@ -86,7 +86,7 @@ const CreateSeminar = () => {
                     <Form.Item name="title" label="Harap Masukan Judul Seminar" rules={[{required:true}]}>
                       <Input
                         placeholder="Masukan Judul Seminar"
-                        className="w-[500px] text-black"
+                        className="w-[500px] text-black text-item"
                         onChange={(e) => {
                           setSeminar({ ...dataInput, title: e.target.value });
                         }}
@@ -95,9 +95,10 @@ const CreateSeminar = () => {
                   </div>
                   <div className="font-bold text-2xl">Tanggal Seminar</div>
                   <div>
-                    <Form.Item name="datetime" label="Harap Masukan Tanggal Seminar" required={true}>
+                    <Form.Item name="datetime" label="Harap Masukan Tanggal Seminar" required={true} className="text-black" style={{color:"black"}}>
                       <DatePicker
-                        className="w-[500px] h-10"
+                        className="w-[500px] h-10 text-black text-item"
+                        style={{color: "black"}}
                         onChange={(e: any) => {
                           setSeminar({ ...dataInput, datetime: e });
                         }}
@@ -148,7 +149,7 @@ const CreateSeminar = () => {
                     <Form.Item name="link" label="Harap Masukan Tautan Seminar" required={true}>
                       <Input
                         placeholder="Masukan Tautan Seminar"
-                        className="w-[500px]"
+                        className="w-[500px] text-item"
                         onChange={(e) => {
                           setSeminar({ ...dataInput, link: e.target.value });
                         }}

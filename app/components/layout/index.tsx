@@ -163,7 +163,7 @@ const Layout2 = ({ children, title }: any) => {
           </>
         ) : (
           <>
-          <Button style={{background: '#22c55e'}} className="hover:bg-green-600 text-white text-lg font-bold" onClick={() => router.push('/')}>Masuk</Button>
+          <Button style={{background: '#22c55e'}} className="hover:bg-green-600 text-white text-lg font-bold" onClick={() => router.push('/login')}>Masuk</Button>
           </>
         )}
         </div>

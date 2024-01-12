@@ -120,28 +120,28 @@ const Psikolog = () => {
       render: (_, record) => (
         <img
           src={`http://localhost:3222/psikolog/upload/${record.foto}/image`}
-          style={{ width: "40%", height: "auto" }}
+          style={{ width: "40%", height: "auto" }} className="rounded-[50%]"
         />
       ),
-      width: 300,
+      width: 250,
     },
     {
       title: "Nama",
       dataIndex: "nama",
       key: "nama",
-      width: 300
+      width: 250
     },
     {
       title: "Jenis Kelamin",
       dataIndex: "jenis_kelamin",
       key: "jenis_kelamin",
-      width: 300
+      width: 250
     },
     {
       title: "Email",
       dataIndex: "email",
       key: "email",
-      width: 300
+      width: 250
     },
     {
       title: "Aksi",
@@ -155,7 +155,7 @@ const Psikolog = () => {
               href={`psikolog/${record.id}`}
             >
               <ZoomInOutlined className="flex pt-[2px]" />
-              Lihat Detail
+              Detail
             </Button>
           </div>
           <div className="pb-1">
@@ -309,7 +309,7 @@ const Psikolog = () => {
                   foto: val.photo,
                   nama: val.fullName,
                   jenis_kelamin: val.gender,
-                  email: val.user_yzc?.email,
+                  email: val.user_yzc?.email, 
                   user_yzc: val.user_yzc?.id
                 };
               })}

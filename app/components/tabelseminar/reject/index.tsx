@@ -40,6 +40,7 @@ interface DataType {
   poster: string;
   title: string;
   datetime: Date;
+  link: string;
 }
 
 const SeminarReject = () => {
@@ -75,19 +76,27 @@ const SeminarReject = () => {
           style={{ width: "75%", height: "auto" }}
         />
       ),
-      width: 450,
+      width: 250,
     },
     {
       title: "Judul",
       dataIndex: "title",
       key: "title",
-      width: 450
+      width: 250
+    },
+    {
+      title: "Tautan Seminar",
+      dataIndex: "link",
+      key: "link",
+      ellipsis: {
+        showTitle: false
+      }
     },
     {
       title: "Tanggal",
       dataIndex: "datetime",
       key: "datetime",
-      width: 450
+      width: 250
     },
     {
       title: "Detail",
@@ -125,6 +134,7 @@ const SeminarReject = () => {
               poster: val.poster,
               title: val.title,
               datetime: val.datetime,
+              link: val.link
             };
           })}
           className="font-semibold"

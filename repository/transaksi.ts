@@ -10,6 +10,7 @@ const url = {
     image: () => '/transaksi/upload',
     reject: (id: any) => `/transaksi/reject/${id}`,
     approve: (id:any) => `/transaksi/approve/${id}`,
+    approvepk: (id:any) => `/transaksi/approvepk/${id}`,
     done: (id: any) => `/transaksi/done/:id`,
     seminar: () => '/transaksi/seminar',
     seminarApprove: () => '/transaksi/seminar/approve',
@@ -52,6 +53,9 @@ const manipulateData = {
   },
   approve(id: any){
     return http.put(url.approve(id))
+  },
+  approvepk(id: any){
+    return http.put(url.approvepk(id))
   },
   done(id:any){
     return http.put(url.done(id))

@@ -109,7 +109,7 @@ const SeminarSlider = () => {
                 if (token) {
                   router.push(`/seminar/pembayaran/${val.seminar_id}`)
                 }else{
-                  router.push('/')
+                  router.push('/login')
                 }
                }}>Pesan</Button>
                </div>

@@ -80,7 +80,7 @@ const Seminar = () => {
           style={{ width: "75%", height: "auto" }}
         />
       ),
-      width: 350,
+      width: 250,
       className: 'justify-center'
     },
     {
@@ -93,21 +93,15 @@ const Seminar = () => {
       title: "Tautan Seminar",
       dataIndex: "link",
       key: "link",
-      width: 100,
       ellipsis: {
-       showTitle: false
-      },
-      render: (link) => (
-        <Tooltip placement="topLeft" title={link}>
-          {link}
-        </Tooltip>
-      )
+        showTitle: false
+      }
     },
     {
       title: "Tanggal",
       dataIndex: "datetime",
       key: "datetime",
-      width: 250
+      width: 150
     },
     {
       title: "Aksi",

@@ -212,6 +212,7 @@ const detailSeminar = () => {
                         });
                       }}
                       value={dataSeminar?.data.title}
+                      defaultValue={dataSeminar?.data.title}
                     />
                   </Form.Item>
                 </div>
@@ -266,7 +267,7 @@ const detailSeminar = () => {
                 <div>Harap Masukan Kuota Seminar</div>
                 <div className="pt-2">
                   <Form.Item<FieldType>
-                    name="link"
+                    name="kuota"
                     initialValue={dataSeminar?.data.kuota}
                   >
                     <Input

@@ -187,7 +187,7 @@ const Layout2 = () => {
               <Button
                 style={{ background: "#22c55e" }}
                 className="hover:bg-green-600 hover:font-bold text-white text-base font-bold"
-                onClick={() => router.push("/")}
+                onClick={() => router.push("/login")}
               >
                 Masuk
               </Button>

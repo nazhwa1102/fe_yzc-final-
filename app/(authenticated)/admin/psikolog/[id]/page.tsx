@@ -2,12 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import { Card } from "antd/lib/index";
-import { Button } from "antd";
+import { Button, Image } from "antd";
 import { SeminarRepository } from "#/repository/seminar";
 import { parseJwt } from "#/app/components/helper/convert";
 import { IntlProvider } from "react-intl";
 import PriceFormatter from "#/app/components/priceFormatter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LayoutAdmin from "#/app/components/layoutadmin";
 import {
   CheckCircleOutlined,
@@ -23,6 +23,9 @@ const detailSeminar = () => {
   const { data } = PsikologRepository.hooks.getById(
     pathname[pathname.length - 1]
   );
+
+  const [visible, setVisible] = useState(false);
+  const [scaleStep, setScaleStep] = useState(0.5);
 
   const Status = () => {
     if (data?.data.user_yzc?.status === "not active") {
@@ -85,21 +88,25 @@ const detailSeminar = () => {
             <div className="flex justify-center pt-2">
               <img
                 src={`http://localhost:3222/psikolog/upload/${data?.data.photo}/image`}
-                style={{ width: "200px", height: "auto"}} className="rounded-[50%]"
+                style={{ width: "200px", height: "auto" }}
+                className="rounded-[50%]"
               />
             </div>
           </div>
         </div>
-          <div className="flex justify-center text-2xl font-bold pt-5">
-            <div>
-              <div className="flex justify-center">
-            Profil Psikolog
-              </div>
+        <div className="flex justify-center text-2xl font-bold pt-5">
+          <div>
+            <div className="flex justify-center">Profil Psikolog</div>
             <div className="flex justify-center pt-3">
-              <Status/>
+            <Button type="primary" onClick={() => setVisible(true)}>
+              Lihat Legalitas
+            </Button>
             </div>
+            <div className="flex justify-center pt-3">
+              <Status />
             </div>
           </div>
+        </div>
         <div className="flex justify-center gap-7 pt-5">
           <div>
             <div className="font-bold text-2xl pb-1 pt-3">Nama:</div>
@@ -208,7 +215,7 @@ const detailSeminar = () => {
                   border: "1px solid #016225",
                   width: "500px",
                   height: "100px",
-                  color: "black"
+                  color: "black",
                 }}
               />
             </div>
@@ -224,7 +231,7 @@ const detailSeminar = () => {
                   border: "1px solid #016225",
                   width: "500px",
                   height: "100px",
-                  color:"black"
+                  color: "black",
                 }}
               />
             </div>
@@ -232,11 +239,18 @@ const detailSeminar = () => {
         </div>
         <div className="flex justify-center pt-5">
           <div>
-            <div className="font-bold text-2xl pb-1 pt-2 flex justify-center">Legalitas:</div>
             <div className="font-semibold text-lg rounded-lg p-2 flex justify-center">
-              <img
+              <Image
                 src={`http://localhost:3222/psikolog/upload/legality/${data?.data.legality}/image`}
-                style={{ width: "50%", height: "auto" }}
+                style={{ width: "50%", height: "auto", display: "none" }}
+                preview={{
+                  visible,
+                  scaleStep,
+                  src: `http://localhost:3222/psikolog/upload/legality/${data?.data.legality}/image`,
+                  onVisibleChange: (value) => {
+                    setVisible(value);
+                  },
+                }}
               />
             </div>
           </div>

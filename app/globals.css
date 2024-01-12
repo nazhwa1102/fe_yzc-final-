@@ -34,7 +34,7 @@ body {
     color: white !important
 }
 .regis .ant-input::placeholder{
-    color: white !important
+    color: white;
 }
 :where(.css-dev-only-do-not-override-1u09lqq).ant-input:placeholder-shown {
     text-overflow: ellipsis;
@@ -296,7 +296,7 @@ button, [type='button'], [type='reset'], [type='submit'] {
 }
 
 :where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
-    color: #000;
+    /* color: #000; */
 }
 
 :where(.css-dev-only-do-not-override-3oiqkd).ant-btn {
@@ -352,7 +352,7 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
     color: #000;
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
-    color: #000;
+    /* color: #000; */
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-input {
     color: #ffffff;
@@ -370,16 +370,16 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
     color: #000;
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
-    color: rgba(0, 0, 0, 0.88);
+    /* color: rgba(0, 0, 0, 0.88); */
 }
 .ant-picker-input >input{
-    color: white !important;
+    color: white;
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-upload-wrapper {
     color: rgba(0, 0, 0, 0.88);
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
-    color: #000;
+    /* color: #000; */
 }
 
 :where(.css-dev-only-do-not-override-3oiqkd).ant-form-item .ant-form-item-label >label{
@@ -415,4 +415,16 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
 }
 :where(.css-dev-only-do-not-override-3oiqkd).ant-input {
     color: #fff;
+}
+
+.text-item{
+    color: #000 !important;
+}
+
+.text-putih{
+    color: white !important;
+}
+
+:where(.css-dev-only-do-not-override-3oiqkd).ant-picker .ant-picker-input >input {
+    /* color: #000; */
 }

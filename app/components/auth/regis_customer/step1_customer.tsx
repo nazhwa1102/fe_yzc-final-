@@ -114,7 +114,7 @@ function CustomerStep1({ setData, dataInput, formStep1 }: Props) {
                 setData({ ...dataInput, birth_date: e });
               }}
               placeholder="Pilih tanggal"
-              className="w-full regis text-white bg-transparent"
+              className="w-full regis text-white bg-transparent text-putih"
             />
           </Form.Item>
         </div>
