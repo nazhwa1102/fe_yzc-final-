@@ -81,10 +81,10 @@ const LoginPage = () => {
   };
 
   return (
-      <div className="w-full h-[950px] bg-white flex justify-between">
-        <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px] h-[950px]">
+      <div className="w-full h-full bg-white flex justify-between">
+        <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px] h-full">
           <div className="w-full h-full flex justify-center">
-            <div className="w-[710px] py-[100px]">
+            <div className="w-[710px] py-[10px]">
               <Form name="login" className="login" onFinish={onFinish} autoComplete="off">
                 <div className="flex flex-col space-y-15 w-full">
                   <div className="mb-35 flex">

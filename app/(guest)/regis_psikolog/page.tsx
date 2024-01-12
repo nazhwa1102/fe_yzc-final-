@@ -132,7 +132,7 @@ const [formStep3] = Form.useForm();
       <div className="w-full bg-white flex justify-between">
         <div className="w-1/2 relative bg-[#005449] rounded-tr-[200px]">
           <div className="w-full flex justify-center">
-            <div className="w-[800px] py-[100px]">
+            <div className="w-[800px] py-[10px]">
                 <div className="flex flex-col space-y-15 w-full h-fit">
                   <div className="mb-35 flex">
                     <div>
@@ -168,7 +168,7 @@ const [formStep3] = Form.useForm();
                           </Button> 
                         )}
                       </div>
-                      <div className="regisCustomer flex float-right justify-end pl-[500px]">
+                      <div className="regisCustomer flex justify-end w-full">
                         {current < steps.length - 1 && (
                           <Button
                             type="primary"
@@ -221,8 +221,8 @@ const [formStep3] = Form.useForm();
                     </div>
                     </div>
                   </div>
-                  <div className="text-white text-xl absolute bottom-0 pl-10">
-                    <p className="mt-6">
+                  <div className="text-white text-xl bottom-0 pl-10">
+                    <p className="mt-3">
                       Sudah punya akun di Youthzen Connect ?
                       <a href="/login" className="font-bold mb-3 ml-2">
                         Masuk

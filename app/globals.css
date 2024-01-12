@@ -413,3 +413,6 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
 .ant-select .ant-select-arrow {
     height: 15px;
 }
+:where(.css-dev-only-do-not-override-3oiqkd).ant-input {
+    color: #fff;
+}

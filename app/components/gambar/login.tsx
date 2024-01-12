@@ -3,7 +3,7 @@ import React from 'react'
 
 function Login() {
   return (
-    <img src={LOGIN} alt="Mascot Login youthzen connect" className='w-[657px] h-[850px] ml-50'/>
+    <img src={LOGIN} alt="Mascot Login youthzen connect" className='w-[650px] ml-50'/>
   )
 }
 

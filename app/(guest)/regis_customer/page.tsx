@@ -93,11 +93,11 @@ const [formStep2] = Form.useForm();
   };
 
   return (
-    <div className="w-full h-full">
-      <div className="w-full h-full bg-white flex justify-between">
-        <div className="w-1/2 bg-[#005449] rounded-tr-[200px] h-[950px]">
+    <div className="w-full">
+      <div className="w-full bg-white flex justify-between">
+        <div className="w-1/2 bg-[#005449] rounded-tr-[200px]">
           <div className="w-full flex justify-center">
-            <div className="w-[800px]">
+            <div className="w-[800px] py-[10px]">
               <div className="flex flex-col space-y-15 w-full h-fit">
                 <div className="mb-35 flex">
                   <div>
@@ -126,19 +126,19 @@ const [formStep2] = Form.useForm();
                     <div className="regisCustomer pr-10">
                       {current > 0 && (
                         <Button
-                          style={{ margin: "0 8px" }}
+                          className="ml-10"
                           onClick={() => prev()}
                         >
                           Kembali
                         </Button>
                       )}
                     </div>
-                    <div className="regisCustomer  flex justify-end w-[75%]">
+                    <div className="regisCustomer  flex justify-end w-full">
                       {current < steps.length - 1 && (
                         <Button
                           type="primary"
                           onClick={() => next()}
-                          className="bg-primary" 
+                          className="bg-primary float-right" 
                         >
                           Lanjut
                         </Button>
@@ -157,8 +157,8 @@ const [formStep2] = Form.useForm();
                       )}
                     </div>
                   </div>
-                  <div className="text-white text-xl fixed bottom-0 pl-10">
-                    <p className="">
+                  <div className="text-white text-xl bottom-0 pl-10">
+                    <p className="mt-3">
                       Sudah punya akun di Youthzen Connect ?
                       <a href="/login" className="font-bold mb-3 ml-2">
                         Masuk
