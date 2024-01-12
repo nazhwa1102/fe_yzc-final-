@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import LayoutAdmin from "#/app/components/layoutadmin";
 import {
   CheckCircleOutlined,
+  CheckCircleTwoTone,
   DeleteOutlined,
   DeleteTwoTone,
   EditOutlined,
@@ -346,8 +347,8 @@ const Seminar = () => {
             >
               <div className="justify-center">
                 <div>
-                  <DeleteTwoTone
-                    twoToneColor={"red"}
+                  <CheckCircleTwoTone
+                    twoToneColor={"gold"}
                     style={{ fontSize: "90px" }}
                     className="justify-center flex pt-3"
                   />

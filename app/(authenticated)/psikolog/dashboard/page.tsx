@@ -56,7 +56,7 @@ const Seminar = () => {
     } = theme.useToken();
 
   return (
-    <LayoutPsikolog menu="seminar">
+    <LayoutPsikolog menu="dashboard">
       <div>
         
       </div>
