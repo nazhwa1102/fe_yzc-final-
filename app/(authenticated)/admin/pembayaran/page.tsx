@@ -362,7 +362,7 @@ const Pembayaran = () => {
           </Button>
         </div>
         <div>
-          <Select value={selectedOption3} onChange={handleOptionChange} className="w-[175px] flex items-center" size="middle">
+          <Select value={selectedOption3} onChange={handleOptionChange} className="w-[175px] flex items-center" size="middle" >
             <Option value="seminar">Pembayaran Seminar</Option>
             <Option value="privatekonseling">
               Pembayaran Private Konseling
@@ -373,19 +373,19 @@ const Pembayaran = () => {
       <div>
         {selectedOption3 === "seminar" ? (
           <Tabs>
-            <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
+            <TabPane tab="Menunggu Persetujuan" key="Transaksi Pending">
               <TransaksiPending />
             </TabPane>
-            <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
+            <TabPane tab="Disetejui" key="Transaksi Approve">
               <TransaksiApprove />
             </TabPane>
-            <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
+            <TabPane tab="Ditolak" key="Transaksi Reject">
               <TransaksiReject />
             </TabPane>
           </Tabs>
         ) : (
           <Tabs>
-            <TabPane tab="Transaksi Tertunda" key="Transaksi Pending">
+            <TabPane tab="Menunggu Persetujuan" key="Transaksi Pending">
               <Table
                 columns={columns}
                 dataSource={dataTransaksiPrivateKonselingPending?.data.map(
@@ -404,7 +404,7 @@ const Pembayaran = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="Transaksi Disetejui" key="Transaksi Approve">
+            <TabPane tab="Disetejui" key="Transaksi Approve">
               <Table
                 columns={columns2}
                 dataSource={dataTransaksiPrivateKonselingApprove?.data.map(
@@ -424,7 +424,7 @@ const Pembayaran = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="Transaksi Ditolak" key="Transaksi Reject">
+            <TabPane tab="Ditolak" key="Transaksi Reject">
               <Table
                 columns={columns2}
                 dataSource={dataTransaksiPrivateKonselingReject?.data.map(

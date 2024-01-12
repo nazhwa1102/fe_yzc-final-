@@ -216,7 +216,7 @@ const Seminar = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="Seminar Pending" key="Seminar Pending">
+            <TabPane tab="Menunggu Persetujuan" key="Seminar Pending">
               <Table
                 columns={columns}
                 dataSource={dataSeminarPending?.data.map((val: any) => {
@@ -235,7 +235,7 @@ const Seminar = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="Seminar Approve" key="Seminar Approve">
+            <TabPane tab="Disetujui" key="Seminar Approve">
               <Table
                 columns={columns}
                 dataSource={dataSeminarApprove?.data.map((val: any) => {
@@ -254,7 +254,7 @@ const Seminar = () => {
                 pagination={false}
               />
             </TabPane>
-            <TabPane tab="Seminar Reject" key="Seminar Reject">
+            <TabPane tab="Ditolak" key="Seminar Reject">
               <Table
                 columns={columns}
                 dataSource={dataSeminarReject?.data.map((val: any) => {

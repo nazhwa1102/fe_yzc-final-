@@ -156,14 +156,14 @@ const CreateSeminar = () => {
                     </Form.Item>
                   </div>
                 </Form>
-                <div className="font-bold text-2xl">Pemateri</div>
-                <div className="flex">
+                <div className="font-bold text-2xl pt-1">Pemateri</div>
+                <div>
                   <Form size="large" layout="vertical">
-                    <Form.Item name="psikolog" className="h-[50px]" label="Harap Masukan Namam Pemateri Masksimal 3 Orang" required={true}>
+                    <Form.Item name="psikolog" label="Harap Masukan Namam Pemateri Masksimal 3 Orang" required={true}>
                       <Select
                         mode="multiple"
                         allowClear
-                        style={{ width: "500px", height: "25px" }}
+                        style={{ width: "500px"}}
                         placeholder="Please select"
                         options={datapsikolog?.data.map((val: any) => {
                           return {
@@ -187,10 +187,10 @@ const CreateSeminar = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-end pt-28 bottom-0 right-0">
+      <div className="flex justify-end pt-28 bottom-5 right-0">
         <Button
           type="text"
-          className="bg-primary text-2xl h-fit w-[400px] rounded-[20px]"
+          className="bg-primary text-2xl h-fit w-[300px] rounded-[20px]"
           onClick={onFinish}
         >
           Ajukan Seminar

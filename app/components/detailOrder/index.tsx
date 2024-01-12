@@ -75,7 +75,7 @@ const DetailOrder = ({id}: any) => {
             <div className="pt-5 justify-stretch gap-10 flex">
               <div>
                 <div className="font-semibold text-lg">Bukti Transaksi :</div>
-                <div className="pl-5">
+                <div className="pt-5">
                   <img
                     src={`http://localhost:3222/transaksi/upload/${dataTransaksi?.data.payment_proof}/image`}
                     style={{ width: "200px", height: "300px" }}
@@ -118,7 +118,7 @@ const DetailOrder = ({id}: any) => {
             <div className="pt-5 justify-stretch gap-10 flex">
               <div>
                 <div className="font-semibold text-lg">Bukti Transaksi :</div>
-                <div className="pl-5">
+                <div className="pt-5">
                   <img
                     src={`http://localhost:3222/transaksi/upload/${dataTransaksi?.data.payment_proof}/image`}
                     style={{ width: "200px", height: "300px" }}

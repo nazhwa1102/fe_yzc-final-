@@ -72,20 +72,22 @@ const SeminarReject = () => {
       render: (_, record) => (
         <img
           src={`http://localhost:3222/seminar/upload/${record.poster}/image`}
-          style={{ width: "25%", height: "auto" }}
+          style={{ width: "75%", height: "auto" }}
         />
       ),
-      width: 500,
+      width: 450,
     },
     {
       title: "Judul",
       dataIndex: "title",
       key: "title",
+      width: 450
     },
     {
       title: "Tanggal",
       dataIndex: "datetime",
       key: "datetime",
+      width: 450
     },
     {
       title: "Detail",

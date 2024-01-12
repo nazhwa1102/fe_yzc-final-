@@ -25,7 +25,7 @@ const Psikologlist: React.FC = () => {
         <p className="font-bold text-2xl pt-5 justify-center flex">{dataRekomen?.data[0].psikolog_nama}</p>
         <div className="font-semibold text-lg flex justify-center">{dataRekomen?.data[0].psikolog_spesialis}</div>
         <div className="flex gap-5 justify-center pt-10">
-          <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
+          <Button type="text" className="rounded-xl bg-[#00b96b]" href={`/konsultasi/${dataRekomen?.data[0].psikolog_id}`}>Konsultasi</Button>
           <Button className="rounded-xl yellowButt text-yzc" type="dashed">Lihat Profil</Button>
         </div>
       </Card>
@@ -46,7 +46,7 @@ const Psikologlist: React.FC = () => {
         <p className="font-bold text-2xl pt-5 justify-center flex">{dataRekomen?.data[1].psikolog_nama}</p>
         <div className="font-semibold text-lg flex justify-center">{dataRekomen?.data[1].psikolog_spesialis}</div>
         <div className="flex gap-5 justify-center pt-10">
-          <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
+          <Button type="text" className="rounded-xl bg-[#00b96b]" href={`/konsultasi/${dataRekomen?.data[1].psikolog_id}`}>Konsultasi</Button>
           <Button className="rounded-xl yellowButt" type="dashed">Lihat Profil</Button>
         </div>
       </Card>
@@ -67,7 +67,7 @@ const Psikologlist: React.FC = () => {
         <p className="font-bold text-2xl pt-5 justify-center flex">{dataRekomen?.data[2].psikolog_nama}</p>
         <div className="font-semibold text-lg flex justify-center">{dataRekomen?.data[2].psikolog_spesialis}</div>
         <div className="flex gap-5 justify-center pt-10">
-          <Button type="text" className="rounded-xl bg-[#00b96b]">Konsultasi</Button>
+          <Button type="text" className="rounded-xl bg-[#00b96b]" href={`/konsultasi/${dataRekomen?.data[2].psikolog_id}`}>Konsultasi</Button>
           <Button className="yellowButt rounded-xl" type="dashed">Lihat Profil</Button>
         </div>
       </Card>

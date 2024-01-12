@@ -5,6 +5,7 @@ import { Card } from "antd/lib/index";
 import Layout2 from "#/app/components/layout";
 import {
   Button,
+  Form,
   Menu,
   MenuProps,
   Modal,
@@ -13,23 +14,25 @@ import {
   message,
 } from "antd";
 import { CheckCircleTwoTone, LeftOutlined, ReloadOutlined } from "@ant-design/icons";
-import Bank from "#/app/components/bank";
 import { useState } from "react";
 import Uploads from "#/app/components/upload";
 import { SeminarRepository } from "#/repository/seminar";
 import { IntlProvider } from "react-intl";
 import PriceFormatter from "#/app/components/priceFormatter";
 import { TransaksiRepository } from "#/repository/transaksi";
-import { CreateTransaksi } from "#/app/types/typeCreateTransaksi";
 import FormItem from "antd/lib/form/FormItem";
-import UploadBukti from "#/app/components/buktiPembayaran";
 import { parseJwt } from "#/utils/convert";
-const { Countdown } = Statistic;
-const deadline = Date.now() + 24000 * 60 * 60 + 1000;
+import { PsikologRepository } from "#/repository/psikolog";
+import { CreateTransaksiPK } from "#/app/types/typeCreateTransaksiPK";
+import { DatePicker, LocaleProvider } from "@douyinfe/semi-ui";
+import en_GB from '@douyinfe/semi-ui/lib/es/locale/source/en_GB';
+import Bank from "#/app/components/bank2";
+import UploadBukti from "#/app/components/buktiPembayaran2";
+
 
 const bayarSeminar = () => {
   const pathname = usePathname().split("/");
-  const { data } = SeminarRepository.hooks.detailSeminar(
+  const { data } = PsikologRepository.hooks.getById(
     pathname[pathname.length - 1]
   );
 
@@ -59,18 +62,16 @@ const bayarSeminar = () => {
   }
 
   const router = useRouter();
-  const [dataInput, setTransaksi] = useState<CreateTransaksi>({
+  const [dataInput, setTransaksi] = useState<CreateTransaksiPK>({
     bank: "",
     customer: idCus,
-    detailOrder: [{
-      id: data?.data.id,
-      types: "seminar",
-      price: data?.data.price
-    }],
+    psikolog: data?.data.id,
     exp_date: getTomorrowDate(),
     payment_proof: "",
     status: "pending",
     type: "CusToAdmin",
+    datetime: [],
+    price: 50000
   });
 
   const onFinish = async (val: any) => {
@@ -78,17 +79,15 @@ const bayarSeminar = () => {
       const datas = {
         bank: dataInput.bank,
         customer: idCus,
-        detailOrder: [{
-          id: data?.data.id,
-          types: "seminar",
-          price: data?.data.price
-        }],
+        psikolog: data?.data.id,
         exp_date: dataInput.exp_date,
         payment_proof: dataInput.payment_proof,
         status: "pending",
         type: "CusToAdmin",
+        datetime: dataInput.datetime,
+        price: 50000
       };
-      const create_Transaksi = await TransaksiRepository.manipulateData.create(
+      const create_Transaksi = await TransaksiRepository.manipulateData.createPK(
         datas
       );
       Modal.success({
@@ -119,14 +118,14 @@ const bayarSeminar = () => {
         Modal.destroyAll
       }, 10000);
       console.log(create_Transaksi);
-      router.push(`/seminar/${pathname[pathname.length - 1]}`)
+      router.back()
     } catch (error) {
       throw error;
     }
   };
 
   return (
-    <Layout2 title="Detail Seminar">
+    <Layout2 title="Private Konseling">
       <div className="flex justify-center">
         <Card className="border-green-800 w-[1450px] h-[770px] gap-[100px] flex justify-between shadow-lg">
           <a href="/seminar" className="font-bold text-lg text-black">
@@ -136,43 +135,51 @@ const bayarSeminar = () => {
           <div className="flex justify-between gap-[80px] mt-5 ">
             <div className="flex justify-between pl-5">
               <div className="flex justify-center">
-                <img
-                  src={`http://localhost:3222/seminar/upload/${data?.data.poster}/image`}
-                  style={{ height: "500px", width: "auto" }}
-                />
+                <Form>
+                  <FormItem>
+                    <LocaleProvider locale={en_GB}>
+                    <DatePicker multiple={true} size="large" style={{ width: 300}} max={3} onChange={(e: any) => {
+                      setTransaksi({...dataInput, datetime: e})
+                    }}/>
+                    </LocaleProvider>
+                  </FormItem>
+                </Form>
               </div>
             </div>
             <div className="w-[510px] h-[460px] bg-slate-50 p-2 shadow-lg">
               <div className="font-bold text-2xl">Detail Transaksi: </div>
               <br />
-              <div className="font-bold text-xl justify-between">
-                <div>"{data?.data.title}"</div>
-              </div>
-              <div className="pt-5 flex text-lg gap-5 font-bold">
-                <div>{data?.data.datetime}</div>
-              </div>
-              <div className="pt-5 flex font-bold gap-5 text-lg text-yzc">
-                <IntlProvider>
-                  <PriceFormatter value={data?.data.price} />
-                </IntlProvider>
-              </div>
-              <p className="pt-16 font-bold text-lg">Pemateri:</p>
-              <div className="flex items-center justify-center gap-10">
-                {data?.data.psikologseminar?.map((val: any) => (
-                  <div className="items-center justify-center">
-                    <div className="justify-center items-center flex">
+              <div className="items-center justify-center">
+                <div className="justify-center">
+                  <div className="justify-center items-center flex">
                       <img
-                        src={`http://localhost:3222/psikolog/upload/${val.psikolog.photo}/image`}
-                        className="rounded-[50%] w-[80px] h-[80px] flex justify-center shadow-md"
+                        src={`http://localhost:3222/psikolog/upload/${data?.data.photo}/image`}
+                        className="rounded-[50%] w-[120px] h-[120px] flex justify-center shadow-md"
                       />
-                    </div>
-                    <div className=" flex justify-center w-[170px] pt-2">
-                      <p className="font-bold text-sm justify-center text-center flex">
-                        {val.psikolog.fullName}
+                  </div>
+                  <div className="flex justify-center">
+                    <div>
+                      <div className=" flex justify-center w-[250px] pt-2">
+                      <p className="font-bold text-2xl justify-center text-center flex">
+                        {data?.data.fullName}
                       </p>
                     </div>
+                    <div className=" flex justify-center w-[250px]">
+                      <div className="font-bold text-xl justify-center text-center flex">
+                        {data?.data.spesialis}
+                      </div>
+                    </div>
+                    </div>
                   </div>
-                ))}
+                </div>
+            </div>
+              <div className="pt-5 flex font-bold gap-2 text-lg text-yzc">
+                <div>
+                Harga:
+                </div>
+                <IntlProvider>
+                  <PriceFormatter value={dataInput.price * dataInput.datetime.length}/>
+                </IntlProvider>
               </div>
             </div>
             <div>
@@ -191,7 +198,7 @@ const bayarSeminar = () => {
                 </div>
               </div>
               <FormItem name="bank">
-                <Bank setData={setTransaksi} dataInput={dataInput} />
+                <Bank setData={setTransaksi} dataInput={dataInput}/>
               </FormItem>
               <div className="pt-4 justify-center flex"></div>
               <UploadBukti setData={setTransaksi} dataInput={dataInput} />

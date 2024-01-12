@@ -127,44 +127,40 @@ const Seminar = () => {
       render: (_, record) => (
         <img
           src={`http://localhost:3222/seminar/upload/${record.poster}/image`}
-          style={{ width: "25%", height: "auto" }}
+          style={{ width: "75%", height: "auto" }}
         />
       ),
+      width:350
     },
     {
       title: "Judul",
       dataIndex: "title",
       key: "title",
+      width:350
+
     },
     {
       title: "Tanggal",
       dataIndex: "datetime",
       key: "datetime",
+      width:350
       
-    },
-    {
-      title: "Detail",
-      key: "detail",
-      render: (_, record) => (
-        <div className="justify-center flex">
-          <div className="pb-1">
-            <Button
-              className="bg-[#455A64] text-white flex items-cente w-[125px] justify-center"
-              style={{ backgroundColor: "#455A64" }}
-              href={`seminar/${record.id}`}
-            >
-              <ZoomInOutlined className="flex pt-[2px]" />
-              Lihat Detail
-            </Button>
-          </div>
-        </div>
-      ),
     },
     {
       title: "Aksi",
       key: "Aksi",
       render: (_, record) => (
         <div className="list-item justify-center">
+        <div className="pb-1">
+          <Button
+            className="bg-[#455A64] text-white flex items-cente w-[125px] justify-center"
+            style={{ backgroundColor: "#455A64" }}
+            href={`seminar/${record.id}`}
+          >
+            <ZoomInOutlined className="flex pt-[2px]" />
+            Lihat Detail
+          </Button>
+        </div>
           <div className="pb-1">
             <Button
               className="bg-[#525F89] text-white flex items-center w-[125px] justify-center"

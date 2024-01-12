@@ -64,31 +64,36 @@ const PsikologInActive = () => {
       render: (_, record) => (
         <img
           src={`http://localhost:3222/psikolog/upload/${record.foto}/image`}
-          style={{ width: "25%", height: "auto" }}
+          style={{ width: "40%", height: "auto" }}
         />
       ),
-      width: 500,
+      width: 300,
     },
     {
       title: "Nama",
       dataIndex: "nama",
       key: "nama",
+      width: 300,
+
     },
     {
       title: "Jenis Kelamin",
       dataIndex: "jenis_kelamin",
       key: "jenis_kelamin",
+      width: 300,
+
     },
     {
       title: "Email",
       dataIndex: "email",
       key: "email",
+      width: 300,
     },
     {
-      title: "Detail",
-      key: "detail",
+      title: "Aksi",
+      key: "Aksi",
       render: (_, record) => (
-        <div className="justify-center flex">
+          <div className="list-item justify-center">
           <div className="pb-1">
             <Button
               className="bg-[#455A64] text-white flex items-cente w-[125px] justify-center"
@@ -99,14 +104,6 @@ const PsikologInActive = () => {
               Lihat Detail
             </Button>
           </div>
-        </div>
-      ),
-    },
-    {
-        title: "Aksi",
-        key: "Aksi",
-        render: (_, record) => (
-          <div className="list-item justify-center">
             <div className="pb-1">
             <Button
               className="bg-[#525F89] text-white flex items-center w-[125px] justify-center"

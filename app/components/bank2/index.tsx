@@ -15,7 +15,7 @@ interface DummyDataItem {
 }
 type Props = {
   setData: any;
-  dataInput: CreateTransaksi
+  dataInput: CreateTransaksiPK
 };
 const Bank = ({ setData, dataInput }: Props) => {
   const data: DummyDataItem[] = [

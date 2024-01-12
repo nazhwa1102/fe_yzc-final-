@@ -410,7 +410,6 @@ textarea:where(.css-dev-only-do-not-override-3oiqkd).ant-input{
     font-weight: 600;
 }
 
-:where(.css-dev-only-do-not-override-3oiqkd)[class^="ant-select"] [class^="ant-select"], :where(.css-dev-only-do-not-override-3oiqkd)[class*=" ant-select"] [class^="ant-select"], :where(.css-dev-only-do-not-override-3oiqkd)[class^="ant-select"] [class*=" ant-select"], :where(.css-dev-only-do-not-override-3oiqkd)[class*=" ant-select"] [class*=" ant-select"] {
-    box-sizing: border-box;
-    padding-bottom: 7px;
+.ant-select .ant-select-arrow {
+    height: 15px;
 }

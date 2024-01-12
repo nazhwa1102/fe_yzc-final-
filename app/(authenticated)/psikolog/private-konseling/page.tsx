@@ -182,7 +182,7 @@ const privateKonseling = () => {
             <Button
               className="bg-[#455A64] text-white flex items-cente w-[125px] justify-center"
               style={{ backgroundColor: "#455A64" }}
-              href={`private_konseling/${record.id}`}
+              href={`private-konseling/${record.id}`}
             >
               <ZoomInOutlined className="flex pt-[2px]" />
               Detail
@@ -360,7 +360,7 @@ const privateKonseling = () => {
             <Button
               className="bg-[#455A64] text-white flex items-cente w-[125px] justify-center"
               style={{ backgroundColor: "#455A64" }}
-              href={`private_konseling/${record.id}`}
+              href={`private-konseling/${record.id}`}
             >
               <ZoomInOutlined className="flex pt-[2px]" />
               Detail
@@ -410,7 +410,7 @@ const privateKonseling = () => {
             <Button
               className="bg-[#455A64] text-white flex items-cente w-[125px] justify-center"
               style={{ backgroundColor: "#455A64" }}
-              href={`private_konseling/${record.id}`}
+              href={`private-konseling/${record.id}`}
             >
               <ZoomInOutlined className="flex pt-[2px]" />
               Detail

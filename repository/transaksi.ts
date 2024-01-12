@@ -33,6 +33,9 @@ const manipulateData = {
     create(data: any){
         return http.post(url.seminar()).send(data)
     },
+    createPK(data:any){
+      return http.post(url.privateKonseling()).send(data)
+    },
     update(data:any,id:any){
         return http.put(url.transaksiId(id)).send(data)
     },
