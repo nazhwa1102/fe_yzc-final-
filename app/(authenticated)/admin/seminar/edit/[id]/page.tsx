@@ -34,7 +34,7 @@ const detailSeminar = () => {
   const router = useRouter();
 
   const [form] = Form.useForm();
-  const pathname = usePathname().split("/");
+  const pathname = (usePathname() ?? "").split("/");
   const {
     data: dataSeminar,
     error,
@@ -88,7 +88,7 @@ const detailSeminar = () => {
       };
       const updates = await SeminarRepository.manipulateData.update(
         data,
-        dataSeminar.data.id
+        dataSeminar?.data.id
       );
       setTimeout(
         message.success("Anda Telah Berhasil Menambahkan Seminar"),
